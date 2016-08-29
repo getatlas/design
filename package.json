@@ -4,6 +4,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "browser-sync": "^2.14.0",
     "gulp": "^3.9.1",
     "laravel-elixir": "^6.0.0-10"
   },
