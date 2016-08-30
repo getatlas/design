@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'Icons';
+  src:  url('../assets/icons.eot?ehlfg6');
+  src:  url('../assets/icons.eot?ehlfg6#iefix') format('embedded-opentype'),
+        url('../assets/icons.ttf?ehlfg6') format('truetype'),
+        url('../assets/icons.woff?ehlfg6') format('woff'),
+        url('../assets/icons.svg?ehlfg6#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-notification {
+  &:before {
+    content: "\e900";
+  }
+}
+.icon-search {
+  &:before {
+    content: "\e901";
+  }
+}
+.icon-menu {
+  &:before {
+    content: "\e902";
+  }
+}
+.icon-server {
+  &:before {
+    content: "\e903";
+  }
+}
+.icon-storage {
+  &:before {
+    content: "\e904";
+  }
+}
+.icon-clock {
+  &:before {
+    content: "\e905";
+  }
+}
+.icon-logo {
+  &:before {
+    content: "\e906";
+  }
+}
+
