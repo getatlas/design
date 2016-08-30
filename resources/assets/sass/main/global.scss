@@ -1,14 +1,22 @@
-[class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
+* {
+	box-sizing: border-box;
+}
 
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  background-color: $color--cod-gray;
+  font-family: $font-family--default, $font-family--fallback;
+  font-size: $font-size--paragraph;
+  color: $color--white;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: $color--white;
+}
+
+a {
+	color: inherit;
+	text-decoration: none
 }

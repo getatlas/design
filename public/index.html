@@ -3,9 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>GetAtlas</title>
-	<link rel="stylesheet" type="text/css" href="app.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 <body>
-	<h1>Hello world!</h1>
+	<nav class="js-sidebar sidebar">
+		<h1 class="logo logo--sidebar icon-logo">
+			<a class="logo__link" href="#">Atlas</a>
+		</h1>
+		<ul class="sidebar__nav">
+			<li class="sidebar__nav__item icon-clock active"><a class="sidebar__nav__item__link" href="#">Monitoring Uptime</a></li>
+			<li class="sidebar__nav__item icon-storage"><a class="sidebar__nav__item__link" href="#">Monitoring Storage Usage</a></li>
+			<li class="sidebar__nav__item icon-server"><a class="sidebar__nav__item__link" href="#">Monitoring Server Usage</a></li>
+		</ul>
+		<aside class="usage-info usage-info--sidebar">
+			<dl class="usage-info__list">
+				<dt class="usage-info__list__name">CPU usage</dt>
+				<dd class="usage-info__list__content" data-usage-traffic="37%">37%</dd>
+				<dt class="usage-info__list__name">Memory usage</dt>
+				<dd class="usage-info__list__content" data-usage-traffic="98%">98%</dd>
+				<dt class="usage-info__list__name">Traffic</dt>
+				<dd class="usage-info__list__content" data-usage-traffic="65%">65%</dd>
+				<dt class="usage-info__list__name">Databases</dt>
+				<dd class="usage-info__list__content" data-usage-traffic="44%">44%</dd>
+			</dl>
+		</aside>
+		<button class="js-toggle-sidebar sidebar__btn icon-menu">Change sidebar view</button>
+	</nav>
 </body>
 </html>

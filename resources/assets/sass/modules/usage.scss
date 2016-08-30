@@ -1,0 +1,95 @@
+.usage-info {
+	&--sidebar {
+		padding: 15px $sidebar--spacing-horizontal 12px $sidebar--spacing-horizontal;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: darken($color--mine-shaft, 8.5%);
+	}
+}
+
+.usage-info__list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	font-size: 13px;
+}
+
+.usage-info__list__name,
+.usage-info__list__content {
+	&:not(:last-of-type) {
+		margin-bottom: 13px;
+	}
+}
+
+.usage-info__list__name {
+	width: 111px;
+}
+
+.usage-info__list__content {
+	width: calc(100% - 111px);
+	margin-left: 0;
+	align-self: center;
+	align-content: space-between;
+	text-align: right;
+	position: relative;
+
+	$i: 0;
+
+	@while $i < 100 {
+		&[data-usage-traffic="#{$i}%"] {
+			@if $i <= 40 {
+				color: $color--sushi;
+
+				&:after {
+					background-color: $color--sushi;
+				}
+			} @else if $i <= 60 {
+				color: $color--gold;
+
+				&:after {
+					background-color: $color--gold;
+				}
+			} @else if $i <= 80 {
+				color: $color--pizazz;
+				
+				&:after {
+					background-color: $color--pizazz;
+				}
+			} @else {
+				color: $color--sunset-orange;
+
+				&:after {
+					background-color: $color--sunset-orange;
+				}
+			}
+			
+			&:after {
+				width: calc(#{$i}% - #{$i / 2.56}px);
+			}
+		}
+
+		$i: $i + 1;
+	}
+
+	&:before {
+		content: '';
+		width: calc(100% - 39px);
+		height: 6px;
+		margin-top: 5px;
+		float: left;
+		background-color: $color--mine-shaft;
+		border-radius: 6px;
+		align-self: center;
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		height: 6px;
+		top: 5px;
+		left: 0;
+		border-radius: 6px;
+		background-color: red;
+	}
+}

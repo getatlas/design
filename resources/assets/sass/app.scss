@@ -1,4 +1,12 @@
+//Main
 @import 'main/variables';
-@import 'main/fonts.scss';
-@import 'main/icons.scss';
-@import 'main/global.scss';
+@import 'main/fonts';
+@import 'main/icons';
+@import 'main/global';
+
+//Modules
+@import 'modules/logo';
+@import 'modules/usage';
+
+//Styles
+@import 'styles/sidebar';
