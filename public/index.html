@@ -5,6 +5,7 @@
 	<title>GetAtlas</title>
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script src="js/scripts.js"></script>
 </head>
 <body>
 	<nav class="js-sidebar sidebar">
@@ -18,9 +19,9 @@
 		</ul>
 		<aside class="usage-info usage-info--sidebar">
 			<dl class="usage-info__list">
-				<dt class="usage-info__list__name">CPU usage</dt>
+				<dt class="usage-info__list__name">CPU <span class="usage-info__list__unnecessary">usage</span></dt>
 				<dd class="usage-info__list__content" data-usage-traffic="37%">37%</dd>
-				<dt class="usage-info__list__name">Memory usage</dt>
+				<dt class="usage-info__list__name">Memory <span class="usage-info__list__unnecessary">usage</span></dt>
 				<dd class="usage-info__list__content" data-usage-traffic="98%">98%</dd>
 				<dt class="usage-info__list__name">Traffic</dt>
 				<dd class="usage-info__list__content" data-usage-traffic="65%">65%</dd>
@@ -28,7 +29,9 @@
 				<dd class="usage-info__list__content" data-usage-traffic="44%">44%</dd>
 			</dl>
 		</aside>
-		<button class="js-toggle-sidebar sidebar__btn icon-menu">Change sidebar view</button>
 	</nav>
+
+	<button class="js-toggle-sidebar sidebar__btn icon-menu">Change sidebar view</button>
+
 </body>
 </html>

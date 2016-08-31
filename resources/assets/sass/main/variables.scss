@@ -22,6 +22,12 @@ $font-size--title: 16px;
 $font-size--paragraph: 16px;
 $font-size--paragraph-small: 14px;
 
+//Animations
+$animation--duration: 0.1s;
+$animation--duration-slow: 0.3s;
+$animation--timing: ease-in-out;
+
 //Sidebar
 $sidebar--width: 300px;
+$sidebar--width-colapsed: 96px;
 $sidebar--spacing-horizontal: 30px;

@@ -5,6 +5,12 @@
 	bottom: 0;
 	left: 0;
 	background-color: darken($color--mine-shaft, 7%);
+	overflow: hidden;
+	transition: width $animation--duration-slow ease-in-out;
+
+	&--collapsed {
+		width: $sidebar--width-colapsed;
+	}
 }
 
 .sidebar__nav {
@@ -14,8 +20,8 @@
 }
 
 .sidebar__nav__item {
-	margin-bottom: 39px;
 	margin-right: $sidebar--spacing-horizontal;
+	margin-bottom: 39px;
 	margin-left: $sidebar--spacing-horizontal;
 	position: relative;
 
@@ -29,18 +35,23 @@
 		top: 1px;
 		left: 0;
 		font-size: 24px;
+		transition: transform $animation--duration-slow $animation--timing;
+
+		.sidebar--collapsed & {
+			transform: translate3d(7px, 0, 0);
+		}
 	}
 	&:after {
 		content: '';
+		opacity: 0;
 		width: 6px;
 		height: 6px;
+		border-radius: 50%;
 		position: absolute;
 		top: 9px;
 		left: -33px;
-		border-radius: 50%;
-		opacity: 0;
-		box-shadow: 0 0 10px 3px rgba($color--blue-marguerite, 0.32);
 		background-color: $color--blue-marguerite;
+		box-shadow: 0 0 10px 3px rgba($color--blue-marguerite, 0.32);
 	}
 
 	&.active {
@@ -51,17 +62,25 @@
 }
 
 .sidebar__nav__item__link {
+	display: block;
 	padding-top: 3px;
 	padding-bottom: 1px;
 	padding-left: 37px;
-	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	transition: opacity $animation--duration-slow $animation--duration $animation--timing;
+
+	.sidebar--collapsed & {
+		opacity: 0;
+		transition: opacity $animation--duration $animation--timing;
+	}
 }
 
 .sidebar__btn {
-	font-size: 0;
 	position: absolute;
 	top: 27px;
-	right: -48px;
+	right: 0;
+	font-size: 0;
 	cursor: pointer;
 
 	&:hover {

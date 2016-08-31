@@ -1,11 +1,100 @@
+@keyframes usage--sidebar-hide {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+		min-width: 175px;
+	}
+	51% {
+		min-width: 0;
+	}
+	100% {
+		opacity: 1;
+		min-width: 0;
+	}
+}
+
+@keyframes usage--sidebar-show {
+	0% {
+		opacity: 1;
+		min-width: 0;
+		max-width: $sidebar--width-colapsed;
+	}
+	50% {
+		opacity: 0;
+		min-width: 0;
+		max-width: $sidebar--width-colapsed;
+	}
+	51% {
+		min-width: 175px;
+		max-width: 100%;
+	}
+	100% {
+		opacity: 1;
+		min-width: 175px;
+		max-width: 100%;
+	}
+}
+
+@keyframes usage--flex-hide {
+	0% {
+		flex-direction: row;
+		text-align: left;
+	}
+	99% {
+		flex-direction: row;
+		text-align: left;
+	}
+	100% {
+		flex-direction: column;
+		text-align: center;
+	}
+}
+
+@keyframes usage--flex-show {
+	0% {
+		flex-direction: column;
+		text-align: center;
+	}
+	99% {
+		flex-direction: column;
+		text-align: center;
+	}
+	100% {
+		flex-direction: row;
+		text-align: left;
+	}
+}
+
 .usage-info {
 	&--sidebar {
+		min-width: 175px;
 		padding: 15px $sidebar--spacing-horizontal 12px $sidebar--spacing-horizontal;
 		position: absolute;
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background-color: darken($color--mine-shaft, 8.5%);
+		transition: padding $animation--duration-slow $animation--timing;
+
+		&:after {
+			content: '';
+			width: $sidebar--width;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
+			background-color: darken($color--mine-shaft, 8.5%);
+		}
+
+		.sidebar--loaded:not(.sidebar--collapsed) & {
+			animation: usage--sidebar-show ($animation--duration-slow * 2) forwards alternate $animation--timing;
+		}
+		.sidebar--collapsed & {
+			padding: 14px 7px 12px 9px;
+			animation: usage--sidebar-hide ($animation--duration-slow * 2) forwards alternate $animation--timing;
+		}
 	}
 }
 
@@ -14,6 +103,18 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	font-size: 13px;
+
+	&,
+	* {
+		transition: 0s $animation--duration-slow;
+	}
+
+	.sidebar--loaded:not(.sidebar--collapsed) & {
+		animation: usage--flex-show $animation--duration-slow forwards alternate $animation--timing;
+	}
+	.sidebar--collapsed & {
+		animation: usage--flex-hide $animation--duration-slow forwards alternate $animation--timing;
+	}
 }
 
 .usage-info__list__name,
@@ -25,35 +126,45 @@
 
 .usage-info__list__name {
 	width: 111px;
+	white-space: nowrap;
+
+	.sidebar--collapsed & {
+		width: 100%;
+		margin-bottom: 1px;
+	}
 }
 
 .usage-info__list__content {
 	width: calc(100% - 111px);
 	margin-left: 0;
-	align-self: center;
-	align-content: space-between;
-	text-align: right;
 	position: relative;
+	align-content: space-between;
+	align-self: center;
+	text-align: right;
+
+	.sidebar--collapsed & {
+		width: 100%;
+	}
 
 	$i: 0;
 
 	@while $i < 100 {
 		&[data-usage-traffic="#{$i}%"] {
-			@if $i <= 40 {
+			@if $i < 40 {
 				color: $color--sushi;
 
 				&:after {
 					background-color: $color--sushi;
 				}
-			} @else if $i <= 60 {
+			} @else if $i < 60 {
 				color: $color--gold;
 
 				&:after {
 					background-color: $color--gold;
 				}
-			} @else if $i <= 80 {
+			} @else if $i < 85 {
 				color: $color--pizazz;
-				
+
 				&:after {
 					background-color: $color--pizazz;
 				}
@@ -64,9 +175,13 @@
 					background-color: $color--sunset-orange;
 				}
 			}
-			
+
 			&:after {
 				width: calc(#{$i}% - #{$i / 2.56}px);
+
+				.sidebar--collapsed & {
+					width: calc(#{$i}% - #{$i / 2.94}px);
+				}
 			}
 		}
 
@@ -78,18 +193,38 @@
 		width: calc(100% - 39px);
 		height: 6px;
 		margin-top: 5px;
-		float: left;
-		background-color: $color--mine-shaft;
 		border-radius: 6px;
+		float: left;
 		align-self: center;
+		background-color: $color--mine-shaft;
+		transition: width $animation--duration-slow $animation--duration-slow $animation--timing;
+
+		.sidebar--collapsed & {
+			width: calc(100% - 34px);
+			transition: width $animation--duration-slow $animation--timing;
+		}
 	}
 	&:after {
 		content: '';
-		position: absolute;
 		height: 6px;
+		border-radius: 6px;
+		position: absolute;
 		top: 5px;
 		left: 0;
-		border-radius: 6px;
 		background-color: red;
+		transition: width $animation--duration-slow $animation--duration-slow $animation--timing;
+
+		.sidebar--collapsed & {
+			transition: width $animation--duration-slow $animation--timing;
+		}
+	}
+}
+
+.usage-info__list__unnecessary {
+	transition: opacity $animation--duration $animation--duration-slow $animation--timing;
+
+	.sidebar--collapsed & {
+		opacity: 0;
+		transition: opacity $animation--duration-slow $animation--timing;
 	}
 }
