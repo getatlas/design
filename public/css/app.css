@@ -1239,14 +1239,14 @@ a {
   margin-right: 30px;
   margin-bottom: 39px;
   margin-left: 30px;
-  position: relative; }
+  position: relative;
+  color: #777; }
   .sidebar__nav__item:hover, .sidebar__nav__item.active {
     color: #6863ce; }
   .sidebar__nav__item:before {
     position: absolute;
     top: 1px;
     left: 0;
-    color: #777;
     font-size: 24px;
     -webkit-transition: -webkit-transform 0.3s ease-in-out;
     transition: -webkit-transform 0.3s ease-in-out;

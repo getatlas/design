@@ -24,6 +24,7 @@
 	margin-bottom: 39px;
 	margin-left: $sidebar--spacing-horizontal;
 	position: relative;
+	color: $color--boulder;
 
 	&:hover,
 	&.active {
@@ -34,7 +35,6 @@
 		position: absolute;
 		top: 1px;
 		left: 0;
-		color: $color--boulder;
 		font-size: 24px;
 		transition: transform $animation--duration-slow $animation--timing;
 
