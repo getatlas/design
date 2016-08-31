@@ -1246,6 +1246,7 @@ a {
     position: absolute;
     top: 1px;
     left: 0;
+    color: #777;
     font-size: 24px;
     -webkit-transition: -webkit-transform 0.3s ease-in-out;
     transition: -webkit-transform 0.3s ease-in-out;
