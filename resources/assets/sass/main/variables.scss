@@ -3,6 +3,7 @@ $color--blue-marguerite: #6863ce;
 $color--boulder: #777;
 $color--mine-shaft: #3a3a3a;
 $color--white: #fff;
+$color--rose-white: #fffefe;
 $color--sushi: #7fc146;
 $color--sunset-orange: #ff554c;
 $color--blaze-orange: #ff6f00;
@@ -30,4 +31,7 @@ $animation--timing: ease-in-out;
 //Sidebar
 $sidebar--width: 300px;
 $sidebar--width-colapsed: 96px;
-$sidebar--spacing-horizontal: 30px;
+$spacing-horizontal: 30px;
+
+//Dropdown menu
+$dropdown-menu--width: 240px;

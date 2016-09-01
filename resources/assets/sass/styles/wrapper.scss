@@ -1,0 +1,12 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: $sidebar--width;
+  transition: left $animation--duration-slow $animation--timing;
+
+  .sidebar--collapsed ~ & {
+    left: $sidebar--width-colapsed;
+  }
+}

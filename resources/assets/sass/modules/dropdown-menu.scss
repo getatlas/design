@@ -1,0 +1,37 @@
+.dropdown-menu {
+  width: $dropdown-menu--width;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	list-style: none;
+  background-color: darken($color--mine-shaft, 7.2%);
+
+  &--profile {
+    top: 66px;
+    right: -6px;
+  }
+}
+
+.dropdown-menu__children {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dropdown-menu__item {
+  color: $color--boulder;
+
+  &--with-children {
+    color: $color--rose-white;
+  }
+  &--red {
+    color: $color--sunset-orange;
+  }
+}
+
+.dropdown-menu__item__link,
+.dropdown-menu__item__text {
+  display: block;
+  padding: 16px 20px;
+}

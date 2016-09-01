@@ -30,8 +30,40 @@
 			</dl>
 		</aside>
 	</nav>
+	<div class="wrapper">
+		<header class="toolbar">
+			<button class="js-toggle-sidebar sidebar__btn icon-menu">Change sidebar view</button>
 
-	<button class="js-toggle-sidebar sidebar__btn icon-menu">Change sidebar view</button>
+			<div class="group">
+				<nav class="profile-nav">
+					<img class="profile-nav__avatar" src="http://lorempixel.com/42/42">
 
+					<ul class="dropdown-menu dropdown-menu--profile">
+						<li class="dropdown-menu__item"><span class="dropdown-menu__item__text">Your Profile</span></li>
+						<li class="dropdown-menu__item dropdown-menu__item--with-children">
+							<span class="dropdown-menu__item__text">Choose Your Team</span>
+							<ul class="dropdown-menu__children">
+								<li class="dropdown-menu__item--children">
+									<a href="#" class="dropdown-menu__item__link">Team Atlas 999</a>
+								</li>
+								<li class="dropdown-menu__item--children dropdown-menu__item--choosen">
+									<a href="#" class="dropdown-menu__item__link">Team Circular</a>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown-menu__item">
+							<a href="#" class="dropdown-menu__item__link">Create a New Team</a>
+						</li>
+						<li class="dropdown-menu__item">
+							<a href="#" class="dropdown-menu__item__link">Settings</a>
+						</li>
+						<li class="dropdown-menu__item dropdown-menu__item--red">
+							<a href="#" class="dropdown-menu__item__link">Logout</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+	</div>
 </body>
 </html>

@@ -20,9 +20,9 @@
 }
 
 .sidebar__nav__item {
-	margin-right: $sidebar--spacing-horizontal;
+	margin-right: $spacing-horizontal;
 	margin-bottom: 39px;
-	margin-left: $sidebar--spacing-horizontal;
+	margin-left: $spacing-horizontal;
 	position: relative;
 	color: $color--boulder;
 
@@ -78,9 +78,7 @@
 }
 
 .sidebar__btn {
-	position: absolute;
-	top: 27px;
-	right: 0;
+	height: 16px;
 	font-size: 0;
 	cursor: pointer;
 
