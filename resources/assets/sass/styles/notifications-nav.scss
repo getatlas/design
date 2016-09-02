@@ -1,0 +1,61 @@
+@keyframes notification-alert {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0);
+	}
+}
+.notifications-nav {
+	margin-right: 18px;
+	float: right;
+}
+
+.notifications-nav__button {
+	display: block;
+	width: 42px;
+	height: 42px;
+	position: relative;
+	z-index: 2;
+	font-size: 0;
+	cursor: pointer;
+
+	&:hover {
+		&:before {
+			opacity: 0.5;
+		}
+	}
+
+	&:before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate3d(-50%, -50%, 0);
+		font-size: 16px;
+		transition: opacity $animation--duration $animation--timing;
+	}
+}
+
+.notifications-nav__button__alert {
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	position: absolute;
+	top: 8px;
+	right: 2px;
+	background-color: $color--sunset-orange;
+	box-shadow: 0 0 10px 2px rgba($color--black, 0.8);
+
+	&:before {
+		content: '';
+		width: 17px;
+		height: 17px;
+		border-radius: 50%;
+		position: absolute;
+		top: -6px;
+		left: -6px;
+		z-index: -1;
+		background-color: rgba($color--sunset-orange, 0.6);
+		animation: notification-alert 3s 1s infinite alternate;
+	}
+}

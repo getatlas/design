@@ -1,9 +1,10 @@
 .profile-nav {
-  position: relative;
+	float: right;
+	position: relative;
 }
 
 .profile-nav__avatar {
 	display: block;
 	border-radius: 50%;
-  cursor: pointer;
+	cursor: pointer;
 }

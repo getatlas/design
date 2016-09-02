@@ -36,18 +36,18 @@
 
 			<div class="group">
 				<nav class="profile-nav">
-					<img class="profile-nav__avatar" src="http://lorempixel.com/42/42">
+					<img class="profile-nav__avatar dropdown-menu__trigger" src="http://lorempixel.com/42/42">
 
 					<ul class="dropdown-menu dropdown-menu--profile">
 						<li class="dropdown-menu__item"><span class="dropdown-menu__item__text">Your Profile</span></li>
-						<li class="dropdown-menu__item dropdown-menu__item--with-children">
-							<span class="dropdown-menu__item__text">Choose Your Team</span>
-							<ul class="dropdown-menu__children">
-								<li class="dropdown-menu__item--children">
-									<a href="#" class="dropdown-menu__item__link">Team Atlas 999</a>
+						<li class="dropdown-menu__item dropdown-menu__item--with-children js-dropdown-menu">
+							<span class="dropdown-menu__item__text js-dropdown-menu-trigger">Choose Your Team</span>
+							<ul class="dropdown-menu__children js-dropdown-menu-nav" data-dropdown-hidden="true">
+								<li class="dropdown-menu__item dropdown-menu__item--children">
+									<a href="#" class="dropdown-menu__item__link dropdown-menu__item__link--children">Team Atlas 999</a>
 								</li>
-								<li class="dropdown-menu__item--children dropdown-menu__item--choosen">
-									<a href="#" class="dropdown-menu__item__link">Team Circular</a>
+								<li class="dropdown-menu__item dropdown-menu__item--children dropdown-menu__item--choosen">
+									<a href="#" class="dropdown-menu__item__link dropdown-menu__item__link--children">Team Circular</a>
 								</li>
 							</ul>
 						</li>
@@ -62,6 +62,12 @@
 						</li>
 					</ul>
 				</nav>
+				<div class="notifications-nav">
+					<button type="button" class="icon-notification notifications-nav__button notifications-nav__button--new"><span class="notifications-nav__button__alert">New notification!</span></button>
+				</div>
+				<form action="#" class="search search-nav icon-search">
+					<input class="search__field search__field--nav js-search-field" type="search" placeholder="Search">
+				</form>
 			</div>
 		</header>
 	</div>
