@@ -75,6 +75,7 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
+		z-index: 2;
 		transition: padding $animation--duration-slow $animation--timing;
 
 		&:after {
@@ -117,14 +118,14 @@
 	}
 }
 
-.usage-info__list__name,
-.usage-info__list__content {
+.usage-info__name,
+.usage-info__content {
 	&:not(:last-of-type) {
 		margin-bottom: 13px;
 	}
 }
 
-.usage-info__list__name {
+.usage-info__name {
 	width: 111px;
 	white-space: nowrap;
 
@@ -134,7 +135,7 @@
 	}
 }
 
-.usage-info__list__content {
+.usage-info__content {
 	width: calc(100% - 111px);
 	margin-left: 0;
 	position: relative;

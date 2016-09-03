@@ -20,8 +20,7 @@
 
 .search__field {
 	height: 42px;
-	padding-left: 48px;
-  padding-right: 24px;
+  padding: 0 48px;
 	border: 0;
 	border-radius: 6px;
 	background-color: $color--mine-shaft;
@@ -54,4 +53,28 @@
 	&:focus {
 		width: 300px;
 	}
+}
+
+.search__cancel {
+  position: absolute;
+  top: 15px;
+  right: 19px;
+  font-size: 0;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity $animation--duration $animation--timing,
+              visibility $animation--duration $animation--timing;
+
+  &:before {
+    font-size: 12px;
+    color: $color--sunset-orange;
+  }
+
+  .search__field:focus + & {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
 }
