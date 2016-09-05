@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<title>GetAtlas</title>
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-	<link rel="stylesheet" href="css/grid.css">
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 	<script src="js/scripts.js"></script>
 </head>
@@ -75,15 +74,113 @@
 
 		<section class="content">
 			<div class="row">
-				<section class="col col-md-3 usage-info usage-info--col">
-					<header class="usage-info__list__name">
+				<section class="col col--usage col-md-6 col-lg-3 usage-info usage-info--col">
+					<header class="col__heading col__heading--with-graph">
 						<h3>CPU usage</h3>
 					</header>
-					<dd class="dd usage-info__list__content" data-usage-traffic=""></dd>
+					<span class="usage-info__content usage-info__content--only-bar usage-info__content--col" data-usage-traffic="37%"></span>
+					<strong class="usage-info__heading" data-usage-traffic="37%">37<small class="usage-info__heading__unit">%</small></strong>
 				</section>
-				<section class="col col-md-3"></section>
-				<section class="col col-md-3"></section>
-				<section class="col col-md-3"></section>
+				<section class="col col--usage col-md-6 col-lg-3 usage-info usage-info--col">
+					<header class="col__heading col__heading--with-graph">
+						<h3>Memory usage</h3>
+					</header>
+					<span class="usage-info__content usage-info__content--only-bar usage-info__content--col" data-usage-traffic="98%"></span>
+					<strong class="usage-info__heading" data-usage-traffic="98%">98<small class="usage-info__heading__unit">%</small></strong>
+				</section>
+				<section class="col col--usage col-md-6 col-lg-3 usage-info usage-info--col">
+					<header class="col__heading col__heading--with-graph">
+						<h3>Traffic</h3>
+					</header>
+					<span class="usage-info__content usage-info__content--only-bar usage-info__content--col" data-usage-traffic="65%"></span>
+					<strong class="usage-info__heading" data-usage-traffic="65%">65<small class="usage-info__heading__unit">%</small></strong>
+				</section>
+				<section class="col col--usage col-md-6 col-lg-3 usage-info usage-info--col">
+					<header class="col__heading col__heading--with-graph">
+						<h3>Databases</h3>
+					</header>
+					<span class="usage-info__content usage-info__content--only-bar usage-info__content--col" data-usage-traffic="44%"></span>
+					<strong class="usage-info__heading" data-usage-traffic="44%">44<small class="usage-info__heading__unit">%</small></strong>
+				</section>
+			</div>
+			<div class="row">
+				<section class="col col-md-12 col-lg-6">
+					<header class="col__heading col__heading--with-calendar">
+						<h3>Memory/CPU</h3>
+					</header>
+					<div class="calendar calendar--col">
+						<button class="calendar__btn">Choose time period</button>
+						<div class="calendar__picker">
+							<header class="calendar__picker__heading">
+								<button class="calendar__picker__heading__btn calendar__picker__heading__btn--prev icon-arrow" type="button">Previous month</button>
+								<h4 class="calendar__picker__heading__text">August 2016</h4>
+								<button class="calendar__picker__heading__btn calendar__picker__heading__btn--next icon-arrow" type="button">Next month</button>
+							</header>
+							<ol class="calendar__picker__days">
+								<li class="calendar__picker__day">Saturday</li>
+								<li class="calendar__picker__day">Monday</li>
+								<li class="calendar__picker__day">Tuesday</li>
+								<li class="calendar__picker__day">Wednesday</li>
+								<li class="calendar__picker__day">Thursday</li>
+								<li class="calendar__picker__day">Saturday</li>
+								<li class="calendar__picker__day">Sunday</li>
+							</ol>
+							<ul class="calendar__picker__nav">
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">31</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">1</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">2</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">3</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">4</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">5</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">6</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">7</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">8</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">9</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">10</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">11</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">12</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">13</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">14</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">15</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">16</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">17</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">18</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">19</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">20</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">21</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">22</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">23</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">24</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">25</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">26</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">27</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">28</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">29</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">30</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">31</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">1</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">2</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">3</button></li>
+							</ol>
+						</div>
+					</div>
+					<img class="example-pic" src="assets/examples/1.png" alt="">
+				</section>
+				<section class="col col-md-12 col-lg-6">
+					<header class="col__heading col__heading--with-calendar">
+						<h3>Client side full page load</h3>
+					</header>
+					<img class="example-pic" src="assets/examples/2.png" alt="">
+				</section>
+				<section class="col col-md-12 col-lg-6">
+					<img class="example-pic" src="assets/examples/3.png" alt="">
+				</section>
+				<section class="col col-md-12 col-lg-6">
+					<header class="col__heading col__heading--with-calendar">
+						<h3>Name of category</h3>
+					</header>
+					<img class="example-pic" src="assets/examples/4.png" alt="">
+				</section>
 			</div>
 		</section>
 	</div>

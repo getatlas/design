@@ -5,6 +5,7 @@
   bottom: 0;
   left: $sidebar--width;
   transition: left $animation--duration-slow $animation--timing;
+  overflow: auto;
 
   .sidebar--collapsed ~ & {
     left: $sidebar--width-colapsed;

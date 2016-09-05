@@ -1,8 +1,18 @@
 .toolbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: $sidebar--width;
+  z-index: 9999;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 70px;
   padding: 0 $spacing-horizontal;
   background-color: darken($color--mine-shaft, 7%);
+  transition: left $animation--duration-slow ease-in-out;
+
+  .sidebar--collapsed ~ .wrapper & {
+    left: $sidebar--width-colapsed;
+  }
 }

@@ -219,6 +219,91 @@
 			transition: width $animation--duration-slow $animation--timing;
 		}
 	}
+
+	&--only-bar {
+		display: block;
+
+		&:before {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	&--col {
+		width: 90px;
+		position: absolute;
+		top: 32px;
+		right: 29px;
+
+		@media (min-width: 1200px) and (max-width: 1400px) {
+			width: 70px;
+		}
+
+		@media (min-width: 1200px) and (max-width: 1280px) {
+			width: 50px;
+		}
+
+		$i: 0;
+
+		@while $i < 100 {
+			&[data-usage-traffic="#{$i}%"] {
+				&:after {
+					width: #{$i}%;
+				}
+			}
+
+			$i: $i + 1;
+		}
+	}
+}
+
+.usage-info__heading {
+	width: 100%;
+	margin-top: 22px;
+	margin-bottom: 8px;
+	text-align: center;
+	display: block;
+	font-size: 120px;
+	line-height: 1;
+
+	@media (max-width: 1400px) {
+		font-size: 96px;
+	}
+
+	&:before,
+	&:after {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	$i: 0;
+
+	@while $i < 100 {
+		&[data-usage-traffic="#{$i}%"] {
+			@if $i < 40 {
+				color: $color--sushi;
+			} @else if $i < 60 {
+				color: $color--gold;
+			} @else if $i < 85 {
+				color: $color--pizazz;
+			} @else {
+				color: $color--sunset-orange;
+			}
+		}
+
+		$i: $i + 1;
+	}
+}
+
+.usage-info__heading__unit {
+	font-size: 50px;
+
+	@media (max-width: 1400px) {
+		font-size: 40px;
+	}
 }
 
 .usage-info__list__unnecessary {

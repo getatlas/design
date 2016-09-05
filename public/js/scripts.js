@@ -20,7 +20,6 @@ var dropdownMenuToggle = function() {
 
   Array.prototype.forEach.call(dropdownMenus, function(el, i) {
     el.style.maxHeight = el.offsetHeight + 'px';
-    console.log(el.getAttribute('data-dropdown-hidden'));
 
     if (Boolean(el.getAttribute('data-dropdown-hidden')) === true) {
       el.classList.add('dropdown-menu__children--hidden');
