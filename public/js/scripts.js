@@ -44,8 +44,25 @@ var search = function() {
   });
 }
 
+var tabs = function() {
+  var tabsNavItem = document.querySelector('.js-tabs-nav-item');
+
+  tabsNavItem.addEventListener('click', function(event) {
+    // this.classList.add('tabs__nav__item--active');
+    event.preventDefault();
+  });
+
+  // var tabsContent = document.querySelector('.js-tabs-content');
+  // var tabsContentItem = document.querySelector('.js-tabs-content-item');
+  //
+  // tabsNavItem.addEventListener('click', function() {
+  //     console.log('click handler fired');
+  // });
+}
+
 window.addEventListener('load', function () {
   collapseSlider();
   dropdownMenuToggle();
   search();
+  tabs();
 });

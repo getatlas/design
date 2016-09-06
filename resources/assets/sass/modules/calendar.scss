@@ -26,27 +26,208 @@
 
 .calendar__picker {
 	width: $calendar--width;
+	padding-top: 15px;
 	border: 1px solid $color--cod-gray;
 	border-radius: 6px;
 	position: absolute;
-	top: 100%;
-	right: 0;
+	top: calc(100% + 5px);
+	right: -20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 	background-color: darken($color--mine-shaft, 7%);
+  transform: translate3d(0, -5%, 0);
+  transition: opacity $animation--duration $animation--timing,
+              visibility $animation--duration $animation--timing,
+              transform $animation--duration $animation--timing;
+
+  &:before {
+    content: '';
+    height: 9px;
+    position: absolute;
+    top: -9px;
+    right: 0;
+    left: 0;
+  }
+
+  &:after {
+    content: '';
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    top: -5px;
+    right: 20px;
+    background-color: darken($color--mine-shaft, 7%);
+    border-top: 1px solid $color--cod-gray;
+    border-right: 1px solid $color--cod-gray;
+    transform: rotate(-45deg);
+  }
+
+  &:hover,
+  .calendar__btn:hover + & {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .calendar__picker__heading {
-  position: relative;
+	margin-bottom: 14px;
+	position: relative;
 }
 
 .calendar__picker__heading__text {
-  text-align: center;
-  font-weight: normal;
+	font-weight: normal;
+	text-align: center;
+}
+
+.calendar__picker__heading__btn {
+	position: absolute;
+	top: 7px;
+	font-size: 0;
+	cursor: pointer;
+	transition: opacity $animation--duration $animation--timing;
+
+	&:hover {
+		opacity: 0.5;
+	}
+
+	&:before {
+		font-size: 8px;
+	}
+
+	&--prev {
+		left: 15px;
+		transform: rotate(90deg) translateZ(1px);
+	}
+	&--next {
+		right: 15px;
+		transform: rotate(-90deg) translateZ(1px);
+	}
 }
 
 .calendar__picker__days {
-  display: none;
+	display: flex;
+	margin: 0 0 15px 0;
+	padding: 0 18px;
+	justify-content: space-between;
+	list-style: none;
+}
+
+.calendar__picker__day {
+	color: $color--boulder;
+	font-size: $font-size--paragraph-small;
+	cursor: default;
 }
 
 .calendar__picker__nav {
-  display: none;
+	margin: 0;
+	padding: 0 8px;
+	background-color: $color--cod-gray;
+	overflow: hidden;
+	list-style: none;
+}
+
+.calendar__picker__nav__item {
+	width: 14.28%;
+	padding-top: 10px;
+	padding-bottom: 8px;
+	float: left;
+	position: relative;
+	text-align: center;
+
+	&:after {
+		content: '';
+		border-bottom: 1px solid darken($color--mine-shaft, 7%);
+		position: absolute;
+		right: -8px;
+		bottom: -1px;
+		left: -8px;
+	}
+
+	&:nth-child(7n) {
+		.calendar__picker__nav__btn {
+			&--active {
+        &:not(.calendar__picker__nav__btn--single) {
+          &:not(.calendar__picker__nav__btn--last) {
+            &:hover {
+              &:after {
+                background-color: lighten($color--blue-marguerite, 2%);
+              }
+            }
+            &:after {
+    					content: '';
+              width: 8px;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: -8px;
+              background-color: $color--blue-marguerite;
+    				}
+          }
+        }
+			}
+		}
+	}
+	&:nth-child(7n-6) {
+    .calendar__picker__nav__btn {
+			&--active {
+        &:not(.calendar__picker__nav__btn--single) {
+          &:not(.calendar__picker__nav__btn--first) {
+            &:hover {
+              &:after {
+                background-color: lighten($color--blue-marguerite, 2%);
+              }
+            }
+            &:after {
+    					content: '';
+              width: 8px;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: -8px;
+              background-color: $color--blue-marguerite;
+    				}
+          }
+        }
+			}
+		}
+	}
+}
+
+.calendar__picker__nav__btn {
+	width: 100%;
+	height: 32px;
+	position: relative;
+	font-size: $font-size--paragraph-small;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $color--blue-marguerite;
+	}
+
+	&:not(.calendar__picker__nav__btn--active) {
+		border-radius: 50%;
+	}
+
+	&--single {
+		border-radius: 50%;
+	}
+	&--first {
+		border-top-left-radius: 50%;
+		border-bottom-left-radius: 50%;
+	}
+	&--last {
+		border-top-right-radius: 50%;
+		border-bottom-right-radius: 50%;
+	}
+
+	&--active {
+		background-color: $color--blue-marguerite;
+
+		&:hover {
+			background-color: lighten($color--blue-marguerite, 2%);
+		}
+	}
 }

@@ -117,13 +117,13 @@
 								<button class="calendar__picker__heading__btn calendar__picker__heading__btn--next icon-arrow" type="button">Next month</button>
 							</header>
 							<ol class="calendar__picker__days">
-								<li class="calendar__picker__day">Saturday</li>
-								<li class="calendar__picker__day">Monday</li>
-								<li class="calendar__picker__day">Tuesday</li>
-								<li class="calendar__picker__day">Wednesday</li>
-								<li class="calendar__picker__day">Thursday</li>
-								<li class="calendar__picker__day">Saturday</li>
-								<li class="calendar__picker__day">Sunday</li>
+								<li class="calendar__picker__day" title="Saturday">S</li>
+								<li class="calendar__picker__day" title="Monday">M</li>
+								<li class="calendar__picker__day" title="Tuesday">T</li>
+								<li class="calendar__picker__day" title="Wednesday">W</li>
+								<li class="calendar__picker__day" title="Thursday">T</li>
+								<li class="calendar__picker__day" title="Saturday">S</li>
+								<li class="calendar__picker__day" title="Sunday">S</li>
 							</ol>
 							<ul class="calendar__picker__nav">
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">31</button></li>
@@ -136,7 +136,7 @@
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">7</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">8</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">9</button></li>
-								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">10</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active calendar__picker__nav__btn--single" type="button">10</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">11</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">12</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">13</button></li>
@@ -144,13 +144,13 @@
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">15</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">16</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">17</button></li>
-								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">18</button></li>
-								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">19</button></li>
-								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">20</button></li>
-								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">21</button></li>
-								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">22</button></li>
-								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">23</button></li>
-								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">24</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active calendar__picker__nav__btn--first" type="button">18</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active" type="button">19</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active" type="button">20</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active" type="button">21</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active" type="button">22</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active" type="button">23</button></li>
+								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active calendar__picker__nav__btn--last" type="button">24</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">25</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">26</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">27</button></li>
@@ -164,16 +164,88 @@
 							</ol>
 						</div>
 					</div>
-					<img class="example-pic" src="assets/examples/1.png" alt="">
+					<img class="example-pic" src="assets/examples/1.png" style="margin-top: 13px; width: 635px;" alt="">
 				</section>
 				<section class="col col-md-12 col-lg-6">
 					<header class="col__heading col__heading--with-calendar">
 						<h3>Client side full page load</h3>
+						<div class="calendar calendar--col">
+							<button class="calendar__btn">Choose time period</button>
+							<div class="calendar__picker">
+								<header class="calendar__picker__heading">
+									<button class="calendar__picker__heading__btn calendar__picker__heading__btn--prev icon-arrow" type="button">Previous month</button>
+									<h4 class="calendar__picker__heading__text">August 2016</h4>
+									<button class="calendar__picker__heading__btn calendar__picker__heading__btn--next icon-arrow" type="button">Next month</button>
+								</header>
+								<ol class="calendar__picker__days">
+									<li class="calendar__picker__day" title="Saturday">S</li>
+									<li class="calendar__picker__day" title="Monday">M</li>
+									<li class="calendar__picker__day" title="Tuesday">T</li>
+									<li class="calendar__picker__day" title="Wednesday">W</li>
+									<li class="calendar__picker__day" title="Thursday">T</li>
+									<li class="calendar__picker__day" title="Saturday">S</li>
+									<li class="calendar__picker__day" title="Sunday">S</li>
+								</ol>
+								<ul class="calendar__picker__nav">
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">31</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">1</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">2</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">3</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">4</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">5</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">6</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">7</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">8</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">9</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active calendar__picker__nav__btn--single" type="button">10</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">11</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">12</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">13</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">14</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">15</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">16</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">17</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active calendar__picker__nav__btn--first" type="button">18</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active" type="button">19</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active" type="button">20</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active" type="button">21</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active" type="button">22</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active" type="button">23</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn calendar__picker__nav__btn--active calendar__picker__nav__btn--last" type="button">24</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">25</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">26</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">27</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">28</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">29</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">30</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">31</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">1</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">2</button></li>
+									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">3</button></li>
+								</ol>
+							</div>
 					</header>
-					<img class="example-pic" src="assets/examples/2.png" alt="">
+					<img class="example-pic" src="assets/examples/2.png" style="margin-top: 8px; width: 649px;" alt="">
 				</section>
 				<section class="col col-md-12 col-lg-6">
-					<img class="example-pic" src="assets/examples/3.png" alt="">
+					<nav class="tabs__nav tabs__nav--col">
+						<ul class="tabs__nav__list">
+							<li class="tabs__nav__item tabs__nav__item--active"><a class="tabs__nav__item__link js-tabs-nav-item" href="#statistics">Statistics</a></li>
+							<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#forms">Forms</a></li>
+							<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#membership">Membership</a></li>
+						</ul>
+					</nav>
+					<div class="tabs__content js-tabs-content">
+						<section id="statistics" class="tabs__content__item js-tabs-content-item">
+							<img class="example-pic" src="assets/examples/3.png" alt="">
+						</section>
+						<section id="forms" class="tabs__content__item js-tabs-content-item">
+							<img class="example-pic" src="assets/examples/3.png" alt="">
+						</section>
+						<section id="membership" class="tabs__content__item js-tabs-content-item">
+							<img class="example-pic" src="assets/examples/3.png" alt="">
+						</section>
+					</div>
 				</section>
 				<section class="col col-md-12 col-lg-6">
 					<header class="col__heading col__heading--with-calendar">
