@@ -77,6 +77,14 @@
   content: '\e90a';
 }
 
+.icon-arrow-with-bar:before {
+  content: '\e90c';
+}
+
+.icon-mail:before {
+  content: '\e90b';
+}
+
 * {
   box-sizing: border-box;
 }
@@ -4387,6 +4395,32 @@ h6 {
   bottom: -28px;
   left: 0;
   background-color: #6863ce;
+}
+
+.stats-info--col {
+  margin-top: 12px;
+  margin-bottom: 26px;
+}
+
+.stats-info__main {
+  font-size: 41px;
+  color: #fff;
+}
+
+.stats-info__less {
+  margin-left: 8px;
+  font-size: 16px;
+  color: #7fc146;
+}
+
+.stats-info__less.icon-arrow-with-bar:before {
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+.stats-info__text {
+  margin-top: -6px;
+  margin-bottom: 0;
 }
 
 .sidebar {
