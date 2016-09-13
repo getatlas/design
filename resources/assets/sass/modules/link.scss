@@ -1,0 +1,18 @@
+.link {
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  &--more {
+    color: $color--boulder;
+    text-decoration: underline;
+    font-size: $font-size--paragraph-small - 1;
+
+    &:hover {
+      color: $color--white;
+    }
+  }
+}

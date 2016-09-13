@@ -161,7 +161,7 @@
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">1</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">2</button></li>
 								<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">3</button></li>
-							</ol>
+							</ul>
 						</div>
 					</div>
 					<img class="example-pic" src="assets/examples/1.png" style="margin-top: 13px; width: 635px;" alt="">
@@ -222,8 +222,9 @@
 									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">1</button></li>
 									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">2</button></li>
 									<li class="calendar__picker__nav__item"><button class="calendar__picker__nav__btn" type="button">3</button></li>
-								</ol>
+								</ul>
 							</div>
+						</div>
 					</header>
 					<img class="example-pic" src="assets/examples/2.png" style="margin-top: 8px; width: 649px;" alt="">
 				</section>
@@ -234,8 +235,6 @@
 								<li class="tabs__nav__item tabs__nav__item--active"><a class="tabs__nav__item__link js-tabs-nav-item" href="#statistics">Statistics</a></li>
 								<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#forms">Forms</a></li>
 								<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#membership">Membership</a></li>
-								<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#test1">Test 1</a></li>
-								<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#test2">Test 2</a></li>
 							</ul>
 						</nav>
 						<div class="tabs__content js-tabs-content">
@@ -247,12 +246,6 @@
 							</section>
 							<section id="membership" class="tabs__content__item js-tabs-content-item">
 								<img class="example-pic" src="http://www.rd.com/wp-content/uploads/sites/2/2016/04/01-cat-wants-to-tell-you-laptop.jpg" alt="">
-							</section>
-							<section id="test1" class="tabs__content__item js-tabs-content-item">
-								<img class="example-pic" src="https://i.ytimg.com/vi/mW3S0u8bj58/maxresdefault.jpg" alt="">
-							</section>
-							<section id="test2" class="tabs__content__item js-tabs-content-item">
-								<img class="example-pic" src="assets/examples/3.png" alt="">
 							</section>
 						</div>
 					</section>
@@ -266,16 +259,86 @@
 						<small class="stats-info__less icon-arrow-with-bar">12.25 (0.55%)</small>
 						<p class="stats-info__text">Aug 5, 14:50 PM GMT +1</p>
 					</aside>
-					<nav class="tabs__nav tabs__nav--col">
-						<ul class="tabs__nav__list js-tabs-nav">
-							<li class="tabs__nav__item tabs__nav__item--active"><a class="tabs__nav__item__link js-tabs-nav-item" href="#statistics">1 day</a></li>
-							<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#forms">7 days</a></li>
-							<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#membership">1 week</a></li>
-							<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#membership">1 month</a></li>
-						</ul>
-					</nav>
-					<img class="example-pic" src="assets/examples/4.png" alt="">
+					<section class="tabs js-tabs">
+						<nav class="tabs__nav tabs__nav--col">
+							<ul class="tabs__nav__list js-tabs-nav">
+								<li class="tabs__nav__item tabs__nav__item--active"><a class="tabs__nav__item__link js-tabs-nav-item" href="#1day">1 day</a></li>
+								<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#7days">7 days</a></li>
+								<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#1week">1 week</a></li>
+								<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#1month">1 month</a></li>
+							</ul>
+						</nav>
+						<div class="tabs__content js-tabs-content">
+							<section id="1day" class="tabs__content__item tabs__content__item--active js-tabs-content-item">
+								<img class="example-pic" src="assets/examples/4.png" alt="">
+							</section>
+							<section id="7days" class="tabs__content__item js-tabs-content-item">
+								<img class="example-pic" src="https://s2.graphiq.com/sites/default/files/465/media/images/t2/French_Bulldog_5204893.jpg" alt="">
+							</section>
+							<section id="1week" class="tabs__content__item js-tabs-content-item">
+								<img class="example-pic" src="http://www.rd.com/wp-content/uploads/sites/2/2016/04/01-cat-wants-to-tell-you-laptop.jpg" alt="">
+							</section>
+							<section id="1month" class="tabs__content__item js-tabs-content-item">
+								<img class="example-pic" src="https://i.ytimg.com/vi/mW3S0u8bj58/maxresdefault.jpg" alt="">
+							</section>
+						</div>
+					</section>
 				</section>
+			</div>
+			<div class="row">
+				<article class="col article-small col-md-6 col-lg-3">
+					<header class="author author--col">
+						<img src="http://lorempixel.com/42/42" alt="" class="author__avatar">
+						<h3 class="author__name author__name--small"><a class="link" href="#">Greg Dlubacz</a></h3>
+						<time class="author__time author__time--small">Aug 4, 9:01 AM</time>
+					</header>
+					<p>Night Of seas fruitful image that man of beast heaven green own it after and shall. Likeness shall which creepeth to heaven...</p>
+					<a class="link link--more" href="#">Read more</a>
+				</article>
+				<form class="col col-md-6 col-lg-3">
+					<header class="author author--col">
+						<img src="http://lorempixel.com/42/42" alt="" class="author__avatar">
+						<h3 class="author__name author__name--small"><a class="link" href="#">Greg Dlubacz</a></h3>
+						<time class="author__time author__time--small">Aug 4, 9:01 AM</time>
+					</header>
+					<textarea class="field field--area field--small field--share" placeholder="Share what's new..."></textarea>
+				</form>
+				<form class="col form form--col col-md-6 col-lg-3">
+					<div class="form__group">
+						<label for="small-email" class="form__title form__title--required">Email address</label>
+						<div class="field--with-icon icon-mail">
+							<input id="small-email" type="email" class="field" required>
+						</div>
+					</div>
+					<div class="form__group error">
+						<label for="small-email" class="form__title form__title--required">Email address</label>
+						<div class="field--with-icon icon-mail">
+							<input id="small-email" type="email" class="field" required>
+						</div>
+					</div>
+					<div class="form__group success">
+						<label for="small-email" class="form__title form__title--required">Email address</label>
+						<div class="field--with-icon icon-mail">
+							<input id="small-email" type="email" class="field" required>
+						</div>
+					</div>
+					<div class="form__group">
+						<input type="text" class="invisible-helper" id="checkbox-small">
+						<label for="" class="checkbox">Notify me</label>
+					</div>
+					<div class="form__group">
+						<button class="btn btn--full" type="submit">Subscribe to our news</button>
+					</div>
+				</form>
+				<article class="col article-small col-md-6 col-lg-3">
+					<header class="author author--col">
+						<img src="http://lorempixel.com/42/42" alt="" class="author__avatar">
+						<h3 class="author__name author__name--small"><a class="link" href="#">Greg Dlubacz</a></h3>
+						<time class="author__time author__time--small">Aug 4, 9:01 AM</time>
+					</header>
+					<p>Night Of seas fruitful image that man of beast heaven green own it after and shall. Likeness shall which creepeth to heaven...</p>
+					<a class="link link--more" href="#">Read more</a>
+				</article>
 			</div>
 		</section>
 	</div>

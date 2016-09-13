@@ -1,0 +1,102 @@
+//TODO: VALIDATION JS AND STYLES
+
+.form {
+  &--col {
+    padding-top: 24px;
+  }
+}
+
+.form__title {
+  margin-bottom: 6px;
+  padding-right: 12px;
+  display: block;
+  position: relative;
+
+  &:after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    border-radius: 50%;
+    transform: translate3d(0, -50%, 0);
+    background-color: $color--sunset-orange;
+  }
+}
+
+.form__group {
+  position: relative;
+
+  &.success {}
+  &.error {}
+}
+
+.field {
+  height: 42px;
+
+  &:not(.field--with-icon) {
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 5px;
+    border: 0;
+    background-color: $color--mine-shaft;
+    color: $color--white;
+    transition: background-color $animation--duration $animation--timing,
+                color $animation--duration $animation--timing;
+
+    &:focus {
+      color: darken($color--mine-shaft, 7%);
+      background-color: $color--white;
+    }
+  }
+
+  &--area {
+    height: 92px;
+    resize: none;
+    padding-top: 17px;
+    padding-bottom: 17px;
+
+    &::-webkit-input-placeholder {
+      opacity: 1;
+      color: $color--boulder;
+    }
+    &::-moz-placeholder {
+      opacity: 1;
+      color: $color--boulder;
+    }
+    &:-ms-input-placeholder {
+      opacity: 1;
+      color: $color--boulder;
+    }
+  }
+  &--small {
+    font-size: $font-size--paragraph-small;
+  }
+  &--share {
+    margin-top: 10px;
+  }
+  &--with-icon {
+    position: relative;
+
+    .field {
+      padding-left: 45px;
+    }
+
+    &[class*=icon] {
+      &:before {
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        transform: translate3d(0, -50%, 0);
+      }
+    }
+    &.icon-mail {
+      &:before {
+        margin-top: 2px;
+        font-size: 11px;
+      }
+    }
+  }
+}

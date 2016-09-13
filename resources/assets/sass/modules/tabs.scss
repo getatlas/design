@@ -58,7 +58,7 @@
 .tabs__content {
   position: relative;
   overflow: hidden;
-  transition: height ($animation--duration-slow * 2) $animation--timing;
+  transition: height $animation--duration-slow $animation--timing;
 }
 
 .tabs__content__item {
@@ -80,7 +80,7 @@
   &--active {
     left: 0;
     opacity: 1;
-    transition: ($animation--duration-slow * 2) $animation--timing;
+    transition: $animation--duration-slow $animation--timing;
 
     &:not(.tabs__content__item--hiding) {
       ~ .tabs__content__item {
@@ -91,7 +91,7 @@
   &--hiding {
     left: -100%;
     opacity: 0 !important;
-    transition: ($animation--duration-slow * 2) $animation--timing;
+    transition: $animation--duration-slow $animation--timing;
 
     .tabs__content__item--active ~ & {
       left: 100%;

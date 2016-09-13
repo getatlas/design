@@ -51,15 +51,18 @@ var tabs = function() {
   var tabsNavItems = document.querySelectorAll('.js-tabs-nav-item');
   var tabsContentItems = document.querySelectorAll('.js-tabs-content-item');
   var tabsContentItem = document.querySelector('.js-tabs-content-item');
+  var tabsChecker = true;
+  var tabsAnimationDelay;
+  var tabsResizeTimer;
 
   //Handle Tab Nav Switch
   for (var i = 0; i < tabsNavs.length; i++) {
     var element = tabsNavs[i];
-    var checker = true;
+
     element.addEventListener('click', function(e) {
       e.preventDefault();
 
-      if (checker === false) return false;
+      if (tabsChecker === false) return false;
 
       var tabsContentPath;
 
@@ -78,38 +81,45 @@ var tabs = function() {
         Array.prototype.forEach.call(this.closest('.js-tabs').querySelectorAll('.js-tabs-content-item'), function(element, i) {
           var tabPath = '#' + element.getAttribute('id');
           if (tabPath == tabsContentPath) {
-            console.log('No Witamy ponownie Panie Junior Front Adamie');
             element.parentNode.style.height = element.offsetHeight + 'px';
 
             element.closest('.js-tabs').querySelector('.tabs__content__item--active').classList.add('tabs__content__item--hiding');
             element.classList.add('tabs__content__item--active');
 
+            tabsAnimationDelay = parseFloat(getComputedStyle(element.closest('.js-tabs').querySelector('.tabs__content__item--hiding')).transitionDuration) * 1000;
+
             setTimeout(function() {
               element.closest('.js-tabs').querySelector('.tabs__content__item--hiding').classList.remove('tabs__content__item--active');
               element.closest('.js-tabs').querySelector('.tabs__content__item--hiding').classList.remove('tabs__content__item--hiding');
-            }, parseFloat(getComputedStyle(element.closest('.js-tabs').querySelector('.tabs__content__item--hiding')).transitionDuration) * 1000);
+            }, tabsAnimationDelay);
 
             return false;
           }
         });
 
-        checker = false;
-
+        tabsChecker = false;
         setTimeout(function() {
-          checker = true;
-          console.log('Uff!');
-        }, 1000);
+          tabsChecker = true;
+        }, tabsAnimationDelay);
       }
     });
   }
 
-  //Set maxHeight for first active element
-  Array.prototype.forEach.call(tabsContentItems, function(element, i) {
-    if (element.classList.contains('tabs__content__item--active') === true) {
-      element.parentNode.style.height = element.offsetHeight + 'px';
+  var tabsHeightOnResize = function() {
+    Array.prototype.forEach.call(tabsContentItems, function(element, i) {
+      if (element.classList.contains('tabs__content__item--active') === true) {
+        element.parentNode.style.height = element.offsetHeight + 'px';
 
-      return false;
-    }
+        return false;
+      }
+    });
+  }
+
+  tabsHeightOnResize();
+
+  window.addEventListener("resize", function(){
+    clearTimeout(tabsResizeTimer);
+    tabsResizeTimer = setTimeout(tabsHeightOnResize(), 100);
   });
 }
 

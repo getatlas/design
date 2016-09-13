@@ -40,7 +40,12 @@ h6 {
   clear: both;
 }
 
+//TODO: Remove that after work
 .example-pic {
 	max-width: 100%;
 	display: block;
+}
+
+.invisible-helper {
+	display: none;
 }
