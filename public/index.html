@@ -301,27 +301,31 @@
 						<h3 class="author__name author__name--small"><a class="link" href="#">Greg Dlubacz</a></h3>
 						<time class="author__time author__time--small">Aug 4, 9:01 AM</time>
 					</header>
-					<textarea class="field field--area field--small field--share" placeholder="Share what's new..."></textarea>
+					<textarea class="textarea textarea--share" placeholder="Share what's new..."></textarea>
 				</form>
-				<form class="col form form--col col-md-6 col-lg-3">
+				<form name="form" class="js-form col form form--col col-md-6 col-lg-3" novalidate>
 					<div class="form__group">
 						<label for="small-email" class="form__title form__title--required">Email address</label>
-						<div class="field--with-icon icon-mail">
-							<input id="small-email" type="email" class="field" required>
+						<div class="field js-field icon-mail">
+							<input id="small-email" name="email" type="email" class="js-input input input--with-icon" required>
 						</div>
 					</div>
-					<div class="form__group error">
-						<label for="small-email" class="form__title form__title--required">Email address</label>
-						<div class="field--with-icon icon-mail">
-							<input id="small-email" type="email" class="field" required>
+					<!-- <div class="form__group form__group--error">
+						<label for="small-email1" class="form__title form__title--required">Email address</label>
+						<div class="field js-field icon-mail">
+							<input id="small-email1" name="email" type="email" class="js-input input input--error input--with-icon" required>
+						</div>
+						<div class="form__error">
+							<span class="form__error__text">Error messages goes here</span>
+							<span class="form__error__text">This is an another example of error message</span>
 						</div>
 					</div>
-					<div class="form__group success">
-						<label for="small-email" class="form__title form__title--required">Email address</label>
-						<div class="field--with-icon icon-mail">
-							<input id="small-email" type="email" class="field" required>
+					<div class="form__group form__group--success">
+						<label for="small-email2" class="form__title form__title--required">Email address</label>
+						<div class="field js-field icon-mail">
+							<input id="small-email2" name="email" type="email" class="js-input input input--success input--with-icon" required>
 						</div>
-					</div>
+					</div> -->
 					<div class="form__group">
 						<input type="text" class="invisible-helper" id="checkbox-small">
 						<label for="" class="checkbox">Notify me</label>

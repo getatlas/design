@@ -4527,11 +4527,20 @@ h6 {
   padding-top: 24px;
 }
 
+.form__group--error {
+  color: #ff554c;
+}
+
+.form__group--success {
+  color: #7fc146;
+}
+
 .form__title {
   margin-bottom: 6px;
   padding-right: 12px;
   display: block;
   position: relative;
+  cursor: pointer;
 }
 
 .form__title:after {
@@ -4547,79 +4556,110 @@ h6 {
   background-color: #ff554c;
 }
 
-.form__group {
+.field[class*=icon] {
   position: relative;
 }
 
-.field {
-  height: 42px;
-}
-
-.field:not(.field--with-icon) {
-  width: 100%;
-  padding-right: 20px;
-  padding-left: 20px;
-  border-radius: 5px;
-  border: 0;
-  background-color: #3a3a3a;
-  color: #fff;
-  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
-}
-
-.field:not(.field--with-icon):focus {
-  color: #282828;
-  background-color: #fff;
-}
-
-.field--area {
-  height: 92px;
-  resize: none;
-  padding-top: 17px;
-  padding-bottom: 17px;
-}
-
-.field--area::-webkit-input-placeholder {
-  opacity: 1;
-  color: #777;
-}
-
-.field--area::-moz-placeholder {
-  opacity: 1;
-  color: #777;
-}
-
-.field--area:-ms-input-placeholder {
-  opacity: 1;
-  color: #777;
-}
-
-.field--small {
-  font-size: 14px;
-}
-
-.field--share {
-  margin-top: 10px;
-}
-
-.field--with-icon {
-  position: relative;
-}
-
-.field--with-icon .field {
-  padding-left: 45px;
-}
-
-.field--with-icon[class*=icon]:before {
+.field[class*=icon]:before {
   position: absolute;
   top: 50%;
   left: 20px;
   -webkit-transform: translate3d(0, -50%, 0);
           transform: translate3d(0, -50%, 0);
+  pointer-events: none;
+  transition: color 0.1s ease-in-out;
 }
 
-.field--with-icon.icon-mail:before {
+.field[class*=icon].focus:before {
+  color: #282828;
+}
+
+.field.icon-mail:focus:before {
+  color: red;
+}
+
+.field.icon-mail:before {
   margin-top: 2px;
   font-size: 11px;
+  color: inherit;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-color: #3a3a3a;
+  color: #fff;
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, border-color 0.1s ease-in-out;
+}
+
+.input:hover,
+.textarea:hover {
+  background-color: #464646;
+}
+
+.input:focus,
+.textarea:focus {
+  color: #282828;
+  background-color: #fff;
+  border-color: transparent;
+}
+
+.input--with-icon,
+.textarea--with-icon {
+  padding-left: 45px;
+}
+
+.input--error,
+.textarea--error {
+  border-color: #ff554c;
+}
+
+.input--success,
+.textarea--success {
+  border-color: #7fc146;
+}
+
+.input {
+  height: 42px;
+}
+
+.textarea {
+  height: 92px;
+  resize: none;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  font-size: 14px;
+}
+
+.textarea::-webkit-input-placeholder {
+  opacity: 1;
+  color: #777;
+}
+
+.textarea::-moz-placeholder {
+  opacity: 1;
+  color: #777;
+}
+
+.textarea:-ms-input-placeholder {
+  opacity: 1;
+  color: #777;
+}
+
+.textarea--share {
+  margin-top: 10px;
+}
+
+.form__error {
+  text-align: right;
+}
+
+.form__error__text {
+  display: block;
 }
 
 .sidebar {

@@ -6,11 +6,21 @@
   }
 }
 
+.form__group {
+  &--error {
+    color: $color--sunset-orange;
+  }
+  &--success {
+    color: $color--sushi;
+  }
+}
+
 .form__title {
   margin-bottom: 6px;
   padding-right: 12px;
   display: block;
   position: relative;
+  cursor: pointer;
 
   &:after {
     content: '';
@@ -25,78 +35,105 @@
   }
 }
 
-.form__group {
-  position: relative;
+.field {
+  &[class*=icon] {
+    position: relative;
 
-  &.success {}
-  &.error {}
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translate3d(0, -50%, 0);
+      pointer-events: none;
+      transition: color $animation--duration $animation--timing;
+    }
+
+    &.focus {
+      &:before {
+        color: darken($color--mine-shaft, 7%);
+      }
+    }
+  }
+  &.icon-mail {
+    &:focus {
+      &:before {
+        color: red;
+      }
+    }
+    &:before {
+      margin-top: 2px;
+      font-size: 11px;
+      color: inherit;
+    }
+  }
 }
 
-.field {
+.input,
+.textarea {
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-color: $color--mine-shaft;
+  color: $color--white;
+  transition: background-color $animation--duration $animation--timing,
+              color $animation--duration $animation--timing,
+              border-color $animation--duration $animation--timing;
+
+  &:hover {
+    background-color: $color--tundora;
+  }
+  &:focus {
+    color: darken($color--mine-shaft, 7%);
+    background-color: $color--white;
+    border-color: transparent;
+  }
+
+  &--with-icon {
+    padding-left: 45px;
+  }
+  &--error {
+    border-color: $color--sunset-orange;
+  }
+  &--success {
+    border-color: $color--sushi;
+  }
+}
+
+.input {
   height: 42px;
+}
 
-  &:not(.field--with-icon) {
-    width: 100%;
-    padding-right: 20px;
-    padding-left: 20px;
-    border-radius: 5px;
-    border: 0;
-    background-color: $color--mine-shaft;
-    color: $color--white;
-    transition: background-color $animation--duration $animation--timing,
-                color $animation--duration $animation--timing;
+.textarea {
+  height: 92px;
+  resize: none;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  font-size: $font-size--paragraph-small;
 
-    &:focus {
-      color: darken($color--mine-shaft, 7%);
-      background-color: $color--white;
-    }
+  &::-webkit-input-placeholder {
+    opacity: 1;
+    color: $color--boulder;
+  }
+  &::-moz-placeholder {
+    opacity: 1;
+    color: $color--boulder;
+  }
+  &:-ms-input-placeholder {
+    opacity: 1;
+    color: $color--boulder;
   }
 
-  &--area {
-    height: 92px;
-    resize: none;
-    padding-top: 17px;
-    padding-bottom: 17px;
-
-    &::-webkit-input-placeholder {
-      opacity: 1;
-      color: $color--boulder;
-    }
-    &::-moz-placeholder {
-      opacity: 1;
-      color: $color--boulder;
-    }
-    &:-ms-input-placeholder {
-      opacity: 1;
-      color: $color--boulder;
-    }
-  }
-  &--small {
-    font-size: $font-size--paragraph-small;
-  }
   &--share {
     margin-top: 10px;
   }
-  &--with-icon {
-    position: relative;
+}
 
-    .field {
-      padding-left: 45px;
-    }
+.form__error {
+  text-align: right;
+}
 
-    &[class*=icon] {
-      &:before {
-        position: absolute;
-        top: 50%;
-        left: 20px;
-        transform: translate3d(0, -50%, 0);
-      }
-    }
-    &.icon-mail {
-      &:before {
-        margin-top: 2px;
-        font-size: 11px;
-      }
-    }
-  }
+.form__error__text {
+  display: block;
 }

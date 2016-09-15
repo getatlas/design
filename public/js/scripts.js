@@ -123,9 +123,29 @@ var tabs = function() {
   });
 }
 
+var form = function() {
+  var formFields = document.querySelectorAll('.js-field');
+  var formField = document.querySelector('.js-field');
+  var formInputs = document.querySelectorAll('.js-input');
+  var formInput = document.querySelector('.js-input');
+  //Keep watching every input on padding-left
+  for (var i = 0; i < formInputs.length; i++) {
+    console.log('bazinga');
+    var element = formInputs[i];
+
+    element.addEventListener('focusin', function(e) {
+        this.parentNode.classList.add('focus');
+    });
+    element.addEventListener('focusout', function(e) {
+        this.parentNode.classList.remove('focus');
+    });
+  }
+}
+
 window.addEventListener('load', function () {
   collapseSlider();
   dropdownMenuToggle();
   search();
   tabs();
+  form();
 });
