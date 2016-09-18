@@ -229,8 +229,8 @@
 					<img class="example-pic" src="assets/examples/2.png" style="margin-top: 8px; width: 649px;" alt="">
 				</section>
 				<section class="col col-md-12 col-lg-6">
-					<section class="tabs js-tabs">
-						<nav class="tabs__nav tabs__nav--col">
+					<section class="tabs tabs--col js-tabs">
+						<nav class="tabs__nav">
 							<ul class="tabs__nav__list js-tabs-nav">
 								<li class="tabs__nav__item tabs__nav__item--active"><a class="tabs__nav__item__link js-tabs-nav-item" href="#statistics">Statistics</a></li>
 								<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#forms">Forms</a></li>
@@ -259,8 +259,8 @@
 						<small class="stats-info__less icon-arrow-with-bar">12.25 (0.55%)</small>
 						<p class="stats-info__text">Aug 5, 14:50 PM GMT +1</p>
 					</aside>
-					<section class="tabs js-tabs">
-						<nav class="tabs__nav tabs__nav--col">
+					<section class="tabs tabs--col js-tabs">
+						<nav class="tabs__nav">
 							<ul class="tabs__nav__list js-tabs-nav">
 								<li class="tabs__nav__item tabs__nav__item--active"><a class="tabs__nav__item__link js-tabs-nav-item" href="#1day">1 day</a></li>
 								<li class="tabs__nav__item"><a class="tabs__nav__item__link js-tabs-nav-item" href="#7days">7 days</a></li>
@@ -304,13 +304,13 @@
 					<textarea class="textarea textarea--share" placeholder="Share what's new..."></textarea>
 				</form>
 				<form name="form" class="js-form col form form--col col-md-6 col-lg-3" novalidate>
-					<div class="form__group">
+					<div class="form__group form__group--small">
 						<label for="small-email" class="form__title form__title--required">Email address</label>
 						<div class="field js-field icon-mail">
 							<input id="small-email" name="email" type="email" class="js-input input input--with-icon" required>
 						</div>
 					</div>
-					<!-- <div class="form__group form__group--error">
+					<div class="form__group form__group--error">
 						<label for="small-email1" class="form__title form__title--required">Email address</label>
 						<div class="field js-field icon-mail">
 							<input id="small-email1" name="email" type="email" class="js-input input input--error input--with-icon" required>
@@ -325,13 +325,48 @@
 						<div class="field js-field icon-mail">
 							<input id="small-email2" name="email" type="email" class="js-input input input--success input--with-icon" required>
 						</div>
-					</div> -->
-					<div class="form__group">
-						<input type="text" class="invisible-helper" id="checkbox-small">
-						<label for="" class="checkbox">Notify me</label>
+					</div>
+					<div class="form__group form__group--small">
+						<input type="checkbox" class="invisible-helper" id="checkbox-small">
+						<label for="checkbox-small" class="checkbox">Notify me</label>
+					</div>
+					<div class="form__group form__group--small">
+						<input type="radio" class="invisible-helper" name="small-form" id="radio-small-1">
+						<label for="radio-small-1" class="radio">Notify me</label>
+					</div>
+					<div class="form__group form__group--small">
+						<input type="radio" class="invisible-helper" name="small-form" id="radio-small-2">
+						<label for="radio-small-2" class="radio radio">Notify me</label>
+					</div>
+					<div class="form__group form__group--small">
+						<input type="checkbox" class="invisible-helper" id="checkbox-slide-1">
+						<label for="checkbox-slide-1" class="slide slide--positive">Notify me</label>
+					</div>
+					<div class="form__group form__group--small">
+						<input type="checkbox" class="invisible-helper" id="checkbox-slide-2" checked>
+						<label for="checkbox-slide-2" class="slide slide--negative">Notify me</label>
+					</div>
+					<div class="form__group form__group--small">
+						<input type="checkbox" class="invisible-helper" id="checkbox-slide-3">
+						<label for="checkbox-slide-3" class="slide">Notify me</label>
 					</div>
 					<div class="form__group">
 						<button class="btn btn--full" type="submit">Subscribe to our news</button>
+					</div>
+					<div class="form__group">
+						<button class="btn btn--full" disabled type="submit">Subscribe to our news</button>
+					</div>
+					<div class="form__group">
+						<button class="btn btn--with-icon icon-mail btn--full" type="submit">Defaul button</button>
+					</div>
+					<div class="form__group">
+						<button class="btn btn--full btn--red" type="submit">Subscribe to our news</button>
+					</div>
+					<div class="form__group">
+						<button class="btn btn--full btn--blue" type="submit">Subscribe to our news</button>
+					</div>
+					<div class="form__group">
+						<button class="btn btn--full btn--dark" type="submit">Subscribe to our news</button>
 					</div>
 				</form>
 				<article class="col article-small col-md-6 col-lg-3">

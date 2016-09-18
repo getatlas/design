@@ -1,41 +1,41 @@
 .article-small {
-  font-size: $font-size--paragraph-small;
-  line-height: 22px;
+	font-size: $font-size--paragraph-small;
+	line-height: 22px;
 
-  p {
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
+	p {
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .author {
-  &--col {
-    margin-bottom: 23px;
-  }
+	&--col {
+		margin-bottom: 23px;
+	}
 }
 
 .author__avatar {
-  width: 42px;
-  height: 42px;
-  margin-right: 9px;
-  border-radius: 50%;
-  float: left;
+	width: 42px;
+	height: 42px;
+	margin-right: 9px;
+	border-radius: 50%;
+	float: left;
 }
 
 .author__name {
-  margin: 0 0 -1px 0;
-  font-weight: normal;
+	margin: 0 0 -1px 0;
+	font-weight: normal;
 
-  &--small {
-    font-size: $font-size--title;
-  }
+	&--small {
+		font-size: $font-size--title;
+	}
 }
 
 .author__time {
-  color: $color--boulder;
+	color: $color--boulder;
 
-  &--small {
-    font-size: $font-size--paragraph-small - 1;
-  }
+	&--small {
+		font-size: $font-size--paragraph-small - 1;
+	}
 }

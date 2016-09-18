@@ -1,0 +1,73 @@
+.btn {
+	height: 42px;
+	padding: 8px 10px 10px 10px;
+	border-top: 2px solid transparent;
+	border-radius: 5px;
+	background-color: $color--sushi;
+	color: $color--white;
+	text-align: center;
+	cursor: pointer;
+
+	&:hover {
+		background-color: darken($color--sushi, 4.7%);
+	}
+	&:active {
+		border-top-color: #427317;
+		background-color: $color--sushi;
+	}
+
+	&:disabled,
+	&--disabled {
+		opacity: 0.3;
+		pointer-events: none;
+	}
+	&--full {
+		width: 100%;
+	}
+	&--with-icon {
+		&:before {
+			margin-right: 8px;
+			pointer-events: none;
+		}
+	}
+
+	&--red {
+		background-color: $color--sunset-orange;
+
+		&:hover {
+			background-color: darken($color--sunset-orange, 4.7%);
+		}
+		&:active {
+			border-top-color: darken($color--sunset-orange, 8%);
+			background-color: $color--sunset-orange;
+		}
+	}
+	&--blue {
+		background-color: $color--blue-marguerite;
+
+		&:hover {
+			background-color: darken($color--blue-marguerite, 4.7%);
+		}
+		&:active {
+			border-top-color: darken($color--blue-marguerite, 8%);
+			background-color: $color--blue-marguerite;
+		}
+	}
+	&--dark {
+		background-color: $color--cod-gray;
+
+		&:hover {
+			background-color: darken($color--cod-gray, 4.7%);
+		}
+		&:active {
+			border-top-color: darken($color--cod-gray, 8%);
+			background-color: $color--cod-gray;
+		}
+	}
+
+	&.icon-mail {
+		&:before {
+			font-size: 11px;
+		}
+	}
+}

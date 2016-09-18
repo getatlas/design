@@ -1,139 +1,294 @@
 //TODO: VALIDATION JS AND STYLES
 
 .form {
-  &--col {
-    padding-top: 24px;
-  }
+	&--col {
+		padding-top: 24px;
+	}
 }
 
 .form__group {
-  &--error {
-    color: $color--sunset-orange;
-  }
-  &--success {
-    color: $color--sushi;
-  }
+	margin-top: 30px;
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&--error {
+		color: $color--sunset-orange;
+	}
+	&--success {
+		color: $color--sushi;
+	}
+
+	&--small {
+		margin-top: 8px;
+	}
 }
 
 .form__title {
-  margin-bottom: 6px;
-  padding-right: 12px;
-  display: block;
-  position: relative;
-  cursor: pointer;
+	display: block;
+	margin-bottom: 6px;
+	padding-right: 12px;
+	position: relative;
+	cursor: pointer;
 
-  &:after {
-    content: '';
-    width: 6px;
-    height: 6px;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    border-radius: 50%;
-    transform: translate3d(0, -50%, 0);
-    background-color: $color--sunset-orange;
-  }
+	&:after {
+		content: '';
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		right: 0;
+		transform: translate3d(0, -50%, 0);
+		background-color: $color--sunset-orange;
+	}
 }
 
 .field {
-  &[class*=icon] {
-    position: relative;
+	&[class*=icon] {
+		position: relative;
 
-    &:before {
-      position: absolute;
-      top: 50%;
-      left: 20px;
-      transform: translate3d(0, -50%, 0);
-      pointer-events: none;
-      transition: color $animation--duration $animation--timing;
-    }
+		&:before {
+			position: absolute;
+			top: 50%;
+			left: 20px;
+			transform: translate3d(0, -50%, 0);
+			pointer-events: none;
+			transition: color $animation--duration $animation--timing;
+		}
 
-    &.focus {
-      &:before {
-        color: darken($color--mine-shaft, 7%);
-      }
-    }
-  }
-  &.icon-mail {
-    &:focus {
-      &:before {
-        color: red;
-      }
-    }
-    &:before {
-      margin-top: 2px;
-      font-size: 11px;
-      color: inherit;
-    }
-  }
+		&.focus {
+			&:before {
+				color: darken($color--mine-shaft, 7%);
+			}
+		}
+	}
+	&.icon-mail {
+		&:focus {
+			&:before {
+				color: red;
+			}
+		}
+		&:before {
+			margin-top: 2px;
+			color: inherit;
+			font-size: 11px;
+		}
+	}
 }
 
 .input,
 .textarea {
-  width: 100%;
-  padding-right: 20px;
-  padding-left: 20px;
-  border-radius: 5px;
-  border: 2px solid transparent;
-  background-color: $color--mine-shaft;
-  color: $color--white;
-  transition: background-color $animation--duration $animation--timing,
-              color $animation--duration $animation--timing,
-              border-color $animation--duration $animation--timing;
+	width: 100%;
+	padding-right: 20px;
+	padding-left: 20px;
+	border: 2px solid transparent;
+	border-radius: 5px;
+	background-color: $color--mine-shaft;
+	color: $color--white;
+	transition: background-color $animation--duration $animation--timing,
+	color $animation--duration $animation--timing,
+	border-color $animation--duration $animation--timing;
 
-  &:hover {
-    background-color: $color--tundora;
-  }
-  &:focus {
-    color: darken($color--mine-shaft, 7%);
-    background-color: $color--white;
-    border-color: transparent;
-  }
+	&:hover {
+		background-color: $color--tundora;
+	}
+	&:focus {
+		border-color: transparent;
+		background-color: $color--white;
+		color: darken($color--mine-shaft, 7%);
+	}
 
-  &--with-icon {
-    padding-left: 45px;
-  }
-  &--error {
-    border-color: $color--sunset-orange;
-  }
-  &--success {
-    border-color: $color--sushi;
-  }
+	&--with-icon {
+		padding-left: 45px;
+	}
+	&--error {
+		border-color: $color--sunset-orange;
+	}
+	&--success {
+		border-color: $color--sushi;
+	}
 }
 
 .input {
-  height: 42px;
+	height: 42px;
 }
 
 .textarea {
-  height: 92px;
-  resize: none;
-  padding-top: 17px;
-  padding-bottom: 17px;
-  font-size: $font-size--paragraph-small;
+	height: 92px;
+	padding-top: 17px;
+	padding-bottom: 17px;
+	font-size: $font-size--paragraph-small;
+	resize: none;
 
-  &::-webkit-input-placeholder {
-    opacity: 1;
-    color: $color--boulder;
-  }
-  &::-moz-placeholder {
-    opacity: 1;
-    color: $color--boulder;
-  }
-  &:-ms-input-placeholder {
-    opacity: 1;
-    color: $color--boulder;
-  }
+	&::-webkit-input-placeholder {
+		opacity: 1;
+		color: $color--boulder;
+	}
+	&::-moz-placeholder {
+		opacity: 1;
+		color: $color--boulder;
+	}
+	&:-ms-input-placeholder {
+		opacity: 1;
+		color: $color--boulder;
+	}
 
-  &--share {
-    margin-top: 10px;
-  }
+	&--share {
+		margin-top: 10px;
+	}
 }
 
 .form__error {
-  text-align: right;
+	margin-top: 7px;
+	text-align: right;
 }
 
 .form__error__text {
-  display: block;
+	display: block;
+	font-size: $font-size--paragraph-small;
+}
+
+.checkbox,
+.radio {
+	padding-left: 25px;
+	position: relative;
+	color: $color--boulder;
+	font-size: $font-size--paragraph-small;
+	cursor: pointer;
+
+	&:before {
+		content: '';
+		width: 16px;
+		height: 16px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: $color--mine-shaft;
+		transition: background $animation--duration $animation--timing;
+	}
+	&:after {
+		opacity: 0;
+		transform: scale(0);
+
+		.invisible-helper:checked + & {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+}
+
+.checkbox {
+	&:hover {
+		&:before {
+			background-color: $color--tundora;
+
+			.invisible-helper:checked + & {
+				background: lighten($color--sushi, 10%);
+			}
+		}
+	}
+
+	&:before {
+		border-radius: 3px;
+
+		.invisible-helper:checked + & {
+			background: $color--sushi;
+		}
+	}
+	&:after {
+		@include only-icon-font;
+		content: '\e909';
+		opacity: 0;
+		position: absolute;
+		top: 4px;
+		left: 4px;
+		transform: scale(0);
+		color: $color--white;
+		font-size: 8px;
+		transition: opacity $animation--duration $animation--timing,
+		transform $animation--duration $animation--timing;
+	}
+}
+
+.radio {
+	&:hover {
+		&:before {
+			background-color: $color--tundora;
+		}
+	}
+
+	&:before {
+		content: '';
+		border-radius: 50%;
+	}
+	&:after {
+		content: '';
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		background-color: $color--sushi;
+	}
+}
+
+.slide {
+	padding-left: 40px;
+	position: relative;
+	color: $color--boulder;
+	font-size: $font-size--paragraph-small;
+	cursor: pointer;
+
+	&:before {
+		content: '';
+		width: 30px;
+		height: 14px;
+		border-radius: 7px;
+		position: absolute;
+		top: 2px;
+		left: 0;
+		background-color: $color--sunset-orange;
+		transition: background $animation--duration $animation--timing;
+
+		.invisible-helper:checked + & {
+			background-color: $color--sushi;
+		}
+	}
+	&:after {
+		content: '';
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		position: absolute;
+		top: 5px;
+		left: 4px;
+		background-color: $color--white;
+		transition: transform $animation--duration $animation--timing;
+
+		.invisible-helper:checked + & {
+			transform: translate3d(14px, 0, 0);
+		}
+	}
+
+	&--positive {
+		&:before {
+			background-color: $color--mine-shaft;
+
+			.invisible-helper:checked + & {
+				background-color: $color--sushi;
+			}
+		}
+	}
+	&--negative {
+		&:before {
+			background-color: $color--mine-shaft;
+
+			.invisible-helper:checked + & {
+				background-color: $color--sunset-orange;
+			}
+		}
+	}
 }
