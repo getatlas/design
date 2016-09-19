@@ -178,10 +178,10 @@
 			}
 
 			&:after {
-				width: calc(#{$i}% - #{$i / 2.56}px);
+				width: calc(percentage($i) - #{$i / 2.56}px);
 
 				.sidebar--collapsed & {
-					width: calc(#{$i}% - #{$i / 2.94}px);
+					width: calc(percentage($i) - #{$i / 2.94}px);
 				}
 			}
 		}
@@ -250,7 +250,7 @@
 		@while $i < 100 {
 			&[data-usage-traffic="#{$i}%"] {
 				&:after {
-					width: #{$i}%;
+					width: percentage($i);
 				}
 			}
 
