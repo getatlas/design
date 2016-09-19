@@ -939,801 +939,801 @@ h6 {
     .usage-info__content[data-usage-traffic="0%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="0%"]:after {
-      width: calc(percentage($i) - 0px); }
+      width: calc(percentage($i / 100) - 0px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="0%"]:after {
-        width: calc(percentage($i) - 0px); }
+        width: calc(percentage($i / 100) - 0px); }
   .usage-info__content[data-usage-traffic="1%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="1%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="1%"]:after {
-      width: calc(percentage($i) - 0.390625px); }
+      width: calc(percentage($i / 100) - 0.390625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="1%"]:after {
-        width: calc(percentage($i) - 0.3401360544px); }
+        width: calc(percentage($i / 100) - 0.3401360544px); }
   .usage-info__content[data-usage-traffic="2%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="2%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="2%"]:after {
-      width: calc(percentage($i) - 0.78125px); }
+      width: calc(percentage($i / 100) - 0.78125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="2%"]:after {
-        width: calc(percentage($i) - 0.6802721088px); }
+        width: calc(percentage($i / 100) - 0.6802721088px); }
   .usage-info__content[data-usage-traffic="3%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="3%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="3%"]:after {
-      width: calc(percentage($i) - 1.171875px); }
+      width: calc(percentage($i / 100) - 1.171875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="3%"]:after {
-        width: calc(percentage($i) - 1.0204081633px); }
+        width: calc(percentage($i / 100) - 1.0204081633px); }
   .usage-info__content[data-usage-traffic="4%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="4%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="4%"]:after {
-      width: calc(percentage($i) - 1.5625px); }
+      width: calc(percentage($i / 100) - 1.5625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="4%"]:after {
-        width: calc(percentage($i) - 1.3605442177px); }
+        width: calc(percentage($i / 100) - 1.3605442177px); }
   .usage-info__content[data-usage-traffic="5%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="5%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="5%"]:after {
-      width: calc(percentage($i) - 1.953125px); }
+      width: calc(percentage($i / 100) - 1.953125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="5%"]:after {
-        width: calc(percentage($i) - 1.7006802721px); }
+        width: calc(percentage($i / 100) - 1.7006802721px); }
   .usage-info__content[data-usage-traffic="6%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="6%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="6%"]:after {
-      width: calc(percentage($i) - 2.34375px); }
+      width: calc(percentage($i / 100) - 2.34375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="6%"]:after {
-        width: calc(percentage($i) - 2.0408163265px); }
+        width: calc(percentage($i / 100) - 2.0408163265px); }
   .usage-info__content[data-usage-traffic="7%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="7%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="7%"]:after {
-      width: calc(percentage($i) - 2.734375px); }
+      width: calc(percentage($i / 100) - 2.734375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="7%"]:after {
-        width: calc(percentage($i) - 2.380952381px); }
+        width: calc(percentage($i / 100) - 2.380952381px); }
   .usage-info__content[data-usage-traffic="8%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="8%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="8%"]:after {
-      width: calc(percentage($i) - 3.125px); }
+      width: calc(percentage($i / 100) - 3.125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="8%"]:after {
-        width: calc(percentage($i) - 2.7210884354px); }
+        width: calc(percentage($i / 100) - 2.7210884354px); }
   .usage-info__content[data-usage-traffic="9%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="9%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="9%"]:after {
-      width: calc(percentage($i) - 3.515625px); }
+      width: calc(percentage($i / 100) - 3.515625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="9%"]:after {
-        width: calc(percentage($i) - 3.0612244898px); }
+        width: calc(percentage($i / 100) - 3.0612244898px); }
   .usage-info__content[data-usage-traffic="10%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="10%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="10%"]:after {
-      width: calc(percentage($i) - 3.90625px); }
+      width: calc(percentage($i / 100) - 3.90625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="10%"]:after {
-        width: calc(percentage($i) - 3.4013605442px); }
+        width: calc(percentage($i / 100) - 3.4013605442px); }
   .usage-info__content[data-usage-traffic="11%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="11%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="11%"]:after {
-      width: calc(percentage($i) - 4.296875px); }
+      width: calc(percentage($i / 100) - 4.296875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="11%"]:after {
-        width: calc(percentage($i) - 3.7414965986px); }
+        width: calc(percentage($i / 100) - 3.7414965986px); }
   .usage-info__content[data-usage-traffic="12%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="12%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="12%"]:after {
-      width: calc(percentage($i) - 4.6875px); }
+      width: calc(percentage($i / 100) - 4.6875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="12%"]:after {
-        width: calc(percentage($i) - 4.0816326531px); }
+        width: calc(percentage($i / 100) - 4.0816326531px); }
   .usage-info__content[data-usage-traffic="13%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="13%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="13%"]:after {
-      width: calc(percentage($i) - 5.078125px); }
+      width: calc(percentage($i / 100) - 5.078125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="13%"]:after {
-        width: calc(percentage($i) - 4.4217687075px); }
+        width: calc(percentage($i / 100) - 4.4217687075px); }
   .usage-info__content[data-usage-traffic="14%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="14%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="14%"]:after {
-      width: calc(percentage($i) - 5.46875px); }
+      width: calc(percentage($i / 100) - 5.46875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="14%"]:after {
-        width: calc(percentage($i) - 4.7619047619px); }
+        width: calc(percentage($i / 100) - 4.7619047619px); }
   .usage-info__content[data-usage-traffic="15%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="15%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="15%"]:after {
-      width: calc(percentage($i) - 5.859375px); }
+      width: calc(percentage($i / 100) - 5.859375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="15%"]:after {
-        width: calc(percentage($i) - 5.1020408163px); }
+        width: calc(percentage($i / 100) - 5.1020408163px); }
   .usage-info__content[data-usage-traffic="16%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="16%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="16%"]:after {
-      width: calc(percentage($i) - 6.25px); }
+      width: calc(percentage($i / 100) - 6.25px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="16%"]:after {
-        width: calc(percentage($i) - 5.4421768707px); }
+        width: calc(percentage($i / 100) - 5.4421768707px); }
   .usage-info__content[data-usage-traffic="17%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="17%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="17%"]:after {
-      width: calc(percentage($i) - 6.640625px); }
+      width: calc(percentage($i / 100) - 6.640625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="17%"]:after {
-        width: calc(percentage($i) - 5.7823129252px); }
+        width: calc(percentage($i / 100) - 5.7823129252px); }
   .usage-info__content[data-usage-traffic="18%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="18%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="18%"]:after {
-      width: calc(percentage($i) - 7.03125px); }
+      width: calc(percentage($i / 100) - 7.03125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="18%"]:after {
-        width: calc(percentage($i) - 6.1224489796px); }
+        width: calc(percentage($i / 100) - 6.1224489796px); }
   .usage-info__content[data-usage-traffic="19%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="19%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="19%"]:after {
-      width: calc(percentage($i) - 7.421875px); }
+      width: calc(percentage($i / 100) - 7.421875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="19%"]:after {
-        width: calc(percentage($i) - 6.462585034px); }
+        width: calc(percentage($i / 100) - 6.462585034px); }
   .usage-info__content[data-usage-traffic="20%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="20%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="20%"]:after {
-      width: calc(percentage($i) - 7.8125px); }
+      width: calc(percentage($i / 100) - 7.8125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="20%"]:after {
-        width: calc(percentage($i) - 6.8027210884px); }
+        width: calc(percentage($i / 100) - 6.8027210884px); }
   .usage-info__content[data-usage-traffic="21%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="21%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="21%"]:after {
-      width: calc(percentage($i) - 8.203125px); }
+      width: calc(percentage($i / 100) - 8.203125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="21%"]:after {
-        width: calc(percentage($i) - 7.1428571429px); }
+        width: calc(percentage($i / 100) - 7.1428571429px); }
   .usage-info__content[data-usage-traffic="22%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="22%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="22%"]:after {
-      width: calc(percentage($i) - 8.59375px); }
+      width: calc(percentage($i / 100) - 8.59375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="22%"]:after {
-        width: calc(percentage($i) - 7.4829931973px); }
+        width: calc(percentage($i / 100) - 7.4829931973px); }
   .usage-info__content[data-usage-traffic="23%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="23%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="23%"]:after {
-      width: calc(percentage($i) - 8.984375px); }
+      width: calc(percentage($i / 100) - 8.984375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="23%"]:after {
-        width: calc(percentage($i) - 7.8231292517px); }
+        width: calc(percentage($i / 100) - 7.8231292517px); }
   .usage-info__content[data-usage-traffic="24%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="24%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="24%"]:after {
-      width: calc(percentage($i) - 9.375px); }
+      width: calc(percentage($i / 100) - 9.375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="24%"]:after {
-        width: calc(percentage($i) - 8.1632653061px); }
+        width: calc(percentage($i / 100) - 8.1632653061px); }
   .usage-info__content[data-usage-traffic="25%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="25%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="25%"]:after {
-      width: calc(percentage($i) - 9.765625px); }
+      width: calc(percentage($i / 100) - 9.765625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="25%"]:after {
-        width: calc(percentage($i) - 8.5034013605px); }
+        width: calc(percentage($i / 100) - 8.5034013605px); }
   .usage-info__content[data-usage-traffic="26%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="26%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="26%"]:after {
-      width: calc(percentage($i) - 10.15625px); }
+      width: calc(percentage($i / 100) - 10.15625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="26%"]:after {
-        width: calc(percentage($i) - 8.843537415px); }
+        width: calc(percentage($i / 100) - 8.843537415px); }
   .usage-info__content[data-usage-traffic="27%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="27%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="27%"]:after {
-      width: calc(percentage($i) - 10.546875px); }
+      width: calc(percentage($i / 100) - 10.546875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="27%"]:after {
-        width: calc(percentage($i) - 9.1836734694px); }
+        width: calc(percentage($i / 100) - 9.1836734694px); }
   .usage-info__content[data-usage-traffic="28%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="28%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="28%"]:after {
-      width: calc(percentage($i) - 10.9375px); }
+      width: calc(percentage($i / 100) - 10.9375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="28%"]:after {
-        width: calc(percentage($i) - 9.5238095238px); }
+        width: calc(percentage($i / 100) - 9.5238095238px); }
   .usage-info__content[data-usage-traffic="29%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="29%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="29%"]:after {
-      width: calc(percentage($i) - 11.328125px); }
+      width: calc(percentage($i / 100) - 11.328125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="29%"]:after {
-        width: calc(percentage($i) - 9.8639455782px); }
+        width: calc(percentage($i / 100) - 9.8639455782px); }
   .usage-info__content[data-usage-traffic="30%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="30%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="30%"]:after {
-      width: calc(percentage($i) - 11.71875px); }
+      width: calc(percentage($i / 100) - 11.71875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="30%"]:after {
-        width: calc(percentage($i) - 10.2040816327px); }
+        width: calc(percentage($i / 100) - 10.2040816327px); }
   .usage-info__content[data-usage-traffic="31%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="31%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="31%"]:after {
-      width: calc(percentage($i) - 12.109375px); }
+      width: calc(percentage($i / 100) - 12.109375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="31%"]:after {
-        width: calc(percentage($i) - 10.5442176871px); }
+        width: calc(percentage($i / 100) - 10.5442176871px); }
   .usage-info__content[data-usage-traffic="32%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="32%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="32%"]:after {
-      width: calc(percentage($i) - 12.5px); }
+      width: calc(percentage($i / 100) - 12.5px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="32%"]:after {
-        width: calc(percentage($i) - 10.8843537415px); }
+        width: calc(percentage($i / 100) - 10.8843537415px); }
   .usage-info__content[data-usage-traffic="33%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="33%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="33%"]:after {
-      width: calc(percentage($i) - 12.890625px); }
+      width: calc(percentage($i / 100) - 12.890625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="33%"]:after {
-        width: calc(percentage($i) - 11.2244897959px); }
+        width: calc(percentage($i / 100) - 11.2244897959px); }
   .usage-info__content[data-usage-traffic="34%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="34%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="34%"]:after {
-      width: calc(percentage($i) - 13.28125px); }
+      width: calc(percentage($i / 100) - 13.28125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="34%"]:after {
-        width: calc(percentage($i) - 11.5646258503px); }
+        width: calc(percentage($i / 100) - 11.5646258503px); }
   .usage-info__content[data-usage-traffic="35%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="35%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="35%"]:after {
-      width: calc(percentage($i) - 13.671875px); }
+      width: calc(percentage($i / 100) - 13.671875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="35%"]:after {
-        width: calc(percentage($i) - 11.9047619048px); }
+        width: calc(percentage($i / 100) - 11.9047619048px); }
   .usage-info__content[data-usage-traffic="36%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="36%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="36%"]:after {
-      width: calc(percentage($i) - 14.0625px); }
+      width: calc(percentage($i / 100) - 14.0625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="36%"]:after {
-        width: calc(percentage($i) - 12.2448979592px); }
+        width: calc(percentage($i / 100) - 12.2448979592px); }
   .usage-info__content[data-usage-traffic="37%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="37%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="37%"]:after {
-      width: calc(percentage($i) - 14.453125px); }
+      width: calc(percentage($i / 100) - 14.453125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="37%"]:after {
-        width: calc(percentage($i) - 12.5850340136px); }
+        width: calc(percentage($i / 100) - 12.5850340136px); }
   .usage-info__content[data-usage-traffic="38%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="38%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="38%"]:after {
-      width: calc(percentage($i) - 14.84375px); }
+      width: calc(percentage($i / 100) - 14.84375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="38%"]:after {
-        width: calc(percentage($i) - 12.925170068px); }
+        width: calc(percentage($i / 100) - 12.925170068px); }
   .usage-info__content[data-usage-traffic="39%"] {
     color: #7fc146; }
     .usage-info__content[data-usage-traffic="39%"]:after {
       background-color: #7fc146; }
     .usage-info__content[data-usage-traffic="39%"]:after {
-      width: calc(percentage($i) - 15.234375px); }
+      width: calc(percentage($i / 100) - 15.234375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="39%"]:after {
-        width: calc(percentage($i) - 13.2653061224px); }
+        width: calc(percentage($i / 100) - 13.2653061224px); }
   .usage-info__content[data-usage-traffic="40%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="40%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="40%"]:after {
-      width: calc(percentage($i) - 15.625px); }
+      width: calc(percentage($i / 100) - 15.625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="40%"]:after {
-        width: calc(percentage($i) - 13.6054421769px); }
+        width: calc(percentage($i / 100) - 13.6054421769px); }
   .usage-info__content[data-usage-traffic="41%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="41%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="41%"]:after {
-      width: calc(percentage($i) - 16.015625px); }
+      width: calc(percentage($i / 100) - 16.015625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="41%"]:after {
-        width: calc(percentage($i) - 13.9455782313px); }
+        width: calc(percentage($i / 100) - 13.9455782313px); }
   .usage-info__content[data-usage-traffic="42%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="42%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="42%"]:after {
-      width: calc(percentage($i) - 16.40625px); }
+      width: calc(percentage($i / 100) - 16.40625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="42%"]:after {
-        width: calc(percentage($i) - 14.2857142857px); }
+        width: calc(percentage($i / 100) - 14.2857142857px); }
   .usage-info__content[data-usage-traffic="43%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="43%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="43%"]:after {
-      width: calc(percentage($i) - 16.796875px); }
+      width: calc(percentage($i / 100) - 16.796875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="43%"]:after {
-        width: calc(percentage($i) - 14.6258503401px); }
+        width: calc(percentage($i / 100) - 14.6258503401px); }
   .usage-info__content[data-usage-traffic="44%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="44%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="44%"]:after {
-      width: calc(percentage($i) - 17.1875px); }
+      width: calc(percentage($i / 100) - 17.1875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="44%"]:after {
-        width: calc(percentage($i) - 14.9659863946px); }
+        width: calc(percentage($i / 100) - 14.9659863946px); }
   .usage-info__content[data-usage-traffic="45%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="45%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="45%"]:after {
-      width: calc(percentage($i) - 17.578125px); }
+      width: calc(percentage($i / 100) - 17.578125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="45%"]:after {
-        width: calc(percentage($i) - 15.306122449px); }
+        width: calc(percentage($i / 100) - 15.306122449px); }
   .usage-info__content[data-usage-traffic="46%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="46%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="46%"]:after {
-      width: calc(percentage($i) - 17.96875px); }
+      width: calc(percentage($i / 100) - 17.96875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="46%"]:after {
-        width: calc(percentage($i) - 15.6462585034px); }
+        width: calc(percentage($i / 100) - 15.6462585034px); }
   .usage-info__content[data-usage-traffic="47%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="47%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="47%"]:after {
-      width: calc(percentage($i) - 18.359375px); }
+      width: calc(percentage($i / 100) - 18.359375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="47%"]:after {
-        width: calc(percentage($i) - 15.9863945578px); }
+        width: calc(percentage($i / 100) - 15.9863945578px); }
   .usage-info__content[data-usage-traffic="48%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="48%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="48%"]:after {
-      width: calc(percentage($i) - 18.75px); }
+      width: calc(percentage($i / 100) - 18.75px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="48%"]:after {
-        width: calc(percentage($i) - 16.3265306122px); }
+        width: calc(percentage($i / 100) - 16.3265306122px); }
   .usage-info__content[data-usage-traffic="49%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="49%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="49%"]:after {
-      width: calc(percentage($i) - 19.140625px); }
+      width: calc(percentage($i / 100) - 19.140625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="49%"]:after {
-        width: calc(percentage($i) - 16.6666666667px); }
+        width: calc(percentage($i / 100) - 16.6666666667px); }
   .usage-info__content[data-usage-traffic="50%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="50%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="50%"]:after {
-      width: calc(percentage($i) - 19.53125px); }
+      width: calc(percentage($i / 100) - 19.53125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="50%"]:after {
-        width: calc(percentage($i) - 17.0068027211px); }
+        width: calc(percentage($i / 100) - 17.0068027211px); }
   .usage-info__content[data-usage-traffic="51%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="51%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="51%"]:after {
-      width: calc(percentage($i) - 19.921875px); }
+      width: calc(percentage($i / 100) - 19.921875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="51%"]:after {
-        width: calc(percentage($i) - 17.3469387755px); }
+        width: calc(percentage($i / 100) - 17.3469387755px); }
   .usage-info__content[data-usage-traffic="52%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="52%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="52%"]:after {
-      width: calc(percentage($i) - 20.3125px); }
+      width: calc(percentage($i / 100) - 20.3125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="52%"]:after {
-        width: calc(percentage($i) - 17.6870748299px); }
+        width: calc(percentage($i / 100) - 17.6870748299px); }
   .usage-info__content[data-usage-traffic="53%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="53%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="53%"]:after {
-      width: calc(percentage($i) - 20.703125px); }
+      width: calc(percentage($i / 100) - 20.703125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="53%"]:after {
-        width: calc(percentage($i) - 18.0272108844px); }
+        width: calc(percentage($i / 100) - 18.0272108844px); }
   .usage-info__content[data-usage-traffic="54%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="54%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="54%"]:after {
-      width: calc(percentage($i) - 21.09375px); }
+      width: calc(percentage($i / 100) - 21.09375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="54%"]:after {
-        width: calc(percentage($i) - 18.3673469388px); }
+        width: calc(percentage($i / 100) - 18.3673469388px); }
   .usage-info__content[data-usage-traffic="55%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="55%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="55%"]:after {
-      width: calc(percentage($i) - 21.484375px); }
+      width: calc(percentage($i / 100) - 21.484375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="55%"]:after {
-        width: calc(percentage($i) - 18.7074829932px); }
+        width: calc(percentage($i / 100) - 18.7074829932px); }
   .usage-info__content[data-usage-traffic="56%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="56%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="56%"]:after {
-      width: calc(percentage($i) - 21.875px); }
+      width: calc(percentage($i / 100) - 21.875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="56%"]:after {
-        width: calc(percentage($i) - 19.0476190476px); }
+        width: calc(percentage($i / 100) - 19.0476190476px); }
   .usage-info__content[data-usage-traffic="57%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="57%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="57%"]:after {
-      width: calc(percentage($i) - 22.265625px); }
+      width: calc(percentage($i / 100) - 22.265625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="57%"]:after {
-        width: calc(percentage($i) - 19.387755102px); }
+        width: calc(percentage($i / 100) - 19.387755102px); }
   .usage-info__content[data-usage-traffic="58%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="58%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="58%"]:after {
-      width: calc(percentage($i) - 22.65625px); }
+      width: calc(percentage($i / 100) - 22.65625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="58%"]:after {
-        width: calc(percentage($i) - 19.7278911565px); }
+        width: calc(percentage($i / 100) - 19.7278911565px); }
   .usage-info__content[data-usage-traffic="59%"] {
     color: #ffd300; }
     .usage-info__content[data-usage-traffic="59%"]:after {
       background-color: #ffd300; }
     .usage-info__content[data-usage-traffic="59%"]:after {
-      width: calc(percentage($i) - 23.046875px); }
+      width: calc(percentage($i / 100) - 23.046875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="59%"]:after {
-        width: calc(percentage($i) - 20.0680272109px); }
+        width: calc(percentage($i / 100) - 20.0680272109px); }
   .usage-info__content[data-usage-traffic="60%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="60%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="60%"]:after {
-      width: calc(percentage($i) - 23.4375px); }
+      width: calc(percentage($i / 100) - 23.4375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="60%"]:after {
-        width: calc(percentage($i) - 20.4081632653px); }
+        width: calc(percentage($i / 100) - 20.4081632653px); }
   .usage-info__content[data-usage-traffic="61%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="61%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="61%"]:after {
-      width: calc(percentage($i) - 23.828125px); }
+      width: calc(percentage($i / 100) - 23.828125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="61%"]:after {
-        width: calc(percentage($i) - 20.7482993197px); }
+        width: calc(percentage($i / 100) - 20.7482993197px); }
   .usage-info__content[data-usage-traffic="62%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="62%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="62%"]:after {
-      width: calc(percentage($i) - 24.21875px); }
+      width: calc(percentage($i / 100) - 24.21875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="62%"]:after {
-        width: calc(percentage($i) - 21.0884353741px); }
+        width: calc(percentage($i / 100) - 21.0884353741px); }
   .usage-info__content[data-usage-traffic="63%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="63%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="63%"]:after {
-      width: calc(percentage($i) - 24.609375px); }
+      width: calc(percentage($i / 100) - 24.609375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="63%"]:after {
-        width: calc(percentage($i) - 21.4285714286px); }
+        width: calc(percentage($i / 100) - 21.4285714286px); }
   .usage-info__content[data-usage-traffic="64%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="64%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="64%"]:after {
-      width: calc(percentage($i) - 25px); }
+      width: calc(percentage($i / 100) - 25px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="64%"]:after {
-        width: calc(percentage($i) - 21.768707483px); }
+        width: calc(percentage($i / 100) - 21.768707483px); }
   .usage-info__content[data-usage-traffic="65%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="65%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="65%"]:after {
-      width: calc(percentage($i) - 25.390625px); }
+      width: calc(percentage($i / 100) - 25.390625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="65%"]:after {
-        width: calc(percentage($i) - 22.1088435374px); }
+        width: calc(percentage($i / 100) - 22.1088435374px); }
   .usage-info__content[data-usage-traffic="66%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="66%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="66%"]:after {
-      width: calc(percentage($i) - 25.78125px); }
+      width: calc(percentage($i / 100) - 25.78125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="66%"]:after {
-        width: calc(percentage($i) - 22.4489795918px); }
+        width: calc(percentage($i / 100) - 22.4489795918px); }
   .usage-info__content[data-usage-traffic="67%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="67%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="67%"]:after {
-      width: calc(percentage($i) - 26.171875px); }
+      width: calc(percentage($i / 100) - 26.171875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="67%"]:after {
-        width: calc(percentage($i) - 22.7891156463px); }
+        width: calc(percentage($i / 100) - 22.7891156463px); }
   .usage-info__content[data-usage-traffic="68%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="68%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="68%"]:after {
-      width: calc(percentage($i) - 26.5625px); }
+      width: calc(percentage($i / 100) - 26.5625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="68%"]:after {
-        width: calc(percentage($i) - 23.1292517007px); }
+        width: calc(percentage($i / 100) - 23.1292517007px); }
   .usage-info__content[data-usage-traffic="69%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="69%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="69%"]:after {
-      width: calc(percentage($i) - 26.953125px); }
+      width: calc(percentage($i / 100) - 26.953125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="69%"]:after {
-        width: calc(percentage($i) - 23.4693877551px); }
+        width: calc(percentage($i / 100) - 23.4693877551px); }
   .usage-info__content[data-usage-traffic="70%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="70%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="70%"]:after {
-      width: calc(percentage($i) - 27.34375px); }
+      width: calc(percentage($i / 100) - 27.34375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="70%"]:after {
-        width: calc(percentage($i) - 23.8095238095px); }
+        width: calc(percentage($i / 100) - 23.8095238095px); }
   .usage-info__content[data-usage-traffic="71%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="71%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="71%"]:after {
-      width: calc(percentage($i) - 27.734375px); }
+      width: calc(percentage($i / 100) - 27.734375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="71%"]:after {
-        width: calc(percentage($i) - 24.1496598639px); }
+        width: calc(percentage($i / 100) - 24.1496598639px); }
   .usage-info__content[data-usage-traffic="72%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="72%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="72%"]:after {
-      width: calc(percentage($i) - 28.125px); }
+      width: calc(percentage($i / 100) - 28.125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="72%"]:after {
-        width: calc(percentage($i) - 24.4897959184px); }
+        width: calc(percentage($i / 100) - 24.4897959184px); }
   .usage-info__content[data-usage-traffic="73%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="73%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="73%"]:after {
-      width: calc(percentage($i) - 28.515625px); }
+      width: calc(percentage($i / 100) - 28.515625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="73%"]:after {
-        width: calc(percentage($i) - 24.8299319728px); }
+        width: calc(percentage($i / 100) - 24.8299319728px); }
   .usage-info__content[data-usage-traffic="74%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="74%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="74%"]:after {
-      width: calc(percentage($i) - 28.90625px); }
+      width: calc(percentage($i / 100) - 28.90625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="74%"]:after {
-        width: calc(percentage($i) - 25.1700680272px); }
+        width: calc(percentage($i / 100) - 25.1700680272px); }
   .usage-info__content[data-usage-traffic="75%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="75%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="75%"]:after {
-      width: calc(percentage($i) - 29.296875px); }
+      width: calc(percentage($i / 100) - 29.296875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="75%"]:after {
-        width: calc(percentage($i) - 25.5102040816px); }
+        width: calc(percentage($i / 100) - 25.5102040816px); }
   .usage-info__content[data-usage-traffic="76%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="76%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="76%"]:after {
-      width: calc(percentage($i) - 29.6875px); }
+      width: calc(percentage($i / 100) - 29.6875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="76%"]:after {
-        width: calc(percentage($i) - 25.8503401361px); }
+        width: calc(percentage($i / 100) - 25.8503401361px); }
   .usage-info__content[data-usage-traffic="77%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="77%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="77%"]:after {
-      width: calc(percentage($i) - 30.078125px); }
+      width: calc(percentage($i / 100) - 30.078125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="77%"]:after {
-        width: calc(percentage($i) - 26.1904761905px); }
+        width: calc(percentage($i / 100) - 26.1904761905px); }
   .usage-info__content[data-usage-traffic="78%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="78%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="78%"]:after {
-      width: calc(percentage($i) - 30.46875px); }
+      width: calc(percentage($i / 100) - 30.46875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="78%"]:after {
-        width: calc(percentage($i) - 26.5306122449px); }
+        width: calc(percentage($i / 100) - 26.5306122449px); }
   .usage-info__content[data-usage-traffic="79%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="79%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="79%"]:after {
-      width: calc(percentage($i) - 30.859375px); }
+      width: calc(percentage($i / 100) - 30.859375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="79%"]:after {
-        width: calc(percentage($i) - 26.8707482993px); }
+        width: calc(percentage($i / 100) - 26.8707482993px); }
   .usage-info__content[data-usage-traffic="80%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="80%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="80%"]:after {
-      width: calc(percentage($i) - 31.25px); }
+      width: calc(percentage($i / 100) - 31.25px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="80%"]:after {
-        width: calc(percentage($i) - 27.2108843537px); }
+        width: calc(percentage($i / 100) - 27.2108843537px); }
   .usage-info__content[data-usage-traffic="81%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="81%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="81%"]:after {
-      width: calc(percentage($i) - 31.640625px); }
+      width: calc(percentage($i / 100) - 31.640625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="81%"]:after {
-        width: calc(percentage($i) - 27.5510204082px); }
+        width: calc(percentage($i / 100) - 27.5510204082px); }
   .usage-info__content[data-usage-traffic="82%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="82%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="82%"]:after {
-      width: calc(percentage($i) - 32.03125px); }
+      width: calc(percentage($i / 100) - 32.03125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="82%"]:after {
-        width: calc(percentage($i) - 27.8911564626px); }
+        width: calc(percentage($i / 100) - 27.8911564626px); }
   .usage-info__content[data-usage-traffic="83%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="83%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="83%"]:after {
-      width: calc(percentage($i) - 32.421875px); }
+      width: calc(percentage($i / 100) - 32.421875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="83%"]:after {
-        width: calc(percentage($i) - 28.231292517px); }
+        width: calc(percentage($i / 100) - 28.231292517px); }
   .usage-info__content[data-usage-traffic="84%"] {
     color: #ff9500; }
     .usage-info__content[data-usage-traffic="84%"]:after {
       background-color: #ff9500; }
     .usage-info__content[data-usage-traffic="84%"]:after {
-      width: calc(percentage($i) - 32.8125px); }
+      width: calc(percentage($i / 100) - 32.8125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="84%"]:after {
-        width: calc(percentage($i) - 28.5714285714px); }
+        width: calc(percentage($i / 100) - 28.5714285714px); }
   .usage-info__content[data-usage-traffic="85%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="85%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="85%"]:after {
-      width: calc(percentage($i) - 33.203125px); }
+      width: calc(percentage($i / 100) - 33.203125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="85%"]:after {
-        width: calc(percentage($i) - 28.9115646259px); }
+        width: calc(percentage($i / 100) - 28.9115646259px); }
   .usage-info__content[data-usage-traffic="86%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="86%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="86%"]:after {
-      width: calc(percentage($i) - 33.59375px); }
+      width: calc(percentage($i / 100) - 33.59375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="86%"]:after {
-        width: calc(percentage($i) - 29.2517006803px); }
+        width: calc(percentage($i / 100) - 29.2517006803px); }
   .usage-info__content[data-usage-traffic="87%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="87%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="87%"]:after {
-      width: calc(percentage($i) - 33.984375px); }
+      width: calc(percentage($i / 100) - 33.984375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="87%"]:after {
-        width: calc(percentage($i) - 29.5918367347px); }
+        width: calc(percentage($i / 100) - 29.5918367347px); }
   .usage-info__content[data-usage-traffic="88%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="88%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="88%"]:after {
-      width: calc(percentage($i) - 34.375px); }
+      width: calc(percentage($i / 100) - 34.375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="88%"]:after {
-        width: calc(percentage($i) - 29.9319727891px); }
+        width: calc(percentage($i / 100) - 29.9319727891px); }
   .usage-info__content[data-usage-traffic="89%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="89%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="89%"]:after {
-      width: calc(percentage($i) - 34.765625px); }
+      width: calc(percentage($i / 100) - 34.765625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="89%"]:after {
-        width: calc(percentage($i) - 30.2721088435px); }
+        width: calc(percentage($i / 100) - 30.2721088435px); }
   .usage-info__content[data-usage-traffic="90%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="90%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="90%"]:after {
-      width: calc(percentage($i) - 35.15625px); }
+      width: calc(percentage($i / 100) - 35.15625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="90%"]:after {
-        width: calc(percentage($i) - 30.612244898px); }
+        width: calc(percentage($i / 100) - 30.612244898px); }
   .usage-info__content[data-usage-traffic="91%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="91%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="91%"]:after {
-      width: calc(percentage($i) - 35.546875px); }
+      width: calc(percentage($i / 100) - 35.546875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="91%"]:after {
-        width: calc(percentage($i) - 30.9523809524px); }
+        width: calc(percentage($i / 100) - 30.9523809524px); }
   .usage-info__content[data-usage-traffic="92%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="92%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="92%"]:after {
-      width: calc(percentage($i) - 35.9375px); }
+      width: calc(percentage($i / 100) - 35.9375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="92%"]:after {
-        width: calc(percentage($i) - 31.2925170068px); }
+        width: calc(percentage($i / 100) - 31.2925170068px); }
   .usage-info__content[data-usage-traffic="93%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="93%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="93%"]:after {
-      width: calc(percentage($i) - 36.328125px); }
+      width: calc(percentage($i / 100) - 36.328125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="93%"]:after {
-        width: calc(percentage($i) - 31.6326530612px); }
+        width: calc(percentage($i / 100) - 31.6326530612px); }
   .usage-info__content[data-usage-traffic="94%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="94%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="94%"]:after {
-      width: calc(percentage($i) - 36.71875px); }
+      width: calc(percentage($i / 100) - 36.71875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="94%"]:after {
-        width: calc(percentage($i) - 31.9727891156px); }
+        width: calc(percentage($i / 100) - 31.9727891156px); }
   .usage-info__content[data-usage-traffic="95%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="95%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="95%"]:after {
-      width: calc(percentage($i) - 37.109375px); }
+      width: calc(percentage($i / 100) - 37.109375px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="95%"]:after {
-        width: calc(percentage($i) - 32.3129251701px); }
+        width: calc(percentage($i / 100) - 32.3129251701px); }
   .usage-info__content[data-usage-traffic="96%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="96%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="96%"]:after {
-      width: calc(percentage($i) - 37.5px); }
+      width: calc(percentage($i / 100) - 37.5px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="96%"]:after {
-        width: calc(percentage($i) - 32.6530612245px); }
+        width: calc(percentage($i / 100) - 32.6530612245px); }
   .usage-info__content[data-usage-traffic="97%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="97%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="97%"]:after {
-      width: calc(percentage($i) - 37.890625px); }
+      width: calc(percentage($i / 100) - 37.890625px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="97%"]:after {
-        width: calc(percentage($i) - 32.9931972789px); }
+        width: calc(percentage($i / 100) - 32.9931972789px); }
   .usage-info__content[data-usage-traffic="98%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="98%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="98%"]:after {
-      width: calc(percentage($i) - 38.28125px); }
+      width: calc(percentage($i / 100) - 38.28125px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="98%"]:after {
-        width: calc(percentage($i) - 33.3333333333px); }
+        width: calc(percentage($i / 100) - 33.3333333333px); }
   .usage-info__content[data-usage-traffic="99%"] {
     color: #ff554c; }
     .usage-info__content[data-usage-traffic="99%"]:after {
       background-color: #ff554c; }
     .usage-info__content[data-usage-traffic="99%"]:after {
-      width: calc(percentage($i) - 38.671875px); }
+      width: calc(percentage($i / 100) - 38.671875px); }
       .sidebar--collapsed .usage-info__content[data-usage-traffic="99%"]:after {
-        width: calc(percentage($i) - 33.6734693878px); }
+        width: calc(percentage($i / 100) - 33.6734693878px); }
   .usage-info__content:before {
     content: '';
     width: calc(100% - 39px);
@@ -1783,203 +1783,203 @@ h6 {
     .usage-info__content--col[data-usage-traffic="0%"]:after {
       width: 0%; }
     .usage-info__content--col[data-usage-traffic="1%"]:after {
-      width: 100%; }
+      width: 1%; }
     .usage-info__content--col[data-usage-traffic="2%"]:after {
-      width: 200%; }
+      width: 2%; }
     .usage-info__content--col[data-usage-traffic="3%"]:after {
-      width: 300%; }
+      width: 3%; }
     .usage-info__content--col[data-usage-traffic="4%"]:after {
-      width: 400%; }
+      width: 4%; }
     .usage-info__content--col[data-usage-traffic="5%"]:after {
-      width: 500%; }
+      width: 5%; }
     .usage-info__content--col[data-usage-traffic="6%"]:after {
-      width: 600%; }
+      width: 6%; }
     .usage-info__content--col[data-usage-traffic="7%"]:after {
-      width: 700%; }
+      width: 7%; }
     .usage-info__content--col[data-usage-traffic="8%"]:after {
-      width: 800%; }
+      width: 8%; }
     .usage-info__content--col[data-usage-traffic="9%"]:after {
-      width: 900%; }
+      width: 9%; }
     .usage-info__content--col[data-usage-traffic="10%"]:after {
-      width: 1000%; }
+      width: 10%; }
     .usage-info__content--col[data-usage-traffic="11%"]:after {
-      width: 1100%; }
+      width: 11%; }
     .usage-info__content--col[data-usage-traffic="12%"]:after {
-      width: 1200%; }
+      width: 12%; }
     .usage-info__content--col[data-usage-traffic="13%"]:after {
-      width: 1300%; }
+      width: 13%; }
     .usage-info__content--col[data-usage-traffic="14%"]:after {
-      width: 1400%; }
+      width: 14%; }
     .usage-info__content--col[data-usage-traffic="15%"]:after {
-      width: 1500%; }
+      width: 15%; }
     .usage-info__content--col[data-usage-traffic="16%"]:after {
-      width: 1600%; }
+      width: 16%; }
     .usage-info__content--col[data-usage-traffic="17%"]:after {
-      width: 1700%; }
+      width: 17%; }
     .usage-info__content--col[data-usage-traffic="18%"]:after {
-      width: 1800%; }
+      width: 18%; }
     .usage-info__content--col[data-usage-traffic="19%"]:after {
-      width: 1900%; }
+      width: 19%; }
     .usage-info__content--col[data-usage-traffic="20%"]:after {
-      width: 2000%; }
+      width: 20%; }
     .usage-info__content--col[data-usage-traffic="21%"]:after {
-      width: 2100%; }
+      width: 21%; }
     .usage-info__content--col[data-usage-traffic="22%"]:after {
-      width: 2200%; }
+      width: 22%; }
     .usage-info__content--col[data-usage-traffic="23%"]:after {
-      width: 2300%; }
+      width: 23%; }
     .usage-info__content--col[data-usage-traffic="24%"]:after {
-      width: 2400%; }
+      width: 24%; }
     .usage-info__content--col[data-usage-traffic="25%"]:after {
-      width: 2500%; }
+      width: 25%; }
     .usage-info__content--col[data-usage-traffic="26%"]:after {
-      width: 2600%; }
+      width: 26%; }
     .usage-info__content--col[data-usage-traffic="27%"]:after {
-      width: 2700%; }
+      width: 27%; }
     .usage-info__content--col[data-usage-traffic="28%"]:after {
-      width: 2800%; }
+      width: 28%; }
     .usage-info__content--col[data-usage-traffic="29%"]:after {
-      width: 2900%; }
+      width: 29%; }
     .usage-info__content--col[data-usage-traffic="30%"]:after {
-      width: 3000%; }
+      width: 30%; }
     .usage-info__content--col[data-usage-traffic="31%"]:after {
-      width: 3100%; }
+      width: 31%; }
     .usage-info__content--col[data-usage-traffic="32%"]:after {
-      width: 3200%; }
+      width: 32%; }
     .usage-info__content--col[data-usage-traffic="33%"]:after {
-      width: 3300%; }
+      width: 33%; }
     .usage-info__content--col[data-usage-traffic="34%"]:after {
-      width: 3400%; }
+      width: 34%; }
     .usage-info__content--col[data-usage-traffic="35%"]:after {
-      width: 3500%; }
+      width: 35%; }
     .usage-info__content--col[data-usage-traffic="36%"]:after {
-      width: 3600%; }
+      width: 36%; }
     .usage-info__content--col[data-usage-traffic="37%"]:after {
-      width: 3700%; }
+      width: 37%; }
     .usage-info__content--col[data-usage-traffic="38%"]:after {
-      width: 3800%; }
+      width: 38%; }
     .usage-info__content--col[data-usage-traffic="39%"]:after {
-      width: 3900%; }
+      width: 39%; }
     .usage-info__content--col[data-usage-traffic="40%"]:after {
-      width: 4000%; }
+      width: 40%; }
     .usage-info__content--col[data-usage-traffic="41%"]:after {
-      width: 4100%; }
+      width: 41%; }
     .usage-info__content--col[data-usage-traffic="42%"]:after {
-      width: 4200%; }
+      width: 42%; }
     .usage-info__content--col[data-usage-traffic="43%"]:after {
-      width: 4300%; }
+      width: 43%; }
     .usage-info__content--col[data-usage-traffic="44%"]:after {
-      width: 4400%; }
+      width: 44%; }
     .usage-info__content--col[data-usage-traffic="45%"]:after {
-      width: 4500%; }
+      width: 45%; }
     .usage-info__content--col[data-usage-traffic="46%"]:after {
-      width: 4600%; }
+      width: 46%; }
     .usage-info__content--col[data-usage-traffic="47%"]:after {
-      width: 4700%; }
+      width: 47%; }
     .usage-info__content--col[data-usage-traffic="48%"]:after {
-      width: 4800%; }
+      width: 48%; }
     .usage-info__content--col[data-usage-traffic="49%"]:after {
-      width: 4900%; }
+      width: 49%; }
     .usage-info__content--col[data-usage-traffic="50%"]:after {
-      width: 5000%; }
+      width: 50%; }
     .usage-info__content--col[data-usage-traffic="51%"]:after {
-      width: 5100%; }
+      width: 51%; }
     .usage-info__content--col[data-usage-traffic="52%"]:after {
-      width: 5200%; }
+      width: 52%; }
     .usage-info__content--col[data-usage-traffic="53%"]:after {
-      width: 5300%; }
+      width: 53%; }
     .usage-info__content--col[data-usage-traffic="54%"]:after {
-      width: 5400%; }
+      width: 54%; }
     .usage-info__content--col[data-usage-traffic="55%"]:after {
-      width: 5500%; }
+      width: 55%; }
     .usage-info__content--col[data-usage-traffic="56%"]:after {
-      width: 5600%; }
+      width: 56%; }
     .usage-info__content--col[data-usage-traffic="57%"]:after {
-      width: 5700%; }
+      width: 57%; }
     .usage-info__content--col[data-usage-traffic="58%"]:after {
-      width: 5800%; }
+      width: 58%; }
     .usage-info__content--col[data-usage-traffic="59%"]:after {
-      width: 5900%; }
+      width: 59%; }
     .usage-info__content--col[data-usage-traffic="60%"]:after {
-      width: 6000%; }
+      width: 60%; }
     .usage-info__content--col[data-usage-traffic="61%"]:after {
-      width: 6100%; }
+      width: 61%; }
     .usage-info__content--col[data-usage-traffic="62%"]:after {
-      width: 6200%; }
+      width: 62%; }
     .usage-info__content--col[data-usage-traffic="63%"]:after {
-      width: 6300%; }
+      width: 63%; }
     .usage-info__content--col[data-usage-traffic="64%"]:after {
-      width: 6400%; }
+      width: 64%; }
     .usage-info__content--col[data-usage-traffic="65%"]:after {
-      width: 6500%; }
+      width: 65%; }
     .usage-info__content--col[data-usage-traffic="66%"]:after {
-      width: 6600%; }
+      width: 66%; }
     .usage-info__content--col[data-usage-traffic="67%"]:after {
-      width: 6700%; }
+      width: 67%; }
     .usage-info__content--col[data-usage-traffic="68%"]:after {
-      width: 6800%; }
+      width: 68%; }
     .usage-info__content--col[data-usage-traffic="69%"]:after {
-      width: 6900%; }
+      width: 69%; }
     .usage-info__content--col[data-usage-traffic="70%"]:after {
-      width: 7000%; }
+      width: 70%; }
     .usage-info__content--col[data-usage-traffic="71%"]:after {
-      width: 7100%; }
+      width: 71%; }
     .usage-info__content--col[data-usage-traffic="72%"]:after {
-      width: 7200%; }
+      width: 72%; }
     .usage-info__content--col[data-usage-traffic="73%"]:after {
-      width: 7300%; }
+      width: 73%; }
     .usage-info__content--col[data-usage-traffic="74%"]:after {
-      width: 7400%; }
+      width: 74%; }
     .usage-info__content--col[data-usage-traffic="75%"]:after {
-      width: 7500%; }
+      width: 75%; }
     .usage-info__content--col[data-usage-traffic="76%"]:after {
-      width: 7600%; }
+      width: 76%; }
     .usage-info__content--col[data-usage-traffic="77%"]:after {
-      width: 7700%; }
+      width: 77%; }
     .usage-info__content--col[data-usage-traffic="78%"]:after {
-      width: 7800%; }
+      width: 78%; }
     .usage-info__content--col[data-usage-traffic="79%"]:after {
-      width: 7900%; }
+      width: 79%; }
     .usage-info__content--col[data-usage-traffic="80%"]:after {
-      width: 8000%; }
+      width: 80%; }
     .usage-info__content--col[data-usage-traffic="81%"]:after {
-      width: 8100%; }
+      width: 81%; }
     .usage-info__content--col[data-usage-traffic="82%"]:after {
-      width: 8200%; }
+      width: 82%; }
     .usage-info__content--col[data-usage-traffic="83%"]:after {
-      width: 8300%; }
+      width: 83%; }
     .usage-info__content--col[data-usage-traffic="84%"]:after {
-      width: 8400%; }
+      width: 84%; }
     .usage-info__content--col[data-usage-traffic="85%"]:after {
-      width: 8500%; }
+      width: 85%; }
     .usage-info__content--col[data-usage-traffic="86%"]:after {
-      width: 8600%; }
+      width: 86%; }
     .usage-info__content--col[data-usage-traffic="87%"]:after {
-      width: 8700%; }
+      width: 87%; }
     .usage-info__content--col[data-usage-traffic="88%"]:after {
-      width: 8800%; }
+      width: 88%; }
     .usage-info__content--col[data-usage-traffic="89%"]:after {
-      width: 8900%; }
+      width: 89%; }
     .usage-info__content--col[data-usage-traffic="90%"]:after {
-      width: 9000%; }
+      width: 90%; }
     .usage-info__content--col[data-usage-traffic="91%"]:after {
-      width: 9100%; }
+      width: 91%; }
     .usage-info__content--col[data-usage-traffic="92%"]:after {
-      width: 9200%; }
+      width: 92%; }
     .usage-info__content--col[data-usage-traffic="93%"]:after {
-      width: 9300%; }
+      width: 93%; }
     .usage-info__content--col[data-usage-traffic="94%"]:after {
-      width: 9400%; }
+      width: 94%; }
     .usage-info__content--col[data-usage-traffic="95%"]:after {
-      width: 9500%; }
+      width: 95%; }
     .usage-info__content--col[data-usage-traffic="96%"]:after {
-      width: 9600%; }
+      width: 96%; }
     .usage-info__content--col[data-usage-traffic="97%"]:after {
-      width: 9700%; }
+      width: 97%; }
     .usage-info__content--col[data-usage-traffic="98%"]:after {
-      width: 9800%; }
+      width: 98%; }
     .usage-info__content--col[data-usage-traffic="99%"]:after {
-      width: 9900%; }
+      width: 99%; }
 
 .usage-info__heading {
   width: 100%;
