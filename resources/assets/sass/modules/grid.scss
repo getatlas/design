@@ -202,7 +202,7 @@
 	order: 1;
 }
 
-@media (min-width: 48em) {
+@media (max-width: 767px) {
 	.col-sm,
 	.col-sm-1,
 	.col-sm-2,
@@ -391,7 +391,7 @@
 	}
 }
 
-@media (min-width: 64em) {
+@media (min-width: 768px) {
 	.col-md,
 	.col-md-1,
 	.col-md-2,
@@ -580,7 +580,7 @@
 	}
 }
 
-@media (min-width: 75em) {
+@media (min-width: 1441px) {
 	.col-lg,
 	.col-lg-1,
 	.col-lg-2,

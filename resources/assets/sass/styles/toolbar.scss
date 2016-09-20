@@ -15,4 +15,9 @@
   .sidebar--collapsed ~ .wrapper & {
     left: $sidebar--width-colapsed;
   }
+
+  .safari &,
+  .firefox & {
+    position: sticky;
+  }
 }

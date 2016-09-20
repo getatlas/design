@@ -6,6 +6,11 @@
   left: $sidebar--width;
   transition: left $animation--duration-slow $animation--timing;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @media (max-width: 1024px) {
+    left: $sidebar--width - 75px;
+  }
 
   .sidebar--collapsed ~ & {
     left: $sidebar--width-colapsed;

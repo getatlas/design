@@ -88,8 +88,10 @@
 	background-color: $color--mine-shaft;
 	color: $color--white;
 	transition: background-color $animation--duration $animation--timing,
-	color $animation--duration $animation--timing,
-	border-color $animation--duration $animation--timing;
+            	color $animation--duration $animation--timing,
+            	border-color $animation--duration $animation--timing,
+              width $animation--duration $animation--timing;
+  -webkit-appearance: none;
 
 	&:hover {
 		background-color: $color--tundora;
@@ -113,6 +115,15 @@
 
 .input {
 	height: 42px;
+
+  &--nav {
+    width: 250px;
+    padding: 0 48px;
+
+    &:focus {
+      width: 300px;
+    }
+  }
 }
 
 .textarea {

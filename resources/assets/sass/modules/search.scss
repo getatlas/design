@@ -64,7 +64,7 @@
 		font-size: 12px;
 	}
 
-	.search__field:focus + & {
+	.input:focus + & {
 		visibility: visible;
 		opacity: 1;
 		pointer-events: auto;

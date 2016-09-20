@@ -1,3 +1,20 @@
+var detectBrowser = function() {
+  var userAgent = detect.parse(navigator.userAgent);
+  var bodyElement = document.querySelector('body');
+
+  if (userAgent.browser.name.indexOf('Chrome') >= 0) {
+    bodyElement.classList.add('chrome');
+  } else if (userAgent.browser.name.indexOf('Firefox') >= 0) {
+    bodyElement.classList.add('firefox');
+  } else if (userAgent.browser.name.indexOf('Safari')) {
+    bodyElement.classList.add('safari');
+  } else if (userAgent.browser.name.indexOf('IE')) {
+    bodyElement.classList.add('ie');
+  } else if (userAgent.browser.name.indexOf('EDGE')) {
+    bodyElement.classList.add('edge');
+  }
+}
+
 var collapseSlider = function() {
   var onLoad = true;
   var toggleSidebarButton = document.querySelector('.js-toggle-sidebar');
@@ -130,7 +147,6 @@ var form = function() {
   var formInput = document.querySelector('.js-input');
   //Keep watching every input on padding-left
   for (var i = 0; i < formInputs.length; i++) {
-    console.log('bazinga');
     var element = formInputs[i];
 
     element.addEventListener('focusin', function(e) {
@@ -143,6 +159,7 @@ var form = function() {
 }
 
 window.addEventListener('load', function () {
+  detectBrowser();
   collapseSlider();
   dropdownMenuToggle();
   search();

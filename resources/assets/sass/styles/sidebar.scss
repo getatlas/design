@@ -8,6 +8,10 @@
 	overflow: hidden;
 	transition: width $animation--duration-slow ease-in-out;
 
+	@media (max-width: 1024px) {
+		width: $sidebar--width - 75px;
+	}
+
 	&--collapsed {
 		width: $sidebar--width-colapsed;
 	}
@@ -33,13 +37,14 @@
 
 	&:before {
 		position: absolute;
-		top: 1px;
+		top: 50%;
 		left: 0;
 		font-size: 24px;
+		transform: translate3d(0, -50%, 0);
 		transition: transform $animation--duration-slow $animation--timing;
 
 		.sidebar--collapsed & {
-			transform: translate3d(7px, 0, 0);
+			transform: translate3d(7px, -50%, 0);
 		}
 	}
 	&:after {
@@ -49,8 +54,9 @@
 		height: 6px;
 		border-radius: 50%;
 		position: absolute;
-		top: 9px;
+		top: 50%;
 		left: -33px;
+		transform: translate3d(0, -50%,0);
 		background-color: $color--blue-marguerite;
 		box-shadow: 0 0 10px 3px rgba($color--blue-marguerite, 0.32);
 	}
@@ -64,16 +70,28 @@
 
 .sidebar__nav__item__link {
 	display: block;
+	height: 24px;
 	padding-top: 3px;
 	padding-bottom: 1px;
 	padding-left: 37px;
 	overflow: hidden;
 	white-space: nowrap;
-	transition: opacity $animation--duration-slow $animation--duration $animation--timing;
+	transition: opacity $animation--duration-slow $animation--duration $animation--timing,
+							height $animation--duration $animation--timing;
+
+	@media (max-width: 1024px) {
+		white-space: normal;
+		height: 44px;
+	}
 
 	.sidebar--collapsed & {
 		opacity: 0;
-		transition: opacity $animation--duration $animation--timing;
+		transition: opacity $animation--duration $animation--timing,
+								height $animation--duration $animation--timing;
+
+		@media (max-width: 1024px) {
+			height: 24px;
+		}
 	}
 }
 

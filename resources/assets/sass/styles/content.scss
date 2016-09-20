@@ -1,4 +1,9 @@
 .content {
   margin-top: 70px;
   padding: $spacing;
+
+  .safari &,
+  .firefox & {
+    margin-top: 0;
+  }
 }
