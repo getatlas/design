@@ -25,6 +25,13 @@
 		color: $color--white;
 	}
 
+	&:last-child {
+		margin-right: 0;
+		&:before {
+			display: none;
+		}
+	}
+
 	&:before {
 		content: '';
 		width: 1px;
@@ -33,13 +40,6 @@
 		top: 6px;
 		right: -29px;
 		background-color: $color--mine-shaft;
-	}
-
-	&:last-child {
-		margin-right: 0;
-		&:before {
-			display: none;
-		}
 	}
 
 	&--active {
@@ -73,11 +73,11 @@
 	}
 	&:before {
 		left: 0;
-		background: linear-gradient(to right, darken($color--mine-shaft, 7%) 0%, transparent 100%);
+		background: linear-gradient(to right, darken($color--mine-shaft, 7%) 0%, rgba(40, 40, 40, 0.01) 100%);
 	}
 	&:after {
 		right: 0;
-		background: linear-gradient(to left, darken($color--mine-shaft, 7%) 0%, transparent 100%);
+		background: linear-gradient(to left, darken($color--mine-shaft, 7%) 0%, rgba(40, 40, 40, 0.01) 100%);
 	}
 }
 

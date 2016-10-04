@@ -1,23 +1,35 @@
 .toolbar {
+  width: 100%;
   position: fixed;
   top: 0;
-  right: 0;
-  left: $sidebar--width;
-  z-index: 10000;
+  left: 0;
+  z-index: $initial-order;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   height: 70px;
   padding: 0 $spacing-horizontal;
+  transform: translate3d(0, 0, 0);
   background-color: darken($color--mine-shaft, 7%);
-  transition: left $animation--duration-slow ease-in-out;
+  transition: width $animation--duration-slow ease-in-out,
+              margin $animation--duration-slow ease-in-out;
 
-  .sidebar--collapsed ~ .wrapper & {
-    left: $sidebar--width-colapsed;
+  @media (max-width: 767px) {
+    padding-right: $spacing-horizontal--small;
+    padding-left: $spacing-horizontal--small;
   }
 
   .safari &,
   .firefox & {
     position: sticky;
   }
+
+  @media (max-width: 767px) {
+    .group {
+      display: none;
+    }
+  }
+}
+
+.toolbar__actions {
+	margin-left: auto;
 }

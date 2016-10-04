@@ -1,4 +1,5 @@
 .wrapper {
+  margin-top: 70px;
   position: fixed;
   top: 0;
   right: 0;
@@ -9,10 +10,6 @@
   -webkit-overflow-scrolling: touch;
 
   @media (max-width: 1024px) {
-    left: $sidebar--width - 75px;
-  }
-
-  .sidebar--collapsed ~ & {
-    left: $sidebar--width-colapsed;
+    left: 0;
   }
 }

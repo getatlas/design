@@ -80,7 +80,7 @@
 
 		&:after {
 			content: '';
-			width: $sidebar--width;
+			width: 100%;
 			position: absolute;
 			top: 0;
 			bottom: 0;
@@ -89,12 +89,14 @@
 			background-color: darken($color--mine-shaft, 8.5%);
 		}
 
-		.sidebar--loaded:not(.sidebar--collapsed) & {
-			animation: usage--sidebar-show ($animation--duration-slow * 2) forwards alternate $animation--timing;
-		}
-		.sidebar--collapsed & {
-			padding: 14px 7px 12px 9px;
-			animation: usage--sidebar-hide ($animation--duration-slow * 2) forwards alternate $animation--timing;
+		@media (min-width: 1025px) {
+			.sidebar--loaded:not(.sidebar--collapsed) & {
+				animation: usage--sidebar-show ($animation--duration-slow * 2) forwards alternate $animation--timing;
+			}
+			.sidebar--collapsed & {
+				padding: 14px 7px 12px 9px;
+				animation: usage--sidebar-hide ($animation--duration-slow * 2) forwards alternate $animation--timing;
+			}
 		}
 	}
 }
@@ -110,11 +112,13 @@
 		transition: 0s $animation--duration-slow;
 	}
 
-	.sidebar--loaded:not(.sidebar--collapsed) & {
-		animation: usage--flex-show $animation--duration-slow forwards alternate $animation--timing;
-	}
-	.sidebar--collapsed & {
-		animation: usage--flex-hide $animation--duration-slow forwards alternate $animation--timing;
+	@media (min-width: 1025px) {
+		.sidebar--loaded:not(.sidebar--collapsed) & {
+			animation: usage--flex-show $animation--duration-slow forwards alternate $animation--timing;
+		}
+		.sidebar--collapsed & {
+			animation: usage--flex-hide $animation--duration-slow forwards alternate $animation--timing;
+		}
 	}
 }
 
@@ -129,9 +133,11 @@
 	width: 111px;
 	white-space: nowrap;
 
-	.sidebar--collapsed & {
-		width: 100%;
-		margin-bottom: 1px;
+	@media (min-width: 1025px) {
+		.sidebar--collapsed & {
+			width: 100%;
+			margin-bottom: 1px;
+		}
 	}
 }
 
@@ -143,8 +149,10 @@
 	align-self: center;
 	text-align: right;
 
-	.sidebar--collapsed & {
-		width: 100%;
+	@media (min-width: 1025px) {
+		.sidebar--collapsed & {
+			width: 100%;
+		}
 	}
 
 	$i: 0;
@@ -202,9 +210,11 @@
 		background-color: $color--mine-shaft;
 		transition: width $animation--duration-slow $animation--duration-slow $animation--timing;
 
-		.sidebar--collapsed & {
-			width: calc(100% - 34px);
-			transition: width $animation--duration-slow $animation--timing;
+		@media (min-width: 1025px) {
+			.sidebar--collapsed & {
+				width: calc(100% - 34px);
+				transition: width $animation--duration-slow $animation--timing;
+			}
 		}
 	}
 	&:after {
@@ -313,8 +323,10 @@
 .usage-info__list__unnecessary {
 	transition: opacity $animation--duration $animation--duration-slow $animation--timing;
 
-	.sidebar--collapsed & {
-		opacity: 0;
-		transition: opacity $animation--duration-slow $animation--timing;
+	@media (min-width: 1025px) {
+		.sidebar--collapsed & {
+			opacity: 0;
+			transition: opacity $animation--duration-slow $animation--timing;
+		}
 	}
 }

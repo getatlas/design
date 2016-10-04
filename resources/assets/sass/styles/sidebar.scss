@@ -1,15 +1,32 @@
 .sidebar {
 	width: $sidebar--width;
+	padding-top: 40px;
 	position: fixed;
-	top: 0;
+	top: 70px;
 	bottom: 0;
 	left: 0;
-	background-color: darken($color--mine-shaft, 7%);
+	z-index: $initial-order;
 	overflow: hidden;
-	transition: width $animation--duration-slow ease-in-out;
+	background-color: darken($color--mine-shaft, 7%);
+	transition: width $animation--duration-slow ease-in-out,
+							left $animation--duration-slow ease-in-out,
+							transform $animation--duration-slow ease-in-out;
 
 	@media (max-width: 1024px) {
-		width: $sidebar--width - 75px;
+		width: $sidebar--width !important;
+		transform: translate3d(-#{$sidebar--width}, 0, 0);
+
+		&--collapsed {
+			transform: translate3d(0, 0, 0);
+		}
+	}
+	@media (max-width: 767px) {
+		width: 100% !important;
+		transform: translate3d(-100%, 0, 0);
+
+		&--collapsed {
+			transform: translate3d(0, 0, 0);
+		}
 	}
 
 	&--collapsed {
@@ -45,6 +62,10 @@
 
 		.sidebar--collapsed & {
 			transform: translate3d(7px, -50%, 0);
+
+			@media (max-width: 1024px) {
+				transform: translate3d(0, -50%, 0);
+			}
 		}
 	}
 	&:after {
@@ -70,7 +91,6 @@
 
 .sidebar__nav__item__link {
 	display: block;
-	height: 24px;
 	padding-top: 3px;
 	padding-bottom: 1px;
 	padding-left: 37px;
@@ -79,24 +99,20 @@
 	transition: opacity $animation--duration-slow $animation--duration $animation--timing,
 							height $animation--duration $animation--timing;
 
-	@media (max-width: 1024px) {
-		white-space: normal;
-		height: 44px;
-	}
-
 	.sidebar--collapsed & {
 		opacity: 0;
-		transition: opacity $animation--duration $animation--timing,
-								height $animation--duration $animation--timing;
+		transition: opacity $animation--duration $animation--timing;
 
 		@media (max-width: 1024px) {
-			height: 24px;
+			opacity: 1;
 		}
 	}
 }
 
 .sidebar__btn {
 	height: 16px;
+	margin-left: $spacing-horizontal;
+	position: relative;
 	font-size: 0;
 	cursor: pointer;
 
@@ -106,5 +122,38 @@
 
 	&:before {
 		font-size: $font-size--paragraph;
+	}
+
+	@media (max-width: 1024px) {
+		&:before {
+			display: block;
+			position: relative;
+			left: 0;
+			transition: transform $animation--duration-slow $animation--timing,
+									opacity $animation--duration-slow $animation--timing;
+		}
+		&:after {
+			@include only-icon-font;
+			position: absolute;
+			top: 1px;
+			left: 2px;
+			transform: translate3d(25px, 0, 0);
+			content: '\e90a';
+			font-size: 14px;
+			opacity: 0;
+			transition: transform $animation--duration-slow $animation--timing,
+									opacity $animation--duration-slow $animation--timing;
+		}
+
+		&--active {
+			&:before {
+				opacity: 0;
+				transform: translate3d(-25px, 0, 0);
+			}
+			&:after {
+				opacity: 1;
+				transform: translate3d(0, 0, 0)
+			}
+		}
 	}
 }

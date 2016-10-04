@@ -21,6 +21,7 @@ var collapseSlider = function() {
 
   toggleSidebarButton.addEventListener('click', function() {
      if (onLoad) {
+       toggleSidebarButton.classList.toggle('sidebar__btn--active');
        document.querySelector('.js-sidebar').classList.add('sidebar--loaded');
        onLoad = true;
      }
@@ -82,10 +83,17 @@ var tabs = function() {
       if (tabsChecker === false) return false;
 
       var tabsContentPath;
+      var tabsActiveContentPath;
 
       if (e.target !== e.currentTarget) {
         Array.prototype.forEach.call(this.querySelectorAll('.js-tabs-nav-item'), function(element, i) {
           if (element.parentNode.classList.contains('tabs__nav__item--active') === true) {
+            if (element.getAttribute('href') === e.target.getAttribute('href')) {
+              tabsActiveContentPath = element.getAttribute('href');
+
+              return false;
+            }
+
             element.parentNode.classList.remove('tabs__nav__item--active');
 
             return false;
@@ -93,31 +101,35 @@ var tabs = function() {
         });
 
         tabsContentPath = e.target.getAttribute('href');
-        e.target.parentNode.classList.add('tabs__nav__item--active');
 
-        Array.prototype.forEach.call(this.closest('.js-tabs').querySelectorAll('.js-tabs-content-item'), function(element, i) {
-          var tabPath = '#' + element.getAttribute('id');
-          if (tabPath == tabsContentPath) {
-            element.parentNode.style.height = element.offsetHeight + 'px';
 
-            element.closest('.js-tabs').querySelector('.tabs__content__item--active').classList.add('tabs__content__item--hiding');
-            element.classList.add('tabs__content__item--active');
+        if (tabsActiveContentPath !== tabsContentPath) {
+          e.target.parentNode.classList.add('tabs__nav__item--active');
 
-            tabsAnimationDelay = parseFloat(getComputedStyle(element.closest('.js-tabs').querySelector('.tabs__content__item--hiding')).transitionDuration) * 1000;
+          Array.prototype.forEach.call(this.closest('.js-tabs').querySelectorAll('.js-tabs-content-item'), function(element, i) {
+            var tabPath = '#' + element.getAttribute('id');
+            if (tabPath == tabsContentPath) {
+              element.parentNode.style.height = element.offsetHeight + 'px';
 
-            setTimeout(function() {
-              element.closest('.js-tabs').querySelector('.tabs__content__item--hiding').classList.remove('tabs__content__item--active');
-              element.closest('.js-tabs').querySelector('.tabs__content__item--hiding').classList.remove('tabs__content__item--hiding');
-            }, tabsAnimationDelay);
+              element.closest('.js-tabs').querySelector('.tabs__content__item--active').classList.add('tabs__content__item--hiding');
+              element.classList.add('tabs__content__item--active');
 
-            return false;
-          }
-        });
+              tabsAnimationDelay = parseFloat(getComputedStyle(element.closest('.js-tabs').querySelector('.tabs__content__item--hiding')).transitionDuration) * 1000;
 
-        tabsChecker = false;
-        setTimeout(function() {
-          tabsChecker = true;
-        }, tabsAnimationDelay);
+              setTimeout(function() {
+                element.closest('.js-tabs').querySelector('.tabs__content__item--hiding').classList.remove('tabs__content__item--active');
+                element.closest('.js-tabs').querySelector('.tabs__content__item--hiding').classList.remove('tabs__content__item--hiding');
+              }, tabsAnimationDelay);
+
+              return false;
+            }
+          });
+
+          tabsChecker = false;
+          setTimeout(function() {
+            tabsChecker = true;
+          }, tabsAnimationDelay);
+        }
       }
     });
   }
@@ -157,6 +169,13 @@ var form = function() {
     });
   }
 }
+
+//Run fastclick
+// if ('addEventListener' in document) {
+//     document.addEventListener('DOMContentLoaded', function() {
+//         FastClick.attach(document.body);
+//     }, false);
+// }
 
 window.addEventListener('load', function () {
   detectBrowser();
