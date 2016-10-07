@@ -131,6 +131,20 @@
 				width: 241px;
 			}
     }
+
+		&,
+		&::-webkit-input-placeholder {
+			opacity: 1;
+			color: $color--white;
+		}
+		&::-moz-placeholder {
+			opacity: 1;
+			color: $color--white;
+		}
+		&:-ms-input-placeholder {
+			opacity: 1;
+			color: $color--white;
+		}
   }
 }
 

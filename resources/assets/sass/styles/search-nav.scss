@@ -1,4 +1,39 @@
 .search-nav {
   margin-right: 17px;
   float: right;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    padding: 0 $spacing-horizontal--small;
+    margin-right: 0;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate3d(0, -105px, 0);
+    transition: transform $animation--duration-slow $animation--timing;
+
+    &:before {
+      content: '';
+      width: 100%;
+      height: 70px;
+      position: absolute;
+      top: -14px;
+      left: 0;
+      z-index: -1;
+      background-color: darken($color--mine-shaft, 7%);
+    }
+    &:after {
+      @include only-icon-font;
+      content: '\e901';
+      position: absolute;
+      top: 12px;
+      left: $spacing-horizontal--small * 2;
+      font-size: 18px;
+      color: darken($color--mine-shaft, 7%);
+    }
+
+    &.search--active {
+      transform: translate3d(0%, -50%, 0);
+    }
+  }
 }

@@ -1,49 +1,86 @@
 .search {
+	height: 42px;
 	position: relative;
 
-	&:before {
-		position: absolute;
-		top: 12px;
-		left: 20px;
-		font-size: 18px;
-		pointer-events: none;
+	&--nav {
+
 	}
 }
 
 .search__field {
-	height: 42px;
-	padding: 0 48px;
-	border: 0;
-	border-radius: 6px;
-	background-color: $color--mine-shaft;
-	font-size: $font-size--paragraph;
-	transition: background-color $animation--duration $animation--timing,
-	width $animation--duration $animation--timing;
-
-	&:focus {
-		background-color: $color--tundora;
+	@media (max-width: 767px) {
+		width: 100% !important;
 	}
 
-	&,
-	&::-webkit-input-placeholder {
-		opacity: 1;
-		color: $color--white;
-	}
-	&::-moz-placeholder {
-		opacity: 1;
-		color: $color--white;
-	}
-	&:-ms-input-placeholder {
-		opacity: 1;
-		color: $color--white;
+	.search--active & {
+		width: 300px;
+		border-color: transparent;
+		background-color: $color--white;
+		color: darken($color--mine-shaft, 7%);
+
+		@media (max-width: 1024px) {
+			width: 241px;
+		}
+
+		@media (max-width: 767px) {
+			width: 100%;
+
+			&,
+			&::-webkit-input-placeholder {
+				color: darken($color--mine-shaft, 7%);
+			}
+			&::-moz-placeholder {
+				color: darken($color--mine-shaft, 7%);
+			}
+			&:-ms-input-placeholder {
+				color: darken($color--mine-shaft, 7%);
+			}
+		}
 	}
 }
 
-.search__field--nav {
-	width: 250px;
+.search__open {
+	position: absolute;
+	top: 12px;
+	left: 20px;
+	pointer-events: none;
+	font-size: 0;
 
-	&:focus {
-		width: 300px;
+	.safari & {
+		padding-top: 1px;
+	}
+
+	@media (max-width: 767px) {
+		width: 35px;
+		height: 35px;
+		top: 5px;
+		transform: translate3d(135px, 83px, 0);
+		pointer-events: auto;
+		transition: transform $animation--duration-slow $animation--timing,
+								opacity $animation--duration-slow $animation--duration-slow $animation--timing;
+
+		.search--active & {
+			pointer-events: none;
+			transform: translate3d(135px, 0, 0);
+			opacity: 0;
+			transition: transform $animation--duration-slow $animation--timing,
+									opacity $animation--duration-slow $animation--timing;
+		}
+
+		&:before {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate3d(-50%, -50%, 0);
+		}
+	}
+
+	&:before {
+		font-size: 18px;
+
+		.search--active & {
+			color: darken($color--mine-shaft, 7%);
+		}
 	}
 }
 
@@ -59,12 +96,25 @@
 	transition: opacity $animation--duration $animation--timing,
 	visibility $animation--duration $animation--timing;
 
+	@media (max-width: 767px) {
+		width: 35px;
+		height: 35px;
+		top: 4px;
+		right: 29px;
+
+		&:before {
+			top: 50%;
+			left: 50%;
+			transform: translate3d(-50%, -50%, 0);
+		}
+	}
+
 	&:before {
 		color: $color--sunset-orange;
 		font-size: 12px;
 	}
 
-	.input:focus + & {
+	.search--active & {
 		visibility: visible;
 		opacity: 1;
 		pointer-events: auto;

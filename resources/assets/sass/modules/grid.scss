@@ -5,6 +5,10 @@
 	flex-direction: row;
 	flex: 0 1 auto;
 	flex-wrap: wrap;
+
+	@media (max-width: 767px) {
+		margin: 0 #{-($spacing-horizontal--small / 2)};
+	}
 }
 
 .row.reverse {

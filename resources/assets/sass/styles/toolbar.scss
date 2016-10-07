@@ -22,14 +22,18 @@
   .firefox & {
     position: sticky;
   }
-
-  @media (max-width: 767px) {
-    .group {
-      display: none;
-    }
-  }
 }
 
 .toolbar__actions {
 	margin-left: auto;
+
+  @media (max-width: 767px) {
+    .profile-nav {
+      display: none;
+    }
+
+    .notifications-nav {
+      display: none;
+    }
+  }
 }

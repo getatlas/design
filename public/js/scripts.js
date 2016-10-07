@@ -53,12 +53,31 @@ var dropdownMenuToggle = function() {
 
 var search = function() {
   var searchField =  document.querySelector('.js-search-field');
+  var searchCancel = document.querySelector('.js-search-cancel');
+  var searchOpen = document.querySelector('.js-search-open');
+  var isSearchFocused = false;
 
   searchField.addEventListener('focusin', function() {
     searchField.parentNode.classList.add('search--active');
+    isSearchFocused = true;
   });
-  searchField.addEventListener('focusout', function() {
+
+  window.addEventListener('click', function(e) {
+    if (isSearchFocused === true) {
+      if(e.target != searchField && e.target.parentNode != searchField) {
+        searchField.parentNode.classList.remove('search--active');
+        isSearchFocused = false;
+      }
+    }
+  });
+
+  searchCancel.addEventListener('click', function() {
     searchField.parentNode.classList.remove('search--active');
+    this.parentNode.querySelector('.js-search-field').value = "";
+  });
+
+  searchOpen.addEventListener('click', function() {
+    this.parentNode.classList.toggle('search--active');
   });
 }
 

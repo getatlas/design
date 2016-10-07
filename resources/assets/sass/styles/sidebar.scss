@@ -156,4 +156,23 @@
 			}
 		}
 	}
+
+	@media (max-width: 767px) {
+		width: 35px;
+		height: 35px;
+		margin-left: 11px;
+		text-align: center;
+
+		&:before {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -8px;
+			margin-left: -8px;
+		}
+		&:after {
+			margin-top: 10px;
+			margin-left: 9px;
+		}
+	}
 }

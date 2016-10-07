@@ -5,6 +5,11 @@
 	position: relative;
 	background-color: darken($color--mine-shaft, 7%);
 
+	@media (max-width: 767px) {
+		width: 100%;
+		margin: 0 #{$spacing-horizontal--small / 2} $spacing-vertical--small #{$spacing-horizontal--small / 2};
+	}
+
 	&--usage {
 		text-align: center;
 	}
