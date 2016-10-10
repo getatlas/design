@@ -54,6 +54,8 @@
 		width: 35px;
 		height: 35px;
 		top: 5px;
+		left: auto;
+		right: 265px;
 		transform: translate3d(135px, 83px, 0);
 		pointer-events: auto;
 		transition: transform $animation--duration-slow $animation--timing,

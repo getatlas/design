@@ -16,8 +16,8 @@
             	visibility $animation--duration $animation--timing,
             	transform $animation--duration $animation--timing;
 
-	.dropdown-menu__trigger:hover + &,
-  &:hover {
+	.dropdown--hover &,
+  .dropdown--clicked & {
 		visibility: visible;
 		opacity: 1;
 		transform: translate3d(0, 0, 0);
@@ -48,6 +48,15 @@
       top: -30px;
       left: 0;
     }
+	}
+}
+
+.dropdown-menu__trigger {
+	transition: opacity $animation--duration $animation--timing;
+
+	.dropdown--hover &,
+  .dropdown--clicked & {
+		opacity: .7;
 	}
 }
 

@@ -39,10 +39,10 @@
 		<button class="js-toggle-sidebar sidebar__btn icon-menu">Change sidebar view</button>
 
 		<div class="toolbar__actions group">
-			<nav class="profile-nav">
-				<img class="profile-nav__avatar dropdown-menu__trigger" src="assets/avatar.jpg">
+			<nav class="profile-nav js-dropdown">
+				<img class="profile-nav__avatar dropdown-menu__trigger js-dropdown-button" src="assets/avatar.jpg">
 
-				<ul class="dropdown-menu dropdown-menu--profile">
+				<ul class="dropdown-menu dropdown-menu--profile js-dropdown-nav">
 					<li class="dropdown-menu__item"><span class="dropdown-menu__item__text">Your Profile</span></li>
 					<li class="dropdown-menu__item dropdown-menu__item--with-children js-dropdown-menu">
 						<span class="dropdown-menu__item__text js-dropdown-menu-trigger">Choose Your Team</span>
@@ -114,9 +114,9 @@
 					<header class="col__heading col__heading--with-calendar">
 						<h3>Memory/CPU</h3>
 					</header>
-					<div class="calendar calendar--col">
-						<button class="calendar__btn">Choose time period</button>
-						<div class="calendar__picker">
+					<div class="calendar calendar--col js-calendar">
+						<button class="calendar__btn js-calendar-button">Choose time period</button>
+						<div class="calendar__picker js-calendar-content">
 							<header class="calendar__picker__heading">
 								<button class="calendar__picker__heading__btn calendar__picker__heading__btn--prev icon-arrow" type="button">Previous month</button>
 								<h4 class="calendar__picker__heading__text">August 2016</h4>
@@ -175,9 +175,9 @@
 				<section class="col col-md-12 col-lg-6">
 					<header class="col__heading col__heading--with-calendar">
 						<h3>Client side full page load</h3>
-						<div class="calendar calendar--col">
-							<button class="calendar__btn">Choose time period</button>
-							<div class="calendar__picker">
+						<div class="calendar calendar--col js-calendar">
+							<button class="calendar__btn js-calendar-button">Choose time period</button>
+							<div class="calendar__picker js-calendar-content">
 								<header class="calendar__picker__heading">
 									<button class="calendar__picker__heading__btn calendar__picker__heading__btn--prev icon-arrow" type="button">Previous month</button>
 									<h4 class="calendar__picker__heading__text">August 2016</h4>
@@ -234,7 +234,7 @@
 					</header>
 					<img class="example-pic" src="assets/examples/2.png" style="margin-top: 8px; width: 649px;" alt="">
 				</section>
-				<section class="col col-md-12 col-lg-6">
+				<section class="col col--tab col-md-12 col-lg-6">
 					<section class="tabs tabs--col js-tabs">
 						<nav class="tabs__nav">
 							<ul class="tabs__nav__list js-tabs-nav">
@@ -256,7 +256,7 @@
 						</div>
 					</section>
 				</section>
-				<section class="col col-md-12 col-lg-6">
+				<section class="col col--tab col-md-12 col-lg-6">
 					<header class="col__heading col__heading--with-calendar">
 						<h3>Name of category</h3>
 					</header>

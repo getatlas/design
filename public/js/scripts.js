@@ -1,5 +1,6 @@
+var userAgent = detect.parse(navigator.userAgent);
+
 var detectBrowser = function() {
-  var userAgent = detect.parse(navigator.userAgent);
   var bodyElement = document.querySelector('body');
 
   if (userAgent.browser.name.indexOf('Chrome') >= 0) {
@@ -35,6 +36,11 @@ var dropdownMenuToggle = function() {
   var dropdownMenu = document.querySelector('.js-dropdown-menu');
   var dropdownMenuTrigger = document.querySelector('.js-dropdown-menu-trigger');
   var dropdownMenuNav = document.querySelector('.js-dropdown-menu-nav');
+  var dropdown = document.querySelector('.js-dropdown');
+  var dropdownButton = document.querySelector('.js-dropdown-button');
+  var dropdownNav = document.querySelector('.js-dropdown-nav');
+  var thisDropdown;
+  var isDropdownActive = false;
 
   Array.prototype.forEach.call(dropdownMenus, function(element, i) {
     element.style.maxHeight = element.offsetHeight + 'px';
@@ -43,6 +49,40 @@ var dropdownMenuToggle = function() {
       element.classList.add('dropdown-menu__children--hidden');
     }
   });
+
+  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
+    dropdownButton.addEventListener('touchend', function(e) {
+      thisDropdown = this;
+
+      if (!this.classList.contains('dropdown--clicked')) {
+        this.parentNode.classList.add('dropdown--clicked');
+        isDropdownActive = true;
+      } else {
+        this.parentNode.classList.remove('dropdown--clicked');
+        isDropdownActive = false;
+      }
+    });
+  } else {
+    dropdown.addEventListener('mouseenter', function(e) {
+      thisDropdown = this;
+      this.classList.add('dropdown--hover');
+    });
+
+    dropdown.addEventListener('mouseleave', function(e) {
+      thisDropdown = this;
+      setTimeout(function (){
+        thisDropdown.classList.remove('dropdown--hover');
+      }, 200);
+    });
+  }
+
+  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
+    window.addEventListener('touchstart', function(e){
+      if(e.target != thisDropdown && e.target.parentNode != thisDropdown && isDropdownActive === true) {
+        thisDropdown.parentNode.classList.remove('dropdown--clicked');
+      }
+    });
+  }
 
   dropdownMenuTrigger.addEventListener('click', function() {
     this.classList.add('active');
@@ -60,6 +100,7 @@ var search = function() {
   searchField.addEventListener('focusin', function() {
     searchField.parentNode.classList.add('search--active');
     isSearchFocused = true;
+    console.log('isSearchFocused', isSearchFocused);
   });
 
   window.addEventListener('click', function(e) {
@@ -189,6 +230,49 @@ var form = function() {
   }
 }
 
+var calendar = function() {
+  var calendars = document.querySelectorAll('.js-calendar');
+  var thisCalendar;
+  var isCalendarActive = false;
+
+  for (var i = 0; i < calendars.length; i++) {
+    var element = calendars[i];
+
+    if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
+      element.addEventListener('touchend', function(e) {
+        thisCalendar = this;
+
+        if (!this.classList.contains('calendar--clicked')) {
+          this.classList.add('calendar--clicked');
+          isCalendarActive = true;
+        } else {
+          this.classList.remove('calendar--clicked');
+          isCalendarActive = false;
+        }
+      });
+    } else {
+      element.addEventListener('mouseenter', function(e) {
+        this.classList.add('calendar--hover');
+      });
+
+      element.addEventListener('mouseleave', function(e) {
+        thisCalendar = this;
+        setTimeout(function (){
+          thisCalendar.classList.remove('calendar--hover');
+        }, 200);
+      });
+    }
+  }
+
+  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
+    window.addEventListener('touchstart', function(e){
+      if(e.target != thisCalendar && e.target.parentNode != thisCalendar && isCalendarActive === true) {
+        thisCalendar.classList.remove('calendar--clicked');
+      }
+    });
+  }
+}
+
 //Run fastclick
 // if ('addEventListener' in document) {
 //     document.addEventListener('DOMContentLoaded', function() {
@@ -201,6 +285,7 @@ window.addEventListener('load', function () {
   collapseSlider();
   dropdownMenuToggle();
   search();
+  calendar();
   tabs();
   form();
 });

@@ -1,8 +1,17 @@
-.calendar--col {
-	position: absolute;
-	top: 27px;
-	right: 30px;
-	z-index: 9999;
+.calendar {
+	&--col {
+		position: absolute;
+		top: 27px;
+		right: 30px;
+		z-index: 9999;
+
+		@media (max-width: 767px) {
+			margin-top: 11px;
+			position: relative;
+			top: auto;
+			right: auto;
+		}
+	}
 }
 
 .calendar__btn {
@@ -19,7 +28,8 @@
 		font-size: 7px;
 	}
 
-	&:hover {
+	.calendar--clicked &,
+	.calendar--hover & {
 		color: $color--white;
 	}
 }
@@ -41,6 +51,25 @@
               visibility $animation--duration $animation--timing,
               transform $animation--duration $animation--timing;
 
+	@media (max-width: 767px) {
+		top: calc(100% + 10px);
+		right: auto;
+		left: 50%;
+		transform: translate3d(-50%, -5%, 0);
+	}
+
+	.calendar--clicked &,
+	.calendar--hover & {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0);
+
+		@media (max-width: 767px) {
+			transform: translate3d(-50%, 0, 0);
+		}
+  }
+
   &:before {
     content: '';
     height: 9px;
@@ -61,14 +90,13 @@
     border-top: 1px solid $color--cod-gray;
     border-right: 1px solid $color--cod-gray;
     transform: rotate(-45deg);
-  }
 
-  &:hover,
-  .calendar__btn:hover + & {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translate3d(0, 0, 0);
+		@media (max-width: 767px) {
+			top: -10px;
+			right: auto;
+			left: 50%;
+			transform: rotate(-45deg) translate3d(-50%, 0, 0);
+		}
   }
 }
 

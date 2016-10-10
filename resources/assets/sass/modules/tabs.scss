@@ -1,11 +1,38 @@
 .tabs {
 	&--col {
 		margin: -4px (-$spacing-horizontal) 0 (-$spacing-horizontal);
+
+		@media (max-width: 767px) {
+			margin-right: -$spacing-horizontal--small;
+			margin-left: -$spacing-horizontal--small;
+		}
 	}
 }
 
 .tabs__nav {
 	border-bottom: 1px solid $color--mine-shaft;
+
+	@media (max-width: 767px) {
+		position: relative;
+
+		&:before,
+		&:after {
+			content: '';
+			width: $spacing-horizontal--small;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			z-index: $initial-order;
+		}
+		&:before {
+			left: 0;
+			background: linear-gradient(to right, darken($color--mine-shaft, 7%) 0%, rgba(40, 40, 40, 0.01) 100%);
+		}
+		&:after {
+			right: 0;
+			background: linear-gradient(to left, darken($color--mine-shaft, 7%) 0%, rgba(40, 40, 40, 0.01) 100%);
+		}
+	}
 }
 
 .tabs__nav__list {
@@ -13,6 +40,16 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
+
+	@media (max-width: 767px) {
+		display: block;
+		white-space: nowrap;
+		max-width: 100%;
+		height: 47px;
+		overflow-x: auto;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+	}
 }
 
 .tabs__nav__item {
@@ -21,12 +58,17 @@
 	color: $color--boulder;
 	transition: color $animation--duration $animation--timing;
 
+	@media (max-width: 767px) {
+		margin-right: $spacing-horizontal--small;
+		margin-left: $spacing-horizontal--small;
+		display: inline-block;
+	}
+
 	&:hover {
 		color: $color--white;
 	}
 
 	&:last-child {
-		margin-right: 0;
 		&:before {
 			display: none;
 		}
@@ -40,6 +82,10 @@
 		top: 6px;
 		right: -29px;
 		background-color: $color--mine-shaft;
+
+		@media (max-width: 767px) {
+			right: -$spacing-horizontal--small;
+		}
 	}
 
 	&--active {
@@ -53,6 +99,10 @@
 			bottom: -28px;
 			left: 0;
 			background-color: $color--blue-marguerite;
+
+			@media (max-width: 767px) {
+				bottom: -27px;
+			}
 		}
 	}
 }
@@ -70,6 +120,10 @@
 		position: absolute;
 		top: 0;
 		z-index: 100;
+
+		@media (max-width: 767px) {
+			width: $spacing-horizontal--small;
+		}
 	}
 	&:before {
 		left: 0;
@@ -88,6 +142,10 @@
 	position: absolute;
 	top: 0;
 	left: 100%;
+
+	@media (max-width: 767px) {
+		padding: $spacing-horizontal $spacing-horizontal--small 0 $spacing-horizontal--small;
+	}
 
 	&:not(.tabs__content__item--active) {
 		&:not(.tabs__content__item--hiding) {

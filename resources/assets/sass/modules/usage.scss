@@ -257,6 +257,10 @@
 			width: 50px;
 		}
 
+		@media (max-width: 767px) {
+			right: $spacing-horizontal--small;
+		}
+
 		$i: 0;
 
 		@while $i < 100 {
@@ -282,7 +286,7 @@
 	font-size: 120px;
 	line-height: 1;
 
-	@media (max-width: 1400px) {
+	@media (max-width: 1400px) and (min-width: 768px) {
 		font-size: 96px;
 	}
 

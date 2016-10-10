@@ -8,10 +8,14 @@
 	@media (max-width: 767px) {
 		width: 100%;
 		margin: 0 #{$spacing-horizontal--small / 2} $spacing-vertical--small #{$spacing-horizontal--small / 2};
+		padding: $spacing-vertical $spacing-horizontal--small;
 	}
 
 	&--usage {
 		text-align: center;
+	}
+	&--tab {
+		overflow: hidden;
 	}
 }
 
@@ -25,6 +29,11 @@
   &--with-graph {
     width: calc(100% - 110px);
   }
+	&--with-calendar {
+		@media (max-width: 767px) {
+			max-height: initial;
+		}
+	}
 
   h1,
   h2,
