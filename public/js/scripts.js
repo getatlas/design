@@ -39,7 +39,7 @@ var dropdownMenuToggle = function() {
   var dropdown = document.querySelector('.js-dropdown');
   var dropdownButton = document.querySelector('.js-dropdown-button');
   var dropdownNav = document.querySelector('.js-dropdown-nav');
-  var thisDropdown;
+  var thisDropdown = document.querySelector('.js-dropdown-button');
   var isDropdownActive = false;
 
   Array.prototype.forEach.call(dropdownMenus, function(element, i) {
@@ -52,9 +52,9 @@ var dropdownMenuToggle = function() {
 
   if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
     dropdownButton.addEventListener('touchend', function(e) {
-      thisDropdown = this;
+      thisDropdown = this.parentNode;
 
-      if (!this.classList.contains('dropdown--clicked')) {
+      if (!this.parentNode.classList.contains('dropdown--clicked')) {
         this.parentNode.classList.add('dropdown--clicked');
         isDropdownActive = true;
       } else {
@@ -64,22 +64,23 @@ var dropdownMenuToggle = function() {
     });
   } else {
     dropdown.addEventListener('mouseenter', function(e) {
-      thisDropdown = this;
+      thisDropdown = this.parentNode;
       this.classList.add('dropdown--hover');
     });
 
     dropdown.addEventListener('mouseleave', function(e) {
-      thisDropdown = this;
+      thisDropdown = this.parentNode;
       setTimeout(function (){
         thisDropdown.classList.remove('dropdown--hover');
       }, 200);
     });
   }
 
-  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
-    window.addEventListener('touchstart', function(e){
-      if(e.target != thisDropdown && e.target.parentNode != thisDropdown && isDropdownActive === true) {
-        thisDropdown.parentNode.classList.remove('dropdown--clicked');
+  if (userAgent.device.type == "Mobile" || userAgent) {
+    window.addEventListener('touchend', function (e) {
+      if (thisDropdown.contains(e.target) === false && isDropdownActive === true) {
+        thisDropdown.classList.remove('dropdown--clicked');
+        isDropdownActive = false;
       }
     });
   }
@@ -217,6 +218,7 @@ var form = function() {
   var formField = document.querySelector('.js-field');
   var formInputs = document.querySelectorAll('.js-input');
   var formInput = document.querySelector('.js-input');
+
   //Keep watching every input on padding-left
   for (var i = 0; i < formInputs.length; i++) {
     var element = formInputs[i];
@@ -231,8 +233,8 @@ var form = function() {
 }
 
 var calendar = function() {
-  var calendars = document.querySelectorAll('.js-calendar');
-  var thisCalendar;
+  var calendars = document.querySelectorAll('.js-calendar-button');
+  var thisCalendar = document.querySelector('.js-calendar-button');
   var isCalendarActive = false;
 
   for (var i = 0; i < calendars.length; i++) {
@@ -240,34 +242,35 @@ var calendar = function() {
 
     if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
       element.addEventListener('touchend', function(e) {
-        thisCalendar = this;
+        thisCalendar = this.parentNode;
 
-        if (!this.classList.contains('calendar--clicked')) {
-          this.classList.add('calendar--clicked');
+        if (!this.parentNode.classList.contains('calendar--clicked')) {
+          this.parentNode.classList.add('calendar--clicked');
           isCalendarActive = true;
         } else {
-          this.classList.remove('calendar--clicked');
+          this.parentNode.classList.remove('calendar--clicked');
           isCalendarActive = false;
         }
       });
     } else {
       element.addEventListener('mouseenter', function(e) {
-        this.classList.add('calendar--hover');
+        this.parentNode.classList.add('calendar--hover');
       });
 
       element.addEventListener('mouseleave', function(e) {
-        thisCalendar = this;
+        thisCalendar = this.parentNode;
         setTimeout(function (){
-          thisCalendar.classList.remove('calendar--hover');
+          thisCalendar.parentNode.classList.remove('calendar--hover');
         }, 200);
       });
     }
   }
 
   if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
-    window.addEventListener('touchstart', function(e){
-      if(e.target != thisCalendar && e.target.parentNode != thisCalendar && isCalendarActive === true) {
+    window.addEventListener('touchend', function(e) {
+      if(thisCalendar.contains(e.target) === false && isCalendarActive === true) {
         thisCalendar.classList.remove('calendar--clicked');
+        isCalendarActive = false;
       }
     });
   }
