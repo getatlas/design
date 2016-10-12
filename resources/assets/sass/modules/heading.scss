@@ -1,0 +1,22 @@
+.heading {
+  margin-bottom: 27px;
+
+  &:first-child {
+    padding-top: 22px;
+    border-top: 1px solid $color--mine-shaft;
+  }
+}
+
+.heading__text {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: $font-size--heading;
+  color: $color--white;
+
+  &--minor {
+    margin-top: 8px;
+    font-size: $font-size--title;
+    font-weight: normal;
+    color: $color--boulder;
+  }
+}

@@ -89,3 +89,23 @@
 		content: '\e90b';
 	}
 }
+.icon-user {
+	&:before {
+		content: '\e910';
+	}
+}
+.icon-page {
+	&:before {
+		content: '\e90f';
+	}
+}
+.icon-cluster {
+	&:before {
+		content: '\e90e';
+	}
+}
+.icon-messages {
+	&:before {
+		content: '\e90d';
+	}
+}

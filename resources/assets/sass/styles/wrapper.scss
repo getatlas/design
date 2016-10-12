@@ -9,6 +9,10 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 
+  .sidebar--collapsed ~ & {
+    left: $sidebar--width-colapsed;
+  }
+
   @media (max-width: 1024px) {
     left: 0;
   }

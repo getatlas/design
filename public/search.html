@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GetAtlas</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<script src="js/detect.min.js"></script>
+	<scrip src="js/fastclick.js"></script>
+	<script src="js/scripts.js"></script>
+</head>
+<body>
+	<nav class="js-sidebar sidebar">
+		<ul class="sidebar__nav">
+			<li class="sidebar__nav__item icon-clock active"><a class="sidebar__nav__item__link" href="#">Monitoring Uptime</a></li>
+			<li class="sidebar__nav__item icon-storage"><a class="sidebar__nav__item__link" href="#">Monitoring Storage Usage</a></li>
+			<li class="sidebar__nav__item icon-server"><a class="sidebar__nav__item__link" href="#">Monitoring Server Usage</a></li>
+		</ul>
+		<aside class="usage-info usage-info--sidebar">
+			<dl class="usage-info__list">
+				<dt class="usage-info__name">CPU <span class="usage-info__list__unnecessary">usage</span></dt>
+				<dd class="usage-info__content" data-usage-traffic="37%">37%</dd>
+				<dt class="usage-info__name">Memory <span class="usage-info__list__unnecessary">usage</span></dt>
+				<dd class="usage-info__content" data-usage-traffic="98%">98%</dd>
+				<dt class="usage-info__name">Traffic</dt>
+				<dd class="usage-info__content" data-usage-traffic="65%">65%</dd>
+				<dt class="usage-info__name">Databases</dt>
+				<dd class="usage-info__content" data-usage-traffic="44%">44%</dd>
+			</dl>
+		</aside>
+	</nav>
+
+	<header class="toolbar">
+		<h1 class="logo logo--sidebar icon-logo">
+			<a class="logo__link" href="#">Atlas</a>
+		</h1>
+
+		<button class="js-toggle-sidebar sidebar__btn icon-menu">Change sidebar view</button>
+
+		<div class="toolbar__actions group">
+			<nav class="profile-nav js-dropdown">
+				<img class="profile-nav__avatar dropdown-menu__trigger js-dropdown-button" src="assets/avatar.jpg">
+
+				<ul class="dropdown-menu dropdown-menu--profile js-dropdown-nav">
+					<li class="dropdown-menu__item"><span class="dropdown-menu__item__text">Your Profile</span></li>
+					<li class="dropdown-menu__item dropdown-menu__item--with-children js-dropdown-menu">
+						<span class="dropdown-menu__item__text js-dropdown-menu-trigger">Choose Your Team</span>
+						<ul class="dropdown-menu__children js-dropdown-menu-nav" data-dropdown-hidden="true">
+							<li class="dropdown-menu__item dropdown-menu__item--children">
+								<a href="#" class="dropdown-menu__item__link dropdown-menu__item__link--children">Team Atlas 999</a>
+							</li>
+							<li class="dropdown-menu__item dropdown-menu__item--children dropdown-menu__item--choosen">
+								<a href="#" class="dropdown-menu__item__link dropdown-menu__item__link--children">Team Circular</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown-menu__item">
+						<a href="#" class="dropdown-menu__item__link">Create a New Team</a>
+					</li>
+					<li class="dropdown-menu__item">
+						<a href="#" class="dropdown-menu__item__link">Settings</a>
+					</li>
+					<li class="dropdown-menu__item dropdown-menu__item--red">
+						<a href="#" class="dropdown-menu__item__link">Logout</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="notifications-nav">
+				<button type="button" class="icon-notification notifications-nav__button notifications-nav__button--new"><span class="notifications-nav__button__alert">New notification!</span></button>
+			</div>
+			<form action="#" class="js-field search search-nav field">
+				<input class="input input--nav search__field js-search-field js-input" type="search" placeholder="Search">
+				<button class="search__open icon-search js-search-open">Search</button>
+				<button class="search__cancel icon-close js-search-cancel">Cancel</button>
+			</form>
+		</div>
+	</header>
+
+	<main class="wrapper">
+		<section class="content">
+			<header class="heading">
+				<h2 class="heading__text">Search results for 'Server'</h2>
+				<h3 class="heading__text heading__text--minor">About 3,760 results (0.20 seconds)</h3>
+			</header>
+			<div class="row row--without-stretch">
+				<section class="col col--usage col-md-6 col-lg-3 usage-info usage-info--col">
+					<dl class="results results--col">
+						<dt class="results__title icon-cluster">Servers</dt>
+						<dd class="results__content"><a href="#" class="results__content__link">Server</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Server rack</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Server virtualization software</a></dd>
+					</dl>
+				</section>
+				<section class="col col--usage col-md-6 col-lg-3 usage-info usage-info--col">
+					<dl class="results results--col">
+						<dt class="results__title icon-page">Websites</dt>
+						<dd class="results__content">No results found</dd>
+					</dl>
+				</section>
+				<section class="col col--usage col-md-6 col-lg-3 usage-info usage-info--col">
+					<dl class="results results--col">
+						<dt class="results__title icon-user">Users</dt>
+						<dd class="results__content"><a href="#" class="results__content__link">Server</a></dd>
+					</dl>
+				</section>
+				<section class="col col--usage col-md-6 col-lg-3 usage-info usage-info--col">
+					<dl class="results results--col">
+						<dt class="results__title icon-messages">Messages</dt>
+						<dd class="results__content"><a href="#" class="results__content__link">Server</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Server issue again</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Problem with our server</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">How to troubleshoot a server problem</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Unknow server issues and authentication errors</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Pokemon Go's server issues have been driving people wild all day...</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Current server status</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Troubleshooting connection issues</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">How to Fix DNS Server Not Responding Problem: 12 Steps</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Server down</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Why is my server down?</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">We're currently investigating an issue affecting our authentication servers...</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Twitter has been abuzz with server down complaints for hours</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Steam servers are currently unavailable or too busy</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Non-responsive DNS server or invalid DNS configuration can cause ...</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Video not available try another server...</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Current server status</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">Troubleshooting connection issues</a></dd>
+						<dd class="results__content"><a href="#" class="results__content__link">How to Fix DNS Server Not Responding Problem: 12 Steps</a></dd>
+					</dl>
+					<ol class="pagination">
+						<li class="pagination__item pagination__item--active"><a href="#" class="pagination__link">1</a></li>
+						<li class="pagination__item"><a href="#" class="pagination__link">2</a></li>
+						<li class="pagination__item"><a href="#" class="pagination__link">3</a></li>
+					</ol>
+				</section>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

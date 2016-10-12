@@ -9,6 +9,10 @@
 	@media (max-width: 767px) {
 		margin: 0 #{-($spacing-horizontal--small / 2)};
 	}
+
+	&--without-stretch {
+		align-items: flex-start;
+	}
 }
 
 .row.reverse {
