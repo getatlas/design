@@ -1,9 +1,19 @@
 .heading {
   margin-bottom: 27px;
 
+  @media (max-width: 767px) {
+    margin-bottom: 16px;
+  }
+
   &:first-child {
     padding-top: 22px;
     border-top: 1px solid $color--mine-shaft;
+
+    @media (max-width: 767px) {
+      margin-top: -5px;
+      padding-top: 0;
+      border-top: 0;
+    }
   }
 }
 
@@ -13,10 +23,18 @@
   font-size: $font-size--heading;
   color: $color--white;
 
+  @media (max-width: 767px) {
+    font-size: $font-size--heading - 4px;
+  }
+
   &--minor {
     margin-top: 8px;
     font-size: $font-size--title;
     font-weight: normal;
     color: $color--boulder;
+
+    @media (max-width: 767px) {
+      margin-top: 0;
+    }
   }
 }

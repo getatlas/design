@@ -3,6 +3,10 @@
   padding: 0;
   list-style: none;
   display: flex;
+
+  &--col {
+    margin-bottom: 5px;
+  }
 }
 
 .pagination__item {
@@ -24,19 +28,27 @@
     }
   }
 
+  &:after {
+    content: '';
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-radius: 5px;
+    pointer-events: none;
+    transform: translate3d(0, -50%, 0);
+    background-color: $color--cod-gray;
+    box-shadow: 0 10px 30px 5px rgba($color--black, 0.28);
+    opacity: 0;
+    transition: opacity $animation--duration $animation--timing;
+  }
+
   &--active {
     pointer-events: none;
 
     &:after {
-      content: '';
-      width: 100%;
-      height: 40px;
-      position: absolute;
-      top: 50%;
-      left: 0;
-      border-radius: 5px;
-      transform: translate3d(0, -50%, 0);
-      background-color: $color--cod-gray;
+      opacity: 1;
     }
 
     .pagination__link {
@@ -55,6 +67,7 @@
   position: relative;
   z-index: 1;
   background-color: $color--mine-shaft;
+  transition: background $animation--duration $animation--timing;
 
   &:hover {
     background-color: $color--tundora;

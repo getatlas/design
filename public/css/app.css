@@ -5266,9 +5266,23 @@ h6 {
   margin-bottom: 27px;
 }
 
+@media (max-width: 767px) {
+  .heading {
+    margin-bottom: 16px;
+  }
+}
+
 .heading:first-child {
   padding-top: 22px;
   border-top: 1px solid #3a3a3a;
+}
+
+@media (max-width: 767px) {
+  .heading:first-child {
+    margin-top: -5px;
+    padding-top: 0;
+    border-top: 0;
+  }
 }
 
 .heading__text {
@@ -5278,11 +5292,23 @@ h6 {
   color: #fff;
 }
 
+@media (max-width: 767px) {
+  .heading__text {
+    font-size: 22px;
+  }
+}
+
 .heading__text--minor {
   margin-top: 8px;
   font-size: 16px;
   font-weight: normal;
   color: #777;
+}
+
+@media (max-width: 767px) {
+  .heading__text--minor {
+    margin-top: 0;
+  }
 }
 
 .results {
@@ -5291,8 +5317,57 @@ h6 {
   text-align: left;
 }
 
+.results:not(:last-child) {
+  margin-bottom: 33px;
+}
+
 .results--col {
   margin: -30px -30px 0 -30px;
+}
+
+@media (max-width: 767px) {
+  .results--col {
+    margin: -30px -20px 0 -20px;
+  }
+}
+
+.results--col:only-child {
+  margin-bottom: -30px;
+}
+
+.results--live {
+  width: 300px;
+  position: absolute;
+  top: 70px;
+  right: 149px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+  background-color: #282828;
+  box-shadow: 0 28px 70px 4px rgba(0, 0, 0, 0.19);
+}
+
+@media (max-width: 1024px) {
+  .results--live {
+    width: 241px;
+  }
+}
+
+@media (max-width: 767px) {
+  .results--live {
+    width: 100%;
+    height: calc(100% - 70px);
+    max-height: none !important;
+    right: 0;
+    position: fixed;
+  }
+}
+
+.search--active ~ .results--live {
+  display: block;
 }
 
 .results__title {
@@ -5302,8 +5377,29 @@ h6 {
   font-size: 16px;
 }
 
+@media (max-width: 767px) {
+  .results__title {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
 .results__title:not(:last-child) {
   border-bottom: 1px solid #3a3a3a;
+}
+
+.results__title:before {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0);
+}
+
+@media (max-width: 767px) {
+  .results__title:before {
+    right: 20px;
+  }
 }
 
 .results__title.icon-cluster {
@@ -5326,20 +5422,35 @@ h6 {
   color: #03a9f4;
 }
 
-.results__title:before {
-  position: absolute;
-  top: 50%;
-  right: 30px;
-  -webkit-transform: translate3d(0, -50%, 0);
-          transform: translate3d(0, -50%, 0);
+.results__title--dark {
+  border-bottom: 0 !important;
+  background-color: #1e1e1e;
+}
+
+.results__title--dark:not(:first-child) {
+  margin-top: -1px;
 }
 
 .results__content {
   margin-left: 0;
   padding: 15px 30px 17px 30px;
+  color: #777;
 }
 
-.results__content:not(:last-child) {
+@media (max-width: 767px) {
+  .results__content {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+.results__content:only-child {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-align: center;
+}
+
+.results:not(:last-child):not(.results--live) .results__content {
   border-bottom: 1px solid #3a3a3a;
 }
 
@@ -5347,11 +5458,17 @@ h6 {
   margin: -15px -30px -17px -30px;
   padding: 15px 30px 17px 30px;
   display: block;
+  color: #fff;
   transition: background 0.1s ease-in-out;
 }
 
 .results__content__link:hover {
   background-color: #3a3a3a;
+}
+
+.results:last-child .results__content:last-child .results__content__link {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .pagination {
@@ -5361,6 +5478,10 @@ h6 {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.pagination--col {
+  margin-bottom: 5px;
 }
 
 .pagination__item {
@@ -5381,11 +5502,7 @@ h6 {
   border-bottom-right-radius: 5px;
 }
 
-.pagination__item--active {
-  pointer-events: none;
-}
-
-.pagination__item--active:after {
+.pagination__item:after {
   content: '';
   width: 100%;
   height: 40px;
@@ -5393,9 +5510,21 @@ h6 {
   top: 50%;
   left: 0;
   border-radius: 5px;
+  pointer-events: none;
   -webkit-transform: translate3d(0, -50%, 0);
           transform: translate3d(0, -50%, 0);
   background-color: #1e1e1e;
+  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.pagination__item--active {
+  pointer-events: none;
+}
+
+.pagination__item--active:after {
+  opacity: 1;
 }
 
 .pagination__item--active .pagination__link {
@@ -5412,6 +5541,7 @@ h6 {
   position: relative;
   z-index: 1;
   background-color: #3a3a3a;
+  transition: background 0.1s ease-in-out;
 }
 
 .pagination__link:hover {

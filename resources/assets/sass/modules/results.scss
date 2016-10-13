@@ -3,8 +3,49 @@
   padding: 0;
   text-align: left;
 
+  &:not(:last-child) {
+    margin-bottom: 33px;
+  }
+
   &--col {
     margin: #{-$spacing-horizontal} #{-$spacing-horizontal} 0 #{-$spacing-horizontal};
+
+    @media (max-width: 767px) {
+      margin: #{-$spacing-horizontal} #{-$spacing-horizontal--small} 0 #{-$spacing-horizontal--small};
+    }
+
+    &:only-child {
+      margin-bottom: #{-$spacing-horizontal};
+    }
+  }
+  &--live {
+    width: 300px;
+    position: absolute;
+    top: $toolbar-height;
+    right: 149px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: none;
+    background-color: darken($color--mine-shaft, 7%);
+    box-shadow: 0 28px 70px 4px rgba($color--black, 0.19);
+
+    @media (max-width: 1024px) {
+      width: 241px;
+    }
+    @media (max-width: 767px) {
+      width: 100%;
+      height: calc(100% - #{$toolbar-height});
+      max-height: none !important;
+      right: 0;
+      position: fixed;
+    }
+
+    .search--active ~ & {
+      display: block;
+    }
   }
 }
 
@@ -14,8 +55,24 @@
   font-weight: bold;
   font-size: $font-size--title;
 
+  @media (max-width: 767px) {
+    padding-right: $spacing-horizontal--small;
+    padding-left: $spacing-horizontal--small;
+  }
+
   &:not(:last-child) {
     border-bottom: 1px solid $color--mine-shaft;
+  }
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    right: $spacing-horizontal;
+    transform: translate3d(0, -50%, 0);
+
+    @media (max-width: 767px) {
+      right: $spacing-horizontal--small;
+    }
   }
 
   &.icon-cluster {
@@ -35,19 +92,33 @@
     color: $color--cerulean;
   }
 
-  &:before {
-    position: absolute;
-    top: 50%;
-    right: $spacing-horizontal;
-    transform: translate3d(0, -50%, 0);
+  &--dark {
+    border-bottom: 0 !important;
+    background-color: $color--cod-gray;
+
+    &:not(:first-child) {
+      margin-top: -1px;
+    }
   }
 }
 
 .results__content {
   margin-left: 0;
   padding: #{$spacing-vertical / 2} $spacing-horizontal 17px $spacing-horizontal;
+  color: $color--boulder;
 
-  &:not(:last-child) {
+  @media (max-width: 767px) {
+    padding-right: $spacing-horizontal--small;
+    padding-left: $spacing-horizontal--small;
+  }
+
+  &:only-child {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
+  }
+
+  .results:not(:last-child):not(.results--live) & {
     border-bottom: 1px solid $color--mine-shaft;
   }
 }
@@ -56,9 +127,17 @@
   margin: #{-$spacing-vertical / 2} #{-$spacing-horizontal} -17px #{-$spacing-horizontal};
   padding: #{$spacing-vertical / 2} $spacing-horizontal 17px $spacing-horizontal;
   display: block;
+  color: $color--white;
   transition: background $animation--duration $animation--timing;
 
   &:hover {
     background-color: $color--mine-shaft;
+  }
+
+  .results__content:last-child & {
+    .results:last-child & {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
   }
 }

@@ -1,4 +1,9 @@
 var userAgent = detect.parse(navigator.userAgent);
+var windowHeight = window.innerHeight;
+
+var getWindowHeight = function() {
+  windowHeight = window.innerHeight;
+};
 
 var detectBrowser = function() {
   var bodyElement = document.querySelector('body');
@@ -64,19 +69,19 @@ var dropdownMenuToggle = function() {
     });
   } else {
     dropdown.addEventListener('mouseenter', function(e) {
-      thisDropdown = this.parentNode;
+      thisDropdown = this;
       this.classList.add('dropdown--hover');
     });
 
     dropdown.addEventListener('mouseleave', function(e) {
-      thisDropdown = this.parentNode;
+      thisDropdown = this;
       setTimeout(function (){
         thisDropdown.classList.remove('dropdown--hover');
       }, 200);
     });
   }
 
-  if (userAgent.device.type == "Mobile" || userAgent) {
+  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
     window.addEventListener('touchend', function (e) {
       if (thisDropdown.contains(e.target) === false && isDropdownActive === true) {
         thisDropdown.classList.remove('dropdown--clicked');
@@ -113,7 +118,7 @@ var search = function() {
     }
   });
 
-  searchCancel.addEventListener('click', function() {
+  searchCancel.addEventListener('click', function(e) {
     searchField.parentNode.classList.remove('search--active');
     this.parentNode.querySelector('.js-search-field').value = "";
   });
@@ -253,14 +258,14 @@ var calendar = function() {
         }
       });
     } else {
-      element.addEventListener('mouseenter', function(e) {
-        this.parentNode.classList.add('calendar--hover');
+      element.parentNode.addEventListener('mouseenter', function(e) {
+        this.classList.add('calendar--hover');
       });
 
-      element.addEventListener('mouseleave', function(e) {
-        thisCalendar = this.parentNode;
+      element.parentNode.addEventListener('mouseleave', function(e) {
+        thisCalendar = this;
         setTimeout(function (){
-          thisCalendar.parentNode.classList.remove('calendar--hover');
+          thisCalendar.classList.remove('calendar--hover');
         }, 200);
       });
     }
@@ -272,6 +277,34 @@ var calendar = function() {
         thisCalendar.classList.remove('calendar--clicked');
         isCalendarActive = false;
       }
+    });
+  }
+}
+
+var results = function() {
+  var windowResizeTimer;
+  var results = document.querySelector('.js-results');
+  var toolbar = document.querySelector('.js-toolbar');
+
+  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
+    results.style.height = windowHeight - parseInt(getComputedStyle(toolbar).height) + 'px';
+
+    window.addEventListener("resize", function() {
+      clearTimeout(windowResizeTimer);
+      windowResizeTimer = setTimeout(function() {
+        getWindowHeight();
+        results.style.height = windowHeight - parseInt(getComputedStyle(toolbar).height) + 'px';
+      }, 100);
+    });
+  } else {
+    results.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+
+    window.addEventListener("resize", function() {
+      clearTimeout(windowResizeTimer);
+      windowResizeTimer = setTimeout(function() {
+        getWindowHeight();
+        results.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+      }, 100);
     });
   }
 }
@@ -291,4 +324,5 @@ window.addEventListener('load', function () {
   calendar();
   tabs();
   form();
+  results();
 });
