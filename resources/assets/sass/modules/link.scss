@@ -1,4 +1,5 @@
 .link {
+  cursor: pointer;
   text-decoration: none;
 
   &:hover {
@@ -14,5 +15,15 @@
     &:hover {
       color: $color--white;
     }
+  }
+  &--small {
+    font-size: $font-size--small;
+  }
+  &--read {
+    color: $color--sushi;
+  }
+  &--special {
+    font-weight: bold;
+    text-decoration: underline;
   }
 }

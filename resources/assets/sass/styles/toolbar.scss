@@ -6,7 +6,7 @@
   z-index: $initial-order;
   display: flex;
   align-items: center;
-  height: $toolbar-height;
+  height: $toolbar--height;
   padding: 0 $spacing-horizontal;
   transform: translate3d(0, 0, 0);
   background-color: darken($color--mine-shaft, 7%);

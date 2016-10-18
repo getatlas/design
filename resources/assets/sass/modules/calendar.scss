@@ -3,13 +3,17 @@
 		position: absolute;
 		top: 27px;
 		right: 30px;
-		z-index: 9999;
 
 		@media (max-width: 767px) {
 			margin-top: 11px;
 			position: relative;
 			top: auto;
 			right: auto;
+		}
+
+		&.calendar--hover,
+		&.calendar--clicked {
+			z-index: $initial-order * 10;
 		}
 	}
 }

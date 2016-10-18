@@ -309,6 +309,54 @@ var results = function() {
   }
 }
 
+var notifications = function() {
+  var toolbar = document.querySelector('.js-toolbar');
+  var notifications = document.querySelector('.js-notifications');
+  var notificationsList = document.querySelector('.js-notifications-list');
+  var notificationsReadAllButton = document.querySelector('.js-notifications-read-all');
+  var notificationsMoreButton = document.querySelector('.js-notifications-more');
+  var notificationsReadButton = document.querySelectorAll('.js-notification-read');
+  var notificationsItem = document.querySelectorAll('.js-notification');
+  var wrapper = document.querySelector('.js-wrapper');
+  var isFullNotification = false;
+  var windowResizeTimer;
+
+  notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+  notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+
+  window.addEventListener('resize', function() {
+    clearTimeout(windowResizeTimer);
+    windowResizeTimer = setTimeout(function() {
+      getWindowHeight();
+      notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+      notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+    }, 100);
+  });
+
+  for (var i = 0; i < notificationsReadButton.length; i++) {
+    var element = notificationsReadButton[i];
+
+    element.addEventListener('click', function(e) {
+      e.preventDefault();
+      this.parentNode.classList.add('notifications__item--readed');
+      this.classList.add('notifications__item__action--readed');
+      this.textContent = 'read';
+    });
+  }
+
+  notificationsMoreButton.addEventListener('click', function() {
+    if (isFullNotification === false) {
+      isFullNotification = true;
+      notifications.classList.add('notifications--full');
+      wrapper.classList.add('wrapper--fade');
+    } else {
+      isFullNotification = false;
+      notifications.classList.remove('notifications--full');
+      wrapper.classList.remove('wrapper--fade');
+    }
+  });
+}
+
 //Run fastclick
 // if ('addEventListener' in document) {
 //     document.addEventListener('DOMContentLoaded', function() {
@@ -325,4 +373,5 @@ window.addEventListener('load', function () {
   tabs();
   form();
   results();
+  notifications();
 });

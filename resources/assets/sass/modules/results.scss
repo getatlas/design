@@ -21,7 +21,7 @@
   &--live {
     width: 300px;
     position: absolute;
-    top: $toolbar-height;
+    top: $toolbar--height;
     right: 149px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -37,7 +37,7 @@
     }
     @media (max-width: 767px) {
       width: 100%;
-      height: calc(100% - #{$toolbar-height});
+      height: calc(100% - #{$toolbar--height});
       max-height: none !important;
       right: 0;
       position: fixed;

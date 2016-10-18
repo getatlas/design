@@ -1,0 +1,173 @@
+.notifications {
+  width: $notifications--width;
+  padding: 14px $spacing--small $spacing--small $spacing--small;
+  position: absolute;
+  top: $toolbar--height + 10px;
+  right: 83px;
+  border-radius: 5px;
+  background-color: darken($color--mine-shaft, 7%);
+  box-shadow: 0 28px 70px 4px rgba($color--black, 0.19);
+
+  &:before {
+		content: '';
+		width: 0;
+		height: 0;
+		border-width: 0 5px 5px 5px;
+		border-style: solid;
+		border-color: transparent transparent darken($color--mine-shaft, 7.2%) transparent;
+		position: absolute;
+		top: -5px;
+		right: 22px;
+	}
+}
+
+.notifications__read {
+  margin-left: 23px;
+}
+
+.notifications__list {
+  width: calc(100% + #{$spacing--small});
+  max-height: calc(100% - 10px);
+  margin: 0;
+  padding: 0 $spacing--small 0 23px;
+  list-style: none;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &:before {
+    content: '';
+    width: 2px;
+    position: absolute;
+    top: -49px;
+    bottom: 7px;
+    left: 6px;
+    background-color: $color--mine-shaft;
+  }
+}
+
+.notifications__item {
+  margin-top: 18px;
+  padding-top: $spacing-vertical--small;
+  padding-bottom: 14px;
+  position: relative;
+  border-bottom: 1px solid $color--mine-shaft;
+  transition: max-height $animation--duration-slow $animation--timing,
+              margin $animation--duration-slow $animation--timing,
+              padding $animation--duration-slow $animation--timing,
+              transform $animation--duration-slow $animation--timing;
+
+  &:first-child {
+    margin-top: 15px;
+  }
+  &:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  &:before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    top: 2px;
+    left: -22px;
+    border-radius: 50%;
+    border: 2px solid darken($color--mine-shaft, 7%);
+    box-shadow: 0 0 0 2px $color--mine-shaft;
+    background-color: $color--boulder;
+  }
+
+  &--new {
+    &:before {
+      background-color: $color--sunset-orange;
+    }
+  }
+  // &--readed {
+  //   max-height: 0 !important;
+  //   margin: 0;
+  //   padding: 0;
+  //   transform: translate3d(200%, 0, 0);
+  // }
+}
+
+.notifications__label {
+  padding: 2px 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 14px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: $color--white;
+  line-height: 1;
+
+  &--servers {
+    background-color: $color--blue-marguerite;
+  }
+  &--users {
+    background-color: $color--sushi;
+  }
+  &--websites {
+    background-color: $color--blaze-orange;
+  }
+  &--messages {
+    background-color: $color--cerulean;
+  }
+}
+
+.notifications__item__action,
+.notifications__date {
+  color: $color--boulder;
+}
+
+.notifications__date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 13px;
+
+  &--new {
+    color: $color--sunset-orange;
+  }
+
+  &:before {
+    margin-right: 5px;
+  }
+}
+
+.notifications__heading {
+  font-size: $font-size--paragraph-small;
+  color: $color--white;
+  font-weight: normal;
+}
+
+.notifications__item__action {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+
+  &:after {
+    @include only-icon-font;
+    margin-left: 6px;
+    content: '\e912';
+    color: $color--sushi;
+    position: absolute;
+    top: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $animation--duration $animation--timing;
+  }
+
+  &--readed {
+    pointer-events: none;
+
+    &:after {
+      opacity: 1;
+    }
+  }
+}
+
+.notifications__more {
+  margin-top: 15px;
+}

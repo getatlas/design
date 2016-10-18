@@ -35,6 +35,7 @@ $font-size--heading: 26px;
 $font-size--title: 16px;
 $font-size--paragraph: 16px;
 $font-size--paragraph-small: 14px;
+$font-size--small: 12px;
 
 //Animations
 $animation--duration: 0.1s;
@@ -52,4 +53,7 @@ $dropdown-menu--width: 240px;
 $calendar--width: 240px;
 
 //Toolbar
-$toolbar-height: 70px;
+$toolbar--height: 70px;
+
+//Notifications
+$notifications--width: 250px;
