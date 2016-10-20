@@ -7,6 +7,8 @@
   border-radius: 5px;
   background-color: darken($color--mine-shaft, 7%);
   box-shadow: 0 28px 70px 4px rgba($color--black, 0.19);
+  transition: width #{$animation--duration-slow * 2} $animation--timing,
+              transform #{$animation--duration-slow * 2} $animation--timing;
 
   &:before {
 		content: '';
@@ -19,6 +21,11 @@
 		top: -5px;
 		right: 22px;
 	}
+
+  &--full {
+    width: 720px;
+    transform: translate3d(53px, 20px, 0);
+  }
 }
 
 .notifications__read {

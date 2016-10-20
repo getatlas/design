@@ -9,6 +9,19 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: $initial-order * 10;
+    background-color: rgba(darken($color--cod-gray, 4%), 0.85);
+    transition: opacity #{$animation--duration-slow * 2} $animation--timing;
+  }
+
   .sidebar--collapsed ~ & {
     left: $sidebar--width-colapsed;
   }
@@ -19,14 +32,7 @@
 
   &--fade {
     &:after {
-      content: '';
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: $initial-order * 10;
-      background-color: rgba(darken($color--cod-gray, 4%), 0.85);
+      opacity: 1;
     }
   }
 }

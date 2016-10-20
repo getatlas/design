@@ -317,6 +317,7 @@ var notifications = function() {
   var notificationsMoreButton = document.querySelector('.js-notifications-more');
   var notificationsReadButton = document.querySelectorAll('.js-notification-read');
   var notificationsItem = document.querySelectorAll('.js-notification');
+  var notificationHeadings = document.querySelectorAll('.js-notification-heading');
   var wrapper = document.querySelector('.js-wrapper');
   var isFullNotification = false;
   var windowResizeTimer;
@@ -331,6 +332,10 @@ var notifications = function() {
       notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
       notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
     }, 100);
+  });
+
+  Array.prototype.forEach.call(notificationHeadings, function(element, i) {
+    element.style.height = element.offsetHeight + 'px';
   });
 
   for (var i = 0; i < notificationsReadButton.length; i++) {
@@ -348,10 +353,20 @@ var notifications = function() {
     if (isFullNotification === false) {
       isFullNotification = true;
       notifications.classList.add('notifications--full');
+      notificationsList.classList.add('notifications__list--full');
+      notificationsReadAllButton.classList.remove('link', 'link--read', 'link--small');
+      notificationsReadAllButton.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
+      notificationsMoreButton.classList.remove('btn--full');
+      notificationsMoreButton.classList.add('btn--color-green', 'btn--notification');
       wrapper.classList.add('wrapper--fade');
     } else {
       isFullNotification = false;
       notifications.classList.remove('notifications--full');
+      notificationsList.classList.remove('notifications__list--full');
+      notificationsReadAllButton.classList.add('link', 'link--read', 'link--small');
+      notificationsReadAllButton.classList.remove('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
+      notificationsMoreButton.classList.add('btn--full');
+      notificationsMoreButton.classList.remove('btn--color-green', 'btn--notification');
       wrapper.classList.remove('wrapper--fade');
     }
   });
