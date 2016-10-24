@@ -68,16 +68,16 @@ var dropdownMenuToggle = function() {
       }
     });
   } else {
-    dropdown.addEventListener('mouseenter', function(e) {
-      thisDropdown = this;
-      this.classList.add('dropdown--hover');
-    });
+    dropdownButton.addEventListener('click', function(e) {
+      thisDropdown = this.parentNode;
 
-    dropdown.addEventListener('mouseleave', function(e) {
-      thisDropdown = this;
-      setTimeout(function (){
-        thisDropdown.classList.remove('dropdown--hover');
-      }, 200);
+      if (!this.parentNode.classList.contains('dropdown--clicked')) {
+        this.parentNode.classList.add('dropdown--clicked');
+        isDropdownActive = true;
+      } else {
+        this.parentNode.classList.remove('dropdown--clicked');
+        isDropdownActive = false;
+      }
     });
   }
 
@@ -312,6 +312,7 @@ var results = function() {
 var notifications = function() {
   var toolbar = document.querySelector('.js-toolbar');
   var notifications = document.querySelector('.js-notifications');
+  var notificationsButton = document.querySelector('.js-notifications-button');
   var notificationsList = document.querySelector('.js-notifications-list');
   var notificationsReadAllButton = document.querySelector('.js-notifications-read-all');
   var notificationsMoreButton = document.querySelector('.js-notifications-more');
@@ -322,6 +323,38 @@ var notifications = function() {
   var isFullNotification = false;
   var windowResizeTimer;
 
+  window.addEventListener('click', function (e) {
+    if (notifications.contains(e.target) === false && notificationsButton.contains(e.target) === false && notifications.parentNode.classList.contains('notifications-nav--clicked')) {
+      notifications.parentNode.classList.remove('notifications-nav--clicked');
+      if (wrapper.classList.contains('wrapper--fade')) {
+        wrapper.classList.remove('wrapper--fade');
+      }
+      if (notifications.classList.contains('notifications--full')) {
+        setTimeout(function (){
+          notifications.classList.remove('notifications--full');
+        }, 300);
+      }
+    }
+  });
+
+  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
+    notificationsButton.addEventListener('touchend', function(e) {
+      if (!this.parentNode.classList.contains('notifications-nav--clicked')) {
+        this.parentNode.classList.add('notifications-nav--clicked');
+      } else {
+        this.parentNode.classList.remove('notifications-nav--clicked');
+      }
+    });
+  } else {
+    notificationsButton.addEventListener('click', function(e) {
+      if (!this.parentNode.classList.contains('notifications-nav--clicked')) {
+        this.parentNode.classList.add('notifications-nav--clicked');
+      } else {
+        this.parentNode.classList.remove('notifications-nav--clicked');
+      }
+    });
+  }
+
   notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
   notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
 
@@ -329,7 +362,13 @@ var notifications = function() {
     clearTimeout(windowResizeTimer);
     windowResizeTimer = setTimeout(function() {
       getWindowHeight();
-      notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+
+      if (isFullNotification === false) {
+        notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+      } else {
+        notifications.style.maxHeight = windowHeight - parseInt(getComputedStyle(toolbar).height) - 60 + 'px';
+      }
+
       notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
     }, 100);
   });
@@ -352,22 +391,44 @@ var notifications = function() {
   notificationsMoreButton.addEventListener('click', function() {
     if (isFullNotification === false) {
       isFullNotification = true;
-      notifications.classList.add('notifications--full');
-      notificationsList.classList.add('notifications__list--full');
-      notificationsReadAllButton.classList.remove('link', 'link--read', 'link--small');
-      notificationsReadAllButton.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
-      notificationsMoreButton.classList.remove('btn--full');
-      notificationsMoreButton.classList.add('btn--color-green', 'btn--notification');
-      wrapper.classList.add('wrapper--fade');
+
+      notifications.classList.add('notifications--animation');
+
+      setTimeout(function (){
+        notifications.classList.add('notifications--full');
+        notificationsReadAllButton.classList.remove('link', 'link--read', 'link--small');
+        notificationsReadAllButton.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
+        notificationsMoreButton.classList.remove('btn--full');
+        notificationsMoreButton.classList.add('btn--color-green', 'btn--notification');
+        notificationsMoreButton.textContent = 'mark all as read';
+        wrapper.classList.add('wrapper--fade');
+        getWindowHeight();
+        notifications.style.maxHeight = windowHeight - parseInt(getComputedStyle(toolbar).height) - 60 + 'px';
+        notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+      }, 300);
+      setTimeout(function (){
+        notifications.classList.remove('notifications--animation');
+      }, 900);
     } else {
       isFullNotification = false;
-      notifications.classList.remove('notifications--full');
-      notificationsList.classList.remove('notifications__list--full');
-      notificationsReadAllButton.classList.add('link', 'link--read', 'link--small');
-      notificationsReadAllButton.classList.remove('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
-      notificationsMoreButton.classList.add('btn--full');
-      notificationsMoreButton.classList.remove('btn--color-green', 'btn--notification');
-      wrapper.classList.remove('wrapper--fade');
+
+      notifications.classList.add('notifications--animation');
+
+      setTimeout(function (){
+        notifications.classList.remove('notifications--full');
+        notificationsReadAllButton.classList.add('link', 'link--read', 'link--small');
+        notificationsReadAllButton.classList.remove('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
+        notificationsMoreButton.classList.add('btn--full');
+        notificationsMoreButton.classList.remove('btn--color-green', 'btn--notification');
+        notificationsMoreButton.textContent = 'See all notifications';
+        wrapper.classList.remove('wrapper--fade');
+        getWindowHeight();
+        notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+        notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+      }, 300);
+      setTimeout(function (){
+        notifications.classList.remove('notifications--animation');
+      }, 900);
     }
   });
 }

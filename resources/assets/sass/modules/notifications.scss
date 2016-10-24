@@ -1,14 +1,22 @@
 .notifications {
   width: $notifications--width;
-  padding: 14px $spacing--small $spacing--small $spacing--small;
+  padding: 33px $spacing--small $spacing--small $spacing--small;
   position: absolute;
   top: $toolbar--height + 10px;
   right: 83px;
   border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, -5%, 0);
   background-color: darken($color--mine-shaft, 7%);
   box-shadow: 0 28px 70px 4px rgba($color--black, 0.19);
-  transition: width #{$animation--duration-slow * 2} $animation--timing,
-              transform #{$animation--duration-slow * 2} $animation--timing;
+  transition: opacity $animation--duration $animation--timing,
+              visibility $animation--duration $animation--timing,
+              width #{$animation--duration-slow * 2} $animation--timing,
+              transform $animation--duration $animation--timing,
+              padding #{$animation--duration-slow * 2} $animation--timing,
+              max-height #{$animation--duration-slow * 2} $animation--timing,
+              margin #{$animation--duration-slow * 2} $animation--timing;
 
   &:before {
 		content: '';
@@ -20,16 +28,66 @@
 		position: absolute;
 		top: -5px;
 		right: 22px;
+    transition: opacity $animation--duration-slow $animation--timing;
 	}
+  &:after {
+    content: '';
+    width: 2px;
+    position: absolute;
+    top: 0;
+    bottom: 84px;
+    left: $spacing-horizontal--small + 6px;
+    background-color: $color--mine-shaft;
+    transition: top #{$animation--duration-slow * 2} $animation--timing,
+                bottom #{$animation--duration-slow * 2} $animation--timing,
+                left #{$animation--duration-slow * 2} $animation--timing,
+                opacity $animation--duration-slow $animation--timing;
+  }
 
   &--full {
     width: 720px;
-    transform: translate3d(53px, 20px, 0);
+    padding-top: 86px;
+    padding-left: $spacing-horizontal;
+    margin-top: 20px;
+    margin-right: -53px;
+
+    &:before {
+      opacity: 0;
+    }
+    &:after {
+      top: 101px;
+      left: $spacing-horizontal + 6px;
+    }
+  }
+  &--animation {
+    &:after {
+      opacity: 0;
+    }
+  }
+  .notifications-nav--clicked & {
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .notifications__read {
-  margin-left: 23px;
+  position: absolute;
+  top: 17px;
+  left: 43px;
+  transition: top $animation--duration-slow $animation--timing,
+              left $animation--duration-slow $animation--timing,
+              width $animation--duration-slow $animation--timing,
+              opacity $animation--duration-slow $animation--timing;
+
+  .notifications--full & {
+    width: 172px;
+    top: $spacing-vertical;
+    left: $spacing-horizontal;
+  }
+  .notifications--animation & {
+    opacity: 0;
+  }
 }
 
 .notifications__list {
@@ -39,17 +97,14 @@
   padding: 0 $spacing--small 0 23px;
   list-style: none;
   position: relative;
+  z-index: 2;
   overflow-y: auto;
   overflow-x: hidden;
+  transition: opacity $animation--duration-slow $animation--timing,
+              max-height $animation--duration-slow $animation--timing;
 
-  &:before {
-    content: '';
-    width: 2px;
-    position: absolute;
-    top: -49px;
-    bottom: 7px;
-    left: 6px;
-    background-color: $color--mine-shaft;
+  .notifications--animation & {
+    opacity: 0;
   }
 }
 
@@ -90,12 +145,6 @@
       background-color: $color--sunset-orange;
     }
   }
-  // &--readed {
-  //   max-height: 0 !important;
-  //   margin: 0;
-  //   padding: 0;
-  //   transform: translate3d(200%, 0, 0);
-  // }
 }
 
 .notifications__label {
@@ -177,4 +226,12 @@
 
 .notifications__more {
   margin-top: 15px;
+  transition: opacity #{$animation--duration-slow} $animation--timing;
+
+  .notifications--animation & {
+    opacity: 0;
+  }
+  .notifications--full & {
+    width: 172px;
+  }
 }
