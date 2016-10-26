@@ -319,9 +319,56 @@ var notifications = function() {
   var notificationsReadButton = document.querySelectorAll('.js-notification-read');
   var notificationsItem = document.querySelectorAll('.js-notification');
   var notificationHeadings = document.querySelectorAll('.js-notification-heading');
+  var notificationsPaddingSmall = 33;
+  var notificationsPaddingFull = 86;
   var wrapper = document.querySelector('.js-wrapper');
   var isFullNotification = false;
   var windowResizeTimer;
+
+  var markAsRead = function() {};
+
+  notifications.style.height = notificationsList.clientHeight + notificationsPaddingSmall + parseInt(getComputedStyle(notifications).paddingBottom) + notificationsMoreButton.clientHeight + parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+
+  var smallNotifications = function () {
+    notifications.classList.add('notifications--animation');
+
+    setTimeout(function (){
+      notifications.classList.remove('notifications--full');
+      notificationsReadAllButton.classList.add('link', 'link--read', 'link--small');
+      notificationsReadAllButton.classList.remove('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
+      notificationsMoreButton.classList.add('btn--full');
+      notificationsMoreButton.classList.remove('btn--color-green', 'btn--notification');
+      notificationsMoreButton.textContent = 'See all notifications';
+      wrapper.classList.remove('wrapper--fade');
+      getWindowHeight();
+      notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+      notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+    }, 300);
+    setTimeout(function (){
+      notifications.classList.remove('notifications--animation');
+    }, 900);
+  };
+
+  var fullNotifications = function() {
+    notifications.classList.add('notifications--animation');
+
+    setTimeout(function (){
+      notifications.classList.add('notifications--full');
+      notificationsReadAllButton.classList.remove('link', 'link--read', 'link--small');
+      notificationsReadAllButton.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
+      notificationsMoreButton.classList.remove('btn--full');
+      notificationsMoreButton.classList.add('btn--color-green', 'btn--notification');
+      notificationsMoreButton.textContent = 'mark all as read';
+      wrapper.classList.add('wrapper--fade');
+      getWindowHeight();
+      notifications.style.maxHeight = windowHeight - parseInt(getComputedStyle(toolbar).height) - 60 + 'px';
+      notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+      notifications.style.height = notificationsList.clientHeight + notificationsPaddingFull + parseInt(getComputedStyle(notifications).paddingBottom) + notificationsMoreButton.clientHeight + parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+    }, 300);
+    setTimeout(function (){
+      notifications.classList.remove('notifications--animation');
+    }, 1200);
+  };
 
   window.addEventListener('click', function (e) {
     if (notifications.contains(e.target) === false && notificationsButton.contains(e.target) === false && notifications.parentNode.classList.contains('notifications-nav--clicked')) {
@@ -330,9 +377,12 @@ var notifications = function() {
         wrapper.classList.remove('wrapper--fade');
       }
       if (notifications.classList.contains('notifications--full')) {
-        setTimeout(function (){
-          notifications.classList.remove('notifications--full');
-        }, 300);
+        isFullNotification = false;
+
+        if (notifications.classList.contains('notifications--full')) {
+          notifications.parentNode.classList.remove('notifications--full')
+          smallNotifications();
+        }
       }
     }
   });
@@ -341,16 +391,34 @@ var notifications = function() {
     notificationsButton.addEventListener('touchend', function(e) {
       if (!this.parentNode.classList.contains('notifications-nav--clicked')) {
         this.parentNode.classList.add('notifications-nav--clicked');
+        toolbar.classList.add('toolbar--active');
       } else {
         this.parentNode.classList.remove('notifications-nav--clicked');
+        toolbar.classList.remove('toolbar--active');
+
+        isFullNotification = false;
+
+        if (notifications.classList.contains('notifications--full')) {
+          notifications.parentNode.classList.remove('notifications--full')
+          smallNotifications();
+        }
       }
     });
   } else {
     notificationsButton.addEventListener('click', function(e) {
       if (!this.parentNode.classList.contains('notifications-nav--clicked')) {
         this.parentNode.classList.add('notifications-nav--clicked');
+        toolbar.classList.add('toolbar--active');
       } else {
+        isFullNotification = false;
+
         this.parentNode.classList.remove('notifications-nav--clicked');
+        toolbar.classList.remove('toolbar--active');
+
+        if (notifications.classList.contains('notifications--full')) {
+          notifications.parentNode.classList.remove('notifications--full')
+          smallNotifications();
+        }
       }
     });
   }
@@ -373,10 +441,6 @@ var notifications = function() {
     }, 100);
   });
 
-  Array.prototype.forEach.call(notificationHeadings, function(element, i) {
-    element.style.height = element.offsetHeight + 'px';
-  });
-
   for (var i = 0; i < notificationsReadButton.length; i++) {
     var element = notificationsReadButton[i];
 
@@ -392,43 +456,11 @@ var notifications = function() {
     if (isFullNotification === false) {
       isFullNotification = true;
 
-      notifications.classList.add('notifications--animation');
-
-      setTimeout(function (){
-        notifications.classList.add('notifications--full');
-        notificationsReadAllButton.classList.remove('link', 'link--read', 'link--small');
-        notificationsReadAllButton.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
-        notificationsMoreButton.classList.remove('btn--full');
-        notificationsMoreButton.classList.add('btn--color-green', 'btn--notification');
-        notificationsMoreButton.textContent = 'mark all as read';
-        wrapper.classList.add('wrapper--fade');
-        getWindowHeight();
-        notifications.style.maxHeight = windowHeight - parseInt(getComputedStyle(toolbar).height) - 60 + 'px';
-        notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-      }, 300);
-      setTimeout(function (){
-        notifications.classList.remove('notifications--animation');
-      }, 900);
+      fullNotifications();
     } else {
       isFullNotification = false;
 
-      notifications.classList.add('notifications--animation');
-
-      setTimeout(function (){
-        notifications.classList.remove('notifications--full');
-        notificationsReadAllButton.classList.add('link', 'link--read', 'link--small');
-        notificationsReadAllButton.classList.remove('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
-        notificationsMoreButton.classList.add('btn--full');
-        notificationsMoreButton.classList.remove('btn--color-green', 'btn--notification');
-        notificationsMoreButton.textContent = 'See all notifications';
-        wrapper.classList.remove('wrapper--fade');
-        getWindowHeight();
-        notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
-        notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-      }, 300);
-      setTimeout(function (){
-        notifications.classList.remove('notifications--animation');
-      }, 900);
+      markAsRead();
     }
   });
 }

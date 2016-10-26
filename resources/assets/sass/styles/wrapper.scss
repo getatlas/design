@@ -18,12 +18,19 @@
     left: 0;
     opacity: 0;
     z-index: $initial-order * 10;
+    pointer-events: none;
+    visibility: hidden;
     background-color: rgba(darken($color--cod-gray, 4%), 0.85);
-    transition: opacity #{$animation--duration-slow * 2} $animation--timing;
+    transition: opacity #{$animation--duration-slow * 2} $animation--timing,
+                visibility #{$animation--duration-slow * 2} $animation--timing;
   }
 
   .sidebar--collapsed ~ & {
     left: $sidebar--width-colapsed;
+
+    @media (max-width: 1024px) {
+      left: 0;
+    }
   }
 
   @media (max-width: 1024px) {
@@ -33,6 +40,8 @@
   &--fade {
     &:after {
       opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
   }
 }
