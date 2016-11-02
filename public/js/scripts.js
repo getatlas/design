@@ -1,4 +1,11 @@
+if (detect.parse(navigator.userAgent).device.type == "Mobile" || detect.parse(navigator.userAgent).device.type == "Tablet") {
+  var DEVICE = 'touchend';
+} else {
+  var DEVICE = 'click';
+}
+
 var userAgent = detect.parse(navigator.userAgent);
+
 var windowHeight = window.innerHeight;
 
 var getWindowHeight = function() {
@@ -311,158 +318,190 @@ var results = function() {
 
 var notifications = function() {
   var toolbar = document.querySelector('.js-toolbar');
-  var notifications = document.querySelector('.js-notifications');
-  var notificationsButton = document.querySelector('.js-notifications-button');
-  var notificationsList = document.querySelector('.js-notifications-list');
-  var notificationsReadAllButton = document.querySelector('.js-notifications-read-all');
-  var notificationsMoreButton = document.querySelector('.js-notifications-more');
-  var notificationsReadButton = document.querySelectorAll('.js-notification-read');
-  var notificationsItem = document.querySelectorAll('.js-notification');
-  var notificationHeadings = document.querySelectorAll('.js-notification-heading');
-  var notificationsPaddingSmall = 33;
-  var notificationsPaddingFull = 86;
-  var wrapper = document.querySelector('.js-wrapper');
+  // var notifications = document.querySelector('.js-notifications');
+  // var notificationsButton = document.querySelector('.js-notifications-button');
+  // var notificationsList = document.querySelector('.js-notifications-list');
+  // var notificationsReadAllButton = document.querySelector('.js-notifications-read-all');
+  // var notificationsMoreButton = document.querySelector('.js-notifications-more');
+  // var notificationsReadButton = document.querySelectorAll('.js-notification-read'); SPRAWDZIĆ
+  // var notificationsItem = document.querySelectorAll('.js-notification');
+  // var notificationHeadings = document.querySelectorAll('.js-notification-heading');
+  // var notificationsPaddingSmall = 33;
+  // var notificationsPaddingFull = 86;
+  var WRAPPER = document.querySelector('.js-wrapper');
   var isFullNotification = false;
   var windowResizeTimer;
 
-  var markAsRead = function() {};
-
-  notifications.style.height = notificationsList.clientHeight + notificationsPaddingSmall + parseInt(getComputedStyle(notifications).paddingBottom) + notificationsMoreButton.clientHeight + parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-
-  var smallNotifications = function () {
-    notifications.classList.add('notifications--animation');
-
-    setTimeout(function (){
-      notifications.classList.remove('notifications--full');
-      notificationsReadAllButton.classList.add('link', 'link--read', 'link--small');
-      notificationsReadAllButton.classList.remove('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
-      notificationsMoreButton.classList.add('btn--full');
-      notificationsMoreButton.classList.remove('btn--color-green', 'btn--notification');
-      notificationsMoreButton.textContent = 'See all notifications';
-      wrapper.classList.remove('wrapper--fade');
-      getWindowHeight();
-      notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
-      notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-    }, 300);
-    setTimeout(function (){
-      notifications.classList.remove('notifications--animation');
-    }, 900);
+  var NOT = {
+    CONT: document.querySelector('.js-notifications'),
+    OPEN_BTN: document.querySelector('.js-notifications-button'),
+    READ_BTN: document.querySelector('.js-notifications-read-all'),
+    ALL_BTN: document.querySelector('.js-notifications-more'),
+    LIST: document.querySelector('.js-notifications-list'),
+    ITEM: document.querySelectorAll('.js-notification'),
+    HEADINGS: document.querySelectorAll('.js-notification-heading'),
+    PADDING: {
+      DEFAULT: 33,
+      FULL: 86,
+    },
+    DELAY: 300,
   };
 
-  var fullNotifications = function() {
-    notifications.classList.add('notifications--animation');
+  // TODO:
+  // Rewrite setting height for elements
+  // Rewrite clicking DONE
+  // Write Mark as read function
 
-    setTimeout(function (){
-      notifications.classList.add('notifications--full');
-      notificationsReadAllButton.classList.remove('link', 'link--read', 'link--small');
-      notificationsReadAllButton.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
-      notificationsMoreButton.classList.remove('btn--full');
-      notificationsMoreButton.classList.add('btn--color-green', 'btn--notification');
-      notificationsMoreButton.textContent = 'mark all as read';
-      wrapper.classList.add('wrapper--fade');
-      getWindowHeight();
-      notifications.style.maxHeight = windowHeight - parseInt(getComputedStyle(toolbar).height) - 60 + 'px';
-      notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-      notifications.style.height = notificationsList.clientHeight + notificationsPaddingFull + parseInt(getComputedStyle(notifications).paddingBottom) + notificationsMoreButton.clientHeight + parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-    }, 300);
-    setTimeout(function (){
-      notifications.classList.remove('notifications--animation');
-    }, 1200);
-  };
-
-  window.addEventListener('click', function (e) {
-    if (notifications.contains(e.target) === false && notificationsButton.contains(e.target) === false && notifications.parentNode.classList.contains('notifications-nav--clicked')) {
-      notifications.parentNode.classList.remove('notifications-nav--clicked');
-      if (wrapper.classList.contains('wrapper--fade')) {
-        wrapper.classList.remove('wrapper--fade');
-      }
-      if (notifications.classList.contains('notifications--full')) {
-        isFullNotification = false;
-
-        if (notifications.classList.contains('notifications--full')) {
-          notifications.parentNode.classList.remove('notifications--full')
-          smallNotifications();
-        }
-      }
-    }
-  });
-
-  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
-    notificationsButton.addEventListener('touchend', function(e) {
-      if (!this.parentNode.classList.contains('notifications-nav--clicked')) {
-        this.parentNode.classList.add('notifications-nav--clicked');
-        toolbar.classList.add('toolbar--active');
-      } else {
-        this.parentNode.classList.remove('notifications-nav--clicked');
-        toolbar.classList.remove('toolbar--active');
-
-        isFullNotification = false;
-
-        if (notifications.classList.contains('notifications--full')) {
-          notifications.parentNode.classList.remove('notifications--full')
-          smallNotifications();
-        }
-      }
-    });
-  } else {
-    notificationsButton.addEventListener('click', function(e) {
-      if (!this.parentNode.classList.contains('notifications-nav--clicked')) {
-        this.parentNode.classList.add('notifications-nav--clicked');
-        toolbar.classList.add('toolbar--active');
-      } else {
-        isFullNotification = false;
-
-        this.parentNode.classList.remove('notifications-nav--clicked');
-        toolbar.classList.remove('toolbar--active');
-
-        if (notifications.classList.contains('notifications--full')) {
-          notifications.parentNode.classList.remove('notifications--full')
-          smallNotifications();
-        }
-      }
-    });
+  var setNotHeight = function(height) {
+    var height = NOT.LIST.clientHeight + NOT.PADDING.FULL + parseInt(getComputedStyle(NOT.CONT).paddingBottom) + NOT.ALL_BTN.clientHeight + parseInt(getComputedStyle(NOT.ALL_BTN).marginTop);
+    NOT.CONT.style.height = height + 'px';
   }
 
-  notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
-  notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+  var showAllNot = function() {
+    NOT.CONT.classList.add('notifications--animation');
 
-  window.addEventListener('resize', function() {
-    clearTimeout(windowResizeTimer);
-    windowResizeTimer = setTimeout(function() {
-      getWindowHeight();
+    setTimeout(function() {
+      WRAPPER.classList.add('wrapper--fade');
 
-      if (isFullNotification === false) {
-        notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
-      } else {
-        notifications.style.maxHeight = windowHeight - parseInt(getComputedStyle(toolbar).height) - 60 + 'px';
-      }
+      NOT.CONT.classList.add('notifications--full');
 
-      notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-    }, 100);
-  });
+      NOT.READ_BTN.classList.remove('link', 'link--read', 'link--small')
+      NOT.READ_BTN.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
 
-  for (var i = 0; i < notificationsReadButton.length; i++) {
-    var element = notificationsReadButton[i];
+      NOT.ALL_BTN.classList.remove('btn--full')
+      NOT.ALL_BTN.classList.add('btn--color-green', 'btn--notification');
+      NOT.ALL_BTN.textContent = 'mark all as read';
 
-    element.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.add('notifications__item--readed');
-      this.classList.add('notifications__item__action--readed');
-      this.textContent = 'read';
-    });
+      setNotHeight();
+    }, NOT.DELAY);
+    setTimeout(function() {
+      NOT.CONT.classList.remove('notifications--animation');
+    }, NOT.DELAY * 4);
   }
 
-  notificationsMoreButton.addEventListener('click', function() {
-    if (isFullNotification === false) {
-      isFullNotification = true;
-
-      fullNotifications();
+  NOT.OPEN_BTN.addEventListener(DEVICE, function(e) {
+    if (!this.parentNode.classList.contains('notifications-nav--clicked')) {
+      this.parentNode.classList.add('notifications-nav--clicked');
+      toolbar.classList.add('toolbar--active');
     } else {
-      isFullNotification = false;
+      this.parentNode.classList.remove('notifications-nav--clicked');
+      toolbar.classList.remove('toolbar--active');
 
-      markAsRead();
+      if (NOT.CONT.classList.contains('notifications--full')) {
+        NOT.CONT.parentNode.classList.remove('notifications--full');
+        // smallNotifications();
+      }
+
+      isFullNotification = false;
     }
   });
+
+  NOT.ALL_BTN.addEventListener(DEVICE, function() {
+    if (isFullNotification === false) {
+      console.log('Full');
+      showAllNot();
+    } else {
+      console.log('Close');
+      // markAsRead();
+    }
+
+    isFullNotification = !isFullNotification;
+  });
+
+  //
+  // notifications.style.height = notificationsList.clientHeight + notificationsPaddingSmall + parseInt(getComputedStyle(notifications).paddingBottom) + notificationsMoreButton.clientHeight + parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+  //
+  // var smallNotifications = function () {
+  //   notifications.classList.add('notifications--animation');
+  //
+  //   setTimeout(function (){
+  //     notifications.classList.remove('notifications--full');
+  //     notificationsReadAllButton.classList.add('link', 'link--read', 'link--small');
+  //     notificationsReadAllButton.classList.remove('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
+  //     notificationsMoreButton.classList.add('btn--full');
+  //     notificationsMoreButton.classList.remove('btn--color-green', 'btn--notification');
+  //     notificationsMoreButton.textContent = 'See all notifications';
+  //     wrapper.classList.remove('wrapper--fade');
+  //   }, 300);
+  //   setTimeout(function (){
+  //     getWindowHeight();
+  //     notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+  //     notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+  //     notifications.style.height = notificationsList.clientHeight + notificationsPaddingSmall + parseInt(getComputedStyle(notifications).paddingBottom) + notificationsMoreButton.clientHeight + parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+  //   }, 1200);
+  //   setTimeout(function (){
+  //     notifications.classList.remove('notifications--animation');
+  //   }, 900);
+  // };
+  //
+  // var fullNotifications = function() {
+  //   notifications.classList.add('notifications--animation');
+  //
+  //   setTimeout(function (){
+  //     notifications.classList.add('notifications--full');
+      // notificationsReadAllButton.classList.remove('link', 'link--read', 'link--small');
+      // notificationsReadAllButton.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
+      // notificationsMoreButton.classList.remove('btn--full');
+      // notificationsMoreButton.classList.add('btn--color-green', 'btn--notification');
+      // notificationsMoreButton.textContent = 'mark all as read';
+      // wrapper.classList.add('wrapper--fade');
+  //     getWindowHeight();
+  //     notifications.style.maxHeight = windowHeight - parseInt(getComputedStyle(toolbar).height) - 60 + 'px';
+  //     notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - notificationsPaddingFull - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+  //     notifications.style.height = notificationsList.clientHeight + notificationsPaddingFull + parseInt(getComputedStyle(notifications).paddingBottom) + notificationsMoreButton.clientHeight + parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+  //   }, 300);
+  //   setTimeout(function (){
+  //     notifications.classList.remove('notifications--animation');
+  //   }, 1200);
+  // };
+  //
+  // window.addEventListener('click', function (e) {
+  //   if (notifications.contains(e.target) === false && notificationsButton.contains(e.target) === false && notifications.parentNode.classList.contains('notifications-nav--clicked')) {
+  //     notifications.parentNode.classList.remove('notifications-nav--clicked');
+  //     if (wrapper.classList.contains('wrapper--fade')) {
+  //       wrapper.classList.remove('wrapper--fade');
+  //     }
+  //     if (notifications.classList.contains('notifications--full')) {
+  //       isFullNotification = false;
+  //
+  //       if (notifications.classList.contains('notifications--full')) {
+  //         notifications.parentNode.classList.remove('notifications--full')
+  //         smallNotifications();
+  //       }
+  //     }
+  //   }
+  // });
+  //
+  //
+  // notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+  // notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+  //
+  // window.addEventListener('resize', function() {
+  //   clearTimeout(windowResizeTimer);
+  //   windowResizeTimer = setTimeout(function() {
+  //     getWindowHeight();
+  //
+  //     if (isFullNotification === false) {
+  //       notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+  //     } else {
+  //       notifications.style.maxHeight = windowHeight - parseInt(getComputedStyle(toolbar).height) - 60 + 'px';
+  //     }
+  //
+  //     notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
+  //   }, 100);
+  // });
+  //
+  // for (var i = 0; i < notificationsReadButton.length; i++) {
+  //   var element = notificationsReadButton[i];
+  //
+  //   element.addEventListener('click', function(e) {
+  //     e.preventDefault();
+  //     this.parentNode.classList.add('notifications__item--readed');
+  //     this.classList.add('notifications__item__action--readed');
+  //     this.textContent = 'read';
+  //   });
+  // }
+  //
 }
 
 //Run fastclick

@@ -1,5 +1,6 @@
 .notifications {
   width: $notifications--width;
+  max-height: calc(100vh - #{$toolbar--height} - #{$spacing-vertical} - 10px);
   padding: 33px $spacing--small $spacing--small $spacing--small;
   position: absolute;
   top: $toolbar--height + 10px;
@@ -15,6 +16,7 @@
               width #{$animation--duration-slow * 2} $animation--timing,
               transform $animation--duration $animation--timing,
               padding #{$animation--duration-slow * 2} $animation--timing,
+              height #{$animation--duration-slow * 2} $animation--timing,
               max-height #{$animation--duration-slow * 2} $animation--timing,
               margin #{$animation--duration-slow * 2} $animation--timing;
 
@@ -61,7 +63,7 @@
     position: absolute;
     top: 0;
     bottom: 84px;
-    left: $spacing-horizontal--small + 6px;
+    left: $spacing-horizontal--small + 7px;
     background-color: $color--mine-shaft;
     transition: top #{$animation--duration-slow * 2} $animation--timing,
                 bottom #{$animation--duration-slow * 2} $animation--timing,
@@ -71,6 +73,7 @@
 
   &--full {
     width: 720px;
+    max-height: calc(100vh - #{$toolbar--height} - #{$spacing-vertical * 2});
     padding-top: 86px;
     padding-left: $spacing-horizontal;
     margin-top: 20px;
@@ -93,7 +96,6 @@
     }
     &:after {
       top: 101px;
-      left: $spacing-horizontal + 6px;
     }
   }
   &--animation {
@@ -129,7 +131,7 @@
 
 .notifications__list {
   width: calc(100% + #{$spacing--small});
-  max-height: calc(100% - 10px);
+  max-height: calc(100vh - #{$toolbar--height} - #{$spacing-vertical} - 10px - 33px - #{$spacing--small} - 57px);
   margin: 0;
   padding: 0 $spacing--small 0 23px;
   list-style: none;
@@ -138,7 +140,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   transition: opacity $animation--duration-slow $animation--timing,
-              max-height $animation--duration-slow $animation--timing,
+              max-height $animation--duration-slow $animation--duration-slow $animation--timing,
               width 0s $animation--duration-slow $animation--timing;
 
   .notifications--animation & {
@@ -148,6 +150,7 @@
   .notifications--full &,
   .notifications--animation & {
     width: 690px;
+    max-height: calc(100vh - #{$toolbar--height} - #{$spacing-vertical * 2} - 10px - 86px - #{$spacing--small} - 57px);
   }
 }
 
@@ -176,7 +179,7 @@
     height: 7px;
     position: absolute;
     top: 2px;
-    left: -22px;
+    left: -21px;
     border-radius: 50%;
     border: 2px solid darken($color--mine-shaft, 7%);
     box-shadow: 0 0 0 2px $color--mine-shaft;
