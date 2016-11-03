@@ -43,8 +43,12 @@
 	position: absolute;
 	top: 8px;
 	right: 2px;
+	opacity: 0;
+	visibility: hidden;
 	background-color: $color--sunset-orange;
 	box-shadow: 0 0 10px 2px rgba($color--black, 0.8);
+	transition: opacity $animation--duration $animation--timing,
+							visibility $animation--duration $animation--timing;
 
 	&:before {
 		content: '';
@@ -57,5 +61,31 @@
 		z-index: -1;
 		background-color: rgba($color--sunset-orange, 0.6);
 		animation: notification-alert 3s 1s infinite alternate;
+	}
+
+	.notifications-nav__button--new & {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.notifications-nav__button__info {
+	min-width: 13px;
+	text-align: center;
+	padding: 0 2px 0px 2px;
+	position: absolute;
+	top: 1px;
+	right: 0;
+	opacity: 0;
+	visibility: hidden;
+	border-radius: 14px;
+	font-size: 10px;
+	background-color: $color--sunset-orange;
+	transition: opacity $animation--duration $animation--timing,
+							visibility $animation--duration $animation--timing;
+
+	.notifications-nav__button--new & {
+		opacity: 1;
+		visibility: visible;
 	}
 }

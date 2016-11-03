@@ -317,25 +317,17 @@ var results = function() {
 }
 
 var notifications = function() {
-  var toolbar = document.querySelector('.js-toolbar');
-  // var notifications = document.querySelector('.js-notifications');
-  // var notificationsButton = document.querySelector('.js-notifications-button');
-  // var notificationsList = document.querySelector('.js-notifications-list');
-  // var notificationsReadAllButton = document.querySelector('.js-notifications-read-all');
-  // var notificationsMoreButton = document.querySelector('.js-notifications-more');
-  // var notificationsReadButton = document.querySelectorAll('.js-notification-read'); SPRAWDZIĆ
-  // var notificationsItem = document.querySelectorAll('.js-notification');
-  // var notificationHeadings = document.querySelectorAll('.js-notification-heading');
-  // var notificationsPaddingSmall = 33;
-  // var notificationsPaddingFull = 86;
+  var TOOLBAR = document.querySelector('.js-toolbar');
   var WRAPPER = document.querySelector('.js-wrapper');
   var isFullNotification = false;
+  var isNotificationReaded = true;
   var windowResizeTimer;
 
   var NOT = {
     CONT: document.querySelector('.js-notifications'),
     OPEN_BTN: document.querySelector('.js-notifications-button'),
-    READ_BTN: document.querySelector('.js-notifications-read-all'),
+    READ_ALL_BTN: document.querySelector('.js-notifications-read-all'),
+    READ_BTNS: document.querySelectorAll('.js-notification-read'),
     ALL_BTN: document.querySelector('.js-notifications-more'),
     LIST: document.querySelector('.js-notifications-list'),
     ITEM: document.querySelectorAll('.js-notification'),
@@ -347,135 +339,124 @@ var notifications = function() {
     DELAY: 300,
   };
 
-  // TODO:
-  // Rewrite setting height for elements
-  // Rewrite clicking DONE
-  // Write Mark as read function
-
   var setNotHeight = function(height) {
-    var height = NOT.LIST.clientHeight + NOT.PADDING.FULL + parseInt(getComputedStyle(NOT.CONT).paddingBottom) + NOT.ALL_BTN.clientHeight + parseInt(getComputedStyle(NOT.ALL_BTN).marginTop);
+    if (height === 'small') {
+      var height = NOT.LIST.clientHeight + NOT.PADDING.DEFAULT + parseInt(getComputedStyle(NOT.CONT).paddingBottom) + NOT.ALL_BTN.clientHeight + parseInt(getComputedStyle(NOT.ALL_BTN).marginTop);
+    } else if (height === 'full') {
+      var height = NOT.LIST.clientHeight + NOT.PADDING.FULL + parseInt(getComputedStyle(NOT.CONT).paddingBottom) + NOT.ALL_BTN.clientHeight + parseInt(getComputedStyle(NOT.ALL_BTN).marginTop);
+    }
     NOT.CONT.style.height = height + 'px';
   }
 
   var showAllNot = function() {
     NOT.CONT.classList.add('notifications--animation');
+    WRAPPER.classList.add('wrapper--fade');
 
     setTimeout(function() {
-      WRAPPER.classList.add('wrapper--fade');
-
       NOT.CONT.classList.add('notifications--full');
 
-      NOT.READ_BTN.classList.remove('link', 'link--read', 'link--small')
-      NOT.READ_BTN.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
+      NOT.READ_ALL_BTN.classList.remove('link', 'link--read', 'link--small')
+      NOT.READ_ALL_BTN.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
 
       NOT.ALL_BTN.classList.remove('btn--full')
       NOT.ALL_BTN.classList.add('btn--color-green', 'btn--notification');
       NOT.ALL_BTN.textContent = 'mark all as read';
-
-      setNotHeight();
     }, NOT.DELAY);
+    setTimeout(function() {
+      setNotHeight('full');
+    }, NOT.DELAY + 100);
     setTimeout(function() {
       NOT.CONT.classList.remove('notifications--animation');
     }, NOT.DELAY * 4);
+
+    isFullNotification = !isFullNotification;
+  }
+
+  var hideNot = function() {
+    NOT.CONT.classList.add('notifications--hide');
+    WRAPPER.classList.remove('wrapper--fade');
+
+    setTimeout(function (){
+      NOT.CONT.classList.remove('notifications--full');
+
+      NOT.READ_ALL_BTN.classList.add('link', 'link--read', 'link--small');
+      NOT.READ_ALL_BTN.classList.remove('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
+
+      NOT.ALL_BTN.classList.add('btn--full');
+      NOT.ALL_BTN.classList.remove('btn--color-green', 'btn--notification');
+      NOT.ALL_BTN.textContent = 'See all notifications';
+
+      setNotHeight('small');
+    }, NOT.DELAY / 3);
+
+    setTimeout(function (){
+      NOT.CONT.classList.remove('notifications--hide');
+    }, NOT.DELAY);
+
+    isFullNotification = !isFullNotification;
+  }
+
+  var markAsRead = function() {
+    NOT.CONT.parentNode.classList.remove('notifications-nav--clicked');
+    NOT.OPEN_BTN.classList.remove('notifications-nav__button--new');
+    hideNot();
+    isNotificationReaded = !isNotificationReaded;
   }
 
   NOT.OPEN_BTN.addEventListener(DEVICE, function(e) {
+    if (isNotificationReaded === false) return;
+
     if (!this.parentNode.classList.contains('notifications-nav--clicked')) {
       this.parentNode.classList.add('notifications-nav--clicked');
-      toolbar.classList.add('toolbar--active');
+      TOOLBAR.classList.add('toolbar--active');
     } else {
       this.parentNode.classList.remove('notifications-nav--clicked');
-      toolbar.classList.remove('toolbar--active');
+      TOOLBAR.classList.remove('toolbar--active');
 
       if (NOT.CONT.classList.contains('notifications--full')) {
         NOT.CONT.parentNode.classList.remove('notifications--full');
-        // smallNotifications();
+        hideNot();
       }
-
-      isFullNotification = false;
     }
   });
 
   NOT.ALL_BTN.addEventListener(DEVICE, function() {
     if (isFullNotification === false) {
-      console.log('Full');
       showAllNot();
     } else {
-      console.log('Close');
-      // markAsRead();
+      markAsRead();
     }
-
-    isFullNotification = !isFullNotification;
   });
 
-  //
-  // notifications.style.height = notificationsList.clientHeight + notificationsPaddingSmall + parseInt(getComputedStyle(notifications).paddingBottom) + notificationsMoreButton.clientHeight + parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-  //
-  // var smallNotifications = function () {
-  //   notifications.classList.add('notifications--animation');
-  //
-  //   setTimeout(function (){
-  //     notifications.classList.remove('notifications--full');
-  //     notificationsReadAllButton.classList.add('link', 'link--read', 'link--small');
-  //     notificationsReadAllButton.classList.remove('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
-  //     notificationsMoreButton.classList.add('btn--full');
-  //     notificationsMoreButton.classList.remove('btn--color-green', 'btn--notification');
-  //     notificationsMoreButton.textContent = 'See all notifications';
-  //     wrapper.classList.remove('wrapper--fade');
-  //   }, 300);
-  //   setTimeout(function (){
-  //     getWindowHeight();
-  //     notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
-  //     notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-  //     notifications.style.height = notificationsList.clientHeight + notificationsPaddingSmall + parseInt(getComputedStyle(notifications).paddingBottom) + notificationsMoreButton.clientHeight + parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-  //   }, 1200);
-  //   setTimeout(function (){
-  //     notifications.classList.remove('notifications--animation');
-  //   }, 900);
-  // };
-  //
-  // var fullNotifications = function() {
-  //   notifications.classList.add('notifications--animation');
-  //
-  //   setTimeout(function (){
-  //     notifications.classList.add('notifications--full');
-      // notificationsReadAllButton.classList.remove('link', 'link--read', 'link--small');
-      // notificationsReadAllButton.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
-      // notificationsMoreButton.classList.remove('btn--full');
-      // notificationsMoreButton.classList.add('btn--color-green', 'btn--notification');
-      // notificationsMoreButton.textContent = 'mark all as read';
-      // wrapper.classList.add('wrapper--fade');
-  //     getWindowHeight();
-  //     notifications.style.maxHeight = windowHeight - parseInt(getComputedStyle(toolbar).height) - 60 + 'px';
-  //     notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - notificationsPaddingFull - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-  //     notifications.style.height = notificationsList.clientHeight + notificationsPaddingFull + parseInt(getComputedStyle(notifications).paddingBottom) + notificationsMoreButton.clientHeight + parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-  //   }, 300);
-  //   setTimeout(function (){
-  //     notifications.classList.remove('notifications--animation');
-  //   }, 1200);
-  // };
-  //
-  // window.addEventListener('click', function (e) {
-  //   if (notifications.contains(e.target) === false && notificationsButton.contains(e.target) === false && notifications.parentNode.classList.contains('notifications-nav--clicked')) {
-  //     notifications.parentNode.classList.remove('notifications-nav--clicked');
-  //     if (wrapper.classList.contains('wrapper--fade')) {
-  //       wrapper.classList.remove('wrapper--fade');
-  //     }
-  //     if (notifications.classList.contains('notifications--full')) {
-  //       isFullNotification = false;
-  //
-  //       if (notifications.classList.contains('notifications--full')) {
-  //         notifications.parentNode.classList.remove('notifications--full')
-  //         smallNotifications();
-  //       }
-  //     }
-  //   }
-  // });
-  //
-  //
-  // notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
-  // notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-  //
+  NOT.READ_ALL_BTN.addEventListener(DEVICE, function(e) {
+    e.preventDefault();
+    markAsRead();
+  });
+
+  window.addEventListener('click', function (e) {
+    if (!NOT.CONT.contains(e.target) && !NOT.OPEN_BTN.contains(e.target) && NOT.CONT.parentNode.classList.contains('notifications-nav--clicked')) {
+      NOT.CONT.parentNode.classList.remove('notifications-nav--clicked');
+
+      if (NOT.CONT.classList.contains('notifications--full')) {
+        hideNot();
+      }
+    }
+  });
+
+  for (var i = 0; i < NOT.READ_BTNS.length; i++) {
+    var element = NOT.READ_BTNS[i];
+
+    element.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      this.parentNode.classList.add('notifications__item--readed');
+      this.classList.add('notifications__item__action--readed');
+      this.textContent = 'read';
+    });
+  }
+
+  setNotHeight('small');
+
   // window.addEventListener('resize', function() {
   //   clearTimeout(windowResizeTimer);
   //   windowResizeTimer = setTimeout(function() {
@@ -491,16 +472,7 @@ var notifications = function() {
   //   }, 100);
   // });
   //
-  // for (var i = 0; i < notificationsReadButton.length; i++) {
-  //   var element = notificationsReadButton[i];
-  //
-  //   element.addEventListener('click', function(e) {
-  //     e.preventDefault();
-  //     this.parentNode.classList.add('notifications__item--readed');
-  //     this.classList.add('notifications__item__action--readed');
-  //     this.textContent = 'read';
-  //   });
-  // }
+
   //
 }
 

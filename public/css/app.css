@@ -5681,10 +5681,17 @@ h6 {
 
 .notifications--full:after {
   top: 101px;
+  left: 36px;
 }
 
 .notifications--animation:after {
   opacity: 0;
+}
+
+.notifications--hide {
+  transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out, -webkit-transform 0.1s ease-in-out;
+  transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out, transform 0.1s ease-in-out;
+  transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out, transform 0.1s ease-in-out, -webkit-transform 0.1s ease-in-out;
 }
 
 .notifications-nav--clicked .notifications {
@@ -5732,6 +5739,10 @@ h6 {
 .notifications--animation .notifications__list {
   width: 690px;
   max-height: calc(100vh - 70px - 60px - 10px - 86px - 20px - 57px);
+}
+
+.notifications--hide .notifications__list {
+  transition: none;
 }
 
 .notifications__item {
@@ -6231,8 +6242,11 @@ h6 {
   position: absolute;
   top: 8px;
   right: 2px;
+  opacity: 0;
+  visibility: hidden;
   background-color: #ff554c;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.8);
+  transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
 }
 
 .notifications-nav__button__alert:before {
@@ -6247,6 +6261,31 @@ h6 {
   background-color: rgba(255, 85, 76, 0.6);
   -webkit-animation: notification-alert 3s 1s infinite alternate;
           animation: notification-alert 3s 1s infinite alternate;
+}
+
+.notifications-nav__button--new .notifications-nav__button__alert {
+  opacity: 1;
+  visibility: visible;
+}
+
+.notifications-nav__button__info {
+  min-width: 13px;
+  text-align: center;
+  padding: 0 2px 0px 2px;
+  position: absolute;
+  top: 1px;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 14px;
+  font-size: 10px;
+  background-color: #ff554c;
+  transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
+}
+
+.notifications-nav__button--new .notifications-nav__button__info {
+  opacity: 1;
+  visibility: visible;
 }
 
 .search-nav {

@@ -96,6 +96,7 @@
     }
     &:after {
       top: 101px;
+      left: $spacing-horizontal + 6px;
     }
   }
   &--animation {
@@ -103,6 +104,12 @@
       opacity: 0;
     }
   }
+  &--hide {
+    transition: opacity $animation--duration $animation--timing,
+                visibility $animation--duration $animation--timing,
+                transform $animation--duration $animation--timing;
+  }
+
   .notifications-nav--clicked & {
     opacity: 1;
     visibility: visible;
@@ -151,6 +158,9 @@
   .notifications--animation & {
     width: 690px;
     max-height: calc(100vh - #{$toolbar--height} - #{$spacing-vertical * 2} - 10px - 86px - #{$spacing--small} - 57px);
+  }
+  .notifications--hide & {
+    transition: none;
   }
 }
 
