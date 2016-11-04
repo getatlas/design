@@ -22,8 +22,8 @@
 
   @media (max-width: 767px) {
     width: 100%;
-    height: 100vh;
-    max-height: 100vh !important;
+    height: calc(100vh - #{$toolbar--height}) !important;
+    max-height: calc(100vh - #{$toolbar--height});
     margin-top: 0;
     top: $toolbar--height;
     right: 0;
@@ -87,6 +87,7 @@
     }
     @media (max-width: 767px) {
       width: 100%;
+      max-height: calc(100vh - #{$toolbar--height});
       margin-top: 0;
       margin-right: 0;
     }
@@ -130,6 +131,11 @@
     width: 172px;
     top: $spacing-vertical;
     left: $spacing-horizontal;
+
+    @media (max-width: 767px) {
+      width: calc(100% - 40px);
+      text-align: center;
+    }
   }
   .notifications--animation & {
     opacity: 0;
@@ -150,6 +156,57 @@
               max-height $animation--duration-slow $animation--duration-slow $animation--timing,
               width 0s $animation--duration-slow $animation--timing;
 
+  @media (max-width: 767px) {
+    max-height: calc(100vh - #{$toolbar--height} - #{$spacing-vertical} - 10px - 33px - #{$spacing--small} - 21px);
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    opacity: 0;
+    width: 100%;
+    height: 15px;
+    position: fixed;
+    left: 0;
+    z-index: $initial-order;
+    pointer-events: none;
+    transform: translate3d(0, 0, 0);
+    transition: opacity $animation--duration-slow $animation--timing;
+  }
+
+  &--scrolled {
+    &:before {
+      opacity: 1;
+    }
+  }
+  &--with-scroll {
+    &:after {
+      opacity: 1;
+    }
+  }
+  &--scrolled-bottom {
+    &:after {
+      opacity: 0;
+    }
+  }
+
+  &:before {
+    top: 33px;
+    background: linear-gradient(to bottom, darken($color--mine-shaft, 7%) 0%, rgba(40, 40, 40, 0.01) 100%);
+
+    @media (max-width: 767px) {
+      top: 32px;
+    }
+  }
+  &:after {
+    bottom: 75px;
+    background: linear-gradient(to top, darken($color--mine-shaft, 7%) 0%, rgba(40, 40, 40, 0.01) 100%);
+
+    @media (max-width: 767px) {
+      bottom: 80px;
+    }
+  }
+
   .notifications--animation & {
     opacity: 0;
   }
@@ -158,6 +215,23 @@
   .notifications--animation & {
     width: 690px;
     max-height: calc(100vh - #{$toolbar--height} - #{$spacing-vertical * 2} - 10px - 86px - #{$spacing--small} - 57px);
+
+    @media (max-width: 1100px) and (min-width: 1025px) {
+      width: 634px;
+    }
+    @media (max-width: 780px) {
+      width: 679px;
+    }
+    @media (max-width: 767px) {
+      max-height: calc(100vh - #{$toolbar--height} - #{$spacing-vertical} - 10px - 33px - #{$spacing--small} - 79px);
+
+      &:before {
+        top: 85px;
+      }
+      &:after {
+        bottom: 84px;
+      }
+    }
   }
   .notifications--hide & {
     transition: none;
@@ -174,6 +248,10 @@
               margin $animation--duration-slow $animation--timing,
               padding $animation--duration-slow $animation--timing,
               transform $animation--duration-slow $animation--timing;
+
+  @media (max-width: 767px) {
+    margin-top: 20px;
+  }
 
   &:first-child {
     margin-top: 15px;
@@ -289,5 +367,10 @@
   }
   .notifications--full & {
     width: 172px;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      text-align: center;
+    }
   }
 }

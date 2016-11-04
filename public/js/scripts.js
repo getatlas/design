@@ -455,6 +455,22 @@ var notifications = function() {
     });
   }
 
+  NOT.LIST.addEventListener('scroll', function (e){
+    console.log(NOT.LIST.scrollTop + NOT.LIST.clientHeight, NOT.LIST.scrollHeight);
+    if (NOT.LIST.scrollTop > 0 && NOT.LIST.scrollTop + NOT.LIST.clientHeight !== NOT.LIST.scrollHeight) {
+      NOT.LIST.classList.add('notifications__list--scrolled');
+      NOT.LIST.classList.remove('notifications__list--scrolled-bottom');
+    } else if (NOT.LIST.scrollTop > 0 && NOT.LIST.scrollTop + NOT.LIST.clientHeight === NOT.LIST.scrollHeight) {
+      NOT.LIST.classList.add('notifications__list--scrolled-bottom');
+    } else {
+      NOT.LIST.classList.remove('notifications__list--scrolled');
+    }
+  });
+
+  if (NOT.LIST.scrollHeight > NOT.LIST.clientHeight) {
+    NOT.LIST.classList.add('notifications__list--with-scroll');
+  }
+
   setNotHeight('small');
 
   // window.addEventListener('resize', function() {
