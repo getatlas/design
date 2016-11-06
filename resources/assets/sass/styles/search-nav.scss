@@ -11,7 +11,8 @@
     right: 0;
     z-index: $initial-order;
     transform: translate3d(0, -105px, 0);
-    transition: transform $animation--duration-slow $animation--timing;
+    transition: transform $animation--duration-slow $animation--timing,
+                opacity $animation--duration-slow $animation--timing;
 
     &:before {
       content: '';

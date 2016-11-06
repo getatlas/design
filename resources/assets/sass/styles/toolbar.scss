@@ -1,3 +1,33 @@
+@keyframes hideIcons {
+  0% {
+    opacity: 1;
+    margin-top: 0;
+  }
+  50% {
+    opacity: 0;
+    margin-top: 0;
+  }
+  100% {
+    opacity: 0;
+    margin-top: -1000px;
+  }
+}
+
+@keyframes showIcons {
+  0% {
+    opacity: 0;
+    margin-top: -1000px;
+  }
+  50% {
+    opacity: 0;
+    margin-top: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
 .toolbar {
   width: 100%;
   position: fixed;
@@ -16,6 +46,34 @@
   @media (max-width: 767px) {
     padding-right: $spacing-horizontal--small;
     padding-left: $spacing-horizontal--small;
+
+    .toolbar__actions {
+      .profile-nav,
+      .search-nav,
+      .results {
+        animation: showIcons $animation--duration-slow forwards alternate $animation--timing;
+      }
+    }
+
+    .sidebar__btn,
+    .notifications-nav__button {
+      animation: showIcons $animation--duration-slow forwards alternate $animation--timing;
+    }
+
+    &--active {
+      .toolbar__actions {
+        .profile-nav,
+        .search-nav,
+        .results {
+          animation: hideIcons #{$animation--duration-slow * 2} forwards alternate $animation--timing;
+        }
+      }
+
+      .sidebar__btn,
+      .notifications-nav__button {
+        animation: hideIcons #{$animation--duration-slow * 2} forwards alternate $animation--timing;
+      }
+    }
   }
 
   .safari &,

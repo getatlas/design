@@ -1,6 +1,7 @@
 .profile-nav {
 	float: right;
 	position: relative;
+	transition: opacity $animation--duration-slow $animation--timing;
 }
 
 .profile-nav__avatar {

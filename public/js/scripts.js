@@ -374,6 +374,7 @@ var notifications = function() {
 
   var hideNot = function() {
     NOT.CONT.classList.add('notifications--hide');
+    TOOLBAR.classList.remove('toolbar--active');
     WRAPPER.classList.remove('wrapper--fade');
 
     setTimeout(function (){
@@ -436,6 +437,7 @@ var notifications = function() {
   window.addEventListener('click', function (e) {
     if (!NOT.CONT.contains(e.target) && !NOT.OPEN_BTN.contains(e.target) && NOT.CONT.parentNode.classList.contains('notifications-nav--clicked')) {
       NOT.CONT.parentNode.classList.remove('notifications-nav--clicked');
+      TOOLBAR.classList.remove('toolbar--active');
 
       if (NOT.CONT.classList.contains('notifications--full')) {
         hideNot();

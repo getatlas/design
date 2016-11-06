@@ -19,6 +19,7 @@
 	z-index: 2;
 	font-size: 0;
 	cursor: pointer;
+	transition: $animation--duration-slow $animation--timing;
 
 	&:hover {
 		&:before {
@@ -33,6 +34,26 @@
 		transform: translate3d(-50%, -50%, 0);
 		font-size: 16px;
 		transition: opacity $animation--duration $animation--timing;
+	}
+}
+
+.notifications-nav__close {
+	display: none;
+
+	@media (max-width: 767px) {
+		display: block;
+		position: absolute;
+		top: 50%;
+		right: $spacing-horizontal--small;
+		opacity: 0;
+		font-size: $font-size--paragraph;
+		color: $color--boulder;
+		transform: translate3d(0, -50%, 0);
+		transition: $animation--duration-slow $animation--timing;
+
+		.toolbar--active & {
+			opacity: 1;
+		}
 	}
 }
 
