@@ -12,6 +12,33 @@ var getWindowHeight = function() {
   windowHeight = window.innerHeight;
 };
 
+var disableScroll = function (element, listenerType) {
+  if (detect.parse(navigator.userAgent).device.type == "Mobile" || detect.parse(navigator.userAgent).device.type == "Tablet") {
+    var disable = function (event){
+      var target = event.target;
+      var isScrollAllowed = false;
+
+      if (!isScrollAllowed) {
+        event.preventDefault();
+      }
+
+      while (target !== null) {
+        if (target.classList && target.classList.contains(element)) {
+          isScrollAllowed = !isScrollAllowed;
+          break;
+        }
+        target = target.parentNode;
+      }
+    };
+
+    if (listenerType.toLowerCase() === 'add') {
+      window.addEventListener('touchmove', disable(event));
+    } else if (listenerType.toLowerCase() === 'remove') {
+      window.removeEventListener('touchmove', disable(event));
+    }
+  }
+};
+
 var detectBrowser = function() {
   var bodyElement = document.querySelector('body');
 
@@ -341,15 +368,29 @@ var notifications = function() {
 
   var setNotHeight = function(height) {
     if (height === 'small') {
-      var height = NOT.LIST.clientHeight + NOT.PADDING.DEFAULT + parseInt(getComputedStyle(NOT.CONT).paddingBottom) + NOT.ALL_BTN.clientHeight + parseInt(getComputedStyle(NOT.ALL_BTN).marginTop);
+      if (window.innerWidth >= 768) {
+        var notificationsListHeight = window.innerHeight - TOOLBAR.clientHeight - NOT.PADDING.DEFAULT - parseInt(getComputedStyle(NOT.CONT).paddingBottom) - NOT.ALL_BTN.clientHeight - parseInt(getComputedStyle(NOT.ALL_BTN).marginTop) - 11 - 30; //11px - offset from toolbar, 30px - default margin
+        var notificationsHeight = notificationsListHeight + NOT.PADDING.DEFAULT + parseInt(getComputedStyle(NOT.CONT).paddingBottom) + NOT.ALL_BTN.clientHeight + parseInt(getComputedStyle(NOT.ALL_BTN).marginTop);
+      } else {
+        var notificationsListHeight = window.innerHeight - TOOLBAR.clientHeight - NOT.PADDING.DEFAULT - parseInt(getComputedStyle(NOT.CONT).paddingBottom) - NOT.ALL_BTN.clientHeight - parseInt(getComputedStyle(NOT.ALL_BTN).marginTop);
+        var notificationsHeight = window.innerHeight - TOOLBAR.clientHeight;
+      }
     } else if (height === 'full') {
-      var height = NOT.LIST.clientHeight + NOT.PADDING.FULL + parseInt(getComputedStyle(NOT.CONT).paddingBottom) + NOT.ALL_BTN.clientHeight + parseInt(getComputedStyle(NOT.ALL_BTN).marginTop);
+      if (window.innerWidth >= 768) {
+        var notificationsListHeight = window.innerHeight - TOOLBAR.clientHeight - NOT.PADDING.FULL - parseInt(getComputedStyle(NOT.CONT).paddingBottom) - NOT.ALL_BTN.clientHeight - parseInt(getComputedStyle(NOT.ALL_BTN).marginTop) - 60; // 2 * 30px - default margin
+        var notificationsHeight = notificationsListHeight + NOT.PADDING.FULL + parseInt(getComputedStyle(NOT.CONT).paddingBottom) + NOT.ALL_BTN.clientHeight + parseInt(getComputedStyle(NOT.ALL_BTN).marginTop);
+      } else {
+        var notificationsListHeight = window.innerHeight - TOOLBAR.clientHeight - NOT.PADDING.FULL - parseInt(getComputedStyle(NOT.CONT).paddingBottom) - NOT.ALL_BTN.clientHeight - parseInt(getComputedStyle(NOT.ALL_BTN).marginTop);
+        var notificationsHeight = window.innerHeight - TOOLBAR.clientHeight;
+      }
     }
-    NOT.CONT.style.height = height + 'px';
+
+    NOT.CONT.style.height = notificationsHeight + 'px';
+    NOT.LIST.style.maxHeight = notificationsListHeight + 'px';
   }
 
   var showAllNot = function() {
-    NOT.CONT.classList.add('notifications--animation');
+    NOT.CONT.classList.add('notifications--animation', 'notifications--transition');
     WRAPPER.classList.add('wrapper--fade');
 
     setTimeout(function() {
@@ -368,6 +409,9 @@ var notifications = function() {
     setTimeout(function() {
       NOT.CONT.classList.remove('notifications--animation');
     }, NOT.DELAY * 4);
+    setTimeout(function() {
+      NOT.CONT.classList.remove('notifications--transition');
+    }, NOT.DELAY * 5);
 
     isFullNotification = !isFullNotification;
   }
@@ -410,6 +454,7 @@ var notifications = function() {
     if (!this.parentNode.classList.contains('notifications-nav--clicked')) {
       this.parentNode.classList.add('notifications-nav--clicked');
       TOOLBAR.classList.add('toolbar--active');
+      // disableScroll('js-notifications-list', 'add');
     } else {
       this.parentNode.classList.remove('notifications-nav--clicked');
       TOOLBAR.classList.remove('toolbar--active');
@@ -458,7 +503,6 @@ var notifications = function() {
   }
 
   NOT.LIST.addEventListener('scroll', function (e){
-    console.log(NOT.LIST.scrollTop + NOT.LIST.clientHeight, NOT.LIST.scrollHeight);
     if (NOT.LIST.scrollTop > 0 && NOT.LIST.scrollTop + NOT.LIST.clientHeight !== NOT.LIST.scrollHeight) {
       NOT.LIST.classList.add('notifications__list--scrolled');
       NOT.LIST.classList.remove('notifications__list--scrolled-bottom');
@@ -473,25 +517,20 @@ var notifications = function() {
     NOT.LIST.classList.add('notifications__list--with-scroll');
   }
 
+  window.addEventListener('resize', function() {
+    clearTimeout(windowResizeTimer);
+    windowResizeTimer = setTimeout(function() {
+      getWindowHeight();
+
+      if (!isFullNotification) {
+        setNotHeight('small');
+      } else {
+        setNotHeight('full');
+      }
+    }, 100);
+  });
+
   setNotHeight('small');
-
-  // window.addEventListener('resize', function() {
-  //   clearTimeout(windowResizeTimer);
-  //   windowResizeTimer = setTimeout(function() {
-  //     getWindowHeight();
-  //
-  //     if (isFullNotification === false) {
-  //       notifications.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
-  //     } else {
-  //       notifications.style.maxHeight = windowHeight - parseInt(getComputedStyle(toolbar).height) - 60 + 'px';
-  //     }
-  //
-  //     notificationsList.style.maxHeight = parseInt(getComputedStyle(notifications).maxHeight) - parseInt(getComputedStyle(notifications).paddingTop) - parseInt(getComputedStyle(notifications).paddingBottom) - parseInt(getComputedStyle(notificationsReadAllButton).height) - parseInt(getComputedStyle(notificationsMoreButton).height) - parseInt(getComputedStyle(notificationsMoreButton).marginTop) + 'px';
-  //   }, 100);
-  // });
-  //
-
-  //
 }
 
 //Run fastclick
