@@ -6481,9 +6481,11 @@ h6 {
             transform: translate3d(0, -50%, 0);
     transition: 0.3s ease-in-out;
     cursor: pointer;
+    pointer-events: none;
   }
   .toolbar--active .notifications-nav__close {
     opacity: 1;
+    pointer-events: auto;
   }
 }
 

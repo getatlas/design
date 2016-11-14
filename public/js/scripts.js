@@ -4,39 +4,37 @@ if (detect.parse(navigator.userAgent).device.type == "Mobile" || detect.parse(na
   var DEVICE = 'click';
 }
 
+var getDeviceType = function() {
+  if (detect.parse(navigator.userAgent).device.type == "Mobile" || detect.parse(navigator.userAgent).device.type == "Tablet") {
+    return 'mobile';
+  } else {
+    return 'desktop';
+  }
+}
+
+var DEVICE_TYPE = {
+  DESKTOP: 'desktop',
+  MOBILE: 'mobile',
+}
+
+if (getDeviceType === DEVICE_TYPE.DESKTOP) {
+  var EVENTS = {
+    CLICK: 'click',
+    SCROLL: 'scroll',
+  }
+} else {
+  var EVENTS = {
+    CLICK: 'touchend',
+    SCROLL: 'touchmove',
+  }
+}
+
 var userAgent = detect.parse(navigator.userAgent);
 
 var windowHeight = window.innerHeight;
 
 var getWindowHeight = function() {
   windowHeight = window.innerHeight;
-};
-
-var disableScroll = function (element, listenerType) {
-  if (detect.parse(navigator.userAgent).device.type == "Mobile" || detect.parse(navigator.userAgent).device.type == "Tablet") {
-    var disable = function (event){
-      var target = event.target;
-      var isScrollAllowed = false;
-
-      if (!isScrollAllowed) {
-        event.preventDefault();
-      }
-
-      while (target !== null) {
-        if (target.classList && target.classList.contains(element)) {
-          isScrollAllowed = !isScrollAllowed;
-          break;
-        }
-        target = target.parentNode;
-      }
-    };
-
-    if (listenerType.toLowerCase() === 'add') {
-      window.addEventListener('touchmove', disable(event));
-    } else if (listenerType.toLowerCase() === 'remove') {
-      window.removeEventListener('touchmove', disable(event));
-    }
-  }
 };
 
 var detectBrowser = function() {
@@ -91,6 +89,7 @@ var dropdownMenuToggle = function() {
 
   if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
     dropdownButton.addEventListener('touchend', function(e) {
+      console.log('dupa');
       thisDropdown = this.parentNode;
 
       if (!this.parentNode.classList.contains('dropdown--clicked')) {
@@ -448,13 +447,14 @@ var notifications = function() {
     isNotificationReaded = !isNotificationReaded;
   }
 
-  NOT.OPEN_BTN.addEventListener(DEVICE, function(e) {
+  NOT.OPEN_BTN.addEventListener(EVENTS.CLICK, function(e) {
     if (isNotificationReaded === false) return;
 
     if (!this.parentNode.classList.contains('notifications-nav--clicked')) {
       this.parentNode.classList.add('notifications-nav--clicked');
       TOOLBAR.classList.add('toolbar--active');
-      // disableScroll('js-notifications-list', 'add');
+
+      scrollControl('add', 'js-notifications-list');
     } else {
       this.parentNode.classList.remove('notifications-nav--clicked');
       TOOLBAR.classList.remove('toolbar--active');
@@ -463,6 +463,8 @@ var notifications = function() {
         NOT.CONT.parentNode.classList.remove('notifications--full');
         hideNot();
       }
+
+      scrollControl('remove', 'js-notifications-list');
     }
   });
 
@@ -501,17 +503,17 @@ var notifications = function() {
       this.textContent = 'read';
     });
   }
-
-  NOT.LIST.addEventListener('scroll', function (e){
-    if (NOT.LIST.scrollTop > 0 && NOT.LIST.scrollTop + NOT.LIST.clientHeight !== NOT.LIST.scrollHeight) {
-      NOT.LIST.classList.add('notifications__list--scrolled');
-      NOT.LIST.classList.remove('notifications__list--scrolled-bottom');
-    } else if (NOT.LIST.scrollTop > 0 && NOT.LIST.scrollTop + NOT.LIST.clientHeight === NOT.LIST.scrollHeight) {
-      NOT.LIST.classList.add('notifications__list--scrolled-bottom');
-    } else {
-      NOT.LIST.classList.remove('notifications__list--scrolled');
-    }
-  });
+  //
+  // NOT.LIST.addEventListener(EVENTS.SCROLL, function (e){
+  //   if (NOT.LIST.scrollTop > 0 && NOT.LIST.scrollTop + NOT.LIST.clientHeight !== NOT.LIST.scrollHeight) {
+  //     NOT.LIST.classList.add('notifications__list--scrolled');
+  //     NOT.LIST.classList.remove('notifications__list--scrolled-bottom');
+  //   } else if (NOT.LIST.scrollTop > 0 && NOT.LIST.scrollTop + NOT.LIST.clientHeight === NOT.LIST.scrollHeight) {
+  //     NOT.LIST.classList.add('notifications__list--scrolled-bottom');
+  //   } else {
+  //     NOT.LIST.classList.remove('notifications__list--scrolled');
+  //   }
+  // });
 
   if (NOT.LIST.scrollHeight > NOT.LIST.clientHeight) {
     NOT.LIST.classList.add('notifications__list--with-scroll');
@@ -539,6 +541,26 @@ var notifications = function() {
 //         FastClick.attach(document.body);
 //     }, false);
 // }
+
+var scrollControl = function(type, element){
+  var dupa1 = false;
+
+  var captureScroll = function() {
+    console.log('Test');
+  }
+
+
+  var dupa = window;
+
+  if (type.toLowerCase() === 'add') {
+    console.log(captureScroll);
+    dupa.addEventListener(EVENTS.SCROLL, captureScroll, dupa1);
+  } else if (type.toLowerCase() === 'remove') {
+    console.log(captureScroll);
+    dupa.removeEventListener(EVENTS.SCROLL, captureScroll, dupa1);
+  }
+
+}
 
 window.addEventListener('load', function () {
   detectBrowser();

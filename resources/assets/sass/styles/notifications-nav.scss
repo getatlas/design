@@ -51,9 +51,11 @@
 		transform: translate3d(0, -50%, 0);
 		transition: $animation--duration-slow $animation--timing;
 		cursor: pointer;
+		pointer-events: none;
 
 		.toolbar--active & {
 			opacity: 1;
+			pointer-events: auto;
 		}
 	}
 }
