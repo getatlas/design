@@ -67,7 +67,85 @@
 				</ul>
 			</nav>
 			<div class="notifications-nav">
-				<button type="button" class="icon-notification notifications-nav__button notifications-nav__button--new"><span class="notifications-nav__button__alert">New notification!</span></button>
+				<!-- <button type="button" class="icon-notification notifications-nav__button notifications-nav__button--new js-notifications-button">
+					<span class="notifications-nav__button__alert">New notification!</span>
+				</button> -->
+				<button type="button" class="icon-notification notifications-nav__button notifications-nav__button--new js-notifications-button">
+					<span class="notifications-nav__button__info">13</span>
+				</button>
+				<button type="button" class="notifications-nav__close">Close</button>
+        <section class="notifications notifications js-notifications">
+          <button class="link link--read link--small notifications__read js-notifications-read-all">mark all as read</button>
+          <ol class="notifications__list js-notifications-list js-capture-scroll">
+            <li class="notifications__item js-notification">
+              <small class="notifications__label notifications__label--messages">Messages</small>
+              <h4 class="notifications__heading js-notification-heading"><a href="#" class="link link--special">John Patterson</a> sent you a new mesage</h4>
+              <time class="notifications__date icon-time">3 days</time>
+              <a class="link link--small notifications__item__action  notifications__item__action--readed js-notification-read" href="#">read</a>
+            </li>
+						<li class="notifications__item notifications__item--new js-notification">
+              <small class="notifications__label notifications__label--servers">Servers</small>
+              <h4 class="notifications__heading js-notification-heading">Server not found connection problems</h4>
+              <time class="notifications__date notifications__date--new icon-time">9:39</time>
+              <a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+            </li>
+            <li class="notifications__item notifications__item--new js-notification">
+              <small class="notifications__label notifications__label--users">Users</small>
+              <h4 class="notifications__heading js-notification-heading">New user was assigned to your account</h4>
+              <time class="notifications__date notifications__date--new icon-time">9:22</time>
+              <a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+            </li>
+            <li class="notifications__item js-notification">
+              <small class="notifications__label notifications__label--websites">Websites</small>
+              <h4 class="notifications__heading js-notification-heading">Server not found connection problems</h4>
+              <time class="notifications__date icon-time">2 days</time>
+              <a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+            </li>
+            <li class="notifications__item js-notification">
+              <small class="notifications__label notifications__label--servers">Servers</small>
+              <h4 class="notifications__heading js-notification-heading">Technical difiiculties. Please stand by</h4>
+              <time class="notifications__date icon-time">3 days</time>
+              <a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+            </li>
+            <li class="notifications__item js-notification">
+              <small class="notifications__label notifications__label--messages">Messages</small>
+              <h4 class="notifications__heading js-notification-heading"><a href="#" class="link link--special">John Patterson</a> sent you a new mesage</h4>
+              <time class="notifications__date icon-time">3 days</time>
+              <a class="link link--small notifications__item__action  notifications__item__action--readed js-notification-read" href="#">read</a>
+            </li>
+						<li class="notifications__item notifications__item--new js-notification">
+              <small class="notifications__label notifications__label--servers">Servers</small>
+              <h4 class="notifications__heading js-notification-heading">Server not found connection problems</h4>
+              <time class="notifications__date notifications__date--new icon-time">9:39</time>
+              <a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+            </li>
+            <li class="notifications__item notifications__item--new js-notification">
+              <small class="notifications__label notifications__label--users">Users</small>
+              <h4 class="notifications__heading js-notification-heading">New user was assigned to your account</h4>
+              <time class="notifications__date notifications__date--new icon-time">9:22</time>
+              <a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+            </li>
+            <li class="notifications__item js-notification">
+              <small class="notifications__label notifications__label--websites">Websites</small>
+              <h4 class="notifications__heading js-notification-heading">Server not found connection problems</h4>
+              <time class="notifications__date icon-time">2 days</time>
+              <a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+            </li>
+            <li class="notifications__item js-notification">
+              <small class="notifications__label notifications__label--servers">Servers</small>
+              <h4 class="notifications__heading js-notification-heading">Technical difiiculties. Please stand by</h4>
+              <time class="notifications__date icon-time">3 days</time>
+              <a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+            </li>
+            <li class="notifications__item js-notification">
+              <small class="notifications__label notifications__label--messages">Messages</small>
+              <h4 class="notifications__heading js-notification-heading"><a href="#" class="link link--special">John Patterson</a> sent you a new mesage</h4>
+              <time class="notifications__date icon-time">3 days</time>
+              <a class="link link--small notifications__item__action  notifications__item__action--readed js-notification-read" href="#">read</a>
+            </li>
+          </ol>
+          <button class="btn btn--full btn--dark notifications__more js-notifications-more">See all notifications</button>
+        </section>
 			</div>
 			<form class="js-field search search-nav field">
 				<input class="input input--nav search__field js-search-field js-input" type="search" placeholder="Search">
