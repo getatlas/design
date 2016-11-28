@@ -82,6 +82,7 @@
 		top: 6px;
 		right: -29px;
 		background-color: $color--mine-shaft;
+		pointer-events: none;
 
 		@media (max-width: 767px) {
 			right: -$spacing-horizontal--small;

@@ -21,11 +21,13 @@ if (getDeviceType() === DEVICE_TYPE.DESKTOP) {
   var EVENTS = {
     CLICK: 'click',
     SCROLL: 'scroll',
+    RESIZE: 'resize',
   }
 } else {
   var EVENTS = {
     CLICK: 'touchend',
     SCROLL: 'touchmove',
+    RESIZE: 'orientationchange'
   }
 }
 
@@ -87,41 +89,24 @@ var dropdownMenuToggle = function() {
     }
   });
 
-  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
-    dropdownButton.addEventListener('touchend', function(e) {
-      console.log('dupa');
-      thisDropdown = this.parentNode;
+  dropdownButton.addEventListener(EVENTS.CLICK, function(e) {
+    thisDropdown = this.parentNode;
 
-      if (!this.parentNode.classList.contains('dropdown--clicked')) {
-        this.parentNode.classList.add('dropdown--clicked');
-        isDropdownActive = true;
-      } else {
-        this.parentNode.classList.remove('dropdown--clicked');
-        isDropdownActive = false;
-      }
-    });
-  } else {
-    dropdownButton.addEventListener('click', function(e) {
-      thisDropdown = this.parentNode;
+    if (!this.parentNode.classList.contains('dropdown--clicked')) {
+      this.parentNode.classList.add('dropdown--clicked');
+      isDropdownActive = true;
+    } else {
+      this.parentNode.classList.remove('dropdown--clicked');
+      isDropdownActive = false;
+    }
+  });
 
-      if (!this.parentNode.classList.contains('dropdown--clicked')) {
-        this.parentNode.classList.add('dropdown--clicked');
-        isDropdownActive = true;
-      } else {
-        this.parentNode.classList.remove('dropdown--clicked');
-        isDropdownActive = false;
-      }
-    });
-  }
-
-  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
-    window.addEventListener('touchend', function (e) {
-      if (thisDropdown.contains(e.target) === false && isDropdownActive === true) {
-        thisDropdown.classList.remove('dropdown--clicked');
-        isDropdownActive = false;
-      }
-    });
-  }
+  window.addEventListener(EVENTS.CLICK, function (e) {
+    if (thisDropdown.contains(e.target) === false && isDropdownActive === true) {
+      thisDropdown.classList.remove('dropdown--clicked');
+      isDropdownActive = false;
+    }
+  });
 
   dropdownMenuTrigger.addEventListener('click', function() {
     this.classList.add('active');
@@ -136,10 +121,9 @@ var search = function() {
   var searchOpen = document.querySelector('.js-search-open');
   var isSearchFocused = false;
 
-  searchField.addEventListener('focusin', function() {
+  searchField.addEventListener('focus', function() {
     searchField.parentNode.classList.add('search--active');
     isSearchFocused = true;
-    console.log('isSearchFocused', isSearchFocused);
   });
 
   window.addEventListener('click', function(e) {
@@ -271,80 +255,83 @@ var form = function() {
 }
 
 var calendar = function() {
-  var calendars = document.querySelectorAll('.js-calendar-button');
-  var thisCalendar = document.querySelector('.js-calendar-button');
+  var CALENDARS = document.querySelectorAll('.js-calendar-button');
+  var CALENDAR = document.querySelector('.js-calendar-button');
+
   var isCalendarActive = false;
+  var whichCalendarIsOpened = null;
 
-  for (var i = 0; i < calendars.length; i++) {
-    var element = calendars[i];
-
-    if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
-      element.addEventListener('touchend', function(e) {
-        thisCalendar = this.parentNode;
-
-        if (!this.parentNode.classList.contains('calendar--clicked')) {
-          this.parentNode.classList.add('calendar--clicked');
-          isCalendarActive = true;
-        } else {
-          this.parentNode.classList.remove('calendar--clicked');
-          isCalendarActive = false;
-        }
-      });
-    } else {
-      element.parentNode.addEventListener('mouseenter', function(e) {
-        this.classList.add('calendar--hover');
-      });
-
-      element.parentNode.addEventListener('mouseleave', function(e) {
-        thisCalendar = this;
-        setTimeout(function (){
-          thisCalendar.classList.remove('calendar--hover');
-        }, 200);
-      });
-    }
+  for (var i = 0; i < CALENDARS.length; i++) {
+    CALENDARS[i].parentNode.setAttribute('data-calendar-eq', i);
   }
 
-  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
-    window.addEventListener('touchend', function(e) {
-      if(thisCalendar.contains(e.target) === false && isCalendarActive === true) {
-        thisCalendar.classList.remove('calendar--clicked');
-        isCalendarActive = false;
+  for (var i = 0; i < CALENDARS.length; i++) {
+    var ELEMENT = CALENDARS[i];
+
+    ELEMENT.addEventListener(EVENTS.CLICK, function() {
+      if (whichCalendarIsOpened !== this.parentNode.getAttribute('data-calendar-eq') &&
+          whichCalendarIsOpened !== null &&
+          isCalendarActive) {
+        for (var i = 0; i < CALENDARS.length; i++) {
+          if (CALENDARS[i].parentNode.classList.contains('calendar--clicked')) {
+            CALENDARS[i].parentNode.classList.remove('calendar--clicked');
+          }
+        }
+      } else {
+        isCalendarActive = !isCalendarActive;
       }
+
+      CALENDAR = this.parentNode;
+      CALENDAR.classList.toggle('calendar--clicked');
+
+      whichCalendarIsOpened = CALENDAR.getAttribute('data-calendar-eq');
     });
   }
+
+  window.addEventListener(EVENTS.CLICK, function(event) {
+    if (!CALENDAR.contains(event.target) && isCalendarActive) {
+      CALENDAR.classList.remove('calendar--clicked');
+      isCalendarActive = !isCalendarActive;
+    }
+  });
 }
 
 var results = function() {
+  var RESULTS = document.querySelector('.js-results');
+  var TOOLBAR = document.querySelector('.js-toolbar');
+  var SEARCH_FIELD = document.querySelector('.js-search-field');
+
   var windowResizeTimer;
-  var results = document.querySelector('.js-results');
-  var toolbar = document.querySelector('.js-toolbar');
+  var resultsHeight;
+  var resultsMaxHeight;
 
-  if (userAgent.device.type == "Mobile" || userAgent.device.type == "Tablet") {
-    results.style.height = windowHeight - parseInt(getComputedStyle(toolbar).height) + 'px';
+  var setHeight = function(isResize) {
+    clearTimeout(windowResizeTimer);
+    windowResizeTimer = setTimeout(function() {
+      RESULTS.style.height = 'auto';
+      RESULTS.style.maxHeight = 'none';
 
-    window.addEventListener("resize", function() {
-      clearTimeout(windowResizeTimer);
-      windowResizeTimer = setTimeout(function() {
-        getWindowHeight();
-        results.style.height = windowHeight - parseInt(getComputedStyle(toolbar).height) + 'px';
-      }, 100);
-    });
-  } else {
-    results.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
+      if (window.innerWidth > 768) {
+        resultsMaxHeight = window.innerHeight - (TOOLBAR.offsetHeight * 2);
+        resultsHeight = RESULTS.offsetHeight;
+      } else {
+        resultsMaxHeight = window.innerHeight - TOOLBAR.offsetHeight;
+        resultsHeight = resultsMaxHeight;
+      }
 
-    window.addEventListener("resize", function() {
-      clearTimeout(windowResizeTimer);
-      windowResizeTimer = setTimeout(function() {
-        getWindowHeight();
-        results.style.maxHeight = windowHeight - (parseInt(getComputedStyle(toolbar).height) * 2) + 'px';
-      }, 100);
-    });
+      RESULTS.style.height = resultsHeight + 'px';
+      RESULTS.style.maxHeight = resultsMaxHeight + 'px';
+    }, 100);
   }
+
+  setHeight();
+  window.addEventListener(EVENTS.RESIZE, setHeight);
 }
 
 var notifications = function() {
   var TOOLBAR = document.querySelector('.js-toolbar');
   var WRAPPER = document.querySelector('.js-wrapper');
+
   var isFullNotification = false;
   var isNotificationReaded = true;
   var windowResizeTimer;

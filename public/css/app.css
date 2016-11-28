@@ -1171,79 +1171,91 @@ h6 {
 
 @-webkit-keyframes usage--sidebar-hide {
   0% {
-    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
   }
   50% {
-    opacity: 0;
     min-width: 175px;
+    -webkit-transform: translate3d(-300px, 0, 0);
+            transform: translate3d(-300px, 0, 0);
   }
   51% {
     min-width: 0;
   }
   100% {
-    opacity: 1;
     min-width: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes usage--sidebar-hide {
   0% {
-    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
   }
   50% {
-    opacity: 0;
     min-width: 175px;
+    -webkit-transform: translate3d(-300px, 0, 0);
+            transform: translate3d(-300px, 0, 0);
   }
   51% {
     min-width: 0;
   }
   100% {
-    opacity: 1;
     min-width: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
   }
 }
 
 @-webkit-keyframes usage--sidebar-show {
   0% {
-    opacity: 1;
     min-width: 0;
     max-width: 96px;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
   }
   50% {
-    opacity: 0;
     min-width: 0;
     max-width: 96px;
+    -webkit-transform: translate3d(-300px, 0, 0);
+            transform: translate3d(-300px, 0, 0);
   }
   51% {
     min-width: 175px;
     max-width: 100%;
   }
   100% {
-    opacity: 1;
     min-width: 175px;
     max-width: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes usage--sidebar-show {
   0% {
-    opacity: 1;
     min-width: 0;
     max-width: 96px;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
   }
   50% {
-    opacity: 0;
     min-width: 0;
     max-width: 96px;
+    -webkit-transform: translate3d(-300px, 0, 0);
+            transform: translate3d(-300px, 0, 0);
   }
   51% {
     min-width: 175px;
     max-width: 100%;
   }
   100% {
-    opacity: 1;
     min-width: 175px;
     max-width: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
   }
 }
 
@@ -4341,7 +4353,7 @@ h6 {
 }
 
 .calendar--clicked .calendar__btn,
-.calendar--hover .calendar__btn {
+.calendar--hover .calendar__btn, .calendar__btn:hover {
   color: #fff;
 }
 
@@ -4662,6 +4674,7 @@ h6 {
   top: 6px;
   right: -29px;
   background-color: #3a3a3a;
+  pointer-events: none;
 }
 
 @media (max-width: 767px) {
@@ -5374,9 +5387,11 @@ h6 {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  display: none;
+  visibility: hidden;
   background-color: #282828;
   box-shadow: 0 28px 70px 4px rgba(0, 0, 0, 0.19);
+  -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
 }
 
 @media (max-width: 1024px) {
@@ -5396,7 +5411,9 @@ h6 {
 }
 
 .search--active ~ .results--live {
-  display: block;
+  visibility: visible;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 .results__title {
@@ -5489,6 +5506,13 @@ h6 {
   display: block;
   color: #fff;
   transition: background 0.1s ease-in-out;
+}
+
+@media (max-width: 767px) {
+  .results__content__link {
+    margin-right: -20px;
+    margin-left: -20px;
+  }
 }
 
 .results__content__link:hover {

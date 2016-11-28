@@ -28,9 +28,10 @@
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    display: none;
+    visibility: hidden;
     background-color: darken($color--mine-shaft, 7%);
     box-shadow: 0 28px 70px 4px rgba($color--black, 0.19);
+    transform: translate3d(0, -100%, 0);
 
     @media (max-width: 1024px) {
       width: 241px;
@@ -44,7 +45,8 @@
     }
 
     .search--active ~ & {
-      display: block;
+      visibility: visible;
+      transform: translate3d(0, 0, 0);
     }
   }
 }
@@ -129,6 +131,11 @@
   display: block;
   color: $color--white;
   transition: background $animation--duration $animation--timing;
+
+  @media (max-width: 767px) {
+    margin-right: #{-$spacing-horizontal--small};
+    margin-left: #{-$spacing-horizontal--small};
+  }
 
   &:hover {
     background-color: $color--mine-shaft;

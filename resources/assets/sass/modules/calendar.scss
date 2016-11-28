@@ -33,7 +33,8 @@
 	}
 
 	.calendar--clicked &,
-	.calendar--hover & {
+	.calendar--hover &,
+	&:hover {
 		color: $color--white;
 	}
 }
