@@ -1,82 +1,137 @@
-@keyframes usage--sidebar-hide {
+// @keyframes usage--sidebar-hide {
+// 	0% {
+// 		transform: translate3d(0, 0, 0);
+// 	}
+// 	50% {
+// 		min-width: 300px;
+// 		transform: translate3d(-600px, 0, 0);
+// 	}
+// 	51% {
+// 		min-width: 0;
+// 	}
+// 	100% {
+// 		min-width: 0;
+// 		transform: translate3d(0, 0, 0);
+// 	}
+// }
+//
+// @keyframes usage--sidebar-show {
+// 	0% {
+// 		min-width: 0;
+// 		max-width: $sidebar--width-colapsed;
+// 		transform: translate3d(0, 0, 0);
+// 	}
+// 	50% {
+// 		min-width: 0;
+// 		max-width: $sidebar--width-colapsed;
+// 		transform: translate3d(-192px, 0, 0);
+// 	}
+// 	51% {
+// 		min-width: 300px;
+// 		max-width: 100%;
+// 	}
+// 	100% {
+// 		min-width: 300px;
+// 		max-width: 100%;
+// 		transform: translate3d(0, 0, 0);
+// 	}
+// }
+//
+// @keyframes usage--flex-hide {
+// 	0% {
+// 		flex-direction: row;
+// 		text-align: left;
+// 	}
+// 	99% {
+// 		flex-direction: row;
+// 		text-align: left;
+// 	}
+// 	100% {
+// 		flex-direction: column;
+// 		text-align: center;
+// 	}
+// }
+//
+// @keyframes usage--flex-show {
+// 	0% {
+// 		flex-direction: column;
+// 		text-align: center;
+// 	}
+// 	99% {
+// 		flex-direction: column;
+// 		text-align: center;
+// 	}
+// 	100% {
+// 		flex-direction: row;
+// 		text-align: left;
+// 	}
+// }
+//
+
+@keyframes hideUsageInfo {
 	0% {
-		transform: translate3d(0, 0, 0);
+		width: $sidebar--width;
+		opacity: 1;
 	}
-	50% {
-		min-width: 175px;
-		transform: translate3d(-300px, 0, 0);
+	30% {
+		width: $sidebar--width;
+		opacity: 0;
 	}
-	51% {
-		min-width: 0;
+	31% {
+		width: $sidebar--width-colapsed;
 	}
 	100% {
-		min-width: 0;
-		transform: translate3d(0, 0, 0);
+		width: $sidebar--width-colapsed;
+		opacity: 1;
 	}
 }
 
-@keyframes usage--sidebar-show {
+@keyframes showUsageInfo {
 	0% {
-		min-width: 0;
-		max-width: $sidebar--width-colapsed;
-		transform: translate3d(0, 0, 0);
+		width: $sidebar--width-colapsed;
+		opacity: 1;
 	}
-	50% {
-		min-width: 0;
-		max-width: $sidebar--width-colapsed;
-		transform: translate3d(-300px, 0, 0);
+	30% {
+		width: $sidebar--width-colapsed;
+		opacity: 0;
 	}
-	51% {
-		min-width: 175px;
-		max-width: 100%;
+	31% {
+		width: $sidebar--width;
 	}
 	100% {
-		min-width: 175px;
-		max-width: 100%;
-		transform: translate3d(0, 0, 0);
+		width: $sidebar--width;
+		opacity: 1;
 	}
 }
 
-@keyframes usage--flex-hide {
+@keyframes smallBarWidth {
 	0% {
-		flex-direction: row;
-		text-align: left;
+		width: calc(100% - 111px);
+		opacity: 1;
 	}
-	99% {
-		flex-direction: row;
-		text-align: left;
+	30% {
+		width: calc(100% - 111px);
+		opacity: 0;
+	}
+	31% {
+		width: 100%;
 	}
 	100% {
-		flex-direction: column;
-		text-align: center;
-	}
-}
-
-@keyframes usage--flex-show {
-	0% {
-		flex-direction: column;
-		text-align: center;
-	}
-	99% {
-		flex-direction: column;
-		text-align: center;
-	}
-	100% {
-		flex-direction: row;
-		text-align: left;
+		width: 100%;
+		opacity: 1;
 	}
 }
 
 .usage-info {
 	&--sidebar {
-		min-width: 175px;
 		padding: 15px $spacing-horizontal 12px $spacing-horizontal;
 		position: absolute;
 		right: 0;
 		bottom: 0;
 		left: 0;
 		z-index: 2;
-		transition: padding $animation--duration-slow $animation--timing;
+		transition: padding $animation--duration-slow $animation--timing,
+								width $animation--duration-slow $animation--timing;
 
 		&:after {
 			content: '';
@@ -90,13 +145,20 @@
 		}
 
 		@media (min-width: 1025px) {
-			.sidebar--loaded:not(.sidebar--collapsed) & {
-				animation: usage--sidebar-show ($animation--duration-slow * 2) forwards alternate $animation--timing;
-			}
+			width: $sidebar--width;
+
 			.sidebar--collapsed & {
+				width: $sidebar--width-colapsed;
 				padding: 14px 7px 12px 9px;
-				animation: usage--sidebar-hide ($animation--duration-slow * 2) forwards alternate $animation--timing;
 			}
+
+			// .sidebar:not(.sidebar--collapsed) & {
+			// 	animation: showUsageInfo ($animation--duration-slow * 2) forwards alternate $animation--timing;
+			// }
+			// .sidebar--collapsed & {
+			//
+			// 	animation: hideUsageInfo ($animation--duration-slow * 2) forwards alternate $animation--timing;
+			// }
 		}
 	}
 }
@@ -113,12 +175,12 @@
 	}
 
 	@media (min-width: 1025px) {
-		.sidebar--loaded:not(.sidebar--collapsed) & {
-			animation: usage--flex-show $animation--duration-slow forwards alternate $animation--timing;
-		}
-		.sidebar--collapsed & {
-			animation: usage--flex-hide $animation--duration-slow forwards alternate $animation--timing;
-		}
+		// .sidebar--loaded:not(.sidebar--collapsed) & {
+		// 	animation: usage--flex-show $animation--duration-slow forwards alternate $animation--timing;
+		// }
+		// .sidebar--collapsed & {
+		// 	animation: usage--flex-hide $animation--duration-slow forwards alternate $animation--timing;
+		// };
 	}
 }
 
@@ -133,25 +195,34 @@
 	width: 111px;
 	white-space: nowrap;
 
-	@media (min-width: 1025px) {
-		.sidebar--collapsed & {
-			width: 100%;
-			margin-bottom: 1px;
-		}
-	}
+	// @media (min-width: 1025px) {
+	// 	.sidebar--collapsed & {
+	// 		width: 100%;
+	// 		margin-bottom: 1px;
+	// 	}
+	// }
 }
 
 .usage-info__content {
-	width: calc(100% - 111px);
+	width: 100%;
+	margin-top: -23px;
 	margin-left: 0;
+	padding-left: 111px;
 	position: relative;
 	align-content: space-between;
 	align-self: center;
 	text-align: right;
+	transition: margin $animation--duration-slow $animation--timing,
+							padding $animation--duration-slow $animation--timing;
+
+	&:last-of-type {
+		margin-top: -10px;
+	}
 
 	@media (min-width: 1025px) {
 		.sidebar--collapsed & {
-			width: 100%;
+			margin-top: 0 !important;
+			padding-left: 0;
 		}
 	}
 
@@ -203,33 +274,26 @@
 		content: '';
 		width: calc(100% - 39px);
 		height: 6px;
-		margin-top: 5px;
 		border-radius: 6px;
 		float: left;
 		align-self: center;
 		background-color: $color--mine-shaft;
-		transition: width $animation--duration-slow $animation--duration-slow $animation--timing;
+		transition: width $animation--duration-slow $animation--timing;
 
 		@media (min-width: 1025px) {
 			.sidebar--collapsed & {
 				width: calc(100% - 34px);
-				transition: width $animation--duration-slow $animation--timing;
 			}
 		}
 	}
 	&:after {
 		content: '';
+		float: left;
 		height: 6px;
+		margin-top: -6px;
 		border-radius: 6px;
-		position: absolute;
-		top: 5px;
-		left: 0;
 		background-color: red;
-		transition: width $animation--duration-slow $animation--duration-slow $animation--timing;
-
-		.sidebar--collapsed & {
-			transition: width $animation--duration-slow $animation--timing;
-		}
+		transition: width $animation--duration-slow $animation--timing;
 	}
 
 	&--only-bar {
@@ -325,12 +389,12 @@
 }
 
 .usage-info__list__unnecessary {
-	transition: opacity $animation--duration $animation--duration-slow $animation--timing;
+	transition: opacity $animation--duration $animation--timing,
+							visibility $animation--duration $animation--timing;
 
 	@media (min-width: 1025px) {
 		.sidebar--collapsed & {
-			opacity: 0;
-			transition: opacity $animation--duration-slow $animation--timing;
+			display: none;
 		}
 	}
 }

@@ -56,17 +56,59 @@ var detectBrowser = function() {
 }
 
 var collapseSlider = function() {
-  var onLoad = true;
-  var toggleSidebarButton = document.querySelector('.js-toggle-sidebar');
+  var SIDEBAR = document.querySelector('.js-sidebar');
+  var BUTTON_TOGGLE = document.querySelector('.js-toggle-sidebar');
+  var USAGE_INFO = document.querySelector('.js-usage-info');
 
-  toggleSidebarButton.addEventListener('click', function() {
-     if (onLoad) {
-       toggleSidebarButton.classList.toggle('sidebar__btn--active');
-       document.querySelector('.js-sidebar').classList.add('sidebar--loaded');
-       onLoad = true;
-     }
+  var isSidebarOpen = false;
 
-     document.querySelector('.js-sidebar').classList.toggle('sidebar--collapsed');
+  var animateUsageInfoSmall = function() {
+    var animationDelay = 300;
+
+    USAGE_INFO.classList.add('usage-info--hide');
+
+    setTimeout(function(){
+      USAGE_INFO.classList.remove('usage-info--full');
+      USAGE_INFO.classList.add('usage-info--small');
+    }, animationDelay);
+    setTimeout(function(){
+      USAGE_INFO.classList.remove('usage-info--hide');
+      USAGE_INFO.classList.add('usage-info--show');
+    }, animationDelay + 1);
+    setTimeout(function(){
+      USAGE_INFO.classList.remove('usage-info--show');
+    }, animationDelay * 2);
+  }
+
+  var animateUsageInfoFull = function() {
+    var animationDelay = 300;
+
+    USAGE_INFO.classList.add('usage-info--hide');
+
+    setTimeout(function(){
+      USAGE_INFO.classList.add('usage-info--small');
+      USAGE_INFO.classList.remove('usage-info--full');
+    }, animationDelay);
+    setTimeout(function(){
+      USAGE_INFO.classList.remove('usage-info--hide');
+      USAGE_INFO.classList.add('usage-info--show');
+    }, animationDelay + 1);
+    setTimeout(function(){
+      USAGE_INFO.classList.remove('usage-info--show');
+    }, animationDelay * 2);
+  }
+
+  BUTTON_TOGGLE.addEventListener(EVENTS.CLICK, function() {
+     this.classList.toggle('sidebar__btn--active');
+     SIDEBAR.classList.toggle('sidebar--collapsed');
+     // 
+    //  if (!isSidebarOpen) {
+    //    animateUsageInfoSmall();
+    //  } else {
+    //    animateUsageInfoFull();
+    //  }
+     //
+    //  isSidebarOpen = !isSidebarOpen;
   });
 }
 
