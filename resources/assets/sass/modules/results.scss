@@ -119,8 +119,7 @@
     padding-bottom: 25px;
     text-align: center;
   }
-
-  .results:not(:last-child):not(.results--live) & {
+  &:not(:last-of-type) {
     border-bottom: 1px solid $color--mine-shaft;
   }
 }

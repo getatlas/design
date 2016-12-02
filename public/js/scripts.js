@@ -40,18 +40,27 @@ var getWindowHeight = function() {
 };
 
 var detectBrowser = function() {
-  var bodyElement = document.querySelector('body');
+  var DOCUMENT = document.querySelector('body');
+  var UA = userAgent.browser.name.toLowerCase();
 
-  if (userAgent.browser.name.indexOf('Chrome') >= 0) {
-    bodyElement.classList.add('chrome');
-  } else if (userAgent.browser.name.indexOf('Firefox') >= 0) {
-    bodyElement.classList.add('firefox');
-  } else if (userAgent.browser.name.indexOf('Safari')) {
-    bodyElement.classList.add('safari');
-  } else if (userAgent.browser.name.indexOf('IE')) {
-    bodyElement.classList.add('ie');
-  } else if (userAgent.browser.name.indexOf('EDGE')) {
-    bodyElement.classList.add('edge');
+  var BROWSERS = {
+    CHROME: 'chrome',
+    FIREFOX: 'firefox',
+    SAFARI: 'safari',
+    IE: 'ie',
+    EDGE: 'edge',
+  };
+
+  if (UA.indexOf(BROWSERS.CHROME) >= 0) {
+    DOCUMENT.classList.add(BROWSERS.CHROME);
+  } else if (UA.indexOf(BROWSERS.FIREFOX) >= 0) {
+    DOCUMENT.classList.add(BROWSERS.FIREFOX);
+  } else if (UA.indexOf(BROWSERS.SAFARI) >= 0) {
+    DOCUMENT.classList.add(BROWSERS.SAFARI);
+  } else if (UA.indexOf(BROWSERS.IE) >= 0) {
+    DOCUMENT.classList.add(BROWSERS.IE);
+  } else if (UA.indexOf(BROWSERS.EDGE) >= 0) {
+    DOCUMENT.classList.add(BROWSERS.EDGE);
   }
 }
 
@@ -101,7 +110,7 @@ var collapseSlider = function() {
   BUTTON_TOGGLE.addEventListener(EVENTS.CLICK, function() {
      this.classList.toggle('sidebar__btn--active');
      SIDEBAR.classList.toggle('sidebar--collapsed');
-     // 
+     //
     //  if (!isSidebarOpen) {
     //    animateUsageInfoSmall();
     //  } else {
@@ -579,7 +588,7 @@ var captureScroll = function(event) {
   var isScrollAllowed = false;
   var target = event.target;
 
-  while (target !== null) {
+  while (!!target) {
       if (target.classList && target.classList.contains('js-capture-scroll')) {
           isScrollAllowed = true;
           break;
