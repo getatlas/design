@@ -1,0 +1,40 @@
+.select {
+  width: 300px;
+}
+
+.select__heading {
+  display: flex;
+  height: 42px;
+  padding: 0 $spacing--small;
+  font-size: $font-size--title;
+  color: $color--white;
+  border-radius: $corner-radius;
+  background-color: $color--mine-shaft;
+  cursor: pointer;
+  align-items: center;
+  font-weight: normal;
+  position: relative;
+  transition: background $animation--duration $animation--timing;
+
+  &:hover {
+    background-color: $color--tundora;
+  }
+
+  &:after {
+    @include only-icon-font;
+    content: '\e908';
+    position: absolute;
+    top: 50%;
+    right: 19px;
+    transform: translate3d(0, -50%, 0);
+    color: $color--boulder;
+    font-size: 8px;
+    transition: color $animation--duration $animation--timing,
+                transform $animation--duration $animation--timing;
+  }
+}
+
+//ToDo: Style list
+.select__list {
+  display: none;
+}

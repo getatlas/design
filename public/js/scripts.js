@@ -616,6 +616,15 @@ var scrollControl = function(type) {
   }
 }
 
+var select = function() {
+  var SELECT = {
+    CONT: document.querySelector('.js-select'),
+    CONTS: document.querySelectorAll('.js-select'),
+    HEADING: document.querySelector('.js-select-heading'),
+    LIST: document.querySelector('.js-select-list'),
+  }
+}
+
 window.addEventListener('load', function () {
   detectBrowser();
   collapseSlider();
@@ -626,4 +635,5 @@ window.addEventListener('load', function () {
   form();
   results();
   notifications();
+  select();
 });

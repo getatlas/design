@@ -88,7 +88,7 @@
 	padding-right: 20px;
 	padding-left: 20px;
 	border: 2px solid transparent;
-	border-radius: 5px;
+	border-radius: $corner-radius;
 	background-color: $color--mine-shaft;
 	color: $color--white;
 	transition: background-color $animation--duration $animation--timing,
@@ -214,15 +214,27 @@
 			transform: scale(1);
 		}
 	}
+
+	&--lighter {
+		&:before {
+			background-color: darken($color--mine-shaft, 7.2%);
+		}
+	}
+
+	.invisible-helper[disabled] + & {
+		pointer-events: none;
+	}
 }
 
 .checkbox {
 	&:hover {
-		&:before {
-			background-color: $color--tundora;
+		.invisible-helper:not([disabled]) + & {
+			&:before {
+				background-color: $color--tundora;
 
-			.invisible-helper:checked + & {
-				background: lighten($color--sushi, 10%);
+				.invisible-helper:not([disabled]):checked + & {
+					background: lighten($color--sushi, 10%);
+				}
 			}
 		}
 	}
@@ -251,8 +263,10 @@
 
 .radio {
 	&:hover {
-		&:before {
-			background-color: $color--tundora;
+		.invisible-helper:not([disabled]) + & {
+			&:before {
+				background-color: $color--tundora;
+			}
 		}
 	}
 
@@ -328,4 +342,17 @@
 			}
 		}
 	}
+}
+
+//Field with button that confirm your decission :dafuq:
+.field-confirmation {
+	display: flex;
+
+	&:not(:last-child) {
+		margin-right: $spacing-horizontal;
+	}
+}
+
+.field-confirmation__btn {
+	margin-left: $spacing-horizontal--small / 2;
 }

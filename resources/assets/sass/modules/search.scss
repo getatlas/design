@@ -8,11 +8,15 @@
 		width: 100% !important;
 	}
 
+	.search--active &,
+	&:focus {
+		background-color: $color--tundora !important;
+		color: $color--white !important;
+	}
+
 	.search--active & {
 		width: 300px;
 		border-color: transparent;
-		background-color: $color--white;
-		color: darken($color--mine-shaft, 7%);
 
 		@media (max-width: 1024px) {
 			width: 241px;
@@ -77,7 +81,7 @@
 		font-size: 18px;
 
 		.search--active & {
-			color: darken($color--mine-shaft, 7%);
+			color: $color--white;
 		}
 	}
 }

@@ -4,7 +4,7 @@
   position: absolute;
   top: $toolbar--height + 10px;
   right: 83px;
-  border-radius: 5px;
+  border-radius: $corner-radius;
   opacity: 0;
   visibility: hidden;
   transform: translate3d(0, -5%, 0);

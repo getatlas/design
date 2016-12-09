@@ -23,8 +23,8 @@
     position: absolute;
     top: $toolbar--height;
     right: 149px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: $corner-radius;
+    border-bottom-right-radius: $corner-radius;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
@@ -142,8 +142,8 @@
 
   .results__content:last-child & {
     .results:last-child & {
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: $corner-radius;
+      border-bottom-right-radius: $corner-radius;
     }
   }
 }

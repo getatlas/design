@@ -1,7 +1,7 @@
 .btn {
 	padding: 9px 10px 11px 10px;
 	border-top: 2px solid transparent;
-	border-radius: 5px;
+	border-radius: $corner-radius;
 	background-color: $color--sushi;
 	color: $color--white;
 	text-align: center;
@@ -28,6 +28,12 @@
 			margin-right: 8px;
 			pointer-events: none;
 		}
+	}
+	&--wide {
+		width: 210px;
+	}
+	&--narrow {
+		width: 113px;
 	}
 
 	&--red {

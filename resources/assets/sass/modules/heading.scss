@@ -15,6 +15,20 @@
       border-top: 0;
     }
   }
+
+  &--without-border {
+    &,
+    &:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
+
+  &--with-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .heading__text {
@@ -37,4 +51,8 @@
       margin-top: 0;
     }
   }
+}
+
+.heading__actions {
+  display: flex;
 }
