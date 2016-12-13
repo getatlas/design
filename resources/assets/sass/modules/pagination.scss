@@ -7,6 +7,9 @@
   &--col {
     margin-bottom: 5px;
   }
+  &--with-text {
+    align-items: center;
+  }
 }
 
 .pagination__item {
@@ -66,10 +69,16 @@
   color: $color--white;
   position: relative;
   z-index: 1;
+  text-align: center;
   background-color: $color--mine-shaft;
   transition: background $animation--duration $animation--timing;
 
   &:hover {
     background-color: $color--tundora;
   }
+}
+
+.pagination__text {
+  margin-right: $spacing-vertical;
+  color: $color--boulder;
 }

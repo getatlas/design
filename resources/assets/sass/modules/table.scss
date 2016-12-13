@@ -1,5 +1,5 @@
 .table {
-  margin: $spacing-vertical #{-$spacing-horizontal} 0 #{-$spacing-horizontal};
+  margin: $spacing-vertical #{-$spacing-horizontal} 24px #{-$spacing-horizontal};
   display: flex;
   flex-wrap: wrap;
 }
@@ -70,10 +70,9 @@
 
 .table__row {
   display: flex;
-  
-  &:not(:last-child) {
-    border-bottom: 1px solid $color--mine-shaft;
-  }
+  min-height: 73px;
+  align-items: center;
+  border-bottom: 1px solid $color--mine-shaft;
 }
 
 .table__item {
@@ -100,4 +99,38 @@
   &--invisible {
     text-indent: -9999px;
   }
+
+  &--blue {
+    color: $color--blue-marguerite;
+  }
+}
+
+.table__footer {
+  width: 100%;
+  margin-top: 34px;
+  padding: 0 $spacing-horizontal;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table__footer__nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0;
+}
+
+.table__footer__nav__item {
+  margin-right: 28px;
+  display: inline-block;
+  font-size: $font-size--paragraph;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.table__footer__nav__link {
+  color: $color--boulder;
 }

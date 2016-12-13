@@ -621,8 +621,128 @@ var select = function() {
     CONT: document.querySelector('.js-select'),
     CONTS: document.querySelectorAll('.js-select'),
     HEADING: document.querySelector('.js-select-heading'),
+    HEADINGS: document.querySelectorAll('.js-select-heading'),
     LIST: document.querySelector('.js-select-list'),
+    LISTS: document.querySelectorAll('.js-select-list'),
+    THIS: null,
   }
+
+  var isSelectOpened = false;
+
+  var detectOutsideClick = function(event) {
+    if (!SELECT.THIS.contains(event.target)) {
+      SELECT.THIS.classList.remove('select__heading--active');
+      SELECT.THIS.nextElementSibling.classList.remove('select__list--active');
+      SELECT.THIS.nextElementSibling.classList.add('select__list--hidden');
+      isSelectOpened = false;
+
+      window.removeEventListener(EVENTS.CLICK, detectOutsideClick);
+    }
+  }
+
+  var toggleSelect = function() {
+    SELECT.THIS = this;
+    isSelectOpened = !isSelectOpened;
+
+    this.classList.toggle('select__heading--active');
+    this.nextElementSibling.classList.toggle('select__list--active');
+    this.nextElementSibling.classList.toggle('select__list--hidden');
+
+    if (isSelectOpened) {
+      window.addEventListener(EVENTS.CLICK, detectOutsideClick);
+    } else {
+      window.removeEventListener(EVENTS.CLICK, detectOutsideClick);
+    }
+
+  };
+
+  SELECT.HEADINGS.forEach(function(ELEMENT) {
+    ELEMENT.addEventListener(EVENTS.CLICK, toggleSelect);
+  });
+
+  Array.prototype.forEach.call(SELECT.LISTS, function(ELEMENT) {
+    ELEMENT.style.maxHeight = ELEMENT.offsetHeight + 'px';
+    ELEMENT.classList.add('select__list--hidden');
+  });
+}
+
+var table = function() {
+  var TABLE = {
+    ROW: document.querySelector('.js-table-row'),
+    ROWS: document.querySelectorAll('.js-table-row'),
+    CHECKBOXS: document.querySelectorAll('.js-table-row .invisible-helper'),
+    SELECT_ALL_BTN: document.querySelector('.js-table-select-all'),
+  }
+
+  var isCheckedAll = false;
+
+  var toggleSelect = function() {
+    if (!isCheckedAll) {
+      TABLE.CHECKBOXS.forEach(function(ELEMENT){
+        ELEMENT.setAttribute('checked', 'checked');
+        TABLE.SELECT_ALL_BTN.textContent = 'Unselect All';
+      });
+    } else {
+      TABLE.CHECKBOXS.forEach(function(ELEMENT){
+        ELEMENT.removeAttribute('checked');
+        TABLE.SELECT_ALL_BTN.textContent = 'Select All';
+      });
+    }
+
+    isCheckedAll = !isCheckedAll;
+  }
+
+  TABLE.SELECT_ALL_BTN.addEventListener(EVENTS.CLICK, toggleSelect);
+}
+
+var actionsMenu = function() {
+  var ACTIONS_MENU = {
+    CONT: document.querySelector('.js-actions-menu'),
+    CONTS: document.querySelectorAll('.js-actions-menu'),
+    TRIGGER: document.querySelector('.js-actions-menu-trigger'),
+    TRIGGERS: document.querySelectorAll('.js-actions-menu-trigger'),
+    NAV: document.querySelector('.js-actions-menu-nav'),
+    NAVS: document.querySelectorAll('.js-actions-menu-nav'),
+    THIS: null,
+  }
+
+  var isActionsMenuOpened = false;
+
+  var detectOutsideClick = function(event) {
+    if (!ACTIONS_MENU.THIS.contains(event.target)) {
+      ACTIONS_MENU.THIS.classList.remove('actions-menu__heading--active');
+      ACTIONS_MENU.THIS.nextElementSibling.classList.remove('actions-menu__container--active');
+      ACTIONS_MENU.THIS.nextElementSibling.classList.add('actions-menu__container--hidden');
+      isActionsMenuOpened = false;
+
+      window.removeEventListener(EVENTS.CLICK, detectOutsideClick);
+    }
+  }
+
+  var toggleSelect = function() {
+    ACTIONS_MENU.THIS = this;
+    isActionsMenuOpened = !isActionsMenuOpened;
+
+    this.classList.toggle('actions-menu__heading--active');
+    this.nextElementSibling.classList.toggle('actions-menu__container--active');
+    this.nextElementSibling.classList.toggle('actions-menu__container--hidden');
+
+    if (isActionsMenuOpened) {
+      window.addEventListener(EVENTS.CLICK, detectOutsideClick);
+    } else {
+      window.removeEventListener(EVENTS.CLICK, detectOutsideClick);
+    }
+
+  };
+
+  ACTIONS_MENU.TRIGGERS.forEach(function(ELEMENT) {
+    ELEMENT.addEventListener(EVENTS.CLICK, toggleSelect);
+  });
+
+  Array.prototype.forEach.call(ACTIONS_MENU.NAVS, function(ELEMENT) {
+    ELEMENT.style.maxHeight = ELEMENT.offsetHeight + 'px';
+    ELEMENT.classList.add('actions-menu__container--hidden');
+  });
 }
 
 window.addEventListener('load', function () {
@@ -630,10 +750,14 @@ window.addEventListener('load', function () {
   collapseSlider();
   dropdownMenuToggle();
   search();
-  calendar();
+  if (document.querySelectorAll('.js-calendar').length >= 1) {
+    calendar();
+  }
   tabs();
   form();
   results();
   notifications();
   select();
+  table();
+  actionsMenu();
 });

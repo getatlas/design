@@ -26,4 +26,26 @@
     font-weight: bold;
     text-decoration: underline;
   }
+  &--underline {
+    position: relative;
+    transition: opacity $animation--duration $animation--timing;
+
+    &:hover {
+      text-decoration: none;
+
+      &:after {
+        border-bottom-color: transparent;
+      }
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: 1px solid;
+      transition: border $animation--duration $animation--timing;
+    }
+  }
 }

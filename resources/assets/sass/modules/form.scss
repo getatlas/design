@@ -215,6 +215,10 @@
 		}
 	}
 
+	&--inherit {
+		color: inherit;
+		font-size: inherit;
+	}
 	&--lighter {
 		&:before {
 			background-color: darken($color--mine-shaft, 7.2%);
@@ -231,10 +235,12 @@
 		.invisible-helper:not([disabled]) + & {
 			&:before {
 				background-color: $color--tundora;
+			}
+		}
 
-				.invisible-helper:not([disabled]):checked + & {
-					background: lighten($color--sushi, 10%);
-				}
+		.invisible-helper:not([disabled]):checked + & {
+			&:before {
+				background: lighten($color--sushi, 10%);
 			}
 		}
 	}
@@ -258,6 +264,17 @@
 		font-size: 8px;
 		transition: opacity $animation--duration $animation--timing,
 		transform $animation--duration $animation--timing;
+	}
+
+	&--inherit {
+		&:before,
+		&:after {
+			top: 50%;
+			transform: translate(0, -50%);
+		}
+		&:after {
+			margin-top: -3px;
+		}
 	}
 }
 

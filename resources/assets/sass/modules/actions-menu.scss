@@ -1,3 +1,54 @@
+.actions-menu {
+  margin: 0;
+  padding: 0;
+}
+
+.actions-menu__heading {
+  width: 110px;
+  height: 32px;
+  padding: 4px 30px 4px 11px;
+  display: block;
+  position: relative;
+  color: $color--white;
+  border-radius: $corner-radius;
+  border: 1px solid $color--mine-shaft;
+  font-size: $font-size--title;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background $animation--duration $animation--timing;
+
+  &:hover,
+  &--active {
+    background-color: $color--mine-shaft;
+
+    &:after {
+      color: $color--white;
+    }
+  }
+
+  &:after {
+    @include only-icon-font;
+    content: '\e908';
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translate3d(0, -50%, 0);
+    color: $color--boulder;
+    font-size: 8px;
+    transition: color $animation--duration $animation--timing;
+  }
+}
+
 .actions-menu__container {
-  display: none;
+  visibility: hidden;
+  pointer-events: none;
+
+  &--hidden {
+    max-height: 0 !important;
+  }
+
+  &--active {
+    visibility: visible;
+    pointer-events: auto;
+  }
 }

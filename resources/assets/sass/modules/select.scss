@@ -1,5 +1,6 @@
 .select {
   width: 300px;
+  position: relative;
 }
 
 .select__heading {
@@ -14,9 +15,11 @@
   align-items: center;
   font-weight: normal;
   position: relative;
+  z-index: $initial-order + 1;
   transition: background $animation--duration $animation--timing;
 
-  &:hover {
+  &:hover,
+  &--active {
     background-color: $color--tundora;
   }
 
@@ -36,5 +39,48 @@
 
 //ToDo: Style list
 .select__list {
-  display: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  top: 38px;
+  left: 0;
+  visibility: hidden;
+  z-index: $initial-order;
+  overflow: hidden;
+  pointer-events: none;
+  border-bottom-left-radius: $corner-radius;
+  border-bottom-right-radius: $corner-radius;
+  box-shadow: 0 28px 70px 4px rgba($color--black, 0.19);
+  background-color: darken($color--mine-shaft, 7%);
+  transition: visibility $animation--duration $animation--timing,
+              max-height $animation--duration $animation--timing;
+
+  &--hidden {
+    max-height: 0 !important;
+  }
+
+  &--active {
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+.select__list__item {
+  padding: 16px $spacing-horizontal--small;
+  cursor: pointer;
+  transition: background $animation--duration $animation--timing;
+  position: relative;
+
+  &:hover {
+    background-color: $color--mine-shaft;
+  }
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid $color--mine-shaft;
+  }
+  &:first-child {
+    padding-top: 20px;
+  }
 }
