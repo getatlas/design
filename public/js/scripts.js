@@ -630,7 +630,7 @@ var select = function() {
   var isSelectOpened = false;
 
   var detectOutsideClick = function(event) {
-    if (!SELECT.THIS.contains(event.target)) {
+    if (!SELECT.THIS.parentNode.contains(event.target)) {
       SELECT.THIS.classList.remove('select__heading--active');
       SELECT.THIS.nextElementSibling.classList.remove('select__list--active');
       SELECT.THIS.nextElementSibling.classList.add('select__list--hidden');
@@ -644,16 +644,15 @@ var select = function() {
     SELECT.THIS = this;
     isSelectOpened = !isSelectOpened;
 
-    this.classList.toggle('select__heading--active');
-    this.nextElementSibling.classList.toggle('select__list--active');
-    this.nextElementSibling.classList.toggle('select__list--hidden');
+    SELECT.THIS.classList.toggle('select__heading--active');
+    SELECT.THIS.nextElementSibling.classList.toggle('select__list--active');
+    SELECT.THIS.nextElementSibling.classList.toggle('select__list--hidden');
 
     if (isSelectOpened) {
       window.addEventListener(EVENTS.CLICK, detectOutsideClick);
     } else {
       window.removeEventListener(EVENTS.CLICK, detectOutsideClick);
     }
-
   };
 
   SELECT.HEADINGS.forEach(function(ELEMENT) {
@@ -707,37 +706,67 @@ var actionsMenu = function() {
   }
 
   var isActionsMenuOpened = false;
+  var whichIsOpened = null;
 
   var detectOutsideClick = function(event) {
-    if (!ACTIONS_MENU.THIS.contains(event.target)) {
+    if (!ACTIONS_MENU.THIS.parentNode.contains(event.target)) {
       ACTIONS_MENU.THIS.classList.remove('actions-menu__heading--active');
       ACTIONS_MENU.THIS.nextElementSibling.classList.remove('actions-menu__container--active');
       ACTIONS_MENU.THIS.nextElementSibling.classList.add('actions-menu__container--hidden');
+
+      setTimeout(function(){
+        ACTIONS_MENU.THIS.parentNode.classList.remove('actions-menu--active');
+      }, 100);
+
       isActionsMenuOpened = false;
+      whichIsOpened = null;
 
       window.removeEventListener(EVENTS.CLICK, detectOutsideClick);
     }
   }
 
+  var detectOpened = function() {
+    if (whichIsOpened !== ACTIONS_MENU.THIS.parentNode.getAttribute('data-actions-menu-eq') && !!whichIsOpened) {
+      for (var i = 0; i < ACTIONS_MENU.TRIGGERS.length; i++) {
+        if (ACTIONS_MENU.TRIGGERS[i].parentNode.classList.contains('actions-menu--active')) {
+          ACTIONS_MENU.TRIGGERS[i].classList.remove('actions-menu__heading--active');
+          ACTIONS_MENU.TRIGGERS[i].nextElementSibling.classList.remove('actions-menu__container--active');
+          ACTIONS_MENU.TRIGGERS[i].nextElementSibling.classList.add('actions-menu__container--hidden');
+          ACTIONS_MENU.TRIGGERS[i].parentNode.classList.remove('actions-menu--active');
+        }
+      }
+    } else {
+      isActionsMenuOpened = !isActionsMenuOpened;
+    }
+  }
+
   var toggleSelect = function() {
     ACTIONS_MENU.THIS = this;
-    isActionsMenuOpened = !isActionsMenuOpened;
+    detectOpened();
+    whichIsOpened = ACTIONS_MENU.THIS.parentNode.getAttribute('data-actions-menu-eq');
 
-    this.classList.toggle('actions-menu__heading--active');
-    this.nextElementSibling.classList.toggle('actions-menu__container--active');
-    this.nextElementSibling.classList.toggle('actions-menu__container--hidden');
+    ACTIONS_MENU.THIS.classList.toggle('actions-menu__heading--active');
+    ACTIONS_MENU.THIS.nextElementSibling.classList.toggle('actions-menu__container--active');
+    ACTIONS_MENU.THIS.nextElementSibling.classList.toggle('actions-menu__container--hidden');
 
     if (isActionsMenuOpened) {
       window.addEventListener(EVENTS.CLICK, detectOutsideClick);
+      ACTIONS_MENU.THIS.parentNode.classList.toggle('actions-menu--active');
     } else {
       window.removeEventListener(EVENTS.CLICK, detectOutsideClick);
+      setTimeout(function(){
+        ACTIONS_MENU.THIS.parentNode.classList.toggle('actions-menu--active');
+      }, 100);
     }
-
   };
 
   ACTIONS_MENU.TRIGGERS.forEach(function(ELEMENT) {
     ELEMENT.addEventListener(EVENTS.CLICK, toggleSelect);
   });
+
+  for (var i = 0; i < ACTIONS_MENU.CONTS.length; i++) {
+    ACTIONS_MENU.CONTS[i].setAttribute('data-actions-menu-eq', i);
+  }
 
   Array.prototype.forEach.call(ACTIONS_MENU.NAVS, function(ELEMENT) {
     ELEMENT.style.maxHeight = ELEMENT.offsetHeight + 'px';

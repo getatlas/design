@@ -4374,11 +4374,14 @@ h6 {
   color: #777; }
 
 .actions-menu {
+  width: 110px;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  position: relative; }
+  .actions-menu--active {
+    z-index: 101; }
 
 .actions-menu__heading {
-  width: 110px;
   height: 32px;
   padding: 4px 30px 4px 11px;
   display: block;
@@ -4386,13 +4389,15 @@ h6 {
   color: #fff;
   border-radius: 5px;
   border: 1px solid #3a3a3a;
+  z-index: 100;
   font-size: 16px;
   font-weight: normal;
   cursor: pointer;
+  background-color: #282828;
   transition: background 0.1s ease-in-out; }
-  .actions-menu__heading:hover, .actions-menu__heading--active {
+  .actions-menu__heading:hover {
     background-color: #3a3a3a; }
-    .actions-menu__heading:hover:after, .actions-menu__heading--active:after {
+    .actions-menu__heading:hover:after {
       color: #fff; }
   .actions-menu__heading:after {
     font-family: 'Icons' !important;
@@ -4415,13 +4420,37 @@ h6 {
     transition: color 0.1s ease-in-out; }
 
 .actions-menu__container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  list-style: none;
+  position: absolute;
+  top: 28px;
   visibility: hidden;
-  pointer-events: none; }
+  overflow: hidden;
+  pointer-events: none;
+  background-color: #3a3a3a;
+  transition: max-height 0.1s ease-in-out, visibility 0.1s ease-in-out, z-index 0.3s 0.3s ease-in-out; }
   .actions-menu__container--hidden {
     max-height: 0 !important; }
   .actions-menu__container--active {
     visibility: visible;
     pointer-events: auto; }
+
+.actions-menu__item {
+  transition: background 0.1s ease-in-out; }
+  .actions-menu__item:hover {
+    background-color: #454545; }
+  .actions-menu__item:not(:last-of-type) {
+    border-bottom: 1px solid #454545; }
+  .actions-menu__item:first-child {
+    padding-top: 8px; }
+
+.actions-menu__item__link {
+  display: block;
+  padding: 5px 11px; }
 
 .sidebar {
   width: 300px;
