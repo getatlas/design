@@ -2,6 +2,19 @@
   margin: $spacing-vertical #{-$spacing-horizontal} 24px #{-$spacing-horizontal};
   display: flex;
   flex-wrap: wrap;
+
+  @media (max-width: 767px) {
+    margin-bottom: 0;
+  }
+}
+
+.table__container {
+  width: 100%;
+
+  @media (max-width: 767px) {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .table__header,
@@ -15,6 +28,13 @@
   display: flex;
   align-items: center;
   background: $color--mine-shaft;
+}
+
+.table__header,
+.table__list {
+  @media (max-width: 767px) {
+    min-width: 855px;
+  }
 }
 
 .table__heading {
@@ -76,6 +96,11 @@
 }
 
 .table__item {
+  padding-right: $spacing-horizontal--small;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
   &--website {
     width: 23.88%;
     padding-left: $spacing-horizontal;
@@ -94,6 +119,7 @@
   }
   &--menu {
     width: 9.72%;
+    flex-basis: 138px;
   }
 
   &--invisible {
@@ -112,6 +138,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 767px) {
+    margin-top: 25px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .table__footer__nav {

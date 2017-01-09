@@ -1,12 +1,21 @@
 .select {
   width: 300px;
   position: relative;
+
+  &--with-btn {
+    width: calc(100% - 123px);
+
+    @media (max-width: 767px) {
+      width: calc(100% - 85px);      
+    }
+  }
 }
 
 .select__heading {
-  display: flex;
+  display: block;
   height: 42px;
-  padding: 0 $spacing--small;
+  line-height: 42px;
+  padding: 0 38px 0 $spacing--small;
   font-size: $font-size--title;
   color: $color--white;
   border-radius: $corner-radius;
@@ -15,6 +24,9 @@
   align-items: center;
   font-weight: normal;
   position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   z-index: $initial-order + 1;
   transition: background $animation--duration $animation--timing;
 

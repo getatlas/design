@@ -17,6 +17,15 @@
 	&--tab {
 		overflow: hidden;
 	}
+	&--table {
+		@media (max-width: 767px) {
+			width: calc(100% + #{$spacing-horizontal--small});
+			max-width: none;
+			margin: -20px -10px 0 -10px;
+			padding-top: 34px;
+			border-radius: 0;
+		}
+	}
 }
 
 .col__heading {

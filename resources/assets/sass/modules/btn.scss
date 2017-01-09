@@ -31,9 +31,17 @@
 	}
 	&--wide {
 		width: 210px;
+
+		@media (max-width: 767px) {
+			width: 100%;
+		}
 	}
 	&--narrow {
 		width: 113px;
+
+		@media (max-width: 767px) {
+			width: 85px;
+		}
 	}
 
 	&--red {

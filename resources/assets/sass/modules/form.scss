@@ -364,9 +364,21 @@
 //Field with button that confirm your decission :dafuq:
 .field-confirmation {
 	display: flex;
+	width: calc(100% - 240px);
+	max-width: 423px;
 
+	@media (max-width: 767px) {
+		width: 100%;
+		max-width: none;
+		margin-top: $spacing-horizontal--small;
+	}
+	
 	&:not(:last-child) {
 		margin-right: $spacing-horizontal;
+
+		@media (max-width: 767px) {
+			margin-right: 0;
+		}
 	}
 }
 
