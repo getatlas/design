@@ -4308,6 +4308,28 @@ h6 {
   .select__list__item:first-child {
     padding-top: 20px; }
 
+@-webkit-keyframes tooltip-bounce {
+  0% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0); }
+  50% {
+    -webkit-transform: translate3d(-50%, -8px, 0);
+    transform: translate3d(-50%, -8px, 0); }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0); } }
+
+@keyframes tooltip-bounce {
+  0% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0); }
+  50% {
+    -webkit-transform: translate3d(-50%, -8px, 0);
+    transform: translate3d(-50%, -8px, 0); }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0); } }
+
 .table {
   margin: 30px -30px 24px -30px;
   display: -webkit-flex;
@@ -4315,13 +4337,46 @@ h6 {
   display: flex;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  position: relative; }
   @media (max-width: 767px) {
     .table {
       margin-bottom: 0; } }
+  .table--without-notification:before, .table--without-notification:after {
+    opacity: 0;
+    visibility: hidden; }
+  .table:before, .table:after {
+    position: absolute;
+    pointer-events: none;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+    z-index: 100;
+    -webkit-animation: tooltip-bounce 4s ease-in-out infinite;
+    animation: tooltip-bounce 4s ease-in-out infinite;
+    transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out; }
+  .table:before {
+    content: 'Swipe to scroll';
+    height: 48px;
+    padding-right: 17px;
+    padding-left: 17px;
+    top: -11px;
+    background: #7fc146;
+    border-radius: 5px;
+    line-height: 48px; }
+  .table:after {
+    content: '';
+    width: 0;
+    height: 0;
+    top: 35px;
+    left: 50%;
+    border-style: solid;
+    border-width: 7px 6px 0 6px;
+    border-color: #7fc146 transparent transparent transparent; }
 
 .table__container {
-  width: 100%; }
+  width: 100%;
+  position: relative; }
   @media (max-width: 767px) {
     .table__container {
       overflow-y: auto;

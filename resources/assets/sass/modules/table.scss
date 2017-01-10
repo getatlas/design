@@ -1,19 +1,91 @@
+@keyframes tooltip-bounce {
+  0%   { transform: translate3d(-50%, 0, 0); }
+  50% { transform: translate3d(-50%, -8px, 0); }
+  100%   { transform: translate3d(-50%, 0, 0); }  
+}
+
 .table {
   margin: $spacing-vertical #{-$spacing-horizontal} 24px #{-$spacing-horizontal};
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 
   @media (max-width: 767px) {
     margin-bottom: 0;
+  }
+
+  &--without-notification {
+    &:before,
+    &:after {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &:before,
+  &:after {
+    position: absolute;
+    pointer-events: none;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    z-index: $initial-order;
+    animation: tooltip-bounce 4s $animation--timing infinite;
+    transition: opacity $animation--duration $animation--timing,
+                visibility $animation--duration $animation--timing;
+  }
+
+  &:before {
+    content: 'Swipe to scroll';
+    height: 48px;
+    padding-right: 17px;
+    padding-left: 17px;
+    top: -11px;
+    background: $color--sushi;
+    border-radius: $corner-radius;
+    line-height: 48px;
+  }
+  &:after {
+    content: '';
+    width: 0;
+    height: 0;
+    top: 35px;
+    left: 50%;
+    border-style: solid;
+    border-width: 7px 6px 0 6px;
+    border-color: $color--sushi transparent transparent transparent;
   }
 }
 
 .table__container {
   width: 100%;
+  position: relative;
 
   @media (max-width: 767px) {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+
+    // &::after {
+    //   content: '';
+    //   width: $spacing-horizontal--small;
+    //   height: 100%;
+    //   position: fixed;
+    //   top: 0;
+    //   right: 0;
+    //   z-index: $initial-order * 2;
+    //   background: linear-gradient(to left, darken($color--mine-shaft, 7%) 0%, rgba(40, 40, 40, 0.01) 100%);      
+    //   transition: opacity $animation--duration $animation--timing;
+      
+    //   .safari & {
+    //     position: sticky;
+    //   }
+    // }
+
+    // &--in-corner {
+    //   &:after {
+    //     opacity: 0;
+    //     pointer-events: none;
+    //   }
+    // }
   }
 }
 

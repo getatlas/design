@@ -667,6 +667,9 @@ var select = function() {
 
 var table = function() {
   var TABLE = {
+    MAIN: document.querySelector('.js-table'),
+    CONT: document.querySelector('.js-table-container'),
+    LIST: document.querySelector('.js-table-list'),
     ROW: document.querySelector('.js-table-row'),
     ROWS: document.querySelectorAll('.js-table-row'),
     CHECKBOXS: document.querySelectorAll('.js-table-row .invisible-helper'),
@@ -674,6 +677,8 @@ var table = function() {
   }
 
   var isCheckedAll = false;
+  var isTableScrolled = false;
+  var isScrolling = false;
 
   var toggleSelect = function() {
     if (!isCheckedAll) {
@@ -691,7 +696,22 @@ var table = function() {
     isCheckedAll = !isCheckedAll;
   }
 
+  var isScrolled = function(event) {
+    if (!isTableScrolled && TABLE.CONT.scrollLeft > 0) {
+      isTableScrolled = true
+      TABLE.MAIN.classList.add('table--without-notification');
+    }
+
+    if (TABLE.CONT.scrollLeft + window.innerWidth >= TABLE.LIST.offsetWidth - 25) {
+      TABLE.CONT.classList.add('table__container--in-corner');
+      console.log('Yep babe!');
+    } else {
+      TABLE.CONT.classList.remove('table__container--in-corner');      
+    }
+  }
+
   TABLE.SELECT_ALL_BTN.addEventListener(EVENTS.CLICK, toggleSelect);
+  TABLE.CONT.addEventListener(EVENTS.SCROLL, isScrolled);
 }
 
 var actionsMenu = function() {
