@@ -24,6 +24,11 @@
   background-color: darken($color--mine-shaft, 7%);
   transition: background $animation--duration $animation--timing;
 
+  .ie & {
+    padding-top: 7px;
+    padding-bottom: 1px;
+  }
+
   &:hover {
     background-color: $color--mine-shaft;
 

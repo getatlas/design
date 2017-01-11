@@ -711,7 +711,10 @@ var table = function() {
   }
 
   TABLE.SELECT_ALL_BTN.addEventListener(EVENTS.CLICK, toggleSelect);
-  TABLE.CONT.addEventListener(EVENTS.SCROLL, isScrolled);
+  
+  if (getDeviceType() === DEVICE_TYPE.MOBILE) {
+    TABLE.CONT.addEventListener(EVENTS.SCROLL, isScrolled);    
+  }
 }
 
 var actionsMenu = function() {

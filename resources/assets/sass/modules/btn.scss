@@ -7,6 +7,11 @@
 	text-align: center;
 	cursor: pointer;
 
+	.ie & {
+		padding-top: 12px;
+		padding-bottom: 8px;
+	}
+
 	&:hover {
 		background-color: darken($color--sushi, 4.7%);
 	}

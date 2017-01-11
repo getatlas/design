@@ -8,10 +8,13 @@
     margin-bottom: 5px;
   }
   &--with-text {
-    width: 100%;
-    margin-top: 34px;
     align-items: center;
-    justify-content: space-between;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      margin-top: 34px;      
+      justify-content: space-between;
+    }
   }
 }
 

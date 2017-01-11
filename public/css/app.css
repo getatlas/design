@@ -3602,6 +3602,9 @@ h6 {
   color: #fff;
   text-align: center;
   cursor: pointer; }
+  .ie .btn {
+    padding-top: 12px;
+    padding-bottom: 8px; }
   .btn:hover {
     background-color: #73b33c; }
   .btn:active {
@@ -3851,14 +3854,16 @@ h6 {
   .pagination--col {
     margin-bottom: 5px; }
   .pagination--with-text {
-    width: 100%;
-    margin-top: 34px;
     -webkit-align-items: center;
     -ms-flex-align: center;
-    align-items: center;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between; }
+    align-items: center; }
+    @media (max-width: 767px) {
+      .pagination--with-text {
+        width: 100%;
+        margin-top: 34px;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between; } }
 
 .pagination__item {
   position: relative; }
@@ -4152,6 +4157,9 @@ h6 {
   text-transform: uppercase;
   color: #fff;
   line-height: 1; }
+  .ie .notifications__label {
+    padding-top: 4px;
+    padding-bottom: 0; }
   .notifications__label--servers {
     background-color: #6863ce; }
   .notifications__label--users {
@@ -4249,6 +4257,8 @@ h6 {
   overflow: hidden;
   z-index: 101;
   transition: background 0.1s ease-in-out; }
+  .ie .select__heading {
+    padding-top: 2px; }
   .select__heading:hover, .select__heading--active {
     background-color: #464646; }
   .select__heading:after {
@@ -4341,38 +4351,38 @@ h6 {
   position: relative; }
   @media (max-width: 767px) {
     .table {
-      margin-bottom: 0; } }
-  .table--without-notification:before, .table--without-notification:after {
-    opacity: 0;
-    visibility: hidden; }
-  .table:before, .table:after {
-    position: absolute;
-    pointer-events: none;
-    left: 50%;
-    -webkit-transform: translate3d(-50%, 0, 0);
-    transform: translate3d(-50%, 0, 0);
-    z-index: 100;
-    -webkit-animation: tooltip-bounce 4s ease-in-out infinite;
-    animation: tooltip-bounce 4s ease-in-out infinite;
-    transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out; }
-  .table:before {
-    content: 'Swipe to scroll';
-    height: 48px;
-    padding-right: 17px;
-    padding-left: 17px;
-    top: -11px;
-    background: #7fc146;
-    border-radius: 5px;
-    line-height: 48px; }
-  .table:after {
-    content: '';
-    width: 0;
-    height: 0;
-    top: 35px;
-    left: 50%;
-    border-style: solid;
-    border-width: 7px 6px 0 6px;
-    border-color: #7fc146 transparent transparent transparent; }
+      margin-bottom: 0; }
+      .table--without-notification:before, .table--without-notification:after {
+        opacity: 0;
+        visibility: hidden; }
+      .table:before, .table:after {
+        position: absolute;
+        pointer-events: none;
+        left: 50%;
+        -webkit-transform: translate3d(-50%, 0, 0);
+        transform: translate3d(-50%, 0, 0);
+        z-index: 100;
+        -webkit-animation: tooltip-bounce 4s ease-in-out infinite;
+        animation: tooltip-bounce 4s ease-in-out infinite;
+        transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out; }
+      .table:before {
+        content: 'Swipe to scroll';
+        height: 48px;
+        padding-right: 17px;
+        padding-left: 17px;
+        top: -11px;
+        background: #7fc146;
+        border-radius: 5px;
+        line-height: 48px; }
+      .table:after {
+        content: '';
+        width: 0;
+        height: 0;
+        top: 35px;
+        left: 50%;
+        border-style: solid;
+        border-width: 7px 6px 0 6px;
+        border-color: #7fc146 transparent transparent transparent; } }
 
 .table__container {
   width: 100%;
@@ -4406,6 +4416,9 @@ h6 {
 
 .table__heading {
   display: inline-block; }
+  .ie .table__heading {
+    min-height: 0 !important;
+    padding-top: 18px !important; }
 
 .table__heading__text {
   padding-right: 16px;
@@ -4459,6 +4472,10 @@ h6 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
+  .ie .table__item {
+    min-height: 73px;
+    padding-top: 28px;
+    padding-right: 0; }
   .table__item--website {
     width: 23.88%;
     padding-left: 30px; }
@@ -4541,6 +4558,9 @@ h6 {
   cursor: pointer;
   background-color: #282828;
   transition: background 0.1s ease-in-out; }
+  .ie .actions-menu__heading {
+    padding-top: 7px;
+    padding-bottom: 1px; }
   .actions-menu__heading:hover {
     background-color: #3a3a3a; }
     .actions-menu__heading:hover:after {

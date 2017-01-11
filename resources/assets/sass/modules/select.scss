@@ -30,6 +30,10 @@
   z-index: $initial-order + 1;
   transition: background $animation--duration $animation--timing;
 
+  .ie & {
+    padding-top: 2px;
+  }
+
   &:hover,
   &--active {
     background-color: $color--tundora;
