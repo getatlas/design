@@ -655,7 +655,7 @@ var select = function() {
     }
   };
 
-  SELECT.HEADINGS.forEach(function(ELEMENT) {
+  _.each(SELECT.HEADINGS, function(ELEMENT) {
     ELEMENT.addEventListener(EVENTS.CLICK, toggleSelect);
   });
 
@@ -783,7 +783,7 @@ var actionsMenu = function() {
     }
   };
 
-  ACTIONS_MENU.TRIGGERS.forEach(function(ELEMENT) {
+  _.each(ACTIONS_MENU.TRIGGERS, function(ELEMENT) {
     ELEMENT.addEventListener(EVENTS.CLICK, toggleSelect);
   });
 
