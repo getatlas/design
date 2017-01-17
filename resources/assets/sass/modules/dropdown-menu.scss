@@ -16,8 +16,7 @@
             	visibility $animation--duration $animation--timing,
             	transform $animation--duration $animation--timing;
 
-	.dropdown--hover &,
-  .dropdown--clicked & {
+	&.dropdown__content--active {
 		visibility: visible;
 		opacity: 1;
 		transform: translate3d(0, 0, 0);
@@ -40,22 +39,21 @@
 		top: 67px;
 		right: -6px;
 
-    &:after {
-      content: '';
-      width: 100%;
-      height: 30px;
-      position: absolute;
-      top: -30px;
-      left: 0;
-    }
+		&:after {
+		content: '';
+		width: 100%;
+		height: 30px;
+		position: absolute;
+		top: -30px;
+		left: 0;
+		}
 	}
 }
 
 .dropdown-menu__trigger {
 	transition: opacity $animation--duration $animation--timing;
 
-	.dropdown--hover &,
-  .dropdown--clicked & {
+	&.dropdown__trigger--active {
 		opacity: .7;
 	}
 }

@@ -11,8 +11,7 @@
 			right: auto;
 		}
 
-		&.calendar--hover,
-		&.calendar--clicked {
+		&.dropdown--active {
 			z-index: $initial-order * 10;
 		}
 	}
@@ -32,9 +31,7 @@
 		font-size: 7px;
 	}
 
-	.calendar--clicked &,
-	.calendar--hover &,
-	&:hover {
+	&.dropdown__trigger--active {
 		color: $color--white;
 	}
 }
@@ -47,14 +44,14 @@
 	position: absolute;
 	top: calc(100% + 5px);
 	right: -20px;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
 	background-color: darken($color--mine-shaft, 7%);
-  transform: translate3d(0, -5%, 0);
-  transition: opacity $animation--duration $animation--timing,
-              visibility $animation--duration $animation--timing,
-              transform $animation--duration $animation--timing;
+	transform: translate3d(0, -5%, 0);
+	transition: opacity $animation--duration $animation--timing,
+				visibility $animation--duration $animation--timing,
+				transform $animation--duration $animation--timing;
 
 	@media (max-width: 767px) {
 		top: calc(100% + 10px);
@@ -63,8 +60,7 @@
 		transform: translate3d(-50%, -5%, 0);
 	}
 
-	.calendar--clicked &,
-	.calendar--hover & {
+	&.dropdown__content--active {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
