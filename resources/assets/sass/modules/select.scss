@@ -35,7 +35,7 @@
   }
 
   &:hover,
-  &--active {
+  &.dropdown__trigger--active {
     background-color: $color--tundora;
   }
 
@@ -53,7 +53,6 @@
   }
 }
 
-//ToDo: Style list
 .select__list {
   width: 100%;
   margin: 0;
@@ -73,11 +72,11 @@
   transition: visibility $animation--duration $animation--timing,
               max-height $animation--duration $animation--timing;
 
-  &--hidden {
+  &.dropdown__content--hidden {
     max-height: 0 !important;
   }
 
-  &--active {
+  &.dropdown__content--active {
     visibility: visible;
     pointer-events: auto;
   }

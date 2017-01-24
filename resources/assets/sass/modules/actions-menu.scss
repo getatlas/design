@@ -4,7 +4,7 @@
   padding: 0;
   position: relative;
 
-  &--active {
+  &.dropdown--last-active {
     z-index: $initial-order + 1;
   }
 }
@@ -67,11 +67,11 @@
               visibility $animation--duration $animation--timing,
               z-index $animation--duration-slow $animation--duration-slow $animation--timing;
 
-  &--hidden {
+  &.dropdown__content--hidden {
     max-height: 0 !important;
   }
 
-  &--active {
+  &.dropdown__content--active {
     visibility: visible;
     pointer-events: auto;
   }

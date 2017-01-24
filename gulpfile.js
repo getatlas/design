@@ -13,7 +13,7 @@ gulp.task('styles', function () {
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
-    .pipe(csso())
+    // .pipe(csso())
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('./public/css'))
     .pipe(browserSync.stream());

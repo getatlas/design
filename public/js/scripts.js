@@ -219,22 +219,22 @@ var tabs = function() {
       var tabsContentPath;
       var tabsActiveContentPath;
 
-      if (e.target !== e.currentTarget) {
-        Array.prototype.forEach.call(this.querySelectorAll('.js-tabs-nav-item'), function(element, i) {
-          if (element.parentNode.classList.contains('tabs__nav__item--active') === true) {
-            if (element.getAttribute('href') === e.target.getAttribute('href')) {
-              tabsActiveContentPath = element.getAttribute('href');
+      // if (e.target !== e.currentTarget) {
+      //   Array.prototype.forEach.call(this.querySelectorAll('.js-tabs-nav-item'), function(element, i) {
+      //     if (element.parentNode.classList.contains('tabs__nav__item--active') === true) {
+      //       if (element.getAttribute('href') === e.target.getAttribute('href')) {
+      //         tabsActiveContentPath = element.getAttribute('href');
 
-              return false;
-            }
+      //         return false;
+      //       }
 
-            element.parentNode.classList.remove('tabs__nav__item--active');
+      //       element.parentNode.classList.remove('tabs__nav__item--active');
 
-            return false;
-          }
-        });
+      //       return false;
+      //     }
+      //   });
 
-        tabsContentPath = e.target.getAttribute('href');
+        // tabsContentPath = e.target.getAttribute('href');
 
 
         if (tabsActiveContentPath !== tabsContentPath) {
@@ -576,13 +576,6 @@ var notifications = function() {
 
   setNotHeight('small');
 }
-
-//Run fastclick
-// if ('addEventListener' in document) {
-//     document.addEventListener('DOMContentLoaded', function() {
-//         FastClick.attach(document.body);
-//     }, false);
-// }
 
 var captureScroll = function(event) {
   var isScrollAllowed = false;
