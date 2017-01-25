@@ -1,3 +1,8 @@
+/*  global _ detect  */
+/*  eslint no-undef: "error"  */
+/*  eslint no-use-before-define: ["error", { "functions": false, "classes": false }]  */
+/*  eslint-env es6  */
+
 'use strict';
 
 //  BEGIN: Device & Events
@@ -96,7 +101,7 @@ function detectBrowser() {
     var BROWSER = void 0;
 
     _.each(BROWSERS, function (value) {
-      if (browserName.indexOf(value) >= 0) {
+      if (_.includes(browserName, value)) {
         BROWSER = value;
       }
     });
@@ -128,12 +133,14 @@ function Sidebar() {
     }
   };
 
-  // Listener
-
-  SIDEBAR.BTN.CONT.addEventListener(EVENTS.CLICK(), function () {
+  function initSidebar() {
     this.classList.toggle(SIDEBAR.BTN.CLASS.ACTIVE);
     SIDEBAR.CONT.classList.toggle(SIDEBAR.CLASS.COLLAPSED);
-  });
+  }
+
+  // Listener
+
+  SIDEBAR.BTN.CONT.addEventListener(EVENTS.CLICK(), initSidebar);
 }
 
 //  END: SIDEBAR TOGGLER
@@ -172,7 +179,7 @@ function Dropdown() {
   };
 
   var isOpened = false;
-  var dropdownEq = undefined;
+  var dropdownEq = void 0;
 
   //  Functions
 
@@ -256,7 +263,6 @@ function Dropdown() {
 //  BEGIN: SEARCH
 
 function Search() {
-
   //  Enums
 
   var SEARCH = {
@@ -271,6 +277,12 @@ function Search() {
   };
 
   //  Functions
+
+  function closeSearch() {
+    SEARCH.CONT.classList.remove(SEARCH.CLASS.ACTIVE);
+
+    window.removeEventListener(EVENTS.CLICK(), outsideClick);
+  }
 
   function outsideClick(event) {
     if (!SEARCH.CONT.contains(event.target) && !SEARCH.RESULTS.contains(event.target)) {
@@ -294,12 +306,6 @@ function Search() {
     SEARCH.CANCEL.addEventListener(EVENTS.CLICK(), cleanField);
   }
 
-  function closeSearch() {
-    SEARCH.CONT.classList.remove(SEARCH.CLASS.ACTIVE);
-
-    window.removeEventListener(EVENTS.CLICK(), outsideClick);
-  }
-
   //  Init
 
   SEARCH.FIELD.addEventListener(EVENTS.FOCUS, openSearch);
@@ -310,10 +316,12 @@ function Search() {
 //  BEGIN: TABS
 
 function Tabs() {
-
   //  ENUMS
 
   var TAB = {
+    PARENT: {
+      THIS: _.noop
+    },
     SINGLE: document.querySelector('.js-tabs'),
     ALL: document.querySelectorAll('.js-tabs'),
     NAV: {
@@ -322,7 +330,7 @@ function Tabs() {
       ITEM: {
         SINGLE: document.querySelector('.js-tabs-nav-item'),
         ALL: document.querySelectorAll('.js-tabs-nav-item'),
-        THIS: undefined,
+        THIS: _.noop,
         CLASS: {
           ACTIVE: 'tabs__nav__item--active'
         }
@@ -331,7 +339,7 @@ function Tabs() {
     CONTENT: {
       SINGLE: document.querySelector('.js-tabs-content-item'),
       ALL: document.querySelectorAll('.js-tabs-content-item'),
-      THIS: undefined,
+      THIS: _.noop,
       CLASS: {
         ACTIVE: 'tabs__content__item--active',
         HIDE: 'tabs__content__item--hiding'
@@ -344,7 +352,6 @@ function Tabs() {
   //  Helpers
   var navEq = 0;
   var isLocked = false;
-  var resizeTime = void 0;
 
   //  Functions
 
@@ -390,13 +397,13 @@ function Tabs() {
   }
 
   function changeHeight() {
+    var resizeTime = void 0;
     clearTimeout(resizeTime);
-    var resizeTime = setTimeout(function () {
+    resizeTime = setTimeout(function () {
       _.each(TAB.CONTENT.ALL, function (ELEMENT) {
         if (ELEMENT.classList.contains(TAB.CONTENT.CLASS.ACTIVE)) {
-          ELEMENT.parentNode.style.height = ELEMENT.offsetHeight + 'px';
-
-          return null;
+          TAB.PARENT.THIS = ELEMENT.parentNode;
+          TAB.PARENT.THIS.style.height = ELEMENT.offsetHeight + 'px';
         }
       });
     }, 100);
@@ -405,12 +412,13 @@ function Tabs() {
   //  Init
 
   _.each(TAB.NAV.ALL, function (ELEMENT) {
-    var contentElement = ELEMENT.parentNode.nextElementSibling.querySelectorAll('.js-tabs-content-item');
+    var contentElement = ELEMENT.parentNode.nextElementSibling;
+    var contentAllElement = contentElement.querySelectorAll('.js-tabs-content-item');
     ELEMENT.addEventListener(EVENTS.CLICK(), Nav);
 
     //  Set active first slide
-    contentElement[0].classList.add(TAB.CONTENT.CLASS.ACTIVE);
-    ELEMENT.parentNode.nextElementSibling.style.height = contentElement[0].offsetHeight + 'px';
+    contentAllElement[0].classList.add(TAB.CONTENT.CLASS.ACTIVE);
+    contentElement.style.height = contentAllElement[0].offsetHeight + 'px';
   });
 
   window.addEventListener(EVENTS.RESIZE(), changeHeight);
@@ -423,7 +431,6 @@ function Tabs() {
 //  BEGIN: FORMS
 
 function Form() {
-
   //  Enums
 
   var FORM = {
@@ -462,13 +469,13 @@ function Results() {
 
   var RESULTS = document.querySelector('.js-results');
   var TOOLBAR = document.querySelector('.js-toolbar');
-  var SEARCH_FIELD = document.querySelector('.js-search-field');
 
   //  Functions
 
   function setHeight() {
+    var resizeTime = void 0;
     clearTimeout(resizeTime);
-    var resizeTime = setTimeout(function () {
+    resizeTime = setTimeout(function () {
       RESULTS.style.height = 'auto';
       RESULTS.style.maxHeight = 'none';
       var resultsHeight = void 0;
@@ -500,7 +507,6 @@ function Results() {
 // BEGIN: NOTIFICATIONS
 
 function Notifications() {
-
   // Enums
   var NOTIFICATION = {
     PARENT: {
@@ -564,14 +570,15 @@ function Notifications() {
   //  Functions
 
   function setHeight(size) {
+    var resizeTime = void 0;
     clearTimeout(resizeTime);
-    var resizeTime = setTimeout(function () {
+    resizeTime = setTimeout(function () {
       var list = void 0;
       var notification = void 0;
 
       if (size === NOTIFICATION.SIZE.SMALL || !isFullNotification) {
         if (getWindowSize().WIDTH >= 768) {
-          //11px - offset from toolbar, 30px - default margin
+          //  11px - offset from toolbar, 30px - default margin
           list = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.DEFAULT - parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) - NOTIFICATION.BTN.MORE.clientHeight - parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10) - 11 - 30;
           notification = list + NOTIFICATION.PADDING.DEFAULT + parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) + NOTIFICATION.BTN.MORE.clientHeight + parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
         } else {
@@ -580,7 +587,7 @@ function Notifications() {
         }
       } else if (size === NOTIFICATION.SIZE.FULL || isFullNotification) {
         if (getWindowSize().WIDTH >= 768) {
-          // 2 * 30px - default margin
+          //  2 * 30px - default margin
           list = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.FULL - parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) - NOTIFICATION.BTN.MORE.clientHeight - parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10) - 60;
           notification = list + NOTIFICATION.PADDING.FULL + parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) + NOTIFICATION.BTN.MORE.clientHeight + parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
         } else {
@@ -588,22 +595,6 @@ function Notifications() {
           notification = getWindowSize().HEIGHT - TOOLBAR.clientHeight;
         }
       }
-
-      // if (size === NOTIFICATION.SIZE.FULL) {
-      //   listHeight = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.DEFAULT - parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) - NOTIFICATION.BTN.MORE.clientHeight - parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
-
-      //   if (getWindowSize().WIDTH >= 768) {
-      //     listHeight -= 41; //11px - offset from toolbar, 30px - default marginTop
-      //     cloudHeight = listHeight + NOTIFICATION.PADDING.DEFAULT + parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) + NOTIFICATION.BTN.MORE.clientHeight + parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
-      //   }
-      // } else {
-      //   listHeight = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.FULL - parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) - NOTIFICATION.BTN.MORE.clientHeight - parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
-
-      //   if (getWindowSize().WIDTH >= 768) {
-      //     listHeight -= 60; // 2 * 30px - default margin
-      //     cloudHeight = listHeight + NOTIFICATION.PADDING.FULL + parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) + NOTIFICATION.BTN.MORE.clientHeight + parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
-      //   }
-      // }
 
       NOTIFICATION.CONT.ITEM.style.height = notification + 'px';
       NOTIFICATION.LIST.ITEM.style.maxHeight = list + 'px';
@@ -727,7 +718,7 @@ function Notifications() {
 
   function initNotification() {
     if (isNotificationReaded) {
-      return null;
+      return;
     }
 
     this.parentNode.classList.toggle(NOTIFICATION.PARENT.CLASS.CLICKED);
@@ -769,7 +760,6 @@ function lockScroll(event) {
 //  BEGIN: TABLE
 
 function Table() {
-
   //  Enums
 
   var TABLE = {
@@ -793,7 +783,6 @@ function Table() {
   //  Helpers
 
   var isCheckedAll = false;
-  var isInCorner = false;
   var isPositionChanged = false;
 
   //  Functions
@@ -851,7 +840,6 @@ function Table() {
 //  BEGIN: OPTIONS MENU
 
 function optionsMenu() {
-
   //  Enums
 
   var OPTIONS = {

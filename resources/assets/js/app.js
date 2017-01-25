@@ -1,3 +1,8 @@
+/*  global _ detect  */
+/*  eslint no-undef: "error"  */
+/*  eslint no-use-before-define: ["error", { "functions": false, "classes": false }]  */
+/*  eslint-env es6  */
+
 'use strict';
 
 //  BEGIN: Device & Events
@@ -84,7 +89,7 @@ function detectBrowser() {
   //  Functions
 
   function getBrowserName() {
-    const browserName = detect.parse(navigator.userAgent).browser.name.toLowerCase();  
+    const browserName = detect.parse(navigator.userAgent).browser.name.toLowerCase();
     const BROWSERS = {
       CHROME: 'chrome',
       FIREFOX: 'firefox',
@@ -96,7 +101,7 @@ function detectBrowser() {
     let BROWSER;
 
     _.each(BROWSERS, value => {
-      if (browserName.indexOf(value) >= 0) {
+      if (_.includes(browserName, value)) {
         BROWSER = value;
       }
     });
@@ -128,12 +133,14 @@ function Sidebar() {
     }
   };
 
-  // Listener
-
-  SIDEBAR.BTN.CONT.addEventListener(EVENTS.CLICK(), function () {
+  function initSidebar() {
     this.classList.toggle(SIDEBAR.BTN.CLASS.ACTIVE);
     SIDEBAR.CONT.classList.toggle(SIDEBAR.CLASS.COLLAPSED);
-  });
+  }
+
+  // Listener
+
+  SIDEBAR.BTN.CONT.addEventListener(EVENTS.CLICK(), initSidebar);
 }
 
 //  END: SIDEBAR TOGGLER
@@ -153,7 +160,7 @@ function Dropdown() {
       ALL: document.querySelectorAll('.js-dropdown-trigger'),
       THIS: _.noop,
       CLASS: {
-        ACTIVE: 'dropdown__trigger--active',
+        ACTIVE: 'dropdown__trigger--active'
       }
     },
     CONTENT: {
@@ -172,7 +179,7 @@ function Dropdown() {
   };
 
   let isOpened = false;
-  let dropdownEq = undefined;
+  let dropdownEq;
 
   //  Functions
 
@@ -209,9 +216,9 @@ function Dropdown() {
 
     if (thisEq !== dropdownEq && dropdownEq !== undefined) {
       DROPDOWN.ALL[dropdownEq].classList.remove(DROPDOWN.CLASS.LAST_ACTIVE);
-      DROPDOWN.TRIGGER.THIS.parentNode.classList.add(DROPDOWN.CLASS.LAST_ACTIVE);      
+      DROPDOWN.TRIGGER.THIS.parentNode.classList.add(DROPDOWN.CLASS.LAST_ACTIVE);
     } else if (dropdownEq === undefined) {
-      DROPDOWN.TRIGGER.THIS.parentNode.classList.add(DROPDOWN.CLASS.LAST_ACTIVE);      
+      DROPDOWN.TRIGGER.THIS.parentNode.classList.add(DROPDOWN.CLASS.LAST_ACTIVE);
     }
 
     if (shouldCloseDropdown(thisEq) && isOpened) {
@@ -230,7 +237,7 @@ function Dropdown() {
     if (isOpened) {
       window.addEventListener(EVENTS.CLICK(), outsideClick);
     } else {
-      window.removeEventListener(EVENTS.CLICK(), outsideClick);      
+      window.removeEventListener(EVENTS.CLICK(), outsideClick);
     }
   }
 
@@ -241,8 +248,8 @@ function Dropdown() {
   });
 
   _.each(DROPDOWN.TRIGGER.ALL, (ELEMENT) => {
-    if (ELEMENT.parentNode.hasAttribute('data-dropdown-animation') && 
-        ELEMENT.parentNode.getAttribute('data-dropdown-animation') === 'slide') {
+    if (ELEMENT.parentNode.hasAttribute('data-dropdown-animation') &&
+      ELEMENT.parentNode.getAttribute('data-dropdown-animation') === 'slide') {
       let DROPDOWN_CONTENT = ELEMENT.nextElementSibling;
       DROPDOWN_CONTENT.style.maxHeight = DROPDOWN_CONTENT.clientHeight + 'px';
       DROPDOWN_CONTENT.classList.add(DROPDOWN.CONTENT.CLASS.HIDDEN);
@@ -257,7 +264,6 @@ function Dropdown() {
 //  BEGIN: SEARCH
 
 function Search() {
-
   //  Enums
 
   const SEARCH = {
@@ -272,6 +278,12 @@ function Search() {
   };
 
   //  Functions
+
+  function closeSearch() {
+    SEARCH.CONT.classList.remove(SEARCH.CLASS.ACTIVE);
+
+    window.removeEventListener(EVENTS.CLICK(), outsideClick);
+  }
 
   function outsideClick(event) {
     if (!SEARCH.CONT.contains(event.target) && !SEARCH.RESULTS.contains(event.target)) {
@@ -295,16 +307,9 @@ function Search() {
     SEARCH.CANCEL.addEventListener(EVENTS.CLICK(), cleanField);
   }
 
-  function closeSearch() {
-    SEARCH.CONT.classList.remove(SEARCH.CLASS.ACTIVE);
-
-    window.removeEventListener(EVENTS.CLICK(), outsideClick);
-  }
-
   //  Init
 
   SEARCH.FIELD.addEventListener(EVENTS.FOCUS, openSearch);
-
 }
 
 //  END: SEARCH
@@ -312,10 +317,12 @@ function Search() {
 //  BEGIN: TABS
 
 function Tabs() {
-  
   //  ENUMS
 
   const TAB = {
+    PARENT: {
+      THIS: _.noop
+    },
     SINGLE: document.querySelector('.js-tabs'),
     ALL: document.querySelectorAll('.js-tabs'),
     NAV: {
@@ -324,7 +331,7 @@ function Tabs() {
       ITEM: {
         SINGLE: document.querySelector('.js-tabs-nav-item'),
         ALL: document.querySelectorAll('.js-tabs-nav-item'),
-        THIS: undefined,
+        THIS: _.noop,
         CLASS: {
           ACTIVE: 'tabs__nav__item--active'
         }
@@ -333,7 +340,7 @@ function Tabs() {
     CONTENT: {
       SINGLE: document.querySelector('.js-tabs-content-item'),
       ALL: document.querySelectorAll('.js-tabs-content-item'),
-      THIS: undefined,
+      THIS: _.noop,
       CLASS: {
         ACTIVE: 'tabs__content__item--active',
         HIDE: 'tabs__content__item--hiding'
@@ -346,7 +353,6 @@ function Tabs() {
   //  Helpers
   let navEq = 0;
   let isLocked = false;
-  let resizeTime;
 
   //  Functions
 
@@ -354,8 +360,8 @@ function Tabs() {
     event.preventDefault();
 
     if (event.target === event.currentTarget ||
-        event.target.parentNode.classList.contains(TAB.NAV.ITEM.CLASS.ACTIVE) ||
-        isLocked) {
+      event.target.parentNode.classList.contains(TAB.NAV.ITEM.CLASS.ACTIVE) ||
+      isLocked) {
       return null;
     }
 
@@ -394,13 +400,13 @@ function Tabs() {
   }
 
   function changeHeight() {
+    let resizeTime;
     clearTimeout(resizeTime);
-    let resizeTime = setTimeout(() => {
-      _.each(TAB.CONTENT.ALL, (ELEMENT) => {
+    resizeTime = setTimeout(() => {
+      _.each(TAB.CONTENT.ALL, ELEMENT => {
         if (ELEMENT.classList.contains(TAB.CONTENT.CLASS.ACTIVE)) {
-          ELEMENT.parentNode.style.height = ELEMENT.offsetHeight + 'px';
-
-          return null;
+          TAB.PARENT.THIS = ELEMENT.parentNode;
+          TAB.PARENT.THIS.style.height = ELEMENT.offsetHeight + 'px';
         }
       });
     }, 100);
@@ -409,12 +415,13 @@ function Tabs() {
   //  Init
 
   _.each(TAB.NAV.ALL, (ELEMENT) => {
-    let contentElement = ELEMENT.parentNode.nextElementSibling.querySelectorAll('.js-tabs-content-item');
+    let contentElement = ELEMENT.parentNode.nextElementSibling;
+    let contentAllElement = contentElement.querySelectorAll('.js-tabs-content-item');
     ELEMENT.addEventListener(EVENTS.CLICK(), Nav);
 
     //  Set active first slide
-    contentElement[0].classList.add(TAB.CONTENT.CLASS.ACTIVE);
-    ELEMENT.parentNode.nextElementSibling.style.height = contentElement[0].offsetHeight + 'px';
+    contentAllElement[0].classList.add(TAB.CONTENT.CLASS.ACTIVE);
+    contentElement.style.height = contentAllElement[0].offsetHeight + 'px';
   });
 
   window.addEventListener(EVENTS.RESIZE(), changeHeight);
@@ -427,7 +434,6 @@ function Tabs() {
 //  BEGIN: FORMS
 
 function Form() {
-
   //  Enums
 
   const FORM = {
@@ -444,7 +450,7 @@ function Form() {
   //  Functions
 
   function focus() {
-    this.parentNode.classList.toggle('focus');    
+    this.parentNode.classList.toggle('focus');
   }
 
   //  Init
@@ -466,13 +472,13 @@ function Results() {
 
   const RESULTS = document.querySelector('.js-results');
   const TOOLBAR = document.querySelector('.js-toolbar');
-  const SEARCH_FIELD = document.querySelector('.js-search-field');
 
   //  Functions
 
   function setHeight() {
+    let resizeTime;
     clearTimeout(resizeTime);
-    let resizeTime = setTimeout(() => {
+    resizeTime = setTimeout(() => {
       RESULTS.style.height = 'auto';
       RESULTS.style.maxHeight = 'none';
       let resultsHeight;
@@ -504,7 +510,6 @@ function Results() {
 // BEGIN: NOTIFICATIONS
 
 function Notifications() {
-
   // Enums
   const NOTIFICATION = {
     PARENT: {
@@ -568,48 +573,51 @@ function Notifications() {
   //  Functions
 
   function setHeight(size) {
+    let resizeTime;
     clearTimeout(resizeTime);
-    let resizeTime = setTimeout(() => {
+    resizeTime = setTimeout(() => {
       let list;
       let notification;
 
       if (size === NOTIFICATION.SIZE.SMALL ||
-          !isFullNotification) {
+        !isFullNotification) {
         if (getWindowSize().WIDTH >= 768) {
-          //11px - offset from toolbar, 30px - default margin
-          list = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.DEFAULT - parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) - NOTIFICATION.BTN.MORE.clientHeight - parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10) - 11 - 30;
-          notification = list + NOTIFICATION.PADDING.DEFAULT + parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) + NOTIFICATION.BTN.MORE.clientHeight + parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
+          //  11px - offset from toolbar, 30px - default margin
+          list = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.DEFAULT -
+                 parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) -
+                 NOTIFICATION.BTN.MORE.clientHeight -
+                 parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10) - 11 - 30;
+          notification = list + NOTIFICATION.PADDING.DEFAULT +
+                         parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) +
+                         NOTIFICATION.BTN.MORE.clientHeight +
+                         parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
         } else {
-          list = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.DEFAULT - parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) - NOTIFICATION.BTN.MORE.clientHeight - parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
+          list = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.DEFAULT -
+                 parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) -
+                 NOTIFICATION.BTN.MORE.clientHeight -
+                 parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
           notification = getWindowSize().HEIGHT - TOOLBAR.clientHeight;
         }
       } else if (size === NOTIFICATION.SIZE.FULL ||
-                isFullNotification) {
+        isFullNotification) {
         if (getWindowSize().WIDTH >= 768) {
-          // 2 * 30px - default margin
-          list = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.FULL - parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) - NOTIFICATION.BTN.MORE.clientHeight - parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10) - 60;
-          notification = list + NOTIFICATION.PADDING.FULL + parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) + NOTIFICATION.BTN.MORE.clientHeight + parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
+          //  2 * 30px - default margin
+          list = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.FULL -
+                 parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) -
+                 NOTIFICATION.BTN.MORE.clientHeight -
+                 parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10) - 60;
+          notification = list + NOTIFICATION.PADDING.FULL +
+                         parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) +
+                         NOTIFICATION.BTN.MORE.clientHeight +
+                         parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
         } else {
-          list = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.FULL - parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) - NOTIFICATION.BTN.MORE.clientHeight - parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
+          list = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.FULL -
+                 parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) -
+                 NOTIFICATION.BTN.MORE.clientHeight -
+                 parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
           notification = getWindowSize().HEIGHT - TOOLBAR.clientHeight;
-        }        
+        }
       }
-
-      // if (size === NOTIFICATION.SIZE.FULL) {
-      //   listHeight = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.DEFAULT - parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) - NOTIFICATION.BTN.MORE.clientHeight - parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
-
-      //   if (getWindowSize().WIDTH >= 768) {
-      //     listHeight -= 41; //11px - offset from toolbar, 30px - default marginTop
-      //     cloudHeight = listHeight + NOTIFICATION.PADDING.DEFAULT + parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) + NOTIFICATION.BTN.MORE.clientHeight + parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
-      //   }
-      // } else {
-      //   listHeight = getWindowSize().HEIGHT - TOOLBAR.clientHeight - NOTIFICATION.PADDING.FULL - parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) - NOTIFICATION.BTN.MORE.clientHeight - parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
-        
-      //   if (getWindowSize().WIDTH >= 768) {
-      //     listHeight -= 60; // 2 * 30px - default margin
-      //     cloudHeight = listHeight + NOTIFICATION.PADDING.FULL + parseInt(getComputedStyle(NOTIFICATION.CONT.ITEM).paddingBottom, 10) + NOTIFICATION.BTN.MORE.clientHeight + parseInt(getComputedStyle(NOTIFICATION.BTN.MORE).marginTop, 10);
-      //   }
-      // }
 
       NOTIFICATION.CONT.ITEM.style.height = notification + 'px';
       NOTIFICATION.LIST.ITEM.style.maxHeight = list + 'px';
@@ -617,8 +625,8 @@ function Notifications() {
   }
 
   function outsideClick(event) {
-    if (!NOTIFICATION.CONT.ITEM.contains(event.target) && 
-        !NOTIFICATION.CONT.ITEM.parentNode.contains(event.target)) {
+    if (!NOTIFICATION.CONT.ITEM.contains(event.target) &&
+      !NOTIFICATION.CONT.ITEM.parentNode.contains(event.target)) {
       hideNotification();
 
       window.removeEventListener(EVENTS.CLICK(), outsideClick);
@@ -627,18 +635,19 @@ function Notifications() {
 
   function showNotification() {
     isFullNotification = true;
-    NOTIFICATION.BTN.MORE.removeEventListener(EVENTS.RESIZE(), showNotification);    
-    
-    NOTIFICATION.CONT.ITEM.classList.add(NOTIFICATION.CONT.CLASS.ANIMATION, NOTIFICATION.CONT.CLASS.TRANSITION);
+    NOTIFICATION.BTN.MORE.removeEventListener(EVENTS.RESIZE(), showNotification);
+
+    NOTIFICATION.CONT.ITEM.classList.add(NOTIFICATION.CONT.CLASS.ANIMATION,
+                                         NOTIFICATION.CONT.CLASS.TRANSITION);
     WRAPPER.classList.add('wrapper--fade'); // TODO: Add enum for that
 
     setTimeout(() => {
       NOTIFICATION.CONT.ITEM.classList.add(NOTIFICATION.CONT.CLASS.FULL);
 
-      NOTIFICATION.BTN.READ_ALL.classList.remove('link', 'link--read', 'link--small')
+      NOTIFICATION.BTN.READ_ALL.classList.remove('link', 'link--read', 'link--small');
       NOTIFICATION.BTN.READ_ALL.classList.add('btn', 'btn--dark', 'btn--color-green', 'btn--notification');
 
-      NOTIFICATION.BTN.MORE.classList.remove('btn--full')
+      NOTIFICATION.BTN.MORE.classList.remove('btn--full');
       NOTIFICATION.BTN.MORE.classList.add('btn--color-green', 'btn--notification');
       NOTIFICATION.BTN.MORE.textContent = 'mark all as read';
     }, NOTIFICATION_DELAY);
@@ -688,10 +697,10 @@ function Notifications() {
 
   function markAsReaded() {
     isNotificationReaded = !isNotificationReaded;
-    
+
     NOTIFICATION.CONT.ITEM.parentNode.classList.remove(NOTIFICATION.PARENT.CLASS.CLICKED);
     NOTIFICATION.BTN.OPEN.classList.remove('notifications-nav__button--new');
-    
+
     hideNotification();
   }
 
@@ -723,11 +732,11 @@ function Notifications() {
     };
 
     if (SCROLL.CURRENT > 0 &&
-        SCROLL.CURRENT + SCROLL.WINDOW_HEIGHT !== SCROLL.DOCUMENT_HEIGHT) {
+      SCROLL.CURRENT + SCROLL.WINDOW_HEIGHT !== SCROLL.DOCUMENT_HEIGHT) {
       NOTIFICATION.LIST.ITEM.classList.add(NOTIFICATION.LIST.CLASS.SCROLLED);
       NOTIFICATION.LIST.ITEM.classList.remove(NOTIFICATION.LIST.CLASS.BOTTOM);
     } else if (SCROLL.CURRENT > 0 &&
-               SCROLL.CURRENT + SCROLL.WINDOW_HEIGHT === SCROLL.DOCUMENT_HEIGHT) {
+      SCROLL.CURRENT + SCROLL.WINDOW_HEIGHT === SCROLL.DOCUMENT_HEIGHT) {
       NOTIFICATION.LIST.ITEM.classList.add(NOTIFICATION.LIST.CLASS.BOTTOM);
     } else {
       NOTIFICATION.LIST.ITEM.classList.remove(NOTIFICATION.LIST.CLASS.SCROLLED);
@@ -736,7 +745,7 @@ function Notifications() {
 
   function initNotification() {
     if (isNotificationReaded) {
-      return null;
+      return;
     }
 
     this.parentNode.classList.toggle(NOTIFICATION.PARENT.CLASS.CLICKED);
@@ -778,7 +787,6 @@ function lockScroll(event) {
 //  BEGIN: TABLE
 
 function Table() {
-
   //  Enums
 
   const TABLE = {
@@ -802,7 +810,6 @@ function Table() {
   //  Helpers
 
   let isCheckedAll = false;
-  let isInCorner = false;
   let isPositionChanged = false;
 
   //  Functions
@@ -860,7 +867,6 @@ function Table() {
 //  BEGIN: OPTIONS MENU
 
 function optionsMenu() {
-
   //  Enums
 
   const OPTIONS = {
@@ -919,7 +925,7 @@ function optionsMenu() {
 //  OPTIONS MENU
 
 // INIT FUNCTIONS
-window.addEventListener('load', function () {
+window.addEventListener('load', () => {
   detectBrowser();
   Sidebar();
   Dropdown();
