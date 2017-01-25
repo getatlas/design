@@ -528,6 +528,7 @@ function Notifications() {
       READ_ALL: document.querySelector('.js-notifications-read-all'),
       READ: document.querySelectorAll('.js-notification-read'),
       MORE: document.querySelector('.js-notifications-more'),
+      CLOSE: document.querySelector('.js-notifications-close'),
       CLASS: {
         READED: 'notifications__item__action--readed'
       }
@@ -668,6 +669,10 @@ function Notifications() {
     NOTIFICATION.BTN.READ_ALL.removeEventListener(EVENTS.CLICK(), markAsReaded);
     NOTIFICATION.LIST.ITEM.removeEventListener(EVENTS.SCROLL(), checkScrollPosition);
     WRAPPER.removeEventListener(EVENTS.SCROLLING(), lockScroll);
+
+    if (getDeviceType() === DEVICES.TOUCH) {
+      NOTIFICATION.BTN.CLOSE.removeEventListener(EVENTS.CLICK(), hideNotification);
+    }
   }
 
   function markAsReaded() {
@@ -721,6 +726,10 @@ function Notifications() {
       return;
     }
 
+    if (isFullNotification) {
+      WRAPPER.classList.toggle('wrapper--fade');
+    }
+
     this.parentNode.classList.toggle(NOTIFICATION.PARENT.CLASS.CLICKED);
     TOOLBAR.classList.toggle('toolbar--active');
 
@@ -735,6 +744,10 @@ function Notifications() {
     NOTIFICATION.LIST.ITEM.addEventListener(EVENTS.SCROLL(), checkScrollPosition);
     window.addEventListener(EVENTS.CLICK(), outsideClick);
     WRAPPER.addEventListener(EVENTS.SCROLLING(), lockScroll);
+
+    if (getDeviceType() === DEVICES.TOUCH) {
+      NOTIFICATION.BTN.CLOSE.addEventListener(EVENTS.CLICK(), hideNotification);
+    }
   }
 
   //  Init
@@ -828,7 +841,7 @@ function Table() {
     TABLE.BTN.SELECT_ALL.addEventListener(EVENTS.CLICK(), checkAll);
   }
 
-  if (getDeviceType() === DEVICES.TOUCH) {
+  if (getDeviceType() === DEVICES.TOUCH && TABLE.CONT !== null) {
     TABLE.CONT.addEventListener(EVENTS.SCROLLING(), scrollWatch);
   }
 }
