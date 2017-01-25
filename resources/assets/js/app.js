@@ -844,7 +844,9 @@ function Table() {
 
   //  Inits
 
-  TABLE.BTN.SELECT_ALL.addEventListener(EVENTS.CLICK(), checkAll);
+  if (TABLE.BTN.SELECT_ALL !== null) {
+    TABLE.BTN.SELECT_ALL.addEventListener(EVENTS.CLICK(), checkAll);
+  }
 
   if (getDeviceType() === DEVICES.TOUCH) {
     TABLE.CONT.addEventListener(EVENTS.SCROLLING(), scrollWatch);
@@ -852,6 +854,69 @@ function Table() {
 }
 
 //  END: TABLE
+
+//  -------------------------------------------
+
+//  BEGIN: OPTIONS MENU
+
+function optionsMenu() {
+
+  //  Enums
+
+  const OPTIONS = {
+    CONT: {
+      SINGLE: document.querySelector('.js-options'),
+      CLASS: {
+        ACTIVE: 'options--active'
+      }
+    },
+    TRIGGER: {
+      ALL: document.querySelectorAll('.js-options-trigger'),
+      SINGLE: document.querySelector('.js-options-trigger'),
+      THIS: _.noop,
+      CLASS: {
+        ACTIVE: 'options-trigger--active'
+      }
+    },
+    CONTENT: {
+      ALL: document.querySelectorAll('.js-options-content'),
+      SINGLE: document.querySelector('.js-options-content'),
+      THIS: _.noop,
+      CLASS: {
+        HIDDEN: 'options-content--hidden'
+      }
+    }
+  };
+
+  //  Functions
+
+  function toggleOptions() {
+    OPTIONS.TRIGGER.THIS = this;
+
+    OPTIONS.TRIGGER.THIS.parentNode.classList.toggle(OPTIONS.CONT.CLASS.ACTIVE);
+    OPTIONS.TRIGGER.THIS.classList.toggle(OPTIONS.TRIGGER.CLASS.ACTIVE);
+    OPTIONS.TRIGGER.THIS.nextElementSibling.classList.toggle(OPTIONS.CONTENT.CLASS.HIDDEN);
+  }
+
+  function setHeight(element) {
+    OPTIONS.CONTENT.THIS = element;
+
+    OPTIONS.CONTENT.THIS.style.maxHeight = OPTIONS.CONTENT.THIS.clientHeight + 'px';
+    OPTIONS.CONTENT.THIS.classList.add(OPTIONS.CONTENT.CLASS.HIDDEN);
+  }
+
+  //  Inits
+
+  _.each(OPTIONS.TRIGGER.ALL, ELEMENT => {
+    ELEMENT.addEventListener(EVENTS.CLICK(), toggleOptions);
+  });
+
+  _.each(OPTIONS.CONTENT.ALL, ELEMENT => {
+    setHeight(ELEMENT);
+  });
+}
+
+//  OPTIONS MENU
 
 // INIT FUNCTIONS
 window.addEventListener('load', function () {
@@ -864,5 +929,6 @@ window.addEventListener('load', function () {
   Results();
   Notifications();
   Table();
+  optionsMenu();
 });
 

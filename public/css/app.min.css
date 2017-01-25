@@ -2598,6 +2598,15 @@ h6 {
       position: absolute;
       top: -30px;
       left: 0; }
+  .dropdown-menu__children {
+    overflow: hidden;
+    -webkit-transition: padding 0.1s ease-in-out, max-height 0.1s ease-in-out;
+    transition: padding 0.1s ease-in-out, max-height 0.1s ease-in-out; }
+    .dropdown-menu__children:hover {
+      color: #fff; }
+    .dropdown-menu__children.options-content--hidden {
+      max-height: 0 !important;
+      padding: 0; }
 
 .dropdown-menu__trigger {
   -webkit-transition: opacity 0.1s ease-in-out;

@@ -48,6 +48,20 @@
 		left: 0;
 		}
 	}
+	&__children {
+		overflow: hidden;
+		transition: padding $animation--duration $animation--timing,
+					max-height $animation--duration $animation--timing;		
+
+		&:hover {
+			color: $color--white;
+		}
+
+		&.options-content--hidden {
+			max-height: 0 !important;
+			padding: 0;
+		}
+	}
 }
 
 .dropdown-menu__trigger {
