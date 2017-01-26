@@ -137,6 +137,7 @@ h6 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
   box-sizing: border-box;
   margin: 0 -15px;
   -webkit-box-orient: horizontal;
@@ -155,6 +156,8 @@ h6 {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start; }
+  .row--fill {
+    height: 100%; }
 
 .row.reverse {
   -webkit-box-orient: horizontal;
@@ -2813,8 +2816,11 @@ h6 {
   @media (max-width: 767px) {
     .col {
       width: 100%;
+      max-width: 100%;
       margin: 0 10px 20px 10px;
-      padding: 30px 20px; } }
+      padding: 30px 20px;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%; } }
   .col--usage {
     text-align: center; }
   .col--tab {
@@ -2826,6 +2832,16 @@ h6 {
       margin: -20px -10px 0 -10px;
       padding-top: 34px;
       border-radius: 0; } }
+  .col--center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
 
 .col__heading {
   max-height: 20px;
@@ -4628,6 +4644,28 @@ h6 {
   display: block;
   padding: 5px 11px; }
 
+.monitoring-info {
+  width: 260px;
+  text-align: center; }
+  .monitoring-info:before {
+    content: '';
+    display: block;
+    width: 116px;
+    height: 128px;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    background: url(../assets/timer.png) no-repeat 0 0;
+    background-size: 116px 128px; }
+
+.monitoring-info__heading {
+  margin-bottom: 53px;
+  font-size: 26px;
+  font-weight: normal; }
+  @media (max-width: 767px) {
+    .monitoring-info__heading {
+      font-size: 26px; } }
+
 .sidebar {
   width: 300px;
   padding-top: 40px;
@@ -4794,6 +4832,13 @@ h6 {
         margin-left: 9px; } }
 
 .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-top: 70px;
   position: fixed;
   top: 0;
@@ -5093,8 +5138,8 @@ h6 {
                 transform: translate3d(0%, -50%, 0); } }
 
 .content {
-  padding: 30px 30px 0 30px;
-  overflow: hidden; }
+  height: 100%;
+  padding: 30px 30px 0 30px; }
   @media (max-width: 767px) {
     .content {
       padding: 20px 20px 0 20px; } }

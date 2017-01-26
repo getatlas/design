@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>GetAtlas</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/app.min.css">
+	<script src="js/detect.min.js"></script>
+	<script src="js/lodash.min.js"></script>
+	<script src="js/app.js"></script>
+</head>
+<body>
+	<nav class="js-sidebar sidebar">
+		<ul class="sidebar__nav">
+			<li class="sidebar__nav__item icon-clock active"><a class="sidebar__nav__item__link" href="#">Monitoring Uptime</a></li>
+			<li class="sidebar__nav__item icon-storage"><a class="sidebar__nav__item__link" href="#">Monitoring Storage Usage</a></li>
+			<li class="sidebar__nav__item icon-server"><a class="sidebar__nav__item__link" href="#">Monitoring Server Usage</a></li>
+		</ul>
+		<aside class="usage-info usage-info--full usage-info--sidebar js-usage-info">
+			<dl class="usage-info__list">
+				<dt class="usage-info__name">CPU <span class="usage-info__list__unnecessary">usage</span></dt>
+				<dd class="usage-info__content">
+					<span class="usage-info__bar" data-usage-traffic="37%">
+						<span class="usage-info__content__text">37%</span>
+					</span>
+				</dd>
+				<dt class="usage-info__name">Memory <span class="usage-info__list__unnecessary">usage</span></dt>
+				<dd class="usage-info__content">
+					<span class="usage-info__bar" data-usage-traffic="98%">
+						<span class="usage-info__content__text">98%</span>
+					</span>
+				</dd>
+				<dt class="usage-info__name">Traffic</dt>
+				<dd class="usage-info__content">
+					<span class="usage-info__bar" data-usage-traffic="65%">
+						<span class="usage-info__content__text">65%</span>
+					</span>
+				</dd>
+				<dt class="usage-info__name">Databases</dt>
+				<dd class="usage-info__content">
+					<span class="usage-info__bar" data-usage-traffic="44%">
+						<span class="usage-info__content__text">44%</span>
+					</span>
+				</dd>
+			</dl>
+		</aside>
+	</nav>
+
+	<header class="toolbar js-toolbar">
+		<h1 class="logo logo--sidebar icon-logo">
+			<a class="logo__link" href="#">Atlas</a>
+		</h1>
+
+		<button class="js-toggle-sidebar sidebar__btn icon-menu">Change sidebar view</button>
+
+		<div class="toolbar__actions group">
+			<nav class="profile-nav js-dropdown">
+				<img class="profile-nav__avatar dropdown-menu__trigger js-dropdown-trigger" src="assets/avatar.jpg">
+
+				<ul class="dropdown-menu dropdown-menu--profile js-dropdown-content">
+					<li class="dropdown-menu__item"><span class="dropdown-menu__item__text">Your Profile</span></li>
+					<li class="dropdown-menu__item dropdown-menu__item--with-children js-options">
+						<span class="dropdown-menu__item__text js-options-trigger">Choose Your Team</span>
+						<ul class="dropdown-menu__children js-options-content" data-dropdown-hidden="true">
+							<li class="dropdown-menu__item dropdown-menu__item--children">
+								<a href="#" class="dropdown-menu__item__link dropdown-menu__item__link--children">Team Atlas 999</a>
+							</li>
+							<li class="dropdown-menu__item dropdown-menu__item--children dropdown-menu__item--choosen">
+								<a href="#" class="dropdown-menu__item__link dropdown-menu__item__link--children">Team Circular</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown-menu__item">
+						<a href="#" class="dropdown-menu__item__link">Create a New Team</a>
+					</li>
+					<li class="dropdown-menu__item">
+						<a href="#" class="dropdown-menu__item__link">Settings</a>
+					</li>
+					<li class="dropdown-menu__item dropdown-menu__item--red">
+						<a href="#" class="dropdown-menu__item__link">Logout</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="notifications-nav">
+				<!-- <button type="button" class="icon-notification notifications-nav__button notifications-nav__button--new js-notifications-button">
+					<span class="notifications-nav__button__alert">New notification!</span>
+				</button> -->
+				<button type="button" class="icon-notification notifications-nav__button notifications-nav__button--new js-notifications-button">
+					<span class="notifications-nav__button__info">13</span>
+				</button>
+				<button type="button" class="notifications-nav__close js-notifications-close">Close</button>
+				<section class="notifications notifications js-notifications">
+					<button class="link link--read link--small notifications__read js-notifications-read-all">mark all as read</button>
+					<ol class="notifications__list js-notifications-list js-capture-scroll">
+						<li class="notifications__item js-notification">
+							<small class="notifications__label notifications__label--messages">Messages</small>
+							<h4 class="notifications__heading js-notification-heading"><a href="#" class="link link--special">John Patterson</a> sent you a new mesage</h4>
+							<time class="notifications__date icon-time">3 days</time>
+							<a class="link link--small notifications__item__action  notifications__item__action--readed js-notification-read" href="#">read</a>
+						</li>
+						<li class="notifications__item notifications__item--new js-notification">
+							<small class="notifications__label notifications__label--servers">Servers</small>
+							<h4 class="notifications__heading js-notification-heading">Server not found connection problems</h4>
+							<time class="notifications__date notifications__date--new icon-time">9:39</time>
+							<a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+						</li>
+						<li class="notifications__item notifications__item--new js-notification">
+							<small class="notifications__label notifications__label--users">Users</small>
+							<h4 class="notifications__heading js-notification-heading">New user was assigned to your account</h4>
+							<time class="notifications__date notifications__date--new icon-time">9:22</time>
+							<a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+						</li>
+						<li class="notifications__item js-notification">
+							<small class="notifications__label notifications__label--websites">Websites</small>
+							<h4 class="notifications__heading js-notification-heading">Server not found connection problems</h4>
+							<time class="notifications__date icon-time">2 days</time>
+							<a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+						</li>
+						<li class="notifications__item js-notification">
+							<small class="notifications__label notifications__label--servers">Servers</small>
+							<h4 class="notifications__heading js-notification-heading">Technical difiiculties. Please stand by</h4>
+							<time class="notifications__date icon-time">3 days</time>
+							<a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+						</li>
+						<li class="notifications__item js-notification">
+							<small class="notifications__label notifications__label--messages">Messages</small>
+							<h4 class="notifications__heading js-notification-heading"><a href="#" class="link link--special">John Patterson</a> sent you a new mesage</h4>
+							<time class="notifications__date icon-time">3 days</time>
+							<a class="link link--small notifications__item__action  notifications__item__action--readed js-notification-read" href="#">read</a>
+						</li>
+						<li class="notifications__item notifications__item--new js-notification">
+							<small class="notifications__label notifications__label--servers">Servers</small>
+							<h4 class="notifications__heading js-notification-heading">Server not found connection problems</h4>
+							<time class="notifications__date notifications__date--new icon-time">9:39</time>
+							<a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+						</li>
+						<li class="notifications__item notifications__item--new js-notification">
+							<small class="notifications__label notifications__label--users">Users</small>
+							<h4 class="notifications__heading js-notification-heading">New user was assigned to your account</h4>
+							<time class="notifications__date notifications__date--new icon-time">9:22</time>
+							<a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+						</li>
+						<li class="notifications__item js-notification">
+							<small class="notifications__label notifications__label--websites">Websites</small>
+							<h4 class="notifications__heading js-notification-heading">Server not found connection problems</h4>
+							<time class="notifications__date icon-time">2 days</time>
+							<a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+						</li>
+						<li class="notifications__item js-notification">
+							<small class="notifications__label notifications__label--servers">Servers</small>
+							<h4 class="notifications__heading js-notification-heading">Technical difiiculties. Please stand by</h4>
+							<time class="notifications__date icon-time">3 days</time>
+							<a class="link link--small notifications__item__action js-notification-read" href="#">mark as read</a>
+						</li>
+						<li class="notifications__item js-notification">
+							<small class="notifications__label notifications__label--messages">Messages</small>
+							<h4 class="notifications__heading js-notification-heading"><a href="#" class="link link--special">John Patterson</a> sent you a new mesage</h4>
+							<time class="notifications__date icon-time">3 days</time>
+							<a class="link link--small notifications__item__action  notifications__item__action--readed js-notification-read" href="#">read</a>
+						</li>
+					</ol>
+					<button class="btn btn--full btn--dark notifications__more js-notifications-more">See all notifications</button>
+				</section>
+			</div>
+			<form action="search.html" class="js-field js-search search search-nav field">
+				<input class="input input--nav search__field js-search-field js-input" type="search" placeholder="Search">
+				<button class="search__open icon-search js-search-open" type="button">Search</button>
+				<button class="search__cancel icon-close js-search-cancel" type="button">Cancel</button>
+			</form>
+			<dl class="results results--live js-results">
+				<dt class="results__title results__title--dark icon-cluster">Servers</dt>
+				<dd class="results__content results__content--dark"><a href="#" class="results__content__link">Server</a></dd>
+				<dd class="results__content results__content--dark"><a href="#" class="results__content__link">Server rack</a></dd>
+				<dd class="results__content results__content--dark"><a href="#" class="results__content__link">Server virtualization software</a></dd>
+				<dt class="results__title results__title--dark icon-page">Websites</dt>
+				<dd class="results__content">No results found</dd>
+				<dt class="results__title results__title--dark icon-user">Users</dt>
+				<dd class="results__content results__content--dark"><a href="#" class="results__content__link">Server</a></dd>
+				<dt class="results__title results__title--dark icon-messages">Messages</dt>
+				<dd class="results__content results__content--dark"><a href="#" class="results__content__link">Server</a></dd>
+			</dl>
+		</div>
+	</header>
+
+	<main class="wrapper js-wrapper">
+		<section class="content">
+			<div class="row row--fill">
+				<section class="col col--center col-xs-12">
+                    <header class="monitoring-info">
+                        <h1 class="monitoring-info__heading">You are not currently monitoring uptime</h1>
+                        <button class="btn btn--blue btn--wide">Start Monitoring</button>
+                    </header>
+				</section>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

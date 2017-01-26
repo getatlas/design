@@ -1,0 +1,26 @@
+.monitoring-info {
+    width: 260px;
+    text-align: center;
+
+    &:before {
+        content: '';
+        display: block;
+        width: 116px;
+        height: 128px;
+        margin-bottom: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        background: url(../assets/timer.png) no-repeat 0 0;
+        background-size: 116px 128px;
+    }
+}
+
+.monitoring-info__heading {
+    margin-bottom: 53px;
+    font-size: $font-size--heading;
+    font-weight: normal;
+
+    @media (max-width: 767px) {
+        font-size: $font-size--heading;
+    }
+}

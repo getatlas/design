@@ -1,6 +1,6 @@
 .content {
+  height: 100%;
   padding: $spacing $spacing 0 $spacing;
-  overflow: hidden;
 
   @media (max-width: 767px) {
     padding: $spacing--small $spacing--small 0 $spacing--small;
