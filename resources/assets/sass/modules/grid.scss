@@ -1,11 +1,11 @@
 .row {
 	display: flex;
-	width: 100%;
 	box-sizing: border-box;
 	margin: 0 #{-($spacing-horizontal / 2)};
 	flex-direction: row;
 	flex: 0 1 auto;
 	flex-wrap: wrap;
+	flex-basis: 100%;
 
 	@media (max-width: 767px) {
 		margin: 0 #{-($spacing-horizontal--small / 2)};

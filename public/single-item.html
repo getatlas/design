@@ -189,51 +189,47 @@
 			<div class="row">
 				<section class="col col--table col-xs-12">
 					<header class="heading heading--without-border heading--with-actions">
-						<h2 class="heading__text heading__text--with-actions">Add Monitoring</h2>
+						<h2 class="heading__text heading__text--visible heading__text--with-actions">Product Name <span class="heading__text--additional">99% <small class="heading__text__small">this month</small></span></h2>
 						<div class="heading__actions">
-							<div class="field-confirmation">
-								<div class="select select--with-btn js-select js-dropdown" data-dropdown-animation='slide'>
-									<strong class="select__heading js-select-heading js-dropdown-trigger">Edit monitoring</strong>
-									<ul class="select__list js-select-list js-dropdown-content">
-										<li class="select__list__item js-select-item">Edit monitoring 1</li>
-										<li class="select__list__item js-select-item">Edit monitoring 2</li>
-										<li class="select__list__item js-select-item">Edit monitoring 3</li>
-										<li class="select__list__item js-select-item">Edit monitoring 4</li>
-										<li class="select__list__item js-select-item">Edit monitoring 5</li>
-										<li class="select__list__item js-select-item">Edit monitoring 6</li>
-										<li class="select__list__item js-select-item">Edit moitoring 7</li>
-										<li class="select__list__item js-select-item">Edit monitoring 8</li>
-									</ul>
-								</div>
-								<button class="btn btn--dark btn--narrow field-confirmation__btn" type="button">Apply</button>
-							</div>
-							<button class="btn btn--blue btn--wide">Add Monitoring</button>
+                            <button class="btn btn--dark btn--narrow btn--possitive btn--with-space">Edit</button>
+                            <button class="btn btn--dark btn--narrow btn--negative btn--with-space">Delete</button>
 						</div>
+					</header>
+
+					<section class="graph">
+                        <img class="graph-example" src="./assets/examples/5.png" alt="">
+                    </section>
+				</section>
+			</div>
+            <div class="row">
+				<section class="col col--table col-xs-12">
+					<header class="heading heading--without-border">
+						<h2 class="heading__text">History</h2>
 					</header>
 
 					<section class="table js-table">
 						<div class="table__container js-table-container">
 							<header class="table__header">
-								<h4 class="table__heading table__item table__item--website">
+								<h4 class="table__heading table__item table__item--month">
 									<input id="table-checkbox-disabled" class="invisible-helper" type="checkbox" disabled>
-									<label for="table-checkbox-disabled" class="checkbox checkbox--lighter"><span class="table__heading__text">Website</span></label>
+									<label for="table-checkbox-disabled" class="checkbox checkbox--lighter"><span class="table__heading__text">Month</span></label>
 								</h4>
-								<h4 class="table__heading table__item table__item--name"><span class="table__heading__text">Name</span></h4>
-								<h4 class="table__heading table__item table__item--url"><span class="table__heading__text">URL</span></h4>
-								<h4 class="table__heading table__item table__item--time table__item--blue"><span class="table__heading__text">Time</span></h4>
-								<h4 class="table__heading table__item table__item--status"><span class="table__heading__text">Status</span></h4>
+								<h4 class="table__heading table__item table__item--value-1"><span class="table__heading__text">Value 1</span></h4>
+								<h4 class="table__heading table__item table__item--value-2"><span class="table__heading__text">Value 2</span></h4>
+								<h4 class="table__heading table__item table__item--value-3"><span class="table__heading__text">Value 3</span></h4>
+								<h4 class="table__heading table__item table__item--uptime"><span class="table__heading__text">Uptime</span></h4>
 								<h4 class="table__heading table__item table__item--menu table__item--invisible"><span class="table__heading__text">Menu</span></h4>
 							</header>
 							<ul class="table__list js-table-list">
 								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
+									<div class="table__item table__item--month">
 										<input id="table-checkbox-1" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-1" class="checkbox checkbox--inherit">Twitter</label>
+										<label for="table-checkbox-1" class="checkbox checkbox--inherit">January</label>
 									</div>
-									<div class="table__item table__item--name">Twitter</div>
-									<div class="table__item table__item--url"><a href="http://twitter.com">http://twitter.com</a></div>
-									<div class="table__item table__item--time table__item--blue">3h 4min</div>
-									<div class="table__item table__item--status">99%</div>
+									<div class="table__item table__item--value-1">90%</div>
+									<div class="table__item table__item--value-2">90%</div>
+									<div class="table__item table__item--value-3">90%</div>
+									<div class="table__item table__item--uptime">99%</div>
 									<div class="table_item table__item--menu">
 										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
 											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
@@ -244,15 +240,15 @@
 										</menu>
 									</div>
 								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
+                                <li class="table__row js-table-row">
+									<div class="table__item table__item--month">
 										<input id="table-checkbox-2" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-2" class="checkbox checkbox--inherit">Facebook</label>
+										<label for="table-checkbox-2" class="checkbox checkbox--inherit">February</label>
 									</div>
-									<div class="table__item table__item--name">Facebook</div>
-									<div class="table__item table__item--url"><a href="http://facebook.com">http://facebook.com</a></div>
-									<div class="table__item table__item--time table__item--blue">35min</div>
-									<div class="table__item table__item--status">79%</div>
+									<div class="table__item table__item--value-1">58%</div>
+									<div class="table__item table__item--value-2">58%</div>
+									<div class="table__item table__item--value-3">58%</div>
+									<div class="table__item table__item--uptime">79%</div>
 									<div class="table_item table__item--menu">
 										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
 											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
@@ -263,15 +259,15 @@
 										</menu>
 									</div>
 								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
+                                <li class="table__row js-table-row">
+									<div class="table__item table__item--month">
 										<input id="table-checkbox-3" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-3" class="checkbox checkbox--inherit">Google Analytics</label>
+										<label for="table-checkbox-3" class="checkbox checkbox--inherit">March</label>
 									</div>
-									<div class="table__item table__item--name">Google Analytics</div>
-									<div class="table__item table__item--url"><a href="http://google-analytics.com">http://google-analytics.com</a></div>
-									<div class="table__item table__item--time table__item--blue">2h 11min</div>
-									<div class="table__item table__item--status">79%</div>
+									<div class="table__item table__item--value-1">65%</div>
+									<div class="table__item table__item--value-2">65%</div>
+									<div class="table__item table__item--value-3">65%</div>
+									<div class="table__item table__item--uptime">79%</div>
 									<div class="table_item table__item--menu">
 										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
 											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
@@ -282,15 +278,15 @@
 										</menu>
 									</div>
 								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
+                                <li class="table__row js-table-row">
+									<div class="table__item table__item--month">
 										<input id="table-checkbox-4" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-4" class="checkbox checkbox--inherit">Dribbble</label>
+										<label for="table-checkbox-4" class="checkbox checkbox--inherit">April</label>
 									</div>
-									<div class="table__item table__item--name">Dribbble</div>
-									<div class="table__item table__item--url"><a href="http://www.dribbble.com">http://www.dribbble.com</a></div>
-									<div class="table__item table__item--time table__item--blue">1h 22min</div>
-									<div class="table__item table__item--status">49%</div>
+									<div class="table__item table__item--value-1">49%</div>
+									<div class="table__item table__item--value-2">49%</div>
+									<div class="table__item table__item--value-3">49%</div>
+									<div class="table__item table__item--uptime">49%</div>
 									<div class="table_item table__item--menu">
 										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
 											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
@@ -301,15 +297,15 @@
 										</menu>
 									</div>
 								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
+                                <li class="table__row js-table-row">
+									<div class="table__item table__item--month">
 										<input id="table-checkbox-5" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-5" class="checkbox checkbox--inherit">Behance</label>
+										<label for="table-checkbox-5" class="checkbox checkbox--inherit">May</label>
 									</div>
-									<div class="table__item table__item--name">Behance</div>
-									<div class="table__item table__item--url"><a href="http://www.behance.com">http://www.behance.com</a></div>
-									<div class="table__item table__item--time table__item--blue">57min</div>
-									<div class="table__item table__item--status">54%</div>
+									<div class="table__item table__item--value-1">23%</div>
+									<div class="table__item table__item--value-2">23%</div>
+									<div class="table__item table__item--value-3">23%</div>
+									<div class="table__item table__item--uptime">54%</div>
 									<div class="table_item table__item--menu">
 										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
 											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
@@ -320,15 +316,15 @@
 										</menu>
 									</div>
 								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
+                                <li class="table__row js-table-row">
+									<div class="table__item table__item--month">
 										<input id="table-checkbox-6" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-6" class="checkbox checkbox--inherit">Mail Chimp</label>
+										<label for="table-checkbox-6" class="checkbox checkbox--inherit">June</label>
 									</div>
-									<div class="table__item table__item--name">Mail Chimp</div>
-									<div class="table__item table__item--url"><a href="http://mailchimp.com">http://mailchimp.com</a></div>
-									<div class="table__item table__item--time table__item--blue">4h 19min</div>
-									<div class="table__item table__item--status">66%</div>
+									<div class="table__item table__item--value-1">32%</div>
+									<div class="table__item table__item--value-2">32%</div>
+									<div class="table__item table__item--value-3">32%</div>
+									<div class="table__item table__item--uptime">66%</div>
 									<div class="table_item table__item--menu">
 										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
 											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
@@ -339,15 +335,15 @@
 										</menu>
 									</div>
 								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
+                                <li class="table__row js-table-row">
+									<div class="table__item table__item--month">
 										<input id="table-checkbox-7" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-7" class="checkbox checkbox--inherit">Yahoo</label>
+										<label for="table-checkbox-7" class="checkbox checkbox--inherit">July</label>
 									</div>
-									<div class="table__item table__item--name">Yahoo</div>
-									<div class="table__item table__item--url"><a href="http://yahoo.com">http://yahoo.com</a></div>
-									<div class="table__item table__item--time table__item--blue">2h 59min</div>
-									<div class="table__item table__item--status">99%</div>
+									<div class="table__item table__item--value-1">44%</div>
+									<div class="table__item table__item--value-2">44%</div>
+									<div class="table__item table__item--value-3">44%</div>
+									<div class="table__item table__item--uptime">99%</div>
 									<div class="table_item table__item--menu">
 										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
 											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
@@ -358,15 +354,15 @@
 										</menu>
 									</div>
 								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
+                                <li class="table__row js-table-row">
+									<div class="table__item table__item--month">
 										<input id="table-checkbox-8" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-8" class="checkbox checkbox--inherit">Evernote</label>
+										<label for="table-checkbox-8" class="checkbox checkbox--inherit">August</label>
 									</div>
-									<div class="table__item table__item--name">Evernote</div>
-									<div class="table__item table__item--url"><a href="http://evernote.com">http://evernote.com</a></div>
-									<div class="table__item table__item--time table__item--blue">27min</div>
-									<div class="table__item table__item--status">55%</div>
+									<div class="table__item table__item--value-1">99%</div>
+									<div class="table__item table__item--value-2">99%</div>
+									<div class="table__item table__item--value-3">99%</div>
+									<div class="table__item table__item--uptime">55%</div>
 									<div class="table_item table__item--menu">
 										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
 											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
@@ -377,167 +373,15 @@
 										</menu>
 									</div>
 								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
+                                <li class="table__row js-table-row">
+									<div class="table__item table__item--month">
 										<input id="table-checkbox-9" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-9" class="checkbox checkbox--inherit">PayPal</label>
+										<label for="table-checkbox-9" class="checkbox checkbox--inherit">September</label>
 									</div>
-									<div class="table__item table__item--name">PayPal</div>
-									<div class="table__item table__item--url"><a href="http://paypal.com">http://paypal.com</a></div>
-									<div class="table__item table__item--time table__item--blue">9h 31min</div>
-									<div class="table__item table__item--status">79%</div>
-									<div class="table_item table__item--menu">
-										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
-											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
-											<ul class="actions-menu__container js-actions-menu-nav js-dropdown-content">
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">Edit</a></li>
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">View</a></li>
-											</ul>
-										</menu>
-									</div>
-								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
-										<input id="table-checkbox-10" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-10" class="checkbox checkbox--inherit">Dribbble</label>
-									</div>
-									<div class="table__item table__item--name">Dribbble</div>
-									<div class="table__item table__item--url"><a href="http://www.dribbble.com">http://www.dribbble.com</a></div>
-									<div class="table__item table__item--time table__item--blue">1h 22min</div>
-									<div class="table__item table__item--status">49%</div>
-									<div class="table_item table__item--menu">
-										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
-											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
-											<ul class="actions-menu__container js-actions-menu-nav js-dropdown-content">
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">Edit</a></li>
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">View</a></li>
-											</ul>
-										</menu>
-									</div>
-								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
-										<input id="table-checkbox-11" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-11" class="checkbox checkbox--inherit">Behance</label>
-									</div>
-									<div class="table__item table__item--name">Behance</div>
-									<div class="table__item table__item--url"><a href="http://www.behance.com">http://www.behance.com</a></div>
-									<div class="table__item table__item--time table__item--blue">57min</div>
-									<div class="table__item table__item--status">54%</div>
-									<div class="table_item table__item--menu">
-										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
-											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
-											<ul class="actions-menu__container js-actions-menu-nav js-dropdown-content">
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">Edit</a></li>
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">View</a></li>
-											</ul>
-										</menu>
-									</div>
-								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
-										<input id="table-checkbox-12" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-12" class="checkbox checkbox--inherit">Mail Chimp</label>
-									</div>
-									<div class="table__item table__item--name">Mail Chimp</div>
-									<div class="table__item table__item--url"><a href="http://mailchimp.com">http://mailchimp.com</a></div>
-									<div class="table__item table__item--time table__item--blue">4h 19min</div>
-									<div class="table__item table__item--status">66%</div>
-									<div class="table_item table__item--menu">
-										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
-											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
-											<ul class="actions-menu__container js-actions-menu-nav js-dropdown-content">
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">Edit</a></li>
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">View</a></li>
-											</ul>
-										</menu>
-									</div>
-								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
-										<input id="table-checkbox-13" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-13" class="checkbox checkbox--inherit">Yahoo</label>
-									</div>
-									<div class="table__item table__item--name">Yahoo</div>
-									<div class="table__item table__item--url"><a href="http://yahoo.com">http://yahoo.com</a></div>
-									<div class="table__item table__item--time table__item--blue">2h 59min</div>
-									<div class="table__item table__item--status">99%</div>
-									<div class="table_item table__item--menu">
-										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
-											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
-											<ul class="actions-menu__container js-actions-menu-nav js-dropdown-content">
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">Edit</a></li>
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">View</a></li>
-											</ul>
-										</menu>
-									</div>
-								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
-										<input id="table-checkbox-14" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-14" class="checkbox checkbox--inherit">Evernote</label>
-									</div>
-									<div class="table__item table__item--name">Evernote</div>
-									<div class="table__item table__item--url"><a href="http://evernote.com">http://evernote.com</a></div>
-									<div class="table__item table__item--time table__item--blue">27min</div>
-									<div class="table__item table__item--status">55%</div>
-									<div class="table_item table__item--menu">
-										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
-											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
-											<ul class="actions-menu__container js-actions-menu-nav js-dropdown-content">
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">Edit</a></li>
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">View</a></li>
-											</ul>
-										</menu>
-									</div>
-								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
-										<input id="table-checkbox-15" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-15" class="checkbox checkbox--inherit">PayPal</label>
-									</div>
-									<div class="table__item table__item--name">PayPal</div>
-									<div class="table__item table__item--url"><a href="http://paypal.com">http://paypal.com</a></div>
-									<div class="table__item table__item--time table__item--blue">9h 31min</div>
-									<div class="table__item table__item--status">79%</div>
-									<div class="table_item table__item--menu">
-										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
-											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
-											<ul class="actions-menu__container js-actions-menu-nav js-dropdown-content">
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">Edit</a></li>
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">View</a></li>
-											</ul>
-										</menu>
-									</div>
-								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
-										<input id="table-checkbox-16" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-16" class="checkbox checkbox--inherit">Dribbble</label>
-									</div>
-									<div class="table__item table__item--name">Dribbble</div>
-									<div class="table__item table__item--url"><a href="http://www.dribbble.com">http://www.dribbble.com</a></div>
-									<div class="table__item table__item--time table__item--blue">1h 22min</div>
-									<div class="table__item table__item--status">49%</div>
-									<div class="table_item table__item--menu">
-										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
-											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>
-											<ul class="actions-menu__container js-actions-menu-nav js-dropdown-content">
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">Edit</a></li>
-												<li class="actions-menu__item"><a href="#" class="actions-menu__item__link">View</a></li>
-											</ul>
-										</menu>
-									</div>
-								</li>
-								<li class="table__row js-table-row">
-									<div class="table__item table__item--website">
-										<input id="table-checkbox-17" type="checkbox" class="invisible-helper">
-										<label for="table-checkbox-17" class="checkbox checkbox--inherit">Behance</label>
-									</div>
-									<div class="table__item table__item--name">Behance</div>
-									<div class="table__item table__item--url"><a href="http://www.behance.com">http://www.behance.com</a></div>
-									<div class="table__item table__item--time table__item--blue">57min</div>
-									<div class="table__item table__item--status">54%</div>
+									<div class="table__item table__item--value-1">77%</div>
+									<div class="table__item table__item--value-2">77%</div>
+									<div class="table__item table__item--value-3">77%</div>
+									<div class="table__item table__item--uptime">55%</div>
 									<div class="table_item table__item--menu">
 										<menu class="actions-menu js-actions-menu js-dropdown" data-dropdown-animation="slide">
 											<strong class="actions-menu__heading js-actions-menu-trigger js-dropdown-trigger">Actions</strong>

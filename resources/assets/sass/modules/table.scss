@@ -11,7 +11,7 @@
   position: relative;
 
   @media (max-width: 767px) {
-    margin-bottom: 0;
+    margin: $spacing-vertical #{-$spacing-horizontal--small} 0 #{-$spacing-horizontal--small};
 
     &--without-notification {
       &:before,
@@ -26,16 +26,21 @@
       position: absolute;
       pointer-events: none;
       left: 50%;
-      transform: translate3d(-50%, 0, 0);
       z-index: $initial-order;
       animation: tooltip-bounce 4s $animation--timing infinite;
       transition: opacity $animation--duration $animation--timing,
                   visibility $animation--duration $animation--timing;
+
+      body:not(.safari) & {
+        margin-left: 0;
+        transform: translate3d(-50%, 0, 0);
+      }
     }
 
     &:before {
       content: 'Swipe to scroll';
       height: 48px;
+      margin-left: -70px;
       padding-right: 17px;
       padding-left: 17px;
       top: -11px;
@@ -47,6 +52,7 @@
       content: '';
       width: 0;
       height: 0;
+      margin-left: -6px;
       top: 35px;
       left: 50%;
       border-style: solid;
@@ -111,6 +117,7 @@
 
 .table__heading {
   display: inline-block;
+  color: $color--boulder;
 
   .ie & {
     min-height: 0 !important;
@@ -121,7 +128,7 @@
 .table__heading__text {
   padding-right: 16px;
   font-size: $font-size--paragraph;
-  color: $color--boulder;
+  color: inherit;
   cursor: pointer;
   position: relative;
   pointer-events: auto;
@@ -204,6 +211,23 @@
     width: 9.72%;
     flex-basis: 138px;
   }
+
+  &--month {
+    width: 25.38%;
+    padding-left: $spacing-horizontal;    
+  }
+  &--value-1 {
+    width: 17.7%;
+  }
+  &--value-2 {
+    width: 16%;
+  }
+  &--value-3 {
+    width: 15.75%;
+  }
+  &--uptime {
+    width: 12%;
+  }  
 
   &--invisible {
     text-indent: -9999px;

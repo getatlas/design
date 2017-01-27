@@ -137,7 +137,6 @@ h6 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
   box-sizing: border-box;
   margin: 0 -15px;
   -webkit-box-orient: horizontal;
@@ -148,7 +147,9 @@ h6 {
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%; }
   @media (max-width: 767px) {
     .row {
       margin: 0 -10px; } }
@@ -2815,12 +2816,12 @@ h6 {
   background-color: #282828; }
   @media (max-width: 767px) {
     .col {
-      width: 100%;
-      max-width: 100%;
+      width: calc(100% - 20px);
+      max-width: calc(100% - 20px);
       margin: 0 10px 20px 10px;
       padding: 30px 20px;
-      -ms-flex-preferred-size: 100%;
-          flex-basis: 100%; } }
+      -ms-flex-preferred-size: calc(100% - 20px);
+          flex-basis: calc(100% - 20px); } }
   .col--usage {
     text-align: center; }
   .col--tab {
@@ -2831,7 +2832,11 @@ h6 {
       max-width: none;
       margin: -20px -10px 0 -10px;
       padding-top: 34px;
-      border-radius: 0; } }
+      border-radius: 0;
+      -ms-flex-preferred-size: calc(100% + 20px);
+          flex-basis: calc(100% + 20px); }
+      .row:not(:first-child):not(:only-child) .col--table {
+        margin-top: 20px; } }
   .col--center {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -3610,6 +3615,13 @@ h6 {
   .btn:disabled, .btn--disabled {
     opacity: 0.3;
     pointer-events: none; }
+  .btn--with-space {
+    margin-right: 10px;
+    margin-left: 10px; }
+    .btn--with-space:last-child {
+      margin-right: 0; }
+    .btn--with-space:first-child {
+      margin-left: 0; }
   .btn--full {
     width: 100%; }
   .btn--with-icon:before {
@@ -3648,6 +3660,10 @@ h6 {
       background-color: #1e1e1e; }
   .btn--color-green {
     color: #7fc146; }
+  .btn--possitive {
+    color: #7fc146; }
+  .btn--negative {
+    color: #ff554c; }
   .btn.icon-mail:before {
     font-size: 11px; }
 
@@ -3709,6 +3725,16 @@ h6 {
     @media (max-width: 767px) {
       .heading__text--with-actions {
         display: none; } }
+  @media (max-width: 767px) {
+    .heading__text--visible {
+      display: block; } }
+  .heading__text--additional {
+    margin-left: 13px;
+    color: #6863ce; }
+
+.heading__text__small {
+  font-size: 16px;
+  font-weight: normal; }
 
 .heading__actions {
   display: -webkit-box;
@@ -4371,7 +4397,7 @@ h6 {
   position: relative; }
   @media (max-width: 767px) {
     .table {
-      margin-bottom: 0; }
+      margin: 30px -20px 0 -20px; }
       .table--without-notification:before, .table--without-notification:after {
         opacity: 0;
         visibility: hidden; }
@@ -4379,16 +4405,19 @@ h6 {
         position: absolute;
         pointer-events: none;
         left: 50%;
-        -webkit-transform: translate3d(-50%, 0, 0);
-                transform: translate3d(-50%, 0, 0);
         z-index: 100;
         -webkit-animation: tooltip-bounce 4s ease-in-out infinite;
                 animation: tooltip-bounce 4s ease-in-out infinite;
         -webkit-transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
         transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out; }
+        body:not(.safari) .table:before, body:not(.safari) .table:after {
+          margin-left: 0;
+          -webkit-transform: translate3d(-50%, 0, 0);
+                  transform: translate3d(-50%, 0, 0); }
       .table:before {
         content: 'Swipe to scroll';
         height: 48px;
+        margin-left: -70px;
         padding-right: 17px;
         padding-left: 17px;
         top: -11px;
@@ -4399,6 +4428,7 @@ h6 {
         content: '';
         width: 0;
         height: 0;
+        margin-left: -6px;
         top: 35px;
         left: 50%;
         border-style: solid;
@@ -4436,7 +4466,8 @@ h6 {
     min-width: 855px; } }
 
 .table__heading {
-  display: inline-block; }
+  display: inline-block;
+  color: #777; }
   .ie .table__heading {
     min-height: 0 !important;
     padding-top: 18px !important; }
@@ -4444,7 +4475,7 @@ h6 {
 .table__heading__text {
   padding-right: 16px;
   font-size: 16px;
-  color: #777;
+  color: inherit;
   cursor: pointer;
   position: relative;
   pointer-events: auto;
@@ -4513,6 +4544,17 @@ h6 {
     width: 9.72%;
     -ms-flex-preferred-size: 138px;
         flex-basis: 138px; }
+  .table__item--month {
+    width: 25.38%;
+    padding-left: 30px; }
+  .table__item--value-1 {
+    width: 17.7%; }
+  .table__item--value-2 {
+    width: 16%; }
+  .table__item--value-3 {
+    width: 15.75%; }
+  .table__item--uptime {
+    width: 12%; }
   .table__item--invisible {
     text-indent: -9999px; }
   .table__item--blue {
@@ -4608,6 +4650,10 @@ h6 {
     font-size: 8px;
     -webkit-transition: color 0.1s ease-in-out;
     transition: color 0.1s ease-in-out; }
+    @media (max-width: 767px) {
+      .table__row:last-child .actions-menu__heading:after {
+        -webkit-transform: translate3d(0, -50%, 0) rotate(180deg);
+                transform: translate3d(0, -50%, 0) rotate(180deg); } }
 
 .actions-menu__container {
   width: 100%;
@@ -4629,6 +4675,14 @@ h6 {
   .actions-menu__container.dropdown__content--active {
     visibility: visible;
     pointer-events: auto; }
+  @media (max-width: 767px) {
+    .table__row:last-child .actions-menu__container {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      top: auto;
+      bottom: 28px; } }
 
 .actions-menu__item {
   -webkit-transition: background 0.1s ease-in-out;
@@ -4639,6 +4693,12 @@ h6 {
     border-bottom: 1px solid #454545; }
   .actions-menu__item:first-child {
     padding-top: 8px; }
+    @media (max-width: 767px) {
+      .table__row:last-child .actions-menu__item:first-child {
+        padding-top: 0; } }
+  @media (max-width: 767px) {
+    .table__row:last-child .actions-menu__item:last-child {
+      padding-bottom: 8px; } }
 
 .actions-menu__item__link {
   display: block;
@@ -4665,6 +4725,19 @@ h6 {
   @media (max-width: 767px) {
     .monitoring-info__heading {
       font-size: 26px; } }
+
+.graph {
+  margin: 0 -30px;
+  padding: 30px 30px 0 30px;
+  border-top: 1px solid #3a3a3a; }
+  @media (max-width: 767px) {
+    .graph {
+      margin: 0 -20px;
+      padding: 20px 20px 0 20px; } }
+
+.graph-example {
+  max-width: 100%;
+  display: block; }
 
 .sidebar {
   width: 300px;

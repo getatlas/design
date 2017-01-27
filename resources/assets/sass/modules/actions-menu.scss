@@ -47,6 +47,12 @@
     color: $color--boulder;
     font-size: 8px;
     transition: color $animation--duration $animation--timing;
+
+    @media (max-width: 767px) {
+      .table__row:last-child & {
+        transform: translate3d(0, -50%, 0) rotate(180deg);
+      }
+    }
   }
 }
 
@@ -75,6 +81,17 @@
     visibility: visible;
     pointer-events: auto;
   }
+
+  @media (max-width: 767px) {
+    .table__row:last-child & {
+      border-top-left-radius: $corner-radius;
+      border-top-right-radius: $corner-radius;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      top: auto;
+      bottom: 28px;
+    }
+  }
 }
 
 .actions-menu__item {
@@ -90,6 +107,20 @@
 
   &:first-child {
     padding-top: 8px;
+
+    @media (max-width: 767px) {
+      .table__row:last-child & {
+        padding-top: 0;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .table__row:last-child & {
+      &:last-child {
+        padding-bottom: 8px;
+      }
+    }
   }
 }
 

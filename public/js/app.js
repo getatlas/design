@@ -803,12 +803,12 @@ function Table() {
   function checkAll() {
     if (!isCheckedAll) {
       _.each(TABLE.CHECKBOX, function (ELEMENT) {
-        ELEMENT.setAttribute('checked', 'checked');
+        ELEMENT.checked = true;
         TABLE.BTN.SELECT_ALL.textContent = 'Unselect All';
       });
     } else {
       _.each(TABLE.CHECKBOX, function (ELEMENT) {
-        ELEMENT.removeAttribute('checked');
+        ELEMENT.checked = false;
         TABLE.BTN.SELECT_ALL.textContent = 'Select All';
       });
     }
@@ -842,7 +842,7 @@ function Table() {
   }
 
   if (getDeviceType() === DEVICES.TOUCH && TABLE.CONT !== null) {
-    TABLE.CONT.addEventListener(EVENTS.SCROLLING(), scrollWatch);
+    TABLE.CONT.addEventListener(EVENTS.SCROLL(), scrollWatch);
   }
 }
 

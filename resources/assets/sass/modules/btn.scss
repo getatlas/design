@@ -25,6 +25,17 @@
 		opacity: 0.3;
 		pointer-events: none;
 	}
+	&--with-space {
+		margin-right: $spacing-horizontal--small / 2;
+		margin-left: $spacing-horizontal--small / 2;
+
+		&:last-child {
+			margin-right: 0;
+		}
+		&:first-child {
+			margin-left: 0;
+		}
+	}
 	&--full {
 		width: 100%;
 	}
@@ -84,6 +95,12 @@
 	}
 	&--color-green {
 		color: $color--sushi;
+	}
+	&--possitive {
+		color: $color--sushi;
+	}
+	&--negative {
+		color: $color--sunset-orange;
 	}
 
 	&.icon-mail {

@@ -66,6 +66,20 @@
       display: none;
     }
   }
+  &--visible {
+    @media (max-width: 767px) {
+      display: block;
+    }
+  }
+  &--additional {
+    margin-left: 13px;
+    color: $color--blue-marguerite;
+  }
+}
+
+.heading__text__small {
+  font-size: $font-size--title;
+  font-weight: normal;
 }
 
 .heading__actions {

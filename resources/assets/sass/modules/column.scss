@@ -6,11 +6,11 @@
 	background-color: darken($color--mine-shaft, 7%);
 
 	@media (max-width: 767px) {
-		width: 100%;
-		max-width: 100%;
+		width: calc(100% - #{$spacing-horizontal--small});
+		max-width: calc(100% - #{$spacing-horizontal--small});		
 		margin: 0 #{$spacing-horizontal--small / 2} $spacing-vertical--small #{$spacing-horizontal--small / 2};
 		padding: $spacing-vertical $spacing-horizontal--small;
-		flex-basis: 100%;
+		flex-basis: calc(100% - #{$spacing-horizontal--small});
 	}
 
 	&--usage {
@@ -26,6 +26,11 @@
 			margin: -20px -10px 0 -10px;
 			padding-top: 34px;
 			border-radius: 0;
+			flex-basis: calc(100% + #{$spacing-horizontal--small});
+
+			.row:not(:first-child):not(:only-child) & {
+				margin-top: $spacing-horizontal--small;
+			}
 		}
 	}
 	&--center {
