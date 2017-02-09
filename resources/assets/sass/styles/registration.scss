@@ -1,0 +1,78 @@
+.registration {
+    display: flex;
+    padding-right: $spacing-horizontal;
+    padding-left: $spacing-horizontal;    
+    flex-direction: column;
+    align-items: center;
+    background: darken($color--mine-shaft, 7%);
+
+    @media (max-width: 767px) {
+        padding-right: $spacing-horizontal--small;
+        padding-left: $spacing-horizontal--small;
+    }    
+}
+
+.registration__header {
+    margin-top: 79px;
+    margin-bottom: 77px;
+    text-align: center;
+
+    @media (max-width: 767px) {
+        margin-top: 42px;
+        margin-bottom: 40px;
+    }
+}
+
+.registration__header__description {
+    color: $color--boulder;
+    font-weight: normal;
+    font-size: $font-size--title;
+}
+
+.registration__logo {
+    @include only-icon-font;
+    margin-bottom: 25px;
+    font-size: 0;
+
+    &:before {
+        font-size: 32px;
+    }
+}
+
+.registration__content {
+    width: 100%;
+    max-width: 680px;
+    padding: #{$spacing * 2};
+    border-radius: $corner-radius;
+    position: relative;
+    background: $color--cod-gray;
+
+    @media (max-width: 767px) {
+        padding: $spacing;
+    }
+
+    &:before {
+        content: '';
+        height: 363px;
+        position: absolute;
+        top: -143px;
+        right: 2px;
+        left: 2px;
+        z-index: -1;
+        background: url('../assets/team.svg') no-repeat center 0;
+        background-size: contain;
+    }
+
+    &--fluid {
+        width: auto;
+        max-width: none;
+        
+
+        &:before {
+            display: none;
+        }
+    }
+    &--with-illustration {
+        margin-top: 169px;
+    }
+}
