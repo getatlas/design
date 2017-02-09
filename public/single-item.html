@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/app.min.css">
 	<script src="js/detect.min.js"></script>
 	<script src="js/lodash.min.js"></script>
+	<script src="js/dropzone.js"></script>
 	<script src="js/app.js"></script>
 </head>
 <body>
@@ -56,11 +57,11 @@
 		<button class="js-toggle-sidebar sidebar__btn icon-menu">Change sidebar view</button>
 
 		<div class="toolbar__actions group">
-			<nav class="profile-nav js-dropdown">
+			<nav class="profile-nav js-dropdown" data-dropdown-options="autoclose">
 				<img class="profile-nav__avatar dropdown-menu__trigger js-dropdown-trigger" src="assets/avatar.jpg">
 
 				<ul class="dropdown-menu dropdown-menu--profile js-dropdown-content">
-					<li class="dropdown-menu__item"><span class="dropdown-menu__item__text">Your Profile</span></li>
+					<li class="dropdown-menu__item"><button class="dropdown-menu__item__text js-modal-init" data-modal-name="profile-with-upload" type="button">Your Profile</button></li>
 					<li class="dropdown-menu__item dropdown-menu__item--with-children js-options">
 						<span class="dropdown-menu__item__text js-options-trigger">Choose Your Team</span>
 						<ul class="dropdown-menu__children js-options-content" data-dropdown-hidden="true">
@@ -414,6 +415,69 @@
 			</div>
 		</section>
 	</main>
-</body>
 
+	<section class="modal js-modal" data-modal-name="profile-with-upload">
+		<header class="modal__heading">
+			<h1 class="modal__heading__text">Profile</h1>
+		</header>
+		<form action="" class="form form--modal form--upload">
+			<div class="form__group form__group--modal">
+				<label for="modal-field-username" class="form__title form__title--required">Username</label>
+				<div class="field">
+					<input id="modal-field-username" type="text" class="input">
+				</div>
+			</div>
+			<div class="form__group form__group--modal">
+				<label for="modal-field-mail" class="form__title form__title--required">Email</label>
+				<div class="field">
+					<input id="modal-field-mail" type="email" class="input">
+				</div>
+			</div>
+			<div class="form__group form__group--modal">
+				<label for="modal-field-password" class="form__title form__title--required">Password</label>
+				<div class="field">
+					<input id="modal-field-password" type="password" class="input">
+				</div>
+			</div>
+			<div class="form__group form__group--modal">
+				<label for="modal-field-password-confirm" class="form__title form__title--required">Confirm password</label>
+				<div class="field">
+					<input id="modal-field-password-confirm" type="password" class="input">
+				</div>
+			</div>
+			<div class="form__group form__group--modal">
+				<input id="modal-field-notifications" type="checkbox" class="invisible-helper">
+				<label for="modal-field-notifications" class="form__title form__title--with-actions slide slide--corner">Notifications</label>
+			</div>
+			<div class="form__group form__group--modal form__group--right">
+				<button class="btn btn--wide">Save changes</button>
+			</div>
+			<div class="form__upload form__upload--modal">
+				<label for="" class="form__title">Profile Photo</label>
+				<div class="upload">
+					<div class="upload__tile icon-share js-upload-drop">
+						<div class="upload__tile__info js-upload-content">
+							<div class="upload__tile__avatar dz-details">
+								<img data-dz-thumbnail />
+							</div>
+							<span class="upload__tile__error" data-dz-errormessage></span>
+						</div>
+
+						<button class="upload__tile__remove icon-close js-upload-remove" type="button">Remove</button>						
+
+						<div class="upload__progress js-upload-progress" data-progress="0">
+							<svg class="upload__progress__circle" width="60" height="60" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+								<circle class="upload__circle upload__circle--background" r="28" cx="30" cy="30" fill="transparent" stroke-dasharray="175.84" stroke-dashoffset="0"></circle>
+								<circle class="upload__circle js-upload-circle" id="bar" r="28" cx="30" cy="30" fill="transparent" stroke-dasharray="175.84" stroke-dashoffset="175.84"></circle>
+							</svg>
+						</div>
+					</div>
+					<strong class="upload__text">drag &amp; drop your <br>file or click to browse</strong>
+				</div>
+			</div>
+		</form>
+		<button class="modal__close js-modal-close icon-close">Close</button>
+	</section>
+
+</body>
 </html>

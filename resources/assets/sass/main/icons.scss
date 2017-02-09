@@ -2,11 +2,11 @@
 	font-family: 'Icons';
 	font-style: normal;
 	font-weight: normal;
-	src: url('../assets/icons.eot?ehlfg6');
-	src: url('../assets/icons.eot?ehlfg6#iefix') format('embedded-opentype'),
-	url('../assets/icons.ttf?ehlfg6') format('truetype'),
-	url('../assets/icons.woff?ehlfg6') format('woff'),
-	url('../assets/icons.svg?ehlfg6#icons') format('svg');
+	src: url('../assets/icons.eot?ehlfg7');
+	src: url('../assets/icons.eot?ehlfg7#iefix') format('embedded-opentype'),
+	url('../assets/icons.ttf?ehlfg7') format('truetype'),
+	url('../assets/icons.woff?ehlfg7') format('woff'),
+	url('../assets/icons.svg?ehlfg7#icons') format('svg');
 }
 
 [class^='icon-'],
@@ -117,5 +117,10 @@
 .icon-marked {
 	&:before {
 		content: '\e912';
+	}
+}
+.icon-share {
+	&:before {
+		content: '\e913';		
 	}
 }

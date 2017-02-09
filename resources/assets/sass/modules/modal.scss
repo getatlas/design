@@ -1,0 +1,107 @@
+@keyframes showModal {
+    0% {
+        opacity: 0;
+        max-height: 0;
+        transform: translate3d(-50%, -50%, 0) scale(0.8);
+    }
+    1% {
+        opacity: 0;
+        max-height: calc(100% - #{$spacing * 2});
+        transform: translate3d(-50%, -50%, 0) scale(0.8);        
+    }
+    100% {
+        opacity: 1;
+        max-height: calc(100% - #{$spacing * 2});
+        transform: translate3d(-50%, -50%, 0) scale(1);        
+    }
+}
+
+@keyframes showModalSmallScreen {
+    0% {
+        opacity: 0;
+        max-height: 0;
+        transform: translate3d(-50%, -50%, 0) scale(0.8);
+    }
+    1% {
+        opacity: 0;
+        max-height: calc(100% - #{$spacing--small});
+        transform: translate3d(-50%, -50%, 0) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        max-height: calc(100% - #{$spacing--small});
+        transform: translate3d(-50%, -50%, 0) scale(1);
+    }
+}
+
+
+.modal {
+    opacity: 0;
+    max-width: 526px;
+    width: 100%;
+    max-height: 0;
+    padding: $spacing;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: $initial-order * 11;
+    transform: translate3d(-50%, -50%, 0) scale(0.8);
+    border-radius: $corner-radius;
+    background: darken($color--mine-shaft, 7%);
+    overflow: auto;
+    pointer-events: auto;
+    -webkit-overflow-scrolling: touch;
+    transition: transform $animation--duration-slow $animation--timing,
+                opacity $animation--duration-slow $animation--timing;
+
+    @media (max-width: 767px) {
+        width: calc(100% - #{$spacing--small});
+        padding: $spacing--small;
+    }
+    &--init-active {
+        opacity: 0;
+        max-height: calc(100% - #{$spacing * 2});
+        transform: translate3d(-50%, -50%, 0) scale(0.8);            
+    }
+    &--active {
+        opacity: 1;
+        transform: translate3d(-50%, -50%, 0) scale(1);
+    }
+}
+
+.modal__heading {
+    margin: -#{$spacing} -#{$spacing} 26px -#{$spacing};
+    padding: 24px 28px;
+    font-size: $font-size--small;
+    font-weight: normal;
+    letter-spacing: 0.8px;
+    background: $color--cod-gray;
+
+    @media (max-width: 767px) {
+        margin: -#{$spacing--small} -#{$spacing--small} 26px -#{$spacing--small};
+        padding: 20px $spacing-horizontal--small;
+        font-size: $font-size--small - 2;
+    }
+}
+
+.modal__close {
+    position: absolute;
+    top: 33px;
+    right: 31px;
+    font-size: 0;
+    cursor: pointer;
+
+    @media (max-width: 767px) {
+        top: 27px;
+        right: $spacing-horizontal--small;
+    }
+
+    &:before {
+        @include only-icon-font;
+        font-size: 12px;
+    }
+
+    &:hover {
+        opacity: 0.7;
+    }
+}

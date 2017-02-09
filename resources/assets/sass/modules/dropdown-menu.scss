@@ -163,6 +163,8 @@
 	display: block;
 	padding: 16px 20px;
 	position: relative;
+	color: inherit;
+	cursor: pointer;
 
 	&--children {
 		padding-top: 8px;

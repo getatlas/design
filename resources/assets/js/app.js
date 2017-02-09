@@ -1,6 +1,7 @@
-/*  global _ detect  */
+/*  global _ Dropzone UPLOAD_DROPZONE detect  */
 /*  eslint no-undef: "error"  */
 /*  eslint no-use-before-define: ["error", { "functions": false, "classes": false }]  */
+/*  eslint no-param-reassign: ["error", { "props": false }] */
 /*  eslint-env es6  */
 
 'use strict';
@@ -169,7 +170,8 @@ function Dropdown() {
       THIS: _.noop,
       CLASS: {
         ACTIVE: 'dropdown__content--active',
-        HIDDEN: 'dropdown__content--hidden'
+        HIDDEN: 'dropdown__content--hidden',
+        ON_TOP: 'dropdown__content--on-top'
       }
     },
     CLASS: {
@@ -179,7 +181,9 @@ function Dropdown() {
   };
 
   let isOpened = false;
+  let isClosing = false;
   let dropdownEq;
+  let listHeight;
 
   //  Functions
 
@@ -209,7 +213,19 @@ function Dropdown() {
     DROPDOWN.CONTENT.ALL[eq].classList.add(DROPDOWN.CONTENT.CLASS.HIDDEN);
   }
 
+  function listClick(event) {
+    if (event.target.tagName === 'A' ||
+        event.target.tagName === 'BUTTON') {
+      closeSpecificDropdown(dropdownEq);
+      DROPDOWN.CONTENT.THIS.removeEventListener(EVENTS.CLICK(), listClick);
+    }
+  }
+
   function toggleDropdown() {
+    if (isClosing) {
+      return;
+    }
+
     DROPDOWN.TRIGGER.THIS = this;
     DROPDOWN.CONTENT.THIS = this.nextElementSibling;
     let thisEq = DROPDOWN.TRIGGER.THIS.parentNode.getAttribute('data-dropdown');
@@ -232,13 +248,57 @@ function Dropdown() {
     DROPDOWN.CONTENT.THIS.classList.toggle(DROPDOWN.CONTENT.CLASS.HIDDEN);
 
     isOpened = !isOpened;
+    isClosing = !isClosing;
     dropdownEq = thisEq;
+
+
+    setTimeout(() => {
+      isClosing = !isClosing;
+    }, 100);
+
+    if (DROPDOWN.TRIGGER.THIS.parentNode.getAttribute('data-dropdown-options') === 'autoclose') {
+      DROPDOWN.CONTENT.THIS.addEventListener(EVENTS.CLICK(), listClick);
+    }
 
     if (isOpened) {
       window.addEventListener(EVENTS.CLICK(), outsideClick);
     } else {
       window.removeEventListener(EVENTS.CLICK(), outsideClick);
     }
+
+    if (DROPDOWN.TRIGGER.THIS.parentNode.hasAttribute('data-dropdown-type') &&
+        DROPDOWN.TRIGGER.THIS.parentNode.getAttribute('data-dropdown-type') === 'select' &&
+        isDropdownInside(DROPDOWN.TRIGGER.THIS.parentNode, 'js-modal')) {
+      let onlyNumbers = /\D/g;
+      let modalPosition = document.querySelector('.js-modal').getBoundingClientRect();
+      let dropdownPosition = DROPDOWN.TRIGGER.THIS.parentNode.getBoundingClientRect();
+      if (dropdownPosition.top - modalPosition.top > (modalPosition.height / 2) &&
+          isOpened) {
+        let calculation = dropdownPosition.top - modalPosition.top - 30;
+        listHeight = parseInt(DROPDOWN.CONTENT.THIS.getAttribute('style').replace(onlyNumbers, ''), 10);
+        DROPDOWN.CONTENT.THIS.classList.add(DROPDOWN.CONTENT.CLASS.ON_TOP);
+        DROPDOWN.CONTENT.THIS.style.maxHeight = calculation + 'px';
+      } else {
+        setTimeout(() => {
+          DROPDOWN.CONTENT.THIS.classList.remove(DROPDOWN.CONTENT.CLASS.ON_TOP);
+          DROPDOWN.CONTENT.THIS.style.maxHeight = listHeight + 'px';
+        }, 100);
+      }
+    }
+  }
+
+  function isDropdownInside(element, parent) {
+    let ELEMENT = element;
+
+    while (ELEMENT) {
+      if (ELEMENT.classList && ELEMENT.classList.contains(parent)) {
+        return true;
+      }
+
+      ELEMENT = ELEMENT.parentNode;
+    }
+
+    return false;
   }
 
   //  Init
@@ -938,6 +998,157 @@ function optionsMenu() {
 
 //  OPTIONS MENU
 
+//  -----------------------------------
+
+//  BEGIN UPLOAD
+
+function Upload() {
+  //  Enums
+  const UPLOAD = {
+    DROP: {
+      ITEM: document.querySelector('.js-upload-drop'),
+      CLASS: {
+        DRAGGING: 'upload__tile--dragging',
+        DURING: 'upload__tile--during',
+        UPLOADED: 'upload__tile--uploaded',
+        ACTIVE: 'upload__tile--active'
+      }
+    },
+    CIRCLE: document.querySelector('.js-upload-circle'),
+    PROGRESS: document.querySelector('.js-upload-progress'),
+    REMOVE: {
+      CLASS: {
+        ACTIVE: 'upload__tile__remove--active'
+      },
+      ITEM: document.querySelector('.js-upload-remove')
+    }
+  };
+
+  //  Init
+  if (document.querySelectorAll('.js-upload-drop').length > 0) {
+    const UPLOAD_DROPZONE = new Dropzone('.js-upload-drop', {
+      url: '/file/post',
+      previewTemplate: document.querySelector('.js-upload-content').innerHTML,
+      acceptedFiles: 'image/*',
+      init: handleUploadEvents
+    });
+  }
+
+  //  Functions
+  function countProgress(r, progress) {
+    let c = Math.PI * (r * 2);
+    let pct = ((100 - progress) / 100) * c;
+
+    UPLOAD.CIRCLE.style.strokeDashoffset = pct;
+    UPLOAD.PROGRESS.setAttribute('data-progress', progress);
+  }
+
+  function handleUploadEvents() {
+    this.on('uploadprogress', progress => {
+      countProgress(28, progress);
+    });
+    this.on('processing', () => {
+      UPLOAD.DROP.ITEM.classList.add(UPLOAD.DROP.CLASS.DURING);
+    });
+    this.on('complete', () => {
+      UPLOAD.DROP.ITEM.classList.remove(UPLOAD.DROP.CLASS.DURING);
+      UPLOAD.DROP.ITEM.classList.add(UPLOAD.DROP.CLASS.UPLOADED);
+      UPLOAD.REMOVE.ITEM.classList.add(UPLOAD.REMOVE.CLASS.ACTIVE);
+    });
+    this.on('drop', () => {
+      UPLOAD_DROPZONE.removeAllFiles();
+    });
+    this.on('removedfile', () => {
+      UPLOAD.DROP.ITEM.classList.remove(UPLOAD.DROP.CLASS.UPLOADED);
+    });
+
+    UPLOAD.REMOVE.ITEM.addEventListener(EVENTS.CLICK(), () => {
+      UPLOAD_DROPZONE.removeAllFiles();
+      UPLOAD.DROP.ITEM.classList.remove(UPLOAD.DROP.CLASS.UPLOADED);
+      UPLOAD.REMOVE.ITEM.classList.remove(UPLOAD.REMOVE.CLASS.ACTIVE);
+    });
+  }
+}
+
+//  END UPLOAD
+
+//  -------------------------------------------
+
+//  BEGIN MODAL
+
+function Modal() {
+  //  ENUMS
+  const MODAL = {
+    ALL: document.querySelectorAll('.js-modal'),
+    ITEM: document.querySelector('.js-modal'),
+    CLASS: {
+      INIT_ACTIVE: 'modal--init-active',
+      ACTIVE: 'modal--active',
+      HIDDEN: 'modal--hidden'
+    },
+    CLOSE: document.querySelectorAll('.js-modal-close'),
+    INIT: document.querySelectorAll('.js-modal-init')
+  };
+
+  //  Helpers
+  let modalName;
+  let modalKey;
+
+  //  Functions
+  function closeModal() {
+    MODAL.ALL[modalKey].classList.remove(MODAL.CLASS.ACTIVE);
+    setTimeout(() => {
+      MODAL.ALL[modalKey].classList.remove(MODAL.CLASS.INIT_ACTIVE);
+    }, 310);
+    document.body.classList.remove('overlay');
+
+    MODAL.CLOSE[modalKey].removeEventListener(EVENTS.CLICK(), closeModal);
+  }
+
+  function outsideClick(event) {
+    let modalElement = document.querySelector('.js-modal-init[data-modal-name="' + modalName + '"]');
+    _.each(MODAL.ALL, (ELEMENT, KEY) => {
+      if (ELEMENT.getAttribute('data-modal-name') === modalName) {
+        if (!ELEMENT.contains(event.target) &&
+            !modalElement.contains(event.target)) {
+          if (document.querySelectorAll('.dz-hidden-input').length > 0 &&
+              document.querySelector('.dz-hidden-input').contains(event.target)) {
+            return;
+          }
+          modalKey = KEY;
+          closeModal();
+          window.removeEventListener(EVENTS.CLICK(), outsideClick);
+        }
+      }
+    });
+  }
+
+  function openModal() {
+    modalName = this.getAttribute('data-modal-name');
+    _.each(MODAL.ALL, (ELEMENT, KEY) => {
+      if (ELEMENT.getAttribute('data-modal-name') === modalName) {
+        modalKey = KEY;
+        ELEMENT.classList.add(MODAL.CLASS.INIT_ACTIVE);
+        setTimeout(() => {
+          ELEMENT.classList.add(MODAL.CLASS.ACTIVE);
+        }, 10);
+        MODAL.CLOSE[KEY].addEventListener(EVENTS.CLICK(), closeModal);
+      }
+    });
+    document.body.classList.add('overlay');
+    window.addEventListener(EVENTS.CLICK(), outsideClick);
+  }
+
+  //  Init
+  _.each(MODAL.INIT, ELEMENT => {
+    ELEMENT.addEventListener(EVENTS.CLICK(), openModal);
+  });
+}
+
+//  END MODAL
+
+//  ------------------------------------------
+
 // INIT FUNCTIONS
 window.addEventListener('load', () => {
   detectBrowser();
@@ -950,5 +1161,7 @@ window.addEventListener('load', () => {
   Notifications();
   Table();
   optionsMenu();
+  Upload();
+  Modal();
 });
 

@@ -1,8 +1,14 @@
-//TODO: VALIDATION JS AND STYLES
-
 .form {
 	&--col {
 		padding-top: 24px;
+	}
+	&--upload {
+		padding-right: 167px;
+		position: relative;
+
+		@media (max-width: 767px) {
+			padding-right: 0;
+		}
 	}
 }
 
@@ -27,6 +33,17 @@
 	&--small {
 		margin-top: 8px;
 	}
+	&--modal {
+		margin-top: 26px;
+
+		@media (max-width: 767px) {
+			margin-top: 20px;
+		}
+	}
+	&--right {
+		display: flex;
+		justify-content: flex-end;
+	}
 }
 
 .form__title {
@@ -36,16 +53,18 @@
 	position: relative;
 	cursor: pointer;
 
-	&:after {
-		content: '';
-		width: 6px;
-		height: 6px;
-		border-radius: 50%;
-		position: absolute;
-		top: 50%;
-		right: 0;
-		transform: translate3d(0, -50%, 0);
-		background-color: $color--sunset-orange;
+	&--required {
+		&:after {
+			content: '';
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translate3d(0, -50%, 0);
+			background-color: $color--sunset-orange;
+		}
 	}
 }
 
@@ -94,8 +113,8 @@
 	transition: background-color $animation--duration $animation--timing,
             	color $animation--duration $animation--timing,
             	border-color $animation--duration $animation--timing,
-              width $animation--duration $animation--timing;
-  -webkit-appearance: none;
+              	width $animation--duration $animation--timing;
+  	-webkit-appearance: none;
 
 	&:hover {
 		background-color: $color--tundora;
@@ -306,9 +325,12 @@
 .slide {
 	padding-left: 40px;
 	position: relative;
-	color: $color--boulder;
-	font-size: $font-size--paragraph-small;
 	cursor: pointer;
+
+	&:not(.form__title) {
+		color: $color--boulder;
+		font-size: $font-size--paragraph-small;
+	}
 
 	&:before {
 		content: '';
@@ -359,6 +381,18 @@
 			}
 		}
 	}
+	&--corner {
+		padding-left: 0;
+
+		&:before {
+			right: 0;
+			left: auto;
+		}
+		&:after {
+			right: 18px;
+			left: auto;
+		}
+	}
 }
 
 //Field with button that confirm your decission :dafuq:
@@ -384,4 +418,21 @@
 
 .field-confirmation__btn {
 	margin-left: $spacing-horizontal--small / 2;
+}
+
+.form__upload {
+	&--modal {
+		width: 138px;
+		position: absolute;
+		top: 0;
+		right: 0;
+
+		@media (max-width: 767px) {
+			display: flex;
+			width: 100%;
+			margin-top: $spacing-horizontal--small;
+			position: static;
+			flex-direction: column;
+		}
+	}
 }

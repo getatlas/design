@@ -1,6 +1,7 @@
-/*  global _ detect  */
+/*  global _ Dropzone UPLOAD_DROPZONE detect  */
 /*  eslint no-undef: "error"  */
 /*  eslint no-use-before-define: ["error", { "functions": false, "classes": false }]  */
+/*  eslint no-param-reassign: ["error", { "props": false }] */
 /*  eslint-env es6  */
 
 'use strict';
@@ -169,7 +170,8 @@ function Dropdown() {
       THIS: _.noop,
       CLASS: {
         ACTIVE: 'dropdown__content--active',
-        HIDDEN: 'dropdown__content--hidden'
+        HIDDEN: 'dropdown__content--hidden',
+        ON_TOP: 'dropdown__content--on-top'
       }
     },
     CLASS: {
@@ -179,7 +181,9 @@ function Dropdown() {
   };
 
   var isOpened = false;
+  var isClosing = false;
   var dropdownEq = void 0;
+  var listHeight = void 0;
 
   //  Functions
 
@@ -209,7 +213,18 @@ function Dropdown() {
     DROPDOWN.CONTENT.ALL[eq].classList.add(DROPDOWN.CONTENT.CLASS.HIDDEN);
   }
 
+  function listClick(event) {
+    if (event.target.tagName === 'A' || event.target.tagName === 'BUTTON') {
+      closeSpecificDropdown(dropdownEq);
+      DROPDOWN.CONTENT.THIS.removeEventListener(EVENTS.CLICK(), listClick);
+    }
+  }
+
   function toggleDropdown() {
+    if (isClosing) {
+      return;
+    }
+
     DROPDOWN.TRIGGER.THIS = this;
     DROPDOWN.CONTENT.THIS = this.nextElementSibling;
     var thisEq = DROPDOWN.TRIGGER.THIS.parentNode.getAttribute('data-dropdown');
@@ -232,13 +247,53 @@ function Dropdown() {
     DROPDOWN.CONTENT.THIS.classList.toggle(DROPDOWN.CONTENT.CLASS.HIDDEN);
 
     isOpened = !isOpened;
+    isClosing = !isClosing;
     dropdownEq = thisEq;
+
+    setTimeout(function () {
+      isClosing = !isClosing;
+    }, 100);
+
+    if (DROPDOWN.TRIGGER.THIS.parentNode.getAttribute('data-dropdown-options') === 'autoclose') {
+      DROPDOWN.CONTENT.THIS.addEventListener(EVENTS.CLICK(), listClick);
+    }
 
     if (isOpened) {
       window.addEventListener(EVENTS.CLICK(), outsideClick);
     } else {
       window.removeEventListener(EVENTS.CLICK(), outsideClick);
     }
+
+    if (DROPDOWN.TRIGGER.THIS.parentNode.hasAttribute('data-dropdown-type') && DROPDOWN.TRIGGER.THIS.parentNode.getAttribute('data-dropdown-type') === 'select' && isDropdownInside(DROPDOWN.TRIGGER.THIS.parentNode, 'js-modal')) {
+      var onlyNumbers = /\D/g;
+      var modalPosition = document.querySelector('.js-modal').getBoundingClientRect();
+      var dropdownPosition = DROPDOWN.TRIGGER.THIS.parentNode.getBoundingClientRect();
+      if (dropdownPosition.top - modalPosition.top > modalPosition.height / 2 && isOpened) {
+        var calculation = dropdownPosition.top - modalPosition.top - 30;
+        listHeight = parseInt(DROPDOWN.CONTENT.THIS.getAttribute('style').replace(onlyNumbers, ''), 10);
+        DROPDOWN.CONTENT.THIS.classList.add(DROPDOWN.CONTENT.CLASS.ON_TOP);
+        DROPDOWN.CONTENT.THIS.style.maxHeight = calculation + 'px';
+      } else {
+        setTimeout(function () {
+          DROPDOWN.CONTENT.THIS.classList.remove(DROPDOWN.CONTENT.CLASS.ON_TOP);
+          DROPDOWN.CONTENT.THIS.style.maxHeight = listHeight + 'px';
+        }, 100);
+      }
+    }
+  }
+
+  function isDropdownInside(element, parent) {
+    var ELEMENT = element;
+
+    while (ELEMENT) {
+      if (ELEMENT.classList && ELEMENT.classList.contains(parent)) {
+        return true;
+      }
+
+      ELEMENT = ELEMENT.parentNode;
+    }
+
+    return false;
   }
 
   //  Init
@@ -910,6 +965,155 @@ function optionsMenu() {
 
 //  OPTIONS MENU
 
+//  -----------------------------------
+
+//  BEGIN UPLOAD
+
+function Upload() {
+  //  Enums
+  var UPLOAD = {
+    DROP: {
+      ITEM: document.querySelector('.js-upload-drop'),
+      CLASS: {
+        DRAGGING: 'upload__tile--dragging',
+        DURING: 'upload__tile--during',
+        UPLOADED: 'upload__tile--uploaded',
+        ACTIVE: 'upload__tile--active'
+      }
+    },
+    CIRCLE: document.querySelector('.js-upload-circle'),
+    PROGRESS: document.querySelector('.js-upload-progress'),
+    REMOVE: {
+      CLASS: {
+        ACTIVE: 'upload__tile__remove--active'
+      },
+      ITEM: document.querySelector('.js-upload-remove')
+    }
+  };
+
+  //  Init
+  if (document.querySelectorAll('.js-upload-drop').length > 0) {
+    var _UPLOAD_DROPZONE = new Dropzone('.js-upload-drop', {
+      url: '/file/post',
+      previewTemplate: document.querySelector('.js-upload-content').innerHTML,
+      acceptedFiles: 'image/*',
+      init: handleUploadEvents
+    });
+  }
+
+  //  Functions
+  function countProgress(r, progress) {
+    var c = Math.PI * (r * 2);
+    var pct = (100 - progress) / 100 * c;
+
+    UPLOAD.CIRCLE.style.strokeDashoffset = pct;
+    UPLOAD.PROGRESS.setAttribute('data-progress', progress);
+  }
+
+  function handleUploadEvents() {
+    this.on('uploadprogress', function (progress) {
+      countProgress(28, progress);
+    });
+    this.on('processing', function () {
+      UPLOAD.DROP.ITEM.classList.add(UPLOAD.DROP.CLASS.DURING);
+    });
+    this.on('complete', function () {
+      UPLOAD.DROP.ITEM.classList.remove(UPLOAD.DROP.CLASS.DURING);
+      UPLOAD.DROP.ITEM.classList.add(UPLOAD.DROP.CLASS.UPLOADED);
+      UPLOAD.REMOVE.ITEM.classList.add(UPLOAD.REMOVE.CLASS.ACTIVE);
+    });
+    this.on('drop', function () {
+      UPLOAD_DROPZONE.removeAllFiles();
+    });
+    this.on('removedfile', function () {
+      UPLOAD.DROP.ITEM.classList.remove(UPLOAD.DROP.CLASS.UPLOADED);
+    });
+
+    UPLOAD.REMOVE.ITEM.addEventListener(EVENTS.CLICK(), function () {
+      UPLOAD_DROPZONE.removeAllFiles();
+      UPLOAD.DROP.ITEM.classList.remove(UPLOAD.DROP.CLASS.UPLOADED);
+      UPLOAD.REMOVE.ITEM.classList.remove(UPLOAD.REMOVE.CLASS.ACTIVE);
+    });
+  }
+}
+
+//  END UPLOAD
+
+//  -------------------------------------------
+
+//  BEGIN MODAL
+
+function Modal() {
+  //  ENUMS
+  var MODAL = {
+    ALL: document.querySelectorAll('.js-modal'),
+    ITEM: document.querySelector('.js-modal'),
+    CLASS: {
+      INIT_ACTIVE: 'modal--init-active',
+      ACTIVE: 'modal--active',
+      HIDDEN: 'modal--hidden'
+    },
+    CLOSE: document.querySelectorAll('.js-modal-close'),
+    INIT: document.querySelectorAll('.js-modal-init')
+  };
+
+  //  Helpers
+  var modalName = void 0;
+  var modalKey = void 0;
+
+  //  Functions
+  function closeModal() {
+    MODAL.ALL[modalKey].classList.remove(MODAL.CLASS.ACTIVE);
+    setTimeout(function () {
+      MODAL.ALL[modalKey].classList.remove(MODAL.CLASS.INIT_ACTIVE);
+    }, 310);
+    document.body.classList.remove('overlay');
+
+    MODAL.CLOSE[modalKey].removeEventListener(EVENTS.CLICK(), closeModal);
+  }
+
+  function outsideClick(event) {
+    var modalElement = document.querySelector('.js-modal-init[data-modal-name="' + modalName + '"]');
+    _.each(MODAL.ALL, function (ELEMENT, KEY) {
+      if (ELEMENT.getAttribute('data-modal-name') === modalName) {
+        if (!ELEMENT.contains(event.target) && !modalElement.contains(event.target)) {
+          if (document.querySelectorAll('.dz-hidden-input').length > 0 && document.querySelector('.dz-hidden-input').contains(event.target)) {
+            return;
+          }
+          modalKey = KEY;
+          closeModal();
+          window.removeEventListener(EVENTS.CLICK(), outsideClick);
+        }
+      }
+    });
+  }
+
+  function openModal() {
+    modalName = this.getAttribute('data-modal-name');
+    _.each(MODAL.ALL, function (ELEMENT, KEY) {
+      if (ELEMENT.getAttribute('data-modal-name') === modalName) {
+        modalKey = KEY;
+        ELEMENT.classList.add(MODAL.CLASS.INIT_ACTIVE);
+        setTimeout(function () {
+          ELEMENT.classList.add(MODAL.CLASS.ACTIVE);
+        }, 10);
+        MODAL.CLOSE[KEY].addEventListener(EVENTS.CLICK(), closeModal);
+      }
+    });
+    document.body.classList.add('overlay');
+    window.addEventListener(EVENTS.CLICK(), outsideClick);
+  }
+
+  //  Init
+  _.each(MODAL.INIT, function (ELEMENT) {
+    ELEMENT.addEventListener(EVENTS.CLICK(), openModal);
+  });
+}
+
+//  END MODAL
+
+//  ------------------------------------------
+
 // INIT FUNCTIONS
 window.addEventListener('load', function () {
   detectBrowser();
@@ -922,4 +1126,6 @@ window.addEventListener('load', function () {
   Notifications();
   Table();
   optionsMenu();
+  Upload();
+  Modal();
 });
