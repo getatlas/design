@@ -10,9 +10,15 @@
 			padding-right: 0;
 		}
 	}
+	&--registration {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
 }
 
 .form__group {
+	width: 100%;
 	margin-top: $spacing-vertical;
 
 	@media (max-width: 767px) {
@@ -20,7 +26,25 @@
 	}
 
 	&:first-child {
-		margin-top: 0;
+		margin-top: 0;			
+	}
+
+	&--half {
+		width: calc(50% - #{$spacing / 2});
+
+		@media (max-width: 767px) {
+			width: 100%;
+		}
+
+		&:first-child {
+			+ .form__group--half {
+				margin-top: 0;
+
+				@media (max-width: 767px) {
+					margin-top: $spacing-vertical--small;
+				}
+			}
+		}
 	}
 
 	&--error {
@@ -33,6 +57,9 @@
 	&--small {
 		margin-top: 8px;
 	}
+	&--big {
+		margin-top: 38px;
+	}
 	&--modal {
 		margin-top: 26px;
 
@@ -43,6 +70,25 @@
 	&--right {
 		display: flex;
 		justify-content: flex-end;
+	}
+	&--in-line {
+		display: flex;
+		justify-content: space-between;
+
+		@media (max-width: 767px) {
+			flex-direction: column;
+		}
+
+		> * {
+			&:not(:last-child) {
+				margin-right: $spacing-horizontal;
+
+				@media (max-width: 767px) {
+					margin-right: 0;
+					margin-bottom: $spacing-vertical--small;
+				}
+			}
+		}
 	}
 }
 

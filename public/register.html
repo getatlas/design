@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GetAtlas - Register</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/app.min.css">
+	<script src="js/lodash.min.js"></script>
+	<script src="js/detect.min.js"></script>
+	<script src="js/dropzone.js"></script>
+	<script src="js/app.js"></script>
+</head>
+<body class="registration">
+	<header class="registration__header">
+		<h1 class="registration__logo icon-logo">Atlas</h1>
+		<h3 class="registration__header__description">Welcome to the Atlas dashboard. <br>You can now create a new team filling in the form below.</h3>
+	</header>
+	<section class="registration__content registration__content--with-illustration">
+        <header class="heading heading--registration heading--without-border heading--with-actions">
+            <h2 class="heading__text">Your plan: <span class="heading__text--additional">Pro £39</span></h2>
+            <a href="plan.html" class="link link--underline link--gray">Change plan</a>
+        </header>
+        <form action="" class="form form--registration">
+            <div class="form__group form__group--half">
+                <label for="registration-username" class="form__title form__title--required">Username</label>
+                <div class="field">
+                    <input id="registration-username" class="input" type="text">
+                </div>
+            </div>
+            <div class="form__group form__group--half">
+                <label for="registration-email" class="form__title form__title--required">Email</label>
+                <div class="field">
+                    <input id="registration-email" class="input" type="email">
+                </div>
+            </div>
+            <div class="form__group form__group--half">
+                <label for="registration-password" class="form__title form__title--required">Password</label>
+                <div class="field">
+                    <input id="registration-password" class="input" type="password">
+                </div>
+            </div>
+            <div class="form__group form__group--half">
+                <label for="registration-password-repeat" class="form__title form__title--required">Confirm Password</label>
+                <div class="field">
+                    <input id="registration-password-repeat" class="input" type="password">
+                </div>
+            </div>
+            <div class="form__group form__group--big">
+                <button class="btn btn--full" type="submt">Create My Team Account</button>
+            </div>
+        </form>
+	</section>
+    <footer class="registration__footer">
+        <p class="registration__text registration__text--white">
+            Already have a team registered? <a href="plan" class="link link--underline link--blue">Choose your team</a>
+        </p>
+    </footer>
+</body>
+</html>

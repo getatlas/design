@@ -23,7 +23,6 @@
       border-top: 0;
     }
   }
-
   &--with-actions {
     display: flex;
     justify-content: space-between;
@@ -31,6 +30,22 @@
 
     @media (max-width: 1200px) {
       flex-direction: column;
+    }
+  }
+  &--registration {
+    margin-top: -10px;
+    margin-bottom: 47px;
+    flex-flow: nowrap;
+    align-items: center;
+
+    @media (max-width: 767px) {
+      margin-bottom: $spacing-vertical--small;
+      flex-flow: wrap;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 390px) {
+      justify-content: center;
     }
   }
 }

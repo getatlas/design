@@ -141,7 +141,9 @@ function Sidebar() {
 
   // Listener
 
-  SIDEBAR.BTN.CONT.addEventListener(EVENTS.CLICK(), initSidebar);
+  if (SIDEBAR.BTN.CONT !== null) {
+    SIDEBAR.BTN.CONT.addEventListener(EVENTS.CLICK(), initSidebar);
+  }
 }
 
 //  END: SIDEBAR TOGGLER
@@ -369,7 +371,9 @@ function Search() {
 
   //  Init
 
-  SEARCH.FIELD.addEventListener(EVENTS.FOCUS, openSearch);
+  if (SEARCH.FIELD !== null) {
+    SEARCH.FIELD.addEventListener(EVENTS.FOCUS, openSearch);
+  }
 }
 
 //  END: SEARCH
@@ -559,8 +563,10 @@ function Results() {
 
   //  Init
 
-  setHeight();
-  window.addEventListener(EVENTS.RESIZE(), setHeight);
+  if (RESULTS !== null) {
+    setHeight();
+    window.addEventListener(EVENTS.RESIZE(), setHeight);
+  }
 }
 
 //  END: RESULTS
@@ -838,9 +844,11 @@ function Notifications() {
   }
 
   //  Init
-  NOTIFICATION.BTN.OPEN.addEventListener(EVENTS.CLICK(), initNotification);
-  window.addEventListener(EVENTS.RESIZE(), setHeight);
-  setHeight(NOTIFICATION.SIZE.SMALL);
+  if (NOTIFICATION.BTN.OPEN !== null) {
+    NOTIFICATION.BTN.OPEN.addEventListener(EVENTS.CLICK(), initNotification);
+    window.addEventListener(EVENTS.RESIZE(), setHeight);
+    setHeight(NOTIFICATION.SIZE.SMALL);
+  }
 }
 
 // END: NOTIFICATIONS

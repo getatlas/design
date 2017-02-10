@@ -1,6 +1,7 @@
 .link {
   cursor: pointer;
   text-decoration: none;
+  transition: color $animation--duration $animation--timing;
 
   &:hover {
     opacity: 0.8;
@@ -46,6 +47,20 @@
       width: 100%;
       border-bottom: 1px solid;
       transition: border $animation--duration $animation--timing;
+    }
+  }
+  &--gray {
+    color: $color--boulder;
+
+    &:hover {
+      color: $color--white;
+    }
+  }
+  &--blue {
+    color: $color--blue-marguerite;
+
+    &:hover {
+      color: $color--white;
     }
   }
 }

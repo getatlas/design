@@ -94,6 +94,11 @@
     bottom: 38px;
     overflow-y: auto;
   }
+
+  &--relative {
+    position: relative;
+    top: -5px;
+  }
 }
 
 .select__list__item {
@@ -113,5 +118,24 @@
   &:first-child {
     padding-top: 20px;
     border-radius: $corner-radius $corner-radius 0 0;
+  }
+  &--with-avatar {
+    padding-left: $spacing-horizontal--small + 42px;
+  }
+}
+
+.select__list__avatar {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 50%;
+  left: $spacing-horizontal--small;
+  border-radius: 50%;
+  overflow: hidden;
+  background: $color--mine-shaft;
+  transform: translateY(-50%);
+
+  .select__list__item:first-child & {
+    margin-top: 3px;
   }
 }
