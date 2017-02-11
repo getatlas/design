@@ -1,0 +1,98 @@
+.steps {
+    margin-top: 0;
+    margin-bottom: $spacing-vertical;
+    padding-bottom: 28px;
+    padding-left: 0;
+    position: relative;
+    list-style: none;
+    counter-reset: increment;
+
+    &:before {
+        content: '';
+        width: 1px;
+        position: absolute;
+        top: -60px;
+        bottom: 0;
+        left: 6px;
+        background: $color--mine-shaft;
+        pointer-events: none;
+    }
+}
+
+.steps__item {
+    display: flex;
+    padding-left: 24px;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    counter-increment: increment;
+    color: $color--mine-shaft;    
+
+    &:before {
+        content: counter(increment);
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        position: absolute;
+        top: 3px;
+        left: -1px;
+        background: $color--mine-shaft;
+        color: $color--boulder;
+        font-size: 10px;
+        text-align: center;
+        line-height: 16px;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 26px;
+    }
+
+    &--done {
+        color: $color--sushi;
+
+        &:before {
+            content: '\e909';
+            background-color: $color--sushi;
+            color: $color--cod-gray;
+            font-size: 7px;
+        }
+    }
+    &--current {
+        color: $color--blue-marguerite;
+
+        &:before {
+            content: '';
+            background-color: $color--blue-marguerite;
+        }
+    }
+}
+
+.steps__name {
+    font-size: $font-size--paragraph;
+}
+
+.steps__label {
+    margin-left: 10px;
+    padding-right: 8px;
+    padding-left: 8px;
+    border-radius: 7px;
+    background: $color--mine-shaft;
+    color: $color--boulder;
+    font-size: 10px;
+
+    &:not(.steps__label--done) {
+        &:hover {
+            background-color: lighten($color--mine-shaft, 10%);
+            color: lighten($color--boulder, 10%);        
+        }
+    }
+
+    &--done {
+        background-color: $color--sushi;
+        color: $color--white;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

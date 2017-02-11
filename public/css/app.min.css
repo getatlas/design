@@ -3719,7 +3719,7 @@ h6 {
               flex-direction: column; } }
 
 .btn {
-  display: block;
+  display: inline-block;
   padding: 9px 10px 11px 10px;
   border-top: 2px solid transparent;
   border-radius: 5px;
@@ -3748,6 +3748,7 @@ h6 {
     .btn--with-space:first-child {
       margin-left: 0; }
   .btn--full {
+    display: block;
     width: 100%; }
   .btn--with-icon:before {
     margin-right: 8px;
@@ -5332,6 +5333,86 @@ h6 {
   @media (max-width: 1024px) {
     .pricing__info {
       width: calc(100% - 55px); } }
+
+.steps {
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding-bottom: 28px;
+  padding-left: 0;
+  position: relative;
+  list-style: none;
+  counter-reset: increment; }
+  .steps:before {
+    content: '';
+    width: 1px;
+    position: absolute;
+    top: -60px;
+    bottom: 0;
+    left: 6px;
+    background: #3a3a3a;
+    pointer-events: none; }
+
+.steps__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 24px;
+  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  counter-increment: increment;
+  color: #3a3a3a; }
+  .steps__item:before {
+    content: counter(increment);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: -1px;
+    background: #3a3a3a;
+    color: #777;
+    font-size: 10px;
+    text-align: center;
+    line-height: 16px; }
+  .steps__item:not(:last-child) {
+    margin-bottom: 26px; }
+  .steps__item--done {
+    color: #7fc146; }
+    .steps__item--done:before {
+      content: '\e909';
+      background-color: #7fc146;
+      color: #1e1e1e;
+      font-size: 7px; }
+  .steps__item--current {
+    color: #6863ce; }
+    .steps__item--current:before {
+      content: '';
+      background-color: #6863ce; }
+
+.steps__name {
+  font-size: 16px; }
+
+.steps__label {
+  margin-left: 10px;
+  padding-right: 8px;
+  padding-left: 8px;
+  border-radius: 7px;
+  background: #3a3a3a;
+  color: #777;
+  font-size: 10px; }
+  .steps__label:not(.steps__label--done):hover {
+    background-color: #545454;
+    color: #919191; }
+  .steps__label--done {
+    background-color: #7fc146;
+    color: #fff; }
+    .steps__label--done:hover {
+      opacity: 0.8; }
 
 .sidebar {
   width: 300px;

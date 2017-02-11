@@ -1,5 +1,5 @@
 .btn {
-	display: block;
+	display: inline-block;
 	padding: 9px 10px 11px 10px;
 	border-top: 2px solid transparent;
 	border-radius: $corner-radius;
@@ -39,6 +39,7 @@
 		}
 	}
 	&--full {
+		display: block;
 		width: 100%;
 	}
 	&--with-icon {
