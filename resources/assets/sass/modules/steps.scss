@@ -28,6 +28,10 @@
     counter-increment: increment;
     color: $color--mine-shaft;    
 
+    .ie & {
+        justify-content: flex-start;
+    }
+
     &:before {
         content: counter(increment);
         width: 16px;
@@ -79,6 +83,12 @@
     background: $color--mine-shaft;
     color: $color--boulder;
     font-size: 10px;
+
+    .ie & {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 
     &:not(.steps__label--done) {
         &:hover {

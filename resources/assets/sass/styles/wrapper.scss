@@ -25,6 +25,10 @@
     background-color: rgba(darken($color--cod-gray, 4%), 0.85);
     transition: opacity #{$animation--duration-slow * 2} $animation--timing,
                 visibility #{$animation--duration-slow * 2} $animation--timing;
+
+    .ie & {
+      z-index: 0;
+    }
   }
 
   .sidebar--collapsed ~ & {
