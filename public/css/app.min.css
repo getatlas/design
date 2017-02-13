@@ -5954,10 +5954,8 @@ h6 {
     .registration__content {
       padding: 30px; } }
   .registration__content--fluid {
-    width: 100%;
-    max-width: none;
-    padding-right: 0;
-    padding-left: 0; }
+    width: auto;
+    max-width: none; }
     .registration__content--fluid:before {
       display: none; }
   .registration__content--transparent {
@@ -5966,38 +5964,45 @@ h6 {
     margin-top: 169px; }
     @media (max-width: 767px) {
       .registration__content--with-illustration {
-        margin-top: 129px; } }
+        margin-top: 220px; } }
+    @media (max-width: 550px) {
+      .registration__content--with-illustration {
+        margin-top: 150px; } }
     @media (max-width: 375px) {
       .registration__content--with-illustration {
-        margin-top: 70px; } }
+        margin-top: 85px; } }
     @media (max-width: 320px) {
       .registration__content--with-illustration {
-        margin-top: 58px; } }
+        margin-top: 62px; } }
     .registration__content--with-illustration:before {
       content: '';
       height: 363px;
       position: absolute;
-      top: -143px;
+      top: -220px;
       right: 2px;
       left: 2px;
       z-index: -1;
-      background: url("../assets/team.svg") no-repeat center 0;
+      background: url("../assets/organisation.svg") no-repeat center 0;
       background-size: contain; }
-      @media (max-width: 767px) {
+      @media (max-width: 550px) {
         .registration__content--with-illustration:before {
-          top: -129px; } }
+          top: -149px; } }
       @media (max-width: 375px) {
         .registration__content--with-illustration:before {
-          top: -70px; } }
+          top: -108px; } }
       @media (max-width: 320px) {
         .registration__content--with-illustration:before {
-          top: -58px; } }
+          top: -90px; } }
   .registration__content--pricing {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     margin-top: -32px;
     margin-bottom: -46px; }
+    @media (max-width: 1024px) {
+      .registration__content--pricing {
+        padding-right: 0;
+        padding-left: 0; } }
     @media (max-width: 767px) {
       .registration__content--pricing {
         -webkit-box-orient: vertical;

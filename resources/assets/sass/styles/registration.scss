@@ -55,10 +55,8 @@
     }
 
     &--fluid {
-        width: 100%;
+        width: auto;
         max-width: none;
-        padding-right: 0;
-        padding-left: 0;
         
 
         &:before {
@@ -72,38 +70,42 @@
         margin-top: 169px;
 
         @media (max-width: 767px) {
-            margin-top: 129px;
+            margin-top: 220px;
+        }
+
+        @media (max-width: 550px) {
+            margin-top: 150px;
         }
 
         @media (max-width: 375px) {
-            margin-top: 70px;
+            margin-top: 85px;
         }
 
         @media (max-width: 320px) {
-            margin-top: 58px;
+            margin-top: 62px;
         }
 
         &:before {
             content: '';
             height: 363px;
             position: absolute;
-            top: -143px;
+            top: -220px;
             right: 2px;
             left: 2px;
             z-index: -1;
-            background: url('../assets/team.svg') no-repeat center 0;
+            background: url('../assets/organisation.svg') no-repeat center 0;
             background-size: contain;
 
-            @media (max-width: 767px) {
-                top: -129px;
+            @media (max-width: 550px) {
+                top: -149px;
             }
 
             @media (max-width: 375px) {
-                top: -70px;
+                top: -108px;
             }
 
             @media (max-width: 320px) {
-                top: -58px;
+                top: -90px;
             }
         }
     }
@@ -111,6 +113,11 @@
         display: flex;
         margin-top: -32px;
         margin-bottom: -46px;
+
+        @media (max-width: 1024px) {
+            padding-right: 0;
+            padding-left: 0;
+        }
 
         @media (max-width: 767px) {
             flex-direction: column;
