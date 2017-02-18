@@ -5351,6 +5351,9 @@ h6 {
     left: 6px;
     background: #3a3a3a;
     pointer-events: none; }
+    @media (max-width: 767px) {
+      .steps:before {
+        top: -30px; } }
 
 .steps__item {
   display: -webkit-box;

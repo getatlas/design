@@ -11,11 +11,15 @@
         content: '';
         width: 1px;
         position: absolute;
-        top: -60px;
+        top: #{$spacing-vertical * -2};
         bottom: 0;
         left: 6px;
         background: $color--mine-shaft;
         pointer-events: none;
+
+        @media (max-width: 767px) {
+            top: #{$spacing-vertical * -1};
+        }
     }
 }
 
