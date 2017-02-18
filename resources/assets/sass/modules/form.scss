@@ -127,7 +127,7 @@
 			transition: color $animation--duration $animation--timing;
 		}
 
-		&.focus {
+		.form__group.focus & {
 			&:before {
 				color: darken($color--mine-shaft, 7%);
 			}

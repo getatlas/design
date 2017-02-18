@@ -3438,7 +3438,7 @@ h6 {
     pointer-events: none;
     -webkit-transition: color 0.1s ease-in-out;
     transition: color 0.1s ease-in-out; }
-  .field[class*=icon].focus:before {
+  .form__group.focus .field[class*=icon]:before {
     color: #282828; }
 
 .field.icon-mail:focus:before {
