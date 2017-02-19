@@ -10,8 +10,11 @@
 
 	.search--active &,
 	&:focus {
-		background-color: $color--tundora !important;
-		color: $color--white !important;
+		&,
+		&::placeholder {
+			background-color: $color--tundora !important;
+			color: $color--white !important;
+		}
 	}
 
 	.search--active & {
@@ -59,14 +62,15 @@
 		transform: translate3d(135px, 83px, 0);
 		pointer-events: auto;
 		transition: transform $animation--duration-slow $animation--timing,
-								opacity $animation--duration-slow $animation--duration-slow $animation--timing;
+					opacity $animation--duration-slow $animation--duration-slow $animation--timing;
 
-		.search--active & {
+		.search--active &,
+		&.active {
 			pointer-events: none;
 			transform: translate3d(135px, 0, 0);
 			opacity: 0;
 			transition: transform $animation--duration-slow $animation--timing,
-									opacity $animation--duration-slow $animation--timing;
+						opacity $animation--duration-slow $animation--timing;
 		}
 
 		&:before {

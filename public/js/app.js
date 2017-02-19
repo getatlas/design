@@ -367,6 +367,7 @@ function Search() {
 
   if (SEARCH.FIELD !== null) {
     SEARCH.FIELD.addEventListener(EVENTS.FOCUS, openSearch);
+    SEARCH.OPEN.addEventListener(EVENTS.CLICK(), openSearch);
   }
 }
 
