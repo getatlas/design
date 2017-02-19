@@ -32,7 +32,8 @@
     counter-increment: increment;
     color: $color--mine-shaft;    
 
-    .ie & {
+    .ie,
+    .firefox & {
         justify-content: flex-start;
     }
 
@@ -88,7 +89,8 @@
     color: $color--boulder;
     font-size: 10px;
 
-    .ie & {
+    .ie &,
+    .firefox & {
         position: absolute;
         top: 0;
         right: 0;
