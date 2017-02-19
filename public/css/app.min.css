@@ -4587,28 +4587,6 @@ h6 {
   .select__list__item:first-child .select__list__avatar {
     margin-top: 3px; }
 
-@-webkit-keyframes tooltip-bounce {
-  0% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-            transform: translate3d(-50%, 0, 0); }
-  50% {
-    -webkit-transform: translate3d(-50%, -8px, 0);
-            transform: translate3d(-50%, -8px, 0); }
-  100% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-            transform: translate3d(-50%, 0, 0); } }
-
-@keyframes tooltip-bounce {
-  0% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-            transform: translate3d(-50%, 0, 0); }
-  50% {
-    -webkit-transform: translate3d(-50%, -8px, 0);
-            transform: translate3d(-50%, -8px, 0); }
-  100% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-            transform: translate3d(-50%, 0, 0); } }
-
 .table {
   margin: 30px -30px 24px -30px;
   display: -webkit-box;
@@ -4628,14 +4606,8 @@ h6 {
         pointer-events: none;
         left: 50%;
         z-index: 100;
-        -webkit-animation: tooltip-bounce 4s ease-in-out infinite;
-                animation: tooltip-bounce 4s ease-in-out infinite;
         -webkit-transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
         transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out; }
-        body:not(.safari) .table:before, body:not(.safari) .table:after {
-          margin-left: 0;
-          -webkit-transform: translate3d(-50%, 0, 0);
-                  transform: translate3d(-50%, 0, 0); }
       .table:before {
         content: 'Swipe to scroll';
         height: 48px;
