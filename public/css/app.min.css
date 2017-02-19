@@ -89,6 +89,9 @@
 .icon-share:before {
   content: '\e913'; }
 
+.icon-github:before {
+  content: '\e914'; }
+
 * {
   box-sizing: border-box; }
 
@@ -3803,6 +3806,14 @@ h6 {
     .btn--dark:active {
       border-top-color: #0a0a0a;
       background-color: #1e1e1e; }
+  .btn--white {
+    background-color: #fff;
+    color: #282828; }
+    .btn--white:hover {
+      background-color: #dfdfdf; }
+    .btn--white:active {
+      border-top-color: #d6d6d6;
+      background-color: #fff; }
   .btn--color-green {
     color: #7fc146; }
   .btn--possitive {
@@ -3811,6 +3822,20 @@ h6 {
     color: #ff554c; }
   .btn.icon-mail:before {
     font-size: 11px; }
+  .btn.icon-github {
+    padding-right: 45px;
+    position: relative; }
+    @media (max-width: 767px) {
+      .btn.icon-github {
+        padding-right: 50px; } }
+    .btn.icon-github:before {
+      margin-top: -1px;
+      position: absolute;
+      top: 50%;
+      right: 14px;
+      font-size: 27px;
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%); }
 
 .heading {
   margin-bottom: 27px; }
